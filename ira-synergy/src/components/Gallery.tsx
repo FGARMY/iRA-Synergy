@@ -38,16 +38,17 @@ export default function Gallery() {
           </div>
         </ScrollReveal>
 
-        {/* Dense Photo Wall Grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-1 sm:gap-2">
+        {/* Masonry Layout Grid */}
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
           {galleryImages.map((src, idx) => (
-            <ScrollReveal key={idx} delay={(idx % 6) * 50}>
-              <div className="relative group overflow-hidden aspect-square bg-gray-100 cursor-pointer">
-                <div className="absolute inset-0 bg-ira-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-300" />
+            <ScrollReveal key={idx} delay={(idx % 4) * 50}>
+              <div className="relative group overflow-hidden bg-gray-100 rounded-xl cursor-pointer break-inside-avoid">
+                <div className="absolute inset-0 bg-ira-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-300 rounded-xl" />
                 <img 
                   src={src} 
                   alt={`Campus facility ${idx + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                  className="w-full h-auto object-cover rounded-xl group-hover:scale-[1.03] transition-transform duration-700 ease-in-out"
+                  loading="lazy"
                 />
               </div>
             </ScrollReveal>
