@@ -1,25 +1,51 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, Leaf, ShieldCheck, Map, Settings } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 
+const heroImages = [
+  "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=2070&auto=format&fit=crop", // Smart City
+  "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?q=80&w=2070&auto=format&fit=crop", // Clean Energy / Water
+  "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2070&auto=format&fit=crop", // Solar Panels
+  "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop", // Sustainable Architecture
+  "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format&fit=crop", // Waste Management / Recycling
+];
+
 export default function Hero() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-[700px] lg:min-h-[800px] flex items-center pt-32 pb-32 lg:pt-40 lg:pb-32">
       {/* Background Image & Overlay */}
-      <div className="absolute inset-0 z-0">
-        {/* We use a placeholder pattern, but in real life this should be the solar-bench park image */}
-        <div className="absolute inset-0 bg-gray-900 overflow-hidden">
-           {/* Fallback pattern if image is missing */}
-           <div className="absolute inset-0 pattern-grid opacity-20" />
-           {/* Simulated hero image */}
-           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
-           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
+      <div className="absolute inset-0 z-0 bg-gray-900 overflow-hidden">
+         {/* Fallback pattern if image is missing */}
+         <div className="absolute inset-0 pattern-grid opacity-20" />
+         
+         {/* Simulated hero image overlays */}
+         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
+         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
+         
+         {/* Carousel Images */}
+         {heroImages.map((src, index) => (
            <img 
-             src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=2070&auto=format&fit=crop" 
+             key={src}
+             src={src} 
              alt="Smart City Infrastructure" 
-             className="w-full h-full object-cover opacity-100"
+             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+               index === currentImageIndex ? "opacity-100" : "opacity-0"
+             }`}
            />
-        </div>
+         ))}
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center h-full">
@@ -72,11 +98,16 @@ export default function Hero() {
 
             {/* Pagination Dots */}
             <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-              <div className="w-2 h-2 rounded-full bg-ira-accent"></div>
-              <div className="w-2 h-2 rounded-full bg-white/50"></div>
-              <div className="w-2 h-2 rounded-full bg-white/50"></div>
-              <div className="w-2 h-2 rounded-full bg-white/50"></div>
-              <div className="w-2 h-2 rounded-full bg-white/50"></div>
+              {heroImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex ? "bg-ira-accent w-4" : "bg-white/50 hover:bg-white/80"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
