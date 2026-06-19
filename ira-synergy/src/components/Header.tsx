@@ -34,13 +34,13 @@ export default function Header() {
 
 
       {/* Middle Bar - Logo & CTA */}
-      <div className="px-4 py-3 lg:px-8 border-b border-gray-100 flex justify-between items-center">
+      <div className="px-4 py-2 md:py-3 lg:px-8 border-b border-gray-100 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2 group">
             <img 
               src="/images/navbar-logo.jpg" 
               alt="iRA Synergy Logo" 
-              className="h-20 w-auto object-contain mix-blend-multiply"
+              className="h-10 sm:h-12 md:h-20 w-auto object-contain mix-blend-multiply"
             />
           </Link>
           <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 ml-2">
