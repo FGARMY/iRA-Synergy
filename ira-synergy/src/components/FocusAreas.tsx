@@ -48,7 +48,7 @@ const focusAreas = [
 
 export default function FocusAreas() {
   return (
-    <section id="focus" className="section-padding bg-white pattern-dots pt-28">
+    <section id="focus" className="section-padding bg-white pattern-dots pt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <ScrollReveal>
