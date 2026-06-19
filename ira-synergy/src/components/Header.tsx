@@ -40,7 +40,7 @@ export default function Header() {
             <img 
               src="/images/logo.jpg" 
               alt="iRA Synergy Logo" 
-              className="h-16 w-auto object-contain"
+              className="h-20 w-auto object-contain mix-blend-multiply"
             />
           </Link>
           <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 ml-2">

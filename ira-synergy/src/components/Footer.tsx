@@ -33,7 +33,7 @@ export default function Footer() {
               <img 
                 src="/images/logo.jpg" 
                 alt="iRA Synergy Logo" 
-                className="h-12 w-auto object-contain"
+                className="h-24 w-auto object-contain bg-white rounded-md p-3 mb-6 shadow-md"
               />
             </div>
             <div className="w-12 h-px bg-ira-accent mb-6" />

@@ -31,7 +31,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <img 
               src="/images/logo.jpg" 
               alt="iRA Synergy Logo" 
-              className="h-10 w-auto object-contain rounded"
+              className="h-16 w-auto object-contain mix-blend-multiply rounded bg-white p-1"
             />
           </div>
           <button
