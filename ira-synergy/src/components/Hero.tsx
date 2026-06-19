@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ArrowRight, Leaf, ShieldCheck, MapPin, Settings } from "lucide-react";
+import { ArrowRight, Leaf, ShieldCheck, Map, Settings } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[600px] lg:min-h-[700px] flex items-center pt-32 pb-16 lg:pt-40 lg:pb-0">
+    <section className="relative min-h-[700px] lg:min-h-[800px] flex items-center pt-32 pb-32 lg:pt-40 lg:pb-32">
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         {/* We use a placeholder pattern, but in real life this should be the solar-bench park image */}
@@ -12,7 +12,8 @@ export default function Hero() {
            {/* Fallback pattern if image is missing */}
            <div className="absolute inset-0 pattern-grid opacity-20" />
            {/* Simulated hero image */}
-           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
+           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
+           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
            <img 
              src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=2070&auto=format&fit=crop" 
              alt="Smart City Infrastructure" 
@@ -49,9 +50,9 @@ export default function Hero() {
       </div>
 
       {/* Bottom Feature Bar */}
-      <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm border-t border-white/10 z-20">
+      <div className="absolute bottom-6 left-0 w-full z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 pb-8 border-b-2 border-transparent relative">
+          <div className="flex flex-wrap md:grid md:grid-cols-4 gap-4 py-4 relative inline-flex md:inline-grid">
             <div className="flex items-center gap-3">
               <Leaf size={32} strokeWidth={1.5} className="text-ira-accent flex-shrink-0" />
               <span className="text-white text-sm font-semibold leading-tight">Sustainable<br/>Solutions</span>
@@ -61,7 +62,7 @@ export default function Hero() {
               <span className="text-white text-sm font-semibold leading-tight">Quality<br/>Assured</span>
             </div>
             <div className="flex items-center gap-3 border-l border-white/20 pl-4">
-              <MapPin size={32} strokeWidth={1.5} className="text-ira-accent flex-shrink-0" />
+              <Map size={32} strokeWidth={1.5} className="text-ira-accent flex-shrink-0" />
               <span className="text-white text-sm font-semibold leading-tight">Made in<br/>India</span>
             </div>
             <div className="flex items-center gap-3 border-l border-white/20 pl-4">
@@ -70,7 +71,7 @@ export default function Hero() {
             </div>
 
             {/* Pagination Dots */}
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
               <div className="w-2 h-2 rounded-full bg-ira-accent"></div>
               <div className="w-2 h-2 rounded-full bg-white/50"></div>
               <div className="w-2 h-2 rounded-full bg-white/50"></div>
