@@ -7,17 +7,15 @@
 
 @theme {
   /* Primary palette — dark industrial green */
-  --color-ira-primary: #0A3D24;
-  --color-ira-secondary: #2B7A2B;
-  --color-ira-accent: #87C038;
-
-  /* Extended accents */
-  --color-ira-steel: #4A90A4;
-  --color-ira-steel-light: #6BAFBF;
-  --color-ira-amber: #D4941A;
-  --color-ira-amber-light: #F0B84D;
-  --color-ira-dark: #051A0F;
+  --color-ira-primary: #0F5C24; /* Main branding green */
+  --color-ira-primary-dark: #0A3C17; /* Darker green for footer and top header */
+  --color-ira-accent: #2E8B3A; /* Lighter/brighter green for buttons and text highlights */
+  --color-ira-accent-light: #4CA958;
+  --color-ira-steel: #E6EAE7;
+  --color-ira-amber: #F0B323; /* Keeping an amber/yellow option if needed, though mockup relies on green/white */
+  --color-ira-amber-light: #FCEABB;
   --color-ira-surface: #F8FAF9;
+  --color-ira-background: #FFFFFF;
 
   /* Focus area colors */
   --color-focus-edu: #1D3557;
