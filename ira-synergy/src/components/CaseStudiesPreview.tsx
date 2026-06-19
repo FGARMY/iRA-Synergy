@@ -3,6 +3,12 @@ import { ArrowRight, TrendingUp, MapPin } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 import { getFeaturedProjects } from "@/data/projects";
 
+const projectImages: Record<string, string> = {
+  "proj-1": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&auto=format&fit=crop", // Waste Management
+  "proj-2": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=800&auto=format&fit=crop", // Solar City
+  "proj-3": "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop", // Smart School
+};
+
 export default function CaseStudiesPreview() {
   const featured = getFeaturedProjects(3);
 
@@ -37,9 +43,13 @@ export default function CaseStudiesPreview() {
             <ScrollReveal key={project.id} delay={idx * 150}>
               <div className="group h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-premium card-hover">
                 {/* Image area */}
-                <div className="relative h-52 gradient-primary overflow-hidden">
-                  <div className="absolute inset-0 pattern-grid opacity-20" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="relative h-52 bg-gray-200 overflow-hidden">
+                  <img 
+                    src={projectImages[project.id] || "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=800"} 
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
 
                   {/* Category badge */}
                   <span className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full text-xs font-bold bg-ira-accent text-white">
@@ -47,7 +57,7 @@ export default function CaseStudiesPreview() {
                   </span>
 
                   {/* Location */}
-                  <div className="absolute bottom-4 left-4 z-10 flex items-center gap-1.5 text-white/90 text-sm">
+                  <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 text-white/90 text-sm">
                     <MapPin size={14} />
                     {project.location}
                   </div>
