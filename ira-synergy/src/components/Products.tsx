@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Search, Zap, Recycle, Building2, HeartPulse, Dumbbell, GraduationCap } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 import CategoryFilter from "./ui/CategoryFilter";
-import { products, productCategories, type ProductCategory } from "@/data/products";
+import { products, productCategories } from "@/data/products";
 
 const categoryIcons: Record<string, React.ElementType> = {
   "Smart City": Building2,
