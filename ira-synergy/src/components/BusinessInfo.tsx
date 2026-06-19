@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ChevronRight, Landmark, Hospital, Building, HandHeart, GraduationCap, Factory, Lightbulb, ShieldAlert, Award, Wrench, Settings, Leaf, ShieldCheck, MapPin, Shield, Headset, Building2 } from "lucide-react";
+import { ArrowRight, ChevronRight, Landmark, Hospital, Building, HandHeart, GraduationCap, Factory, Lightbulb, ShieldAlert, Award, Wrench, Settings, Leaf, ShieldCheck, MapPin, Shield, Headset, Building2, CheckCircle } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 import { projects } from "@/data/projects";
 
