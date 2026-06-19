@@ -61,12 +61,12 @@ export default function Hero() {
               End-to-end solutions for Infrastructure, Environment & Community Wellbeing.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <Link href="/solutions" className="bg-ira-accent hover:bg-ira-primary transition-colors text-white px-6 py-3 rounded text-sm font-bold flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/solutions" className="w-full sm:w-auto justify-center bg-ira-accent hover:bg-ira-primary transition-colors text-white px-6 py-3 rounded text-sm font-bold flex items-center gap-2">
                 EXPLORE SOLUTIONS
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/contact" className="bg-white hover:bg-gray-100 text-gray-900 px-6 py-3 rounded text-sm font-bold flex items-center gap-2 transition-colors">
+              <Link href="/contact" className="w-full sm:w-auto justify-center bg-white hover:bg-gray-100 text-gray-900 px-6 py-3 rounded text-sm font-bold flex items-center gap-2 transition-colors">
                 GET IN TOUCH
                 <ArrowRight size={16} />
               </Link>
@@ -76,9 +76,9 @@ export default function Hero() {
       </div>
 
       {/* Bottom Feature Bar */}
-      <div className="absolute bottom-6 left-0 w-full z-20">
+      <div className="absolute bottom-6 left-0 w-full z-20 hidden sm:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap md:grid md:grid-cols-4 gap-4 py-4 relative inline-flex md:inline-grid">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4 relative">
             <div className="flex items-center gap-3">
               <Leaf size={32} strokeWidth={1.5} className="text-ira-accent flex-shrink-0" />
               <span className="text-white text-sm font-semibold leading-tight">Sustainable<br/>Solutions</span>

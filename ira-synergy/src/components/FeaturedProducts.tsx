@@ -61,14 +61,10 @@ export default function FeaturedProducts() {
             <ChevronRight size={24} />
           </button>
 
-          {/* Carousel Container */}
-          <div 
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 pt-2 px-2 -mx-2"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
+          {/* Grid Container */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 pt-2">
             {featuredProducts.map((product, idx) => (
-              <ScrollReveal key={product.id} delay={idx * 100} className="snap-start shrink-0 w-[240px] md:w-[260px]">
+              <ScrollReveal key={product.id} delay={idx * 100} className="w-full">
                 <div className="bg-white rounded-lg border border-gray-100 shadow-sm h-full flex flex-col hover:shadow-xl transition-all duration-300 overflow-hidden group">
                   {/* Product Image Area */}
                   <div className="h-40 bg-gray-100 relative overflow-hidden">
