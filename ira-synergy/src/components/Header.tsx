@@ -38,7 +38,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2 group">
             <img 
-              src="/images/logo.jpg" 
+              src="/images/navbar-logo.jpg" 
               alt="iRA Synergy Logo" 
               className="h-20 w-auto object-contain mix-blend-multiply"
             />
