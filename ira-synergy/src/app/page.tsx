@@ -5,7 +5,6 @@ import Solutions from "@/components/Solutions";
 import StatsBanner from "@/components/StatsBanner";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import BusinessInfo from "@/components/BusinessInfo";
-import PartnerLogos from "@/components/PartnerLogos";
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <StatsBanner />
         <FeaturedProducts />
         <BusinessInfo />
-        <PartnerLogos />
       </main>
       <Footer />
     </div>
