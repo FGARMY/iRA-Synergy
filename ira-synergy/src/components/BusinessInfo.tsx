@@ -82,31 +82,33 @@ export default function BusinessInfo() {
                 </Link>
               </div>
 
-              <div className="relative group flex-1 flex flex-col justify-center">
-                <div className="flex gap-4 overflow-x-auto snap-x pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              <div className="relative group flex-1 flex flex-col justify-center overflow-hidden">
+                <div className="flex gap-4 overflow-x-auto snap-x pb-4 pt-1 px-1 -mx-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                   {displayProjects.map((project, i) => (
-                    <div key={i} className="snap-start shrink-0 w-[160px] flex flex-col bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm">
-                      <div className="h-28 bg-gray-100 relative group-hover:shadow-md transition-shadow">
+                    <Link href="/projects" key={i} className="snap-start shrink-0 w-[180px] md:w-[220px] flex flex-col bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group/card cursor-pointer">
+                      <div className="h-32 md:h-36 bg-gray-100 relative overflow-hidden">
                          <img 
                            src={project.images && project.images.length > 0 ? project.images[0] : "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=400"}
                            alt={project.title}
-                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                           className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
                          />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
                       </div>
-                      <div className="p-3 flex flex-col flex-1 bg-white">
-                        <h4 className="text-[11px] font-bold text-gray-900 leading-tight mb-1 text-center line-clamp-2">
-                          {project.title.split('—')[0]} {/* Simplified title for small card */}
+                      <div className="p-3 md:p-4 flex flex-col flex-1 bg-white">
+                        <h4 className="text-xs md:text-sm font-bold text-gray-900 leading-tight mb-1 line-clamp-2 group-hover/card:text-ira-primary transition-colors">
+                          {project.title.split('—')[0]}
                         </h4>
-                        <p className="text-[10px] text-gray-500 text-center line-clamp-1 mt-auto">
+                        <p className="text-[10px] md:text-xs text-gray-500 line-clamp-1 mt-auto flex items-center gap-1">
+                          <MapPin size={10} className="text-ira-primary/70" />
                           {project.state}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                   <div className="snap-start shrink-0 flex items-center justify-center pl-2 pr-4">
-                     <button className="w-8 h-8 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-600 hover:text-ira-primary hover:border-ira-primary transition-colors">
-                       <ChevronRight size={18} />
-                     </button>
+                     <Link href="/projects" className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-600 hover:text-white hover:bg-ira-primary hover:border-ira-primary transition-all hover:scale-110">
+                       <ChevronRight size={20} />
+                     </Link>
                   </div>
                 </div>
               </div>
