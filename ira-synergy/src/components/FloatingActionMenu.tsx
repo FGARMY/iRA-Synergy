@@ -37,11 +37,11 @@ export default function FloatingActionMenu() {
   return (
     <>
       {/* Back To Top Button */}
-      <div className="fixed z-40 bottom-6 md:bottom-8 left-4 md:left-8 pointer-events-none">
+      <div className={`fixed z-40 bottom-24 md:bottom-28 right-4 md:right-8 pointer-events-none transition-opacity duration-300 ${chatOpen ? 'opacity-0' : 'opacity-100'}`}>
         <button 
           onClick={scrollTop}
           className={`pointer-events-auto flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-ira-primary hover:-translate-y-1 ${
-            showScroll ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none hidden'
+            showScroll && !chatOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none hidden'
           } w-10 h-10 md:w-12 md:h-12 bg-gray-900 text-white rounded-full`}
           aria-label="Back to top"
         >
