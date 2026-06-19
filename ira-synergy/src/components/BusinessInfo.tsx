@@ -41,11 +41,13 @@ export default function BusinessInfo() {
               <h2 className="text-sm font-bold text-gray-900 uppercase mb-6 flex items-center gap-4">
                 INDUSTRIES WE SERVE
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-4">
+              <div className="flex gap-3 overflow-x-auto snap-x hide-scrollbar pb-2 sm:grid sm:grid-cols-2 sm:gap-y-5 sm:gap-x-4 sm:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {industries.map((ind, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <ind.icon size={22} strokeWidth={1.5} className="text-ira-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-xs font-semibold text-gray-700 leading-tight">{ind.name}</span>
+                  <div key={i} className="snap-start shrink-0 w-[120px] sm:w-auto flex flex-col sm:flex-row items-start gap-2 sm:gap-3 bg-gray-50 sm:bg-transparent p-3 sm:p-0 rounded-lg sm:rounded-none">
+                    <div className="bg-white sm:bg-transparent p-2 sm:p-0 rounded shadow-sm sm:shadow-none flex-shrink-0">
+                      <ind.icon size={22} strokeWidth={1.5} className="text-ira-primary mt-0.5" />
+                    </div>
+                    <span className="text-[11px] sm:text-xs font-semibold text-gray-700 leading-tight">{ind.name}</span>
                   </div>
                 ))}
               </div>
@@ -58,11 +60,13 @@ export default function BusinessInfo() {
               <h2 className="text-sm font-bold text-gray-900 uppercase mb-6 flex items-center gap-4">
                 WHY CHOOSE US
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-4">
+              <div className="flex gap-3 overflow-x-auto snap-x hide-scrollbar pb-2 sm:grid sm:grid-cols-2 sm:gap-y-5 sm:gap-x-4 sm:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {features.map((feat, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <feat.icon size={20} strokeWidth={1.5} className="text-ira-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-xs font-semibold text-gray-700 leading-tight">{feat.name}</span>
+                  <div key={i} className="snap-start shrink-0 w-[120px] sm:w-auto flex flex-col sm:flex-row items-start gap-2 sm:gap-3 bg-gray-50 sm:bg-transparent p-3 sm:p-0 rounded-lg sm:rounded-none">
+                    <div className="bg-white sm:bg-transparent p-2 sm:p-0 rounded shadow-sm sm:shadow-none flex-shrink-0">
+                      <feat.icon size={20} strokeWidth={1.5} className="text-ira-primary mt-0.5" />
+                    </div>
+                    <span className="text-[11px] sm:text-xs font-semibold text-gray-700 leading-tight">{feat.name}</span>
                   </div>
                 ))}
               </div>
