@@ -29,13 +29,13 @@ export default function Footer() {
           
           {/* Column 1: Brand & Info */}
           <div className="lg:col-span-1">
-            <div className="mb-6 inline-block rounded-xl overflow-hidden shadow-lg bg-white p-3">
+            <Link href="/" className="mb-6 inline-block rounded-xl overflow-hidden shadow-lg bg-white p-3 transition-transform hover:scale-105">
               <img 
                 src="/images/logo.jpg" 
                 alt="iRA Synergy Logo" 
                 className="h-28 w-auto object-contain"
               />
-            </div>
+            </Link>
             <div className="w-12 h-px bg-ira-accent mb-6" />
             <p className="text-xs text-gray-300 leading-relaxed mb-6">
               iRA Synergy Private Limited offers innovative, eco-friendly and technology-driven solutions for infrastructure, environment, health & community development.

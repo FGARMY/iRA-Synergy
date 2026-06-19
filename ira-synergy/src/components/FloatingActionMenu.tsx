@@ -1,16 +1,46 @@
 "use client";
 
-import { Phone, MessageCircle, FileText, FileDown, Bot, X } from "lucide-react";
+import { Phone, MessageCircle, FileText, FileDown, Bot, X, ArrowUp } from "lucide-react";
 import Link from "next/link";
 import { companyInfo } from "@/data/company";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function FloatingActionMenu() {
   const [chatOpen, setChatOpen] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (window.scrollY > 400) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    };
+    window.addEventListener('scroll', checkScrollTop);
+    return () => window.removeEventListener('scroll', checkScrollTop);
+  }, []);
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <>
+      {/* Back To Top Button */}
+      <div className="fixed z-40 bottom-6 md:bottom-8 left-4 md:left-8 pointer-events-none">
+        <button 
+          onClick={scrollTop}
+          className={`pointer-events-auto flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-ira-primary hover:-translate-y-1 ${
+            showScroll ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none hidden'
+          } w-10 h-10 md:w-12 md:h-12 bg-gray-900 text-white rounded-full`}
+          aria-label="Back to top"
+        >
+          <ArrowUp size={20} className="md:w-6 md:h-6" />
+        </button>
+      </div>
+
       {/* AI Assistant Chat Box */}
       <div className="fixed z-50 bottom-6 md:bottom-8 right-4 md:right-8 flex flex-col items-end pointer-events-none">
         {chatOpen && (
