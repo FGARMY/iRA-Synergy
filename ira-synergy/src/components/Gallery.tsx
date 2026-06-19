@@ -1,24 +1,14 @@
 import ScrollReveal from "./ui/ScrollReveal";
 
 const galleryImages = [
-  "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=400",
-  "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400",
-  "https://images.unsplash.com/photo-1525921472535-715bd844f2d7?q=80&w=400",
-  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=400",
-  "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=400",
-  "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=400",
-  "https://images.unsplash.com/photo-1519389953867-2e205e5ce5ba?q=80&w=400",
-  "https://images.unsplash.com/photo-1427504494785-3b9ca204ce38?q=80&w=400",
-  "https://images.unsplash.com/photo-1492538368651-71f66299b800?q=80&w=400",
-  "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=400",
-  "https://images.unsplash.com/photo-1606761568499-6d2451b08c66?q=80&w=400",
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=400",
-  "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=400",
-  "https://images.unsplash.com/photo-1558021212-51ab78c1b562?q=80&w=400",
-  "https://images.unsplash.com/photo-1610484826967-09c5720778c7?q=80&w=400",
-  "https://images.unsplash.com/photo-1511629091441-eea97ece80f5?q=80&w=400",
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=400",
-  "https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=400"
+  "https://images.unsplash.com/photo-1509391366360-1200fa26bd96?q=80&w=600", // Solar power
+  "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=600", // Smart city
+  "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=600", // EV charging
+  "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600", // Outdoor gym/park
+  "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=600", // Public building/hospital
+  "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=600", // Recycling / Waste
+  "https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=600", // Water/Eco
+  "https://images.unsplash.com/photo-1518599904199-0ca897819ddb?q=80&w=600"  // Smart lighting
 ];
 
 export default function Gallery() {
@@ -29,11 +19,11 @@ export default function Gallery() {
         <ScrollReveal>
           <div className="text-center">
             <h2 className="text-sm font-bold text-gray-900 uppercase inline-block relative">
-              CAMPUS GALLERY
+              INFRASTRUCTURE GALLERY
               <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-ira-primary rounded-full"></span>
             </h2>
             <p className="text-xs text-gray-500 mt-4 max-w-2xl mx-auto px-4">
-              A glimpse into our massive scale of educational infrastructure and campus development projects across the country.
+              A glimpse into our massive scale of smart city development, sustainable energy solutions, and public infrastructure projects.
             </p>
           </div>
         </ScrollReveal>
