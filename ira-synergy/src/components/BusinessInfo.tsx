@@ -157,18 +157,18 @@ export default function BusinessInfo() {
 
         {/* ROW 3: Partners & Initiatives */}
         <ScrollReveal delay={200}>
-          <div className="bg-white rounded-xl border border-gray-100 p-8 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-            <div className="text-center mb-8">
+          <div className="bg-white rounded-xl border border-gray-100 p-4 sm:p-8 shadow-[0_2px_10px_rgba(0,0,0,0.02)] overflow-hidden">
+            <div className="text-center mb-6 sm:mb-8">
               <h2 className="text-sm font-bold text-gray-900 uppercase inline-block relative">
                 OUR PARTNERS & INITIATIVES
                 <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-ira-primary rounded-full"></span>
               </h2>
             </div>
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center mt-4">
               <img 
                 src="/images/partner-logos-strip.jpg" 
                 alt="Government Initiatives and Partners" 
-                className="w-full max-w-[1000px] h-auto object-contain mix-blend-multiply opacity-90"
+                className="w-[110%] sm:w-full max-w-[1200px] h-auto object-contain mix-blend-multiply"
               />
             </div>
           </div>
