@@ -27,15 +27,6 @@ export default function FloatingActionMenu() {
         <span className="text-white text-[10px] md:text-xs font-semibold whitespace-nowrap">WhatsApp</span>
       </a>
 
-      <Link
-        href="/contact"
-        className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3 px-2 md:px-4 py-3 md:py-2 hover:bg-black/10 transition-colors md:border-b md:border-white/10 md:mx-2 flex-1 md:flex-auto border-r border-white/10 md:border-r-0"
-        title="Enquiry"
-      >
-        <FileText size={20} className="text-white flex-shrink-0 md:w-4 md:h-4" />
-        <span className="text-white text-[10px] md:text-xs font-semibold whitespace-nowrap">Enquiry</span>
-      </Link>
-
       <a
         href="/downloads"
         className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3 px-2 md:px-4 py-3 md:py-2 hover:bg-black/10 transition-colors md:mx-2 flex-1 md:flex-auto"
