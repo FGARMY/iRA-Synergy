@@ -69,20 +69,20 @@ export default function Solutions() {
           >
             {solutions.map((solution, idx) => {
               return (
-                <ScrollReveal key={solution.id} delay={idx * 50} className="snap-start shrink-0 w-[240px] md:w-[280px]">
-                  <div className="bg-white rounded border border-gray-200 flex flex-col h-full hover:shadow-xl transition-shadow group overflow-hidden">
-                    <div className="h-40 w-full overflow-hidden">
+                <ScrollReveal key={solution.id} delay={idx * 50} className="snap-start shrink-0 w-[220px] md:w-[260px]">
+                  <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-xl transition-all duration-300 group overflow-hidden">
+                    <div className="h-36 w-full overflow-hidden">
                       <img 
                         src={imageMap[solution.id] || "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=600"} 
                         alt={solution.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                    <div className="p-6 text-center flex flex-col items-center flex-grow">
-                      <h3 className="text-md font-bold text-gray-900 mb-3 uppercase h-12 flex items-center justify-center">
+                    <div className="p-5 text-center flex flex-col items-center flex-grow">
+                      <h3 className="text-sm font-bold text-gray-900 mb-2 uppercase h-10 flex items-center justify-center line-clamp-2">
                         {solution.title}
                       </h3>
-                      <p className="text-xs text-gray-600 mb-6 flex-grow leading-relaxed line-clamp-3">
+                      <p className="text-xs text-gray-500 mb-5 flex-grow leading-relaxed line-clamp-3">
                         {solution.description}
                       </p>
                       <Link

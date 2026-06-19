@@ -68,10 +68,10 @@ export default function FeaturedProducts() {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {featuredProducts.map((product, idx) => (
-              <ScrollReveal key={product.id} delay={idx * 100} className="snap-start shrink-0 w-[280px] md:w-[320px]">
-                <div className="bg-white rounded border border-gray-200 h-full flex flex-col hover:shadow-xl transition-shadow overflow-hidden group">
+              <ScrollReveal key={product.id} delay={idx * 100} className="snap-start shrink-0 w-[240px] md:w-[260px]">
+                <div className="bg-white rounded-lg border border-gray-100 shadow-sm h-full flex flex-col hover:shadow-xl transition-all duration-300 overflow-hidden group">
                   {/* Product Image Area */}
-                  <div className="h-48 bg-gray-100 relative overflow-hidden">
+                  <div className="h-40 bg-gray-100 relative overflow-hidden">
                     <div className="absolute inset-0 bg-ira-primary/5 group-hover:bg-transparent transition-colors z-10" />
                     <img 
                       src={product.images[0].startsWith("/") ? fallbackImages[idx % fallbackImages.length] : product.images[0]} 
@@ -81,8 +81,8 @@ export default function FeaturedProducts() {
                   </div>
                   
                   {/* Content */}
-                  <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">
+                  <div className="p-5 flex-grow flex flex-col">
+                    <h3 className="text-base font-bold text-gray-900 mb-3 text-center line-clamp-2">
                       {product.name}
                     </h3>
                     
@@ -97,7 +97,7 @@ export default function FeaturedProducts() {
                     
                     <Link 
                       href={`/products/${product.slug}`}
-                      className="w-full py-2 border border-ira-accent text-ira-accent hover:bg-ira-accent hover:text-white transition-colors rounded text-xs font-bold text-center flex items-center justify-center gap-1"
+                      className="w-full py-2 border border-gray-200 hover:border-ira-accent text-gray-700 hover:bg-ira-accent hover:text-white transition-all duration-300 rounded text-xs font-bold text-center flex items-center justify-center gap-1"
                     >
                       VIEW DETAILS
                       <ArrowRight size={14} />

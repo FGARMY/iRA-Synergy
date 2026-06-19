@@ -41,9 +41,9 @@ export default function CaseStudiesPreview() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {featured.map((project, idx) => (
             <ScrollReveal key={project.id} delay={idx * 150}>
-              <div className="group h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-premium card-hover">
+              <div className="group h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300">
                 {/* Image area */}
-                <div className="relative h-52 bg-gray-200 overflow-hidden">
+                <div className="relative h-48 bg-gray-200 overflow-hidden">
                   <img 
                     src={projectImages[project.id] || "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=800"} 
                     alt={project.title}
@@ -65,27 +65,12 @@ export default function CaseStudiesPreview() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-ira-primary transition-colors line-clamp-2 leading-snug">
+                  <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-ira-primary transition-colors line-clamp-2 leading-snug">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-gray-500 mb-5 line-clamp-2">
+                  <p className="text-xs text-gray-500 mb-6 line-clamp-3">
                     {project.description}
                   </p>
-
-                  {/* Impact metrics */}
-                  <div className="grid grid-cols-2 gap-3 mb-5">
-                    {project.impact.slice(0, 2).map((imp, i) => (
-                      <div
-                        key={i}
-                        className="bg-ira-primary/5 rounded-lg p-3 text-center"
-                      >
-                        <div className="text-xl font-extrabold text-ira-primary font-mono-nums">
-                          {imp.value}
-                        </div>
-                        <div className="text-xs text-gray-500 mt-0.5">{imp.metric}</div>
-                      </div>
-                    ))}
-                  </div>
 
                   {/* Testimonial preview */}
                   {project.testimonial && (
