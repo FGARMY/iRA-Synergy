@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-6 inline-block rounded-xl overflow-hidden shadow-lg bg-white p-3">
               <img 
-                src="/images/navbar-logo.jpg" 
+                src="/images/logo.jpg" 
                 alt="iRA Synergy Logo" 
                 className="h-28 w-auto object-contain"
               />
