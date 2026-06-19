@@ -61,11 +61,15 @@ export default function Solutions() {
             <ChevronRight size={24} />
           </button>
 
-          {/* Grid Container */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-8 pt-2">
+          {/* Carousel Container */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 pt-2 px-2 -mx-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {solutions.map((solution, idx) => {
               return (
-                <ScrollReveal key={solution.id} delay={idx * 50} className="w-full">
+                <ScrollReveal key={solution.id} delay={idx * 50} className="snap-start shrink-0 w-[240px] md:w-[260px]">
                   <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-xl transition-all duration-300 group overflow-hidden">
                     <div className="h-36 w-full overflow-hidden">
                       <img 
