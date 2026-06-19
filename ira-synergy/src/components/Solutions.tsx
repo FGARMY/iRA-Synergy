@@ -27,7 +27,7 @@ export default function Solutions() {
   };
 
   return (
-    <section id="solutions" className="py-16 bg-white relative">
+    <section id="solutions" className="py-16 md:py-20 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header line */}

@@ -2,7 +2,7 @@ import ScrollReveal from "./ui/ScrollReveal";
 
 export default function PartnerLogos() {
   return (
-    <section className="py-12 border-t border-gray-200 bg-white overflow-hidden">
+    <section className="py-16 md:py-20 border-t border-gray-200 bg-white overflow-hidden">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           {/* Scrollable container for mobile so the logos don't get too tiny */}

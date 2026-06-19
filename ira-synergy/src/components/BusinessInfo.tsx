@@ -25,11 +25,18 @@ const features = [
   { name: "AMC Support", icon: ShieldCheck },
 ];
 
+const projectImages: Record<string, string> = {
+  "proj-1": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=400&auto=format&fit=crop", // Waste Management
+  "proj-2": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=400&auto=format&fit=crop", // Solar City
+  "proj-3": "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=400&auto=format&fit=crop", // Smart School
+  "proj-4": "https://images.unsplash.com/photo-1584820927498-cafe8c1a6602?q=80&w=400&auto=format&fit=crop", // Public Health
+};
+
 export default function BusinessInfo() {
   const displayProjects = projects.slice(0, 4); // Show first 4 in the mini slider
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-10">
           
@@ -87,12 +94,12 @@ export default function BusinessInfo() {
                 <div className="flex gap-4 overflow-x-auto snap-x hide-scrollbar pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                   {displayProjects.map((project, i) => (
                     <div key={i} className="snap-start shrink-0 w-[140px] flex flex-col">
-                      <div className="h-24 bg-gray-200 mb-3 rounded overflow-hidden relative">
-                         {/* Placeholder for project image */}
-                         <div className="absolute inset-0 bg-ira-primary/10" />
-                         <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-xs text-center p-2">
-                           Image
-                         </div>
+                      <div className="h-24 bg-gray-200 mb-3 rounded overflow-hidden relative group-hover:shadow-md transition-shadow">
+                         <img 
+                           src={projectImages[project.id] || "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=400"} 
+                           alt={project.title}
+                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         />
                       </div>
                       <h4 className="text-[11px] font-bold text-gray-900 leading-tight mb-1 text-center">
                         {project.title}
