@@ -14,9 +14,9 @@ export default function Hero() {
            {/* Simulated hero image */}
            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
            <img 
-             src="/images/hero-bg.jpg" 
+             src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=2070&auto=format&fit=crop" 
              alt="Smart City Infrastructure" 
-             className="w-full h-full object-cover opacity-60"
+             className="w-full h-full object-cover opacity-100"
            />
         </div>
       </div>
@@ -51,22 +51,31 @@ export default function Hero() {
       {/* Bottom Feature Bar */}
       <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm border-t border-white/10 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 pb-8 border-b-2 border-transparent relative">
             <div className="flex items-center gap-3">
-              <Leaf size={24} className="text-ira-accent flex-shrink-0" />
-              <span className="text-white text-sm font-semibold">Sustainable<br/>Solutions</span>
+              <Leaf size={32} strokeWidth={1.5} className="text-ira-accent flex-shrink-0" />
+              <span className="text-white text-sm font-semibold leading-tight">Sustainable<br/>Solutions</span>
             </div>
-            <div className="flex items-center gap-3">
-              <ShieldCheck size={24} className="text-ira-accent flex-shrink-0" />
-              <span className="text-white text-sm font-semibold">Quality<br/>Assured</span>
+            <div className="flex items-center gap-3 border-l border-white/20 pl-4">
+              <ShieldCheck size={32} strokeWidth={1.5} className="text-ira-accent flex-shrink-0" />
+              <span className="text-white text-sm font-semibold leading-tight">Quality<br/>Assured</span>
             </div>
-            <div className="flex items-center gap-3">
-              <MapPin size={24} className="text-ira-accent flex-shrink-0" />
-              <span className="text-white text-sm font-semibold">Made in<br/>India</span>
+            <div className="flex items-center gap-3 border-l border-white/20 pl-4">
+              <MapPin size={32} strokeWidth={1.5} className="text-ira-accent flex-shrink-0" />
+              <span className="text-white text-sm font-semibold leading-tight">Made in<br/>India</span>
             </div>
-            <div className="flex items-center gap-3">
-              <Settings size={24} className="text-ira-accent flex-shrink-0" />
-              <span className="text-white text-sm font-semibold">Reliable<br/>Performance</span>
+            <div className="flex items-center gap-3 border-l border-white/20 pl-4">
+              <Settings size={32} strokeWidth={1.5} className="text-ira-accent flex-shrink-0" />
+              <span className="text-white text-sm font-semibold leading-tight">Reliable<br/>Performance</span>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="w-2 h-2 rounded-full bg-ira-accent"></div>
+              <div className="w-2 h-2 rounded-full bg-white/50"></div>
+              <div className="w-2 h-2 rounded-full bg-white/50"></div>
+              <div className="w-2 h-2 rounded-full bg-white/50"></div>
+              <div className="w-2 h-2 rounded-full bg-white/50"></div>
             </div>
           </div>
         </div>

@@ -1,49 +1,48 @@
 "use client";
 
-import { Phone, MessageCircle, FileText, Download } from "lucide-react";
+import { Phone, MessageCircle, FileText, FileDown } from "lucide-react";
 import Link from "next/link";
 import { companyInfo } from "@/data/company";
 
 export default function FloatingActionMenu() {
   return (
-    <div className="fixed right-0 top-1/3 z-50 flex flex-col shadow-xl rounded-l-lg overflow-hidden border border-r-0 border-[#2d7a33]">
+    <div className="fixed right-0 top-1/3 z-50 flex flex-col bg-[#1a4a23] rounded-l-lg shadow-xl overflow-hidden py-3">
       <a
         href={`tel:${companyInfo.phone}`}
-        className="flex items-center gap-3 w-32 bg-[#1b5e20] hover:bg-[#2d7a33] text-white py-2.5 px-3 transition-colors border-b border-[#144818]"
+        className="flex items-center gap-3 px-4 py-2 hover:bg-black/10 transition-colors border-b border-white/10 mx-2"
         title="Call Us"
       >
-        <Phone size={16} fill="currentColor" className="flex-shrink-0" />
-        <span className="text-xs font-semibold">Call Us</span>
+        <Phone size={16} className="text-white flex-shrink-0" />
+        <span className="text-white text-xs font-semibold whitespace-nowrap">Call Us</span>
       </a>
 
       <a
         href={companyInfo.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 w-32 bg-[#1b5e20] hover:bg-[#2d7a33] text-white py-2.5 px-3 transition-colors border-b border-[#144818]"
+        className="flex items-center gap-3 px-4 py-2 hover:bg-black/10 transition-colors border-b border-white/10 mx-2"
         title="WhatsApp"
       >
-        {/* Simple WhatsApp icon approximation since we don't have the brand icon */}
-        <MessageCircle size={16} className="flex-shrink-0" />
-        <span className="text-xs font-semibold">WhatsApp</span>
+        <MessageCircle size={16} className="text-white flex-shrink-0" />
+        <span className="text-white text-xs font-semibold whitespace-nowrap">WhatsApp</span>
       </a>
 
       <Link
         href="/contact"
-        className="flex items-center gap-3 w-32 bg-[#1b5e20] hover:bg-[#2d7a33] text-white py-2.5 px-3 transition-colors border-b border-[#144818]"
+        className="flex items-center gap-3 px-4 py-2 hover:bg-black/10 transition-colors border-b border-white/10 mx-2"
         title="Enquiry"
       >
-        <FileText size={16} className="flex-shrink-0" />
-        <span className="text-xs font-semibold">Enquiry</span>
+        <FileText size={16} className="text-white flex-shrink-0" />
+        <span className="text-white text-xs font-semibold whitespace-nowrap">Enquiry</span>
       </Link>
 
       <a
         href="/downloads"
-        className="flex items-center gap-3 w-32 bg-[#1b5e20] hover:bg-[#2d7a33] text-white py-2.5 px-3 transition-colors"
+        className="flex items-center gap-3 px-4 py-2 hover:bg-black/10 transition-colors mx-2"
         title="Brochure"
       >
-        <FileText size={16} className="flex-shrink-0" />
-        <span className="text-xs font-semibold">Brochure</span>
+        <FileDown size={16} className="text-white flex-shrink-0" />
+        <span className="text-white text-xs font-semibold whitespace-nowrap">Brochure</span>
       </a>
     </div>
   );

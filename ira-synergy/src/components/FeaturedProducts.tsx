@@ -10,6 +10,15 @@ export default function FeaturedProducts() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const featuredProducts = getFeaturedProducts();
 
+  const fallbackImages = [
+    "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=600&auto=format&fit=crop", // solar 
+    "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=600&auto=format&fit=crop", // waste bin
+    "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=600&auto=format&fit=crop", // engineering
+    "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=600&auto=format&fit=crop", // architecture/city
+    "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=600&auto=format&fit=crop", // clean energy
+    "https://images.unsplash.com/photo-1520190282873-afe1285c9af2?q=80&w=600&auto=format&fit=crop", // public tech
+  ];
+
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const { current } = scrollContainerRef;
@@ -64,10 +73,11 @@ export default function FeaturedProducts() {
                   {/* Product Image Area */}
                   <div className="h-48 bg-gray-100 relative overflow-hidden">
                     <div className="absolute inset-0 bg-ira-primary/5 group-hover:bg-transparent transition-colors z-10" />
-                    {/* Placeholder for actual image */}
-                    <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                       <span className="text-gray-400 font-medium">Product Image</span>
-                    </div>
+                    <img 
+                      src={product.images[0].startsWith("/") ? fallbackImages[idx % fallbackImages.length] : product.images[0]} 
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
                   
                   {/* Content */}

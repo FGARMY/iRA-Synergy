@@ -50,15 +50,15 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link href="/contact" className="hidden sm:flex items-center gap-2 bg-[#1b5e20] hover:bg-ira-primary text-white px-5 py-2.5 rounded text-sm font-bold transition-colors">
+          <Link href="/contact" className="hidden sm:flex items-center gap-2 bg-ira-primary-dark hover:bg-ira-primary text-white px-5 py-2.5 rounded text-sm font-bold transition-colors">
             REQUEST A CALL BACK
-            <Phone size={14} fill="currentColor" />
+            <Phone size={14} />
           </Link>
           <button className="text-gray-500 hover:text-ira-primary p-2 border border-gray-200 rounded">
             <Search size={18} />
           </button>
           <button
-            className="lg:hidden text-gray-800 p-2 border border-gray-200 rounded"
+            className="lg:hidden text-gray-800 p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -67,25 +67,25 @@ export default function Header() {
       </div>
 
       {/* Bottom Bar - Navigation Links */}
-      <div className="hidden lg:flex justify-between items-center py-0 px-8 bg-white border-b-4 border-transparent shadow-sm">
-        <nav className="flex items-center w-full justify-between">
-          {navLinks.map((link) => {
-            const isActive = link.label === "HOME";
-            return (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`relative py-4 text-sm font-bold transition-colors tracking-wide flex items-center gap-1 ${
-                  isActive ? "text-ira-primary border-b-2 border-ira-primary" : "text-gray-800 hover:text-ira-primary"
-                }`}
-              >
-                {link.label}
-                {link.label === "SOLUTIONS" && (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                )}
-              </Link>
-            );
-          })}
+      <div className="hidden lg:flex justify-center items-center py-4 bg-white border-b border-gray-100">
+        <nav className="flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={`text-sm font-bold transition-colors tracking-wide relative flex items-center gap-1 ${
+                link.label === "HOME" ? "text-gray-900" : "text-gray-700 hover:text-ira-primary"
+              }`}
+            >
+              {link.label}
+              {link.label === "SOLUTIONS" && (
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
+              )}
+              {link.label === "HOME" && (
+                <span className="absolute -bottom-4 left-0 w-full h-[3px] bg-ira-primary rounded-t-sm"></span>
+              )}
+            </Link>
+          ))}
         </nav>
       </div>
 
