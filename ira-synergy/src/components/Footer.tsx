@@ -29,11 +29,11 @@ export default function Footer() {
           
           {/* Column 1: Brand & Info */}
           <div className="lg:col-span-1">
-            <div className="mb-6 bg-white p-2 inline-block rounded">
+            <div className="mb-6 inline-block rounded-xl overflow-hidden shadow-lg bg-white p-3">
               <img 
-                src="/images/logo.jpg" 
+                src="/images/navbar-logo.jpg" 
                 alt="iRA Synergy Logo" 
-                className="h-24 w-auto object-contain bg-white rounded-md p-3 mb-6 shadow-md"
+                className="h-28 w-auto object-contain"
               />
             </div>
             <div className="w-12 h-px bg-ira-accent mb-6" />
