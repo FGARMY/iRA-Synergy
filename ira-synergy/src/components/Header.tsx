@@ -34,19 +34,19 @@ export default function Header() {
 
       {/* Middle Bar - Logo & CTA */}
       <div className="px-4 py-2 md:py-3 lg:px-8 border-b border-gray-100 flex justify-between items-center">
-        <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-4 group cursor-pointer">
+          <div className="flex items-center gap-2">
             <img 
               src="/images/navbar-logo.jpg" 
               alt="iRA Synergy Logo" 
-              className="h-10 sm:h-12 md:h-20 w-auto object-contain mix-blend-multiply"
+              className="h-10 sm:h-12 md:h-20 w-auto object-contain mix-blend-multiply transition-transform group-hover:scale-105"
             />
-          </Link>
-          <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 ml-2">
-            <span className="text-sm font-semibold text-gray-800">Innovative Solutions for</span>
-            <span className="text-sm font-semibold text-gray-800">Infrastructure & Sustainability</span>
           </div>
-        </div>
+          <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 ml-2">
+            <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors">Innovative Solutions for</span>
+            <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors">Infrastructure & Sustainability</span>
+          </div>
+        </Link>
 
         <div className="flex items-center gap-4">
           <Link href="/contact" className="hidden sm:flex items-center gap-2 bg-ira-primary-dark hover:bg-ira-primary text-white px-5 py-2.5 rounded text-sm font-bold transition-colors shadow-sm">
