@@ -11,10 +11,21 @@ const galleryImages = [
   "https://images.unsplash.com/photo-1518599904199-0ca897819ddb?q=80&w=600"  // Smart lighting
 ];
 
+const bentoClasses = [
+  "col-span-2 md:col-span-2 md:row-span-2", // Large top left
+  "col-span-1 md:col-span-1 md:row-span-1", // Small
+  "col-span-1 md:col-span-1 md:row-span-2", // Tall right
+  "col-span-1 md:col-span-1 md:row-span-1", // Small
+  "col-span-2 md:col-span-2 md:row-span-1", // Wide middle
+  "col-span-1 md:col-span-1 md:row-span-1", // Small
+  "col-span-1 md:col-span-1 md:row-span-1", // Small
+  "col-span-2 md:col-span-4 md:row-span-1 md:h-[300px]", // Panorama bottom
+];
+
 export default function Gallery() {
   return (
     <section className="py-12 bg-white">
-      <div className="max-w-[90rem] mx-auto px-2 sm:px-4 lg:px-8 flex flex-col gap-8">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8">
         
         <ScrollReveal>
           <div className="text-center">
@@ -28,19 +39,17 @@ export default function Gallery() {
           </div>
         </ScrollReveal>
 
-        {/* Masonry Layout Grid */}
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
+        {/* Asymmetric Bento Box Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[220px] grid-flow-dense gap-3 sm:gap-4">
           {galleryImages.map((src, idx) => (
-            <ScrollReveal key={idx} delay={(idx % 4) * 50}>
-              <div className="relative group overflow-hidden bg-gray-100 rounded-xl cursor-pointer break-inside-avoid">
-                <div className="absolute inset-0 bg-ira-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-300 rounded-xl" />
-                <img 
-                  src={src} 
-                  alt={`Campus facility ${idx + 1}`}
-                  className="w-full h-auto object-cover rounded-xl group-hover:scale-[1.03] transition-transform duration-700 ease-in-out"
-                  loading="lazy"
-                />
-              </div>
+            <ScrollReveal key={idx} delay={(idx % 4) * 50} className={`relative group overflow-hidden bg-gray-100 rounded-xl cursor-pointer ${bentoClasses[idx] || ""}`}>
+              <div className="absolute inset-0 bg-ira-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-300" />
+              <img 
+                src={src} 
+                alt={`Infrastructure facility ${idx + 1}`}
+                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-in-out"
+                loading="lazy"
+              />
             </ScrollReveal>
           ))}
         </div>
