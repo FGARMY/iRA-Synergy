@@ -66,21 +66,12 @@ export default function Header() {
       {/* Middle Bar - Logo & CTA */}
       <div className="px-4 py-3 lg:px-8 border-b border-gray-100 flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <Link href="/" className="flex-shrink-0">
-            {/* Replace with actual logo image if available, using styled text for now to match mockup logo structure */}
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-10 bg-ira-accent rounded-b-full rounded-tr-full flex-shrink-0 relative overflow-hidden">
-                 <div className="absolute inset-0 bg-gradient-to-tr from-ira-primary-dark to-ira-accent" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-gray-800 leading-none tracking-tight">
-                  <span className="text-ira-accent font-black">iRA</span> Synergy
-                </span>
-                <span className="text-[10px] text-gray-500 font-semibold tracking-widest uppercase mt-1 text-center">
-                  Private Limited
-                </span>
-              </div>
-            </div>
+          <Link href="/" className="flex items-center gap-2 group">
+            <img 
+              src="/images/logo.jpg" 
+              alt="iRA Synergy Logo" 
+              className="h-16 w-auto object-contain"
+            />
           </Link>
           <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 ml-2">
             <span className="text-sm font-semibold text-gray-800">Innovative Solutions for</span>

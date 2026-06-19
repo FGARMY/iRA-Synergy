@@ -28,7 +28,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white font-bold text-sm">
               S
             </div>
-            <span className="text-white font-bold text-lg">iRA Synergy</span>
+            <img 
+              src="/images/logo.jpg" 
+              alt="iRA Synergy Logo" 
+              className="h-10 w-auto object-contain rounded"
+            />
           </div>
           <button
             onClick={onClose}

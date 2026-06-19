@@ -80,7 +80,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "iRA Synergy Private Limited",
               url: "https://www.irasynergy.com",
-              logo: "https://www.irasynergy.com/images/brand/logo.png",
+              logo: "https://www.irasynergy.com/images/logo.jpg",
               description:
                 "Innovative Solutions for Infrastructure & Sustainability",
               address: {

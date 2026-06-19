@@ -29,18 +29,12 @@ export default function Footer() {
           
           {/* Column 1: Brand & Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-10 bg-ira-accent rounded-b-full rounded-tr-full flex-shrink-0 relative overflow-hidden">
-                 <div className="absolute inset-0 bg-gradient-to-tr from-ira-primary to-ira-accent" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-white leading-none tracking-tight">
-                  <span className="text-ira-accent font-black">iRA</span> Synergy
-                </span>
-                <span className="text-[9px] text-gray-300 font-semibold tracking-widest uppercase mt-1">
-                  Private Limited
-                </span>
-              </div>
+            <div className="mb-6 bg-white p-2 inline-block rounded">
+              <img 
+                src="/images/logo.jpg" 
+                alt="iRA Synergy Logo" 
+                className="h-12 w-auto object-contain"
+              />
             </div>
             <div className="w-12 h-px bg-ira-accent mb-6" />
             <p className="text-xs text-gray-300 leading-relaxed mb-6">
