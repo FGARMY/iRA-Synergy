@@ -4,7 +4,7 @@ import ScrollReveal from "./ui/ScrollReveal";
 
 export default function StatsBanner() {
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="py-8 hidden md:block">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="bg-[#052615] rounded-xl shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between p-6 lg:p-8 lg:px-12">
