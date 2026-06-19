@@ -41,7 +41,7 @@ export default function BusinessInfo() {
               <h2 className="text-sm font-bold text-gray-900 uppercase mb-6 flex items-center gap-4">
                 INDUSTRIES WE SERVE
               </h2>
-              <div className="flex sm:flex-wrap gap-2 sm:gap-2.5 overflow-x-auto sm:overflow-visible hide-scrollbar pb-2 sm:pb-0 snap-x">
+              <div className="flex sm:flex-wrap gap-2 sm:gap-2.5 overflow-x-auto sm:overflow-visible pb-2 sm:pb-0 snap-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {industries.map((ind, i) => (
                   <div key={i} className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 bg-gray-50 border border-gray-100 rounded-full hover:bg-ira-primary/5 hover:border-ira-primary/20 transition-colors cursor-default snap-start flex-shrink-0">
                     <ind.icon size={14} strokeWidth={2} className="text-ira-primary flex-shrink-0" />
@@ -58,7 +58,7 @@ export default function BusinessInfo() {
               <h2 className="text-sm font-bold text-gray-900 uppercase mb-6 flex items-center gap-4">
                 WHY CHOOSE US
               </h2>
-              <div className="flex sm:flex-wrap gap-2 sm:gap-2.5 overflow-x-auto sm:overflow-visible hide-scrollbar pb-2 sm:pb-0 snap-x">
+              <div className="flex sm:flex-wrap gap-2 sm:gap-2.5 overflow-x-auto sm:overflow-visible pb-2 sm:pb-0 snap-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {features.map((feat, i) => (
                   <div key={i} className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 bg-gray-50 border border-gray-100 rounded-full hover:bg-ira-primary/5 hover:border-ira-primary/20 transition-colors cursor-default snap-start flex-shrink-0">
                     <feat.icon size={14} strokeWidth={2} className="text-ira-primary flex-shrink-0" />
@@ -83,7 +83,7 @@ export default function BusinessInfo() {
               </div>
 
               <div className="relative group flex-1 flex flex-col justify-center">
-                <div className="flex gap-4 overflow-x-auto snap-x hide-scrollbar pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                <div className="flex gap-4 overflow-x-auto snap-x pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                   {displayProjects.map((project, i) => (
                     <div key={i} className="snap-start shrink-0 w-[160px] flex flex-col bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm">
                       <div className="h-28 bg-gray-100 relative group-hover:shadow-md transition-shadow">
