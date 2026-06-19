@@ -1,0 +1,359 @@
+# iRA Synergy — Premium Industrial SaaS Platform
+
+## Current State Assessment
+
+The existing project is a **Next.js 16 + Tailwind v4** single-page site with 6 components (Header, Hero, FocusAreas, Solutions, Products, Footer). It has the correct brand palette (`#0A3D24` primary green, `#2B7A2B` secondary, `#87C038` accent) and content data (solutions, products, focus areas) but is a **basic template-level** implementation — no routing, no interactivity, no backend, no real imagery.
+
+The WhatsApp brand assets confirm the visual identity: dark-green/white industrial palette with the flame-leaf "S" logo, "Private Limited" tagline, and core values (Integrity, Innovation, Sustainability, Teamwork, Commitment, Excellence).
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Scope & Priority**: This is a production-grade platform with 4 major systems (marketing site, lead engine, admin dashboard, multi-tenant SaaS). Building all of this end-to-end is **weeks of work**. I propose we build in **4 phases**, shipping each incrementally. **Phase 1** (the elevated public marketing site) can be completed first and deployed immediately.
+
+> [!WARNING]
+> **Backend / CMS / Database**: Your spec calls for PostgreSQL, Sanity/Strapi headless CMS, and CRM integration (HubSpot/Zoho). These require:
+> - External service accounts (Sanity project, Vercel Postgres, HubSpot API key)
+> - Environment variables and API keys I don't have
+> 
+> For **Phase 1**, I'll build the entire frontend with hardcoded data that's structured to be trivially swapped to API calls later. We can wire up the backend in Phase 2+.
+
+> [!IMPORTANT]
+> **Tailwind CSS version**: You already have Tailwind v4 installed (with `@tailwindcss/postcss`). Your prompt says "Next.js + Tailwind" which matches. I'll continue using Tailwind v4 with `@theme` tokens as already configured.
+
+---
+
+## Open Questions
+
+> [!IMPORTANT]
+> **1. Real Product Photography**: Do you have actual product photos (solar trees, smart poles, incinerators, gym equipment, etc.)? If not, I'll generate high-quality AI product imagery for each product card. Please confirm.
+
+> [!IMPORTANT]
+> **2. Company Logo SVG**: The WhatsApp images show the flame-leaf "S" logo. Do you have this as an SVG/PNG file, or should I recreate it in code/generate it?
+
+> [!IMPORTANT]
+> **3. CRM Choice**: You mentioned HubSpot/Zoho. Which one do you use, or should I build a generic webhook-based integration that works with either? For Phase 1 we can store leads locally and email them.
+
+> [!IMPORTANT]
+> **4. Deployment**: You mention Vercel. Is the existing `ira-synergy.vercel.app` deployment yours? Should I configure for the same project?
+
+> [!IMPORTANT]
+> **5. PDF Datasheets**: Do you have actual PDF datasheets for products, or should I create template datasheets with placeholder specs?
+
+---
+
+## Proposed Architecture
+
+```mermaid
+graph TB
+    subgraph "Phase 1: Marketing Site"
+        A[Next.js App Router] --> B[Public Pages]
+        B --> B1["/ — Home"]
+        B --> B2["/solutions/[slug]"]
+        B --> B3["/products — Catalog"]
+        B --> B4["/products/[slug]"]
+        B --> B5["/projects — Case Studies"]
+        B --> B6["/about"]
+        B --> B7["/contact"]
+    end
+
+    subgraph "Phase 2: Lead Engine"
+        C[API Routes] --> C1["/api/inquiry"]
+        C --> C2["/api/quote-request"]
+        C --> C3["/api/brochure-download"]
+        C1 --> D[Email Service]
+        C1 --> E["CRM Webhook"]
+    end
+
+    subgraph "Phase 3: Admin Dashboard"
+        F["/admin/*"] --> F1["Products CMS"]
+        F --> F2["Leads Inbox"]
+        F --> F3["Projects CMS"]
+        F --> F4["Blog CMS"]
+        F --> F5["Analytics"]
+    end
+
+    subgraph "Phase 4: Multi-Tenant SaaS"
+        G["Tenant Config"] --> H["White-label Theming"]
+        G --> I["Tenant Isolation"]
+        G --> J["Subscription Billing"]
+    end
+```
+
+---
+
+## Phase 1: Premium Public Marketing Site
+
+This phase transforms the existing single-page template into a **production-grade, multi-page marketing site** with premium design, animations, SEO, and all the sections you specified.
+
+### Design System & Theme
+
+#### [MODIFY] [globals.css](file:///d:/iRA%20Synergy/ira-synergy/src/app/globals.css)
+- Expand the `@theme` block with steel-blue accent (`#4A90A4`), amber CTA (`#D4941A`), neutral scale, spacing tokens, and typography tokens
+- Import Inter + JetBrains Mono from Google Fonts  
+- Add CSS custom properties for glassmorphism, card shadows, gradient overlays
+- Add keyframe animations: `fadeInUp`, `countUp`, `slideInLeft`, `scaleIn`
+- Add utility classes for scroll-reveal, premium card styles, stat counters
+
+---
+
+### Core Layout & Navigation
+
+#### [MODIFY] [layout.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/app/layout.tsx)
+- Update metadata with proper SEO (title, description, OpenGraph, Twitter cards)
+- Add JSON-LD schema for `LocalBusiness` and `Organization`
+- Switch fonts from Geist to Inter (body) + JetBrains Mono (code/numbers)
+- Add viewport meta, theme-color, favicon links
+
+#### [MODIFY] [Header.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/Header.tsx)
+- Add scroll-aware background (transparent → solid on scroll)
+- Full mobile hamburger menu with slide-in drawer
+- Mega-menu dropdown for Solutions and Products
+- Active link highlighting based on current route
+- Animated "Request Consultation" CTA button with amber accent
+
+#### [NEW] [MobileMenu.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/MobileMenu.tsx)
+- Full-screen slide-in mobile navigation
+- Accordion sub-menus for Solutions/Products
+- Contact info quick-access (phone, WhatsApp)
+
+---
+
+### Homepage Sections
+
+#### [MODIFY] [Hero.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/Hero.tsx)
+- Full-bleed hero with AI-generated industrial photography background
+- Animated stat counters bar (150+ Projects, 50+ Products, 12+ States, 100% Make in India)
+- Dual CTA: "Explore Solutions" (amber filled) + "Request Consultation" (white outline)
+- Subtle particle/grid animation overlay for tech feel
+- Scroll-reveal entrance animations
+
+#### [NEW] [StatsBar.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/StatsBar.tsx)
+- Animated count-up numbers on scroll into view
+- Steel-blue gradient background
+- Stats: Projects Delivered, Products, States Covered, Years of Experience
+
+#### [MODIFY] [FocusAreas.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/FocusAreas.tsx)
+- Upgrade card design with glassmorphism effects
+- Add hover lift + glow animations
+- Hexagonal icon containers matching the brand assets
+- Scroll-triggered staggered reveal animations
+
+#### [MODIFY] [Solutions.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/Solutions.tsx)
+- Redesign as interactive grid with hover overlays showing brief descriptions
+- Each solution links to `/solutions/[slug]` detailed page
+- Add "Learn More →" CTA on each card
+- Background pattern with subtle topographic/circuit design
+
+#### [MODIFY] [Products.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/Products.tsx)
+- Transform into visual product showcase (not just text lists)
+- Category filter tabs (Smart City, Renewable Energy, Waste Mgmt, Public Health, Fitness)
+- Product cards with AI-generated product images, name, category tag, "View Details" button
+- "Request Quote" quick-action on each card
+- Link to full product detail page
+
+#### [NEW] [TrustSection.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/TrustSection.tsx)
+- Government partnership badges (Make in India, Startup India, GeM registered)
+- Certifications grid (ISO, GST, MSME, NSIC)
+- Client logo carousel (auto-scrolling)
+- Awards & recognition
+
+#### [NEW] [CoreValues.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/CoreValues.tsx)
+- Radial layout matching the WhatsApp brand asset (Core Values wheel)
+- Six values: Integrity, Innovation, Sustainability, Teamwork, Commitment, Excellence
+- Interactive hover reveals
+
+#### [NEW] [CaseStudiesPreview.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/CaseStudiesPreview.tsx)
+- 3 featured case studies with impact metrics
+- Before/after imagery
+- "View All Projects →" link
+
+#### [NEW] [CTABanner.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/CTABanner.tsx)
+- Full-width amber-gradient call-to-action
+- "Transform Your Infrastructure Today" + consultation button
+- Parallax background effect
+
+#### [NEW] [ContactSection.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/ContactSection.tsx)
+- Multi-channel contact: WhatsApp click-to-chat, phone, email
+- Embedded contact form (name, email, phone, industry, message)
+- Map embed (Nashik location)
+- Downloadable brochure gate (captures email before download)
+
+#### [MODIFY] [Footer.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/Footer.tsx)
+- Fix the missing `Globe` import from lucide-react
+- Add newsletter signup form
+- Add social media links (Instagram, YouTube in addition to existing)
+- Add sitemap links for all new pages
+- Add certification badges
+
+#### [NEW] [WhatsAppButton.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/WhatsAppButton.tsx)
+- Floating WhatsApp button (bottom-right)
+- Pulse animation
+- Opens WhatsApp with pre-filled message
+
+---
+
+### Sub-Pages
+
+#### [NEW] [page.tsx (solutions landing)](file:///d:/iRA%20Synergy/ira-synergy/src/app/solutions/page.tsx)
+- Overview of all 6 solution categories
+- Each with hero image, description, key features
+
+#### [NEW] [[slug]/page.tsx (solution detail)](file:///d:/iRA%20Synergy/ira-synergy/src/app/solutions/[slug]/page.tsx)
+- Full landing page per solution: specs, certifications, use-cases
+- Related products grid
+- Downloadable PDF datasheet button
+- "Request Consultation" CTA
+
+#### [NEW] [page.tsx (products catalog)](file:///d:/iRA%20Synergy/ira-synergy/src/app/products/page.tsx)
+- Filterable grid: category pills, search bar
+- Sort by: name, category
+- Product cards with image, price range indicator, key specs
+
+#### [NEW] [[slug]/page.tsx (product detail)](file:///d:/iRA%20Synergy/ira-synergy/src/app/products/[slug]/page.tsx)
+- Image gallery (multiple views)
+- Technical specs table
+- Certifications
+- "Request Quote" form modal
+- Related products carousel
+
+#### [NEW] [page.tsx (projects/case studies)](file:///d:/iRA%20Synergy/ira-synergy/src/app/projects/page.tsx)
+- Project cards with location, client, impact metrics
+- Category filter
+
+#### [NEW] [page.tsx (about)](file:///d:/iRA%20Synergy/ira-synergy/src/app/about/page.tsx)
+- Company story, mission, vision
+- Team section (Director: Dinesh Anand)
+- Core values wheel
+- Timeline/milestones
+
+#### [NEW] [page.tsx (contact)](file:///d:/iRA%20Synergy/ira-synergy/src/app/contact/page.tsx)
+- Full contact page with form, map, all contact channels
+- Office address details
+- Business hours
+
+---
+
+### Data Layer
+
+#### [NEW] [data/solutions.ts](file:///d:/iRA%20Synergy/ira-synergy/src/data/solutions.ts)
+- Typed solution data with slugs, descriptions, features, specs, certifications, related products
+
+#### [NEW] [data/products.ts](file:///d:/iRA%20Synergy/ira-synergy/src/data/products.ts)
+- Complete product catalog (33+ products) with categories, descriptions, specs, images
+
+#### [NEW] [data/projects.ts](file:///d:/iRA%20Synergy/ira-synergy/src/data/projects.ts)
+- Case study data with location, client, testimonial, impact metrics
+
+#### [NEW] [data/company.ts](file:///d:/iRA%20Synergy/ira-synergy/src/data/company.ts)
+- Company info, team members, certifications, partners
+
+#### [NEW] [types/index.ts](file:///d:/iRA%20Synergy/ira-synergy/src/types/index.ts)
+- TypeScript interfaces for Solution, Product, Project, TeamMember, Certification, etc.
+
+---
+
+### Shared UI Components
+
+#### [NEW] [components/ui/ScrollReveal.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/ui/ScrollReveal.tsx)
+- Intersection Observer wrapper for scroll-triggered animations
+
+#### [NEW] [components/ui/CountUp.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/ui/CountUp.tsx)
+- Animated number counter component
+
+#### [NEW] [components/ui/Modal.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/ui/Modal.tsx)
+- Reusable modal for quote requests, brochure downloads
+
+#### [NEW] [components/ui/CategoryFilter.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/ui/CategoryFilter.tsx)
+- Pill-based category filter for products/projects
+
+#### [NEW] [components/ui/ImageGallery.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/ui/ImageGallery.tsx)
+- Product image gallery with thumbnails and lightbox
+
+#### [NEW] [components/ui/Breadcrumb.tsx](file:///d:/iRA%20Synergy/ira-synergy/src/components/ui/Breadcrumb.tsx)
+- SEO-friendly breadcrumb navigation for sub-pages
+
+---
+
+### Configuration
+
+#### [MODIFY] [next.config.ts](file:///d:/iRA%20Synergy/ira-synergy/src/../next.config.ts)
+- Add image domains for external images (unsplash, etc.)
+- Add headers for security
+- Enable static generation for solution/product pages
+
+---
+
+## Phase 2: Lead & Inquiry Engine (After Phase 1 approval)
+
+- `/api/inquiry` — Smart inquiry form with conditional fields
+- `/api/quote-request` — PDF auto-generation via `@react-pdf/renderer`
+- `/api/brochure-download` — Email-gated brochure downloads
+- CRM webhook integration (HubSpot/Zoho)
+- Email notifications via Resend/SendGrid
+- Rate limiting and spam protection
+
+---
+
+## Phase 3: Admin Dashboard (After Phase 2)
+
+- `/admin` — Protected dashboard with auth (NextAuth.js)
+- Products CMS (CRUD with image upload)
+- Leads inbox with status tracking pipeline
+- Projects/blog editor (Markdown/rich text)
+- Basic analytics (page views, top products, conversion funnel)
+- Database: PostgreSQL via Vercel Postgres / Prisma ORM
+
+---
+
+## Phase 4: Multi-Tenant SaaS (After Phase 3)
+
+- Tenant configuration system (branding, colors, logo)
+- Subdomain-based tenant routing
+- White-label theming engine
+- Subscription/billing integration (Stripe)
+- Tenant admin isolation and data separation
+
+---
+
+## Verification Plan
+
+### Phase 1 Verification
+
+#### Build & Lint
+- `npm run build` — Ensure zero build errors
+- `npm run lint` — Ensure zero lint warnings
+
+#### Visual Verification
+- Launch dev server and screenshot every page/section
+- Test responsive layouts at 320px, 768px, 1024px, 1440px
+- Verify all animations play smoothly
+
+#### SEO Verification
+- Check all pages have proper `<title>`, `<meta description>`, `<h1>`
+- Verify JSON-LD schema renders correctly
+- Check all images have alt text
+
+#### Accessibility
+- Verify keyboard navigation works on all interactive elements
+- Check color contrast ratios meet WCAG AA
+- Test with screen reader announcements for key CTAs
+
+#### Performance
+- Check Lighthouse score targets: Performance > 90, Accessibility > 90, SEO > 95
+
+---
+
+## Estimated Effort
+
+| Phase | Scope | Estimated Files | Complexity |
+|-------|-------|-----------------|------------|
+| **Phase 1** | Marketing site + design system | ~35 files | High — but can start immediately |
+| **Phase 2** | Lead engine + API routes | ~12 files | Medium — needs service accounts |
+| **Phase 3** | Admin dashboard + DB | ~25 files | High — needs Prisma + Auth setup |
+| **Phase 4** | Multi-tenant SaaS | ~15 files | High — architectural |
+
+> [!TIP]
+> I recommend we **start with Phase 1 immediately** — it's the highest-impact, most visible part, and the data structures we build will serve as the foundation for all subsequent phases. Once you approve, I'll begin with the design system, then work through each component systematically.
