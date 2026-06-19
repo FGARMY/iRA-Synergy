@@ -41,9 +41,9 @@ export default function BusinessInfo() {
               <h2 className="text-sm font-bold text-gray-900 uppercase mb-6 flex items-center gap-4">
                 INDUSTRIES WE SERVE
               </h2>
-              <div className="flex flex-wrap gap-2 sm:gap-2.5">
+              <div className="flex sm:flex-wrap gap-2 sm:gap-2.5 overflow-x-auto sm:overflow-visible hide-scrollbar pb-2 sm:pb-0 snap-x">
                 {industries.map((ind, i) => (
-                  <div key={i} className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 bg-gray-50 border border-gray-100 rounded-full hover:bg-ira-primary/5 hover:border-ira-primary/20 transition-colors cursor-default">
+                  <div key={i} className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 bg-gray-50 border border-gray-100 rounded-full hover:bg-ira-primary/5 hover:border-ira-primary/20 transition-colors cursor-default snap-start flex-shrink-0">
                     <ind.icon size={14} strokeWidth={2} className="text-ira-primary flex-shrink-0" />
                     <span className="text-[10px] sm:text-[11px] font-semibold text-gray-700 whitespace-nowrap">{ind.name}</span>
                   </div>
@@ -58,9 +58,9 @@ export default function BusinessInfo() {
               <h2 className="text-sm font-bold text-gray-900 uppercase mb-6 flex items-center gap-4">
                 WHY CHOOSE US
               </h2>
-              <div className="flex flex-wrap gap-2 sm:gap-2.5">
+              <div className="flex sm:flex-wrap gap-2 sm:gap-2.5 overflow-x-auto sm:overflow-visible hide-scrollbar pb-2 sm:pb-0 snap-x">
                 {features.map((feat, i) => (
-                  <div key={i} className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 bg-gray-50 border border-gray-100 rounded-full hover:bg-ira-primary/5 hover:border-ira-primary/20 transition-colors cursor-default">
+                  <div key={i} className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 bg-gray-50 border border-gray-100 rounded-full hover:bg-ira-primary/5 hover:border-ira-primary/20 transition-colors cursor-default snap-start flex-shrink-0">
                     <feat.icon size={14} strokeWidth={2} className="text-ira-primary flex-shrink-0" />
                     <span className="text-[10px] sm:text-[11px] font-semibold text-gray-700 whitespace-nowrap">{feat.name}</span>
                   </div>
