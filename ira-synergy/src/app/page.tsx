@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Solutions from "@/components/Solutions";
 import StatsBanner from "@/components/StatsBanner";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import Gallery from "@/components/Gallery";
 import BusinessInfo from "@/components/BusinessInfo";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Solutions />
         <StatsBanner />
         <FeaturedProducts />
+        <Gallery />
         <BusinessInfo />
       </main>
       <Footer />
