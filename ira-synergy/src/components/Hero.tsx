@@ -1,53 +1,100 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
+import StatsBar from "./StatsBar";
 
 export default function Hero() {
   return (
-    <div className="relative bg-ira-primary h-[600px] flex items-center overflow-hidden">
-      {/* Background image overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000')", 
-        }}
-      >
-        <div className="absolute inset-0 bg-ira-primary/70 mix-blend-multiply"></div>
+    <section className="relative min-h-[100vh] flex flex-col justify-center overflow-hidden">
+      {/* Background layers */}
+      <div className="absolute inset-0 z-0">
+        {/* Main bg image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/hero/hero-bg.png')" }}
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ira-dark/95 via-ira-primary/90 to-ira-primary/70" />
+        {/* Pattern overlay */}
+        <div className="absolute inset-0 pattern-grid opacity-30" />
+        {/* Ambient glow */}
+        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-ira-secondary/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-ira-steel/8 rounded-full blur-[100px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white backdrop-blur-sm border border-white/20 mb-6 text-sm font-medium tracking-wide">
-            <span className="w-2 h-2 rounded-full bg-ira-accent animate-pulse"></span>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass text-white mb-8 text-sm font-medium tracking-wide animate-fade-in-down">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-ira-accent opacity-75 animate-ping" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-ira-accent" />
+            </span>
             Building a Smarter, Cleaner & Sustainable India
           </div>
-          
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
-            Innovative Solutions for <span className="text-ira-accent">Infrastructure</span> & <span className="text-ira-accent">Sustainability</span>
+
+          {/* Headline */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.08] mb-6 tracking-tight animate-fade-in-up">
+            Innovative Solutions for{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-ira-accent to-ira-amber-light">
+                Infrastructure
+              </span>
+            </span>{" "}
+            &{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-ira-steel-light to-ira-accent">
+              Sustainability
+            </span>
           </h1>
-          
-          <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
-            Partnering with government and communities to execute impactful development projects, transforming ideas into sustainable infrastructure for a stronger tomorrow.
+
+          {/* Subtitle */}
+          <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed animate-fade-in-up delay-200">
+            Partnering with government and communities to execute impactful development
+            projects — from smart city infrastructure to renewable energy solutions.
+            Transforming ideas into sustainable infrastructure for a stronger tomorrow.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="#solutions" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-sm text-ira-primary bg-white hover:bg-gray-100 transition-colors duration-200 shadow-lg group">
-              Explore Our Solutions
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-300">
+            <Link href="/solutions" className="btn-primary text-base !py-4 !px-8">
+              Explore Solutions
+              <ArrowRight size={18} />
             </Link>
-            <Link href="#contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold rounded-sm text-white bg-transparent border-2 border-white hover:bg-white/10 transition-colors duration-200">
-              Contact Us
+            <Link href="/contact" className="btn-secondary text-base !py-4 !px-8">
+              Request Consultation
             </Link>
+          </div>
+
+          {/* Trust badges inline */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-12 animate-fade-in-up delay-500">
+            {["ISO 9001 Certified", "GeM Registered", "Make in India", "MSME"].map((badge) => (
+              <div key={badge} className="flex items-center gap-2 text-white/60 text-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-ira-accent" />
+                {badge}
+              </div>
+            ))}
           </div>
         </div>
       </div>
-      
-      {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 text-white">
-        <svg className="relative block w-full h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" className="fill-white/10"></path>
-          <path d="M0 120L1200 120 1200 60 0 120z" className="fill-white"></path>
+
+      {/* Stats Bar at bottom */}
+      <StatsBar />
+
+      {/* Bottom wave */}
+      <div className="absolute bottom-0 left-0 w-full z-10">
+        <svg
+          viewBox="0 0 1440 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-auto"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0 40L48 36C96 32 192 24 288 28C384 32 480 48 576 52C672 56 768 48 864 40C960 32 1056 24 1152 28C1248 32 1344 48 1392 56L1440 64V80H1392C1344 80 1248 80 1152 80C1056 80 960 80 864 80C768 80 672 80 576 80C480 80 384 80 288 80C192 80 96 80 48 80H0V40Z"
+            fill="white"
+          />
         </svg>
       </div>
-    </div>
+    </section>
   );
 }
