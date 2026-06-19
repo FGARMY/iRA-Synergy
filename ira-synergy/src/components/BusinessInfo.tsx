@@ -114,44 +114,46 @@ export default function BusinessInfo() {
           </ScrollReveal>
         </div>
 
-        {/* ROW 2: Green Features Banner */}
-        <ScrollReveal delay={100}>
-          <div className="bg-[#f4fbf4] rounded-xl border border-[#e8f5e8] py-6 px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 md:divide-x divide-gray-200/50 shadow-sm">
-            
-            <div className="flex items-center gap-4 flex-1 md:pr-4">
-              <Leaf size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
-              <div>
-                <h3 className="text-sm font-bold text-gray-900 uppercase">SUSTAINABLE SOLUTIONS</h3>
-                <p className="text-xs text-gray-600">Eco-friendly products for<br/>a better tomorrow</p>
+        {/* ROW 2: Green Features Banner (Desktop Only) */}
+        <div className="hidden md:block">
+          <ScrollReveal delay={100}>
+            <div className="bg-[#f4fbf4] rounded-xl border border-[#e8f5e8] py-6 px-8 flex items-center justify-between gap-4 divide-x divide-gray-200/50 shadow-sm">
+              
+              <div className="flex items-center gap-4 flex-1 pr-4">
+                <Leaf size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
+                <div>
+                  <h3 className="text-sm font-bold text-gray-900 uppercase">SUSTAINABLE SOLUTIONS</h3>
+                  <p className="text-xs text-gray-600">Eco-friendly products for<br/>a better tomorrow</p>
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-center gap-4 flex-1 md:px-6">
-              <ShieldCheck size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
-              <div>
-                <h3 className="text-sm font-bold text-gray-900 uppercase">QUALITY ASSURANCE</h3>
-                <p className="text-xs text-gray-600">Tested. Trusted.<br/>Built to last.</p>
+              <div className="flex items-center gap-4 flex-1 px-6">
+                <ShieldCheck size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
+                <div>
+                  <h3 className="text-sm font-bold text-gray-900 uppercase">QUALITY ASSURANCE</h3>
+                  <p className="text-xs text-gray-600">Tested. Trusted.<br/>Built to last.</p>
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-center gap-4 flex-1 md:px-6">
-              <Headset size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
-              <div>
-                <h3 className="text-sm font-bold text-gray-900 uppercase">END-TO-END SUPPORT</h3>
-                <p className="text-xs text-gray-600">From consultation to<br/>maintenance</p>
+              <div className="flex items-center gap-4 flex-1 px-6">
+                <Headset size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
+                <div>
+                  <h3 className="text-sm font-bold text-gray-900 uppercase">END-TO-END SUPPORT</h3>
+                  <p className="text-xs text-gray-600">From consultation to<br/>maintenance</p>
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-center gap-4 flex-1 md:pl-6">
-              <MapPin size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
-              <div>
-                <h3 className="text-sm font-bold text-gray-900 uppercase">MAKE IN INDIA</h3>
-                <p className="text-xs text-gray-600">Proudly designed &<br/>manufactured in India</p>
+              <div className="flex items-center gap-4 flex-1 pl-6">
+                <CheckCircle size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
+                <div>
+                  <h3 className="text-sm font-bold text-gray-900 uppercase">MAKE IN INDIA</h3>
+                  <p className="text-xs text-gray-600">Proudly designed &<br/>manufactured in India</p>
+                </div>
               </div>
-            </div>
 
-          </div>
-        </ScrollReveal>
+            </div>
+          </ScrollReveal>
+        </div>
 
         {/* ROW 3: Partners & Initiatives */}
         <ScrollReveal delay={200}>
