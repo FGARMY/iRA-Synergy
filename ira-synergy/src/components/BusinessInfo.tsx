@@ -95,9 +95,6 @@ export default function BusinessInfo() {
                            src={project.images && project.images.length > 0 ? project.images[0] : "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=400"}
                            alt={project.title}
                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                           onError={(e) => {
-                             (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=400";
-                           }}
                          />
                       </div>
                       <h4 className="text-[11px] font-bold text-gray-900 leading-tight mb-1 text-center line-clamp-2">
