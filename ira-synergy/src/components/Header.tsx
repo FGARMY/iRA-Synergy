@@ -31,37 +31,7 @@ export default function Header() {
 
   return (
     <header className="fixed w-full z-40 bg-white shadow-md transition-all duration-300">
-      {/* Top Bar - Contacts & Social */}
-      <div className="hidden lg:flex justify-between items-center px-4 py-1.5 bg-gray-50 border-b border-gray-200 text-xs font-semibold text-gray-700">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5 text-ira-primary-dark">
-            <Phone size={14} className="text-ira-accent" />
-            <span>+91 8007629969</span>
-            <span className="text-gray-300">|</span>
-            <span>+91 88880 48480</span>
-            <span className="text-gray-300">|</span>
-            <span>+91 75880 15401</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Mail size={14} className="text-ira-accent" />
-            <a href="mailto:irasynergy2026@gmail.com" className="hover:text-ira-primary">
-              irasynergy2026@gmail.com
-            </a>
-          </div>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5">
-            <FileText size={14} className="text-ira-accent" />
-            <span>GST No : 27AAICI9182Q1ZK</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <a href="#" className="text-blue-600 hover:opacity-80"><Users size={16} /></a>
-            <a href="#" className="text-blue-700 hover:opacity-80"><Globe size={16} /></a>
-            <a href="#" className="text-pink-600 hover:opacity-80"><Camera size={16} /></a>
-            <a href="#" className="text-red-600 hover:opacity-80"><Video size={16} /></a>
-          </div>
-        </div>
-      </div>
+
 
       {/* Middle Bar - Logo & CTA */}
       <div className="px-4 py-3 lg:px-8 border-b border-gray-100 flex justify-between items-center">
@@ -80,15 +50,15 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link href="/contact" className="hidden sm:flex items-center gap-2 bg-ira-primary-dark hover:bg-ira-primary text-white px-5 py-2.5 rounded text-sm font-bold transition-colors">
+          <Link href="/contact" className="hidden sm:flex items-center gap-2 bg-[#1b5e20] hover:bg-ira-primary text-white px-5 py-2.5 rounded text-sm font-bold transition-colors">
             REQUEST A CALL BACK
-            <Phone size={14} />
+            <Phone size={14} fill="currentColor" />
           </Link>
           <button className="text-gray-500 hover:text-ira-primary p-2 border border-gray-200 rounded">
             <Search size={18} />
           </button>
           <button
-            className="lg:hidden text-gray-800 p-2"
+            className="lg:hidden text-gray-800 p-2 border border-gray-200 rounded"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -97,17 +67,25 @@ export default function Header() {
       </div>
 
       {/* Bottom Bar - Navigation Links */}
-      <div className="hidden lg:flex justify-center items-center py-3 bg-white">
-        <nav className="flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-sm font-bold text-gray-800 hover:text-ira-primary transition-colors tracking-wide"
-            >
-              {link.label}
-            </Link>
-          ))}
+      <div className="hidden lg:flex justify-between items-center py-0 px-8 bg-white border-b-4 border-transparent shadow-sm">
+        <nav className="flex items-center w-full justify-between">
+          {navLinks.map((link) => {
+            const isActive = link.label === "HOME";
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`relative py-4 text-sm font-bold transition-colors tracking-wide flex items-center gap-1 ${
+                  isActive ? "text-ira-primary border-b-2 border-ira-primary" : "text-gray-800 hover:text-ira-primary"
+                }`}
+              >
+                {link.label}
+                {link.label === "SOLUTIONS" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                )}
+              </Link>
+            );
+          })}
         </nav>
       </div>
 
