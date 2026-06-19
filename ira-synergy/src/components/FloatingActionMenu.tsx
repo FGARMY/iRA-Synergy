@@ -19,7 +19,7 @@ export default function FloatingActionMenu() {
       </a>
 
       <a
-        href={companyInfo.whatsappLink}
+        href={companyInfo.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
         className="group flex items-center justify-end w-12 hover:w-36 transition-all duration-300 overflow-hidden bg-ira-primary text-white rounded-l-md shadow-lg py-3 pr-3 pl-3"

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, FileText, ChevronRight, Facebook, Linkedin, Instagram, Youtube, MessageCircle, Download } from "lucide-react";
+import { MapPin, Phone, Mail, FileText, ChevronRight, Users, Globe, Camera, Video, MessageCircle, Download } from "lucide-react";
 import { companyInfo } from "@/data/company";
 
 export default function Footer() {
@@ -47,10 +47,10 @@ export default function Footer() {
               iRA Synergy Private Limited offers innovative, eco-friendly and technology-driven solutions for infrastructure, environment, health & community development.
             </p>
             <div className="flex items-center gap-3">
-              <a href="#" className="w-8 h-8 rounded-full bg-[#3b5998] flex items-center justify-center hover:opacity-80 transition-opacity"><Facebook size={14} /></a>
-              <a href="#" className="w-8 h-8 rounded-full bg-[#0077b5] flex items-center justify-center hover:opacity-80 transition-opacity"><Linkedin size={14} /></a>
-              <a href="#" className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f09433] to-[#bc1888] flex items-center justify-center hover:opacity-80 transition-opacity"><Instagram size={14} /></a>
-              <a href="#" className="w-8 h-8 rounded-full bg-[#ff0000] flex items-center justify-center hover:opacity-80 transition-opacity"><Youtube size={14} /></a>
+              <a href="#" className="w-8 h-8 rounded-full bg-[#3b5998] flex items-center justify-center hover:opacity-80 transition-opacity"><Users size={14} /></a>
+              <a href="#" className="w-8 h-8 rounded-full bg-[#0077b5] flex items-center justify-center hover:opacity-80 transition-opacity"><Globe size={14} /></a>
+              <a href="#" className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f09433] to-[#bc1888] flex items-center justify-center hover:opacity-80 transition-opacity"><Camera size={14} /></a>
+              <a href="#" className="w-8 h-8 rounded-full bg-[#ff0000] flex items-center justify-center hover:opacity-80 transition-opacity"><Video size={14} /></a>
             </div>
           </div>
 
@@ -102,7 +102,7 @@ export default function Footer() {
                 <span className="text-xs text-gray-300">GST No : 27AAICI9182Q1ZK</span>
               </li>
             </ul>
-            <a href={companyInfo.whatsappLink} className="mt-6 w-full bg-[#25D366] hover:bg-[#128C7E] transition-colors text-white text-xs font-bold py-2.5 rounded flex items-center justify-center gap-2">
+            <a href={companyInfo.whatsapp} className="mt-6 w-full bg-[#25D366] hover:bg-[#128C7E] transition-colors text-white text-xs font-bold py-2.5 rounded flex items-center justify-center gap-2">
               <MessageCircle size={16} />
               CHAT ON WHATSAPP
             </a>

@@ -17,7 +17,6 @@ export default function Hero() {
              src="/images/hero-bg.jpg" 
              alt="Smart City Infrastructure" 
              className="w-full h-full object-cover opacity-60"
-             onError={(e) => { e.currentTarget.style.display = 'none'; }}
            />
         </div>
       </div>

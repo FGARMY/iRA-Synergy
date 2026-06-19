@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search, Phone, Mail, FileText, Menu, X, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
+import { Search, Phone, Mail, FileText, Menu, X, Users, Globe, Camera, Video } from "lucide-react";
 import { companyInfo } from "@/data/company";
 
 export default function Header() {
@@ -55,10 +55,10 @@ export default function Header() {
             <span>GST No : 27AAICI9182Q1ZK</span>
           </div>
           <div className="flex items-center gap-2">
-            <a href="#" className="text-blue-600 hover:opacity-80"><Facebook size={16} /></a>
-            <a href="#" className="text-blue-700 hover:opacity-80"><Linkedin size={16} /></a>
-            <a href="#" className="text-pink-600 hover:opacity-80"><Instagram size={16} /></a>
-            <a href="#" className="text-red-600 hover:opacity-80"><Youtube size={16} /></a>
+            <a href="#" className="text-blue-600 hover:opacity-80"><Users size={16} /></a>
+            <a href="#" className="text-blue-700 hover:opacity-80"><Globe size={16} /></a>
+            <a href="#" className="text-pink-600 hover:opacity-80"><Camera size={16} /></a>
+            <a href="#" className="text-red-600 hover:opacity-80"><Video size={16} /></a>
           </div>
         </div>
       </div>

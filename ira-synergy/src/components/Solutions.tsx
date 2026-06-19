@@ -41,8 +41,8 @@ export default function Solutions() {
                   <h3 className="text-lg font-bold text-gray-900 mb-3 uppercase">
                     {solution.title}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-6 flex-grow leading-relaxed">
-                    {solution.shortDescription}
+                  <p className="text-sm text-gray-600 mb-6 flex-grow leading-relaxed line-clamp-3">
+                    {solution.description}
                   </p>
                   <Link
                     href={`/solutions/${solution.id}`}
