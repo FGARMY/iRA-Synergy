@@ -23,7 +23,15 @@ export default function FloatingActionMenu() {
   }, []);
 
   const scrollTop = () => {
+    // Scroll window
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Fallbacks for various document structures
+    if (document.documentElement) {
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (document.body) {
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
