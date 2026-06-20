@@ -32,14 +32,14 @@ export default function Header() {
     <header className={`fixed w-full z-40 bg-white transition-all duration-300 ${isScrolled ? "shadow-md" : ""}`}>
 
       {/* Middle Bar - Logo & CTA */}
-      <div className="px-4 py-2 md:py-3 lg:px-8 border-b border-gray-100 flex justify-between items-center">
+      <div className="px-4 py-2 lg:px-8 border-b border-gray-100 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-4 group cursor-pointer">
           <div className="flex items-center gap-2">
-            <img
-              src="/images/navbar-logo.jpg"
-              alt="iRA Synergy Logo"
-              className="h-10 sm:h-12 md:h-20 w-auto object-contain mix-blend-multiply transition-transform group-hover:scale-105"
-            />
+              <img
+                src="/images/navbar-logo.jpg"
+                alt="iRA Synergy Logo"
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain mix-blend-multiply transition-transform group-hover:scale-105"
+              />
           </div>
           <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 ml-2">
             <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors">Innovative Solutions for</span>
@@ -67,7 +67,7 @@ export default function Header() {
       </div>
 
       {/* Bottom Bar - Navigation Links */}
-      <div className="hidden lg:flex justify-center items-center py-4 bg-ira-primary border-b border-white/10">
+      <div className="hidden lg:flex justify-center items-center py-2.5 bg-ira-primary border-b border-white/10">
         <nav className="flex items-center gap-8">
           {navLinks.map((link) => (
             <div key={link.label} className="relative group">
@@ -87,7 +87,7 @@ export default function Header() {
 
               {/* Solutions Dropdown */}
               {link.label === "SOLUTIONS" && (
-                <div className="absolute top-full left-0 mt-4 w-72 bg-white rounded-md shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 z-50">
+                <div className="absolute top-full left-0 mt-2.5 w-72 bg-white rounded-md shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 z-50">
                   <div className="absolute -top-4 left-0 w-full h-4"></div> {/* Invisible bridge to prevent hover loss */}
                   <div className="py-2">
                     {solutions.map((solution) => (
