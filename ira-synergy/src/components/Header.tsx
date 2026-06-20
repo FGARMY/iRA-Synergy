@@ -24,8 +24,7 @@ export default function Header() {
     { label: "PROJECTS", href: "/projects" },
     { label: "GALLERY", href: "/gallery" },
     { label: "DOWNLOADS", href: "/downloads" },
-    { label: "BLOG / NEWS", href: "/blog" },
-    { label: "CAREERS", href: "/careers" },
+    { label: "BLOGS", href: "/blog" },
     { label: "CONTACT US", href: "/contact" },
   ];
 
@@ -36,9 +35,9 @@ export default function Header() {
       <div className="px-4 py-2 md:py-3 lg:px-8 border-b border-gray-100 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-4 group cursor-pointer">
           <div className="flex items-center gap-2">
-            <img 
-              src="/images/navbar-logo.jpg" 
-              alt="iRA Synergy Logo" 
+            <img
+              src="/images/navbar-logo.jpg"
+              alt="iRA Synergy Logo"
               className="h-10 sm:h-12 md:h-20 w-auto object-contain mix-blend-multiply transition-transform group-hover:scale-105"
             />
           </div>
@@ -74,9 +73,8 @@ export default function Header() {
             <div key={link.label} className="relative group">
               <Link
                 href={link.href}
-                className={`text-sm font-bold transition-colors tracking-wide flex items-center gap-1 ${
-                  link.label === "HOME" ? "text-white" : "text-white/80 hover:text-white"
-                }`}
+                className={`text-sm font-bold transition-colors tracking-wide flex items-center gap-1 ${link.label === "HOME" ? "text-white" : "text-white/80 hover:text-white"
+                  }`}
               >
                 {link.label}
                 {link.label === "SOLUTIONS" && (
@@ -93,8 +91,8 @@ export default function Header() {
                   <div className="absolute -top-4 left-0 w-full h-4"></div> {/* Invisible bridge to prevent hover loss */}
                   <div className="py-2">
                     {solutions.map((solution) => (
-                      <Link 
-                        key={solution.id} 
+                      <Link
+                        key={solution.id}
                         href={`/solutions/${solution.slug}`}
                         className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-ira-primary transition-colors border-b border-gray-50 last:border-0"
                       >
@@ -128,7 +126,7 @@ export default function Header() {
                 {link.label === "SOLUTIONS" && (
                   <div className="bg-gray-50 flex flex-col py-2 border-t border-gray-100">
                     {solutions.map((solution) => (
-                      <Link 
+                      <Link
                         key={solution.id}
                         href={`/solutions/${solution.slug}`}
                         className="pl-10 pr-6 py-2 text-sm font-medium text-gray-600 hover:text-ira-primary transition-colors"
