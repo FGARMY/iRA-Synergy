@@ -82,6 +82,7 @@ export interface Certification {
   shortName: string;
   description: string;
   icon: string;
+  logo?: string;
   issuer: string;
 }
 

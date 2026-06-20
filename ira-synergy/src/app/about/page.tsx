@@ -187,11 +187,17 @@ export default function AboutPage() {
                 const Icon = certIcons[cert.icon] || FileCheck;
                 return (
                   <ScrollReveal key={cert.id} delay={idx * 50}>
-                    <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 text-center hover:bg-white hover:shadow-xl hover:border-ira-primary/30 transition-all duration-300 h-full flex flex-col items-center justify-center group cursor-default">
-                      <div className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-gray-600 group-hover:text-ira-primary">
-                        <Icon size={20} />
+                    <div className="bg-white border border-gray-100 rounded-2xl p-6 text-center hover:shadow-xl hover:border-ira-primary/30 transition-all duration-300 h-full flex flex-col items-center justify-center group cursor-default">
+                      <div className="relative w-full h-16 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
+                        {cert.logo ? (
+                          <Image src={cert.logo} alt={cert.shortName} fill className="object-contain" />
+                        ) : (
+                          <div className="w-12 h-12 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 group-hover:text-ira-primary">
+                            <Icon size={20} />
+                          </div>
+                        )}
                       </div>
-                      <h4 className="font-bold text-gray-900 text-sm">{cert.shortName}</h4>
+                      <h4 className="font-bold text-gray-900 text-sm mt-auto">{cert.shortName}</h4>
                     </div>
                   </ScrollReveal>
                 )

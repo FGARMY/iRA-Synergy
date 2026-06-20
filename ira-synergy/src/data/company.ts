@@ -19,6 +19,7 @@ export const certifications: Certification[] = [
     shortName: "ISO 9001",
     description: "Quality Management System certification ensuring consistent quality in products and services.",
     icon: "Shield",
+    logo: "/images/certifications/iso-9001.svg",
     issuer: "International Organization for Standardization",
   },
   {
@@ -27,6 +28,7 @@ export const certifications: Certification[] = [
     shortName: "ISO 14001",
     description: "Environmental Management System certification demonstrating commitment to environmental responsibility.",
     icon: "Leaf",
+    logo: "/images/certifications/iso-14001.svg",
     issuer: "International Organization for Standardization",
   },
   {
@@ -35,6 +37,7 @@ export const certifications: Certification[] = [
     shortName: "GST",
     description: "Goods and Services Tax registration for compliant business operations across India.",
     icon: "FileCheck",
+    logo: "/images/certifications/gst.svg",
     issuer: "Government of India",
   },
   {
@@ -43,6 +46,7 @@ export const certifications: Certification[] = [
     shortName: "GeM",
     description: "Government e-Marketplace registration enabling direct procurement by government departments.",
     icon: "Building2",
+    logo: "/images/certifications/gem.svg",
     issuer: "Government of India",
   },
   {
@@ -51,6 +55,7 @@ export const certifications: Certification[] = [
     shortName: "MSME",
     description: "Micro, Small & Medium Enterprise registration under the MSME Development Act.",
     icon: "Award",
+    logo: "/images/certifications/msme.svg",
     issuer: "Ministry of MSME, Government of India",
   },
   {
@@ -59,6 +64,7 @@ export const certifications: Certification[] = [
     shortName: "Startup India",
     description: "DPIIT recognized startup promoting innovation and industrial development.",
     icon: "Rocket",
+    logo: "/images/certifications/startup-india.svg",
     issuer: "Department for Promotion of Industry and Internal Trade",
   },
 ];

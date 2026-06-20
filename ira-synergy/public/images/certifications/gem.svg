@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <rect width="200" height="100" fill="#ffffff" stroke="#e0e0e0" stroke-width="2" />
+  <text x="100" y="60" font-family="Arial, sans-serif" font-size="50" font-weight="900" fill="#e63946" text-anchor="middle">GeM</text>
+  <text x="100" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1d3557" text-anchor="middle">Government e Marketplace</text>
+</svg>
