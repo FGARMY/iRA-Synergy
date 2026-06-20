@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Search, Phone, Menu, X, ChevronDown } from "lucide-react";
 import { solutions } from "@/data/solutions";
 
 export default function Header() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -69,21 +71,23 @@ export default function Header() {
       {/* Bottom Bar - Navigation Links */}
       <div className="hidden lg:flex justify-center items-center py-2.5 bg-ira-primary border-b border-white/10">
         <nav className="flex items-center gap-8">
-          {navLinks.map((link) => (
-            <div key={link.label} className="relative group">
-              <Link
-                href={link.href}
-                className={`text-sm font-bold transition-colors tracking-wide flex items-center gap-1 ${link.label === "HOME" ? "text-white" : "text-white/80 hover:text-white"
-                  }`}
-              >
-                {link.label}
-                {link.label === "SOLUTIONS" && (
-                  <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
-                )}
-                {link.label === "HOME" && (
-                  <span className="absolute -bottom-4 left-0 w-full h-[3px] bg-white rounded-t-sm shadow-[0_-2px_4px_rgba(255,255,255,0.5)]"></span>
-                )}
-              </Link>
+          {navLinks.map((link) => {
+            const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            return (
+              <div key={link.label} className="relative group">
+                <Link
+                  href={link.href}
+                  className={`text-sm font-bold transition-colors tracking-wide flex items-center gap-1 ${isActive ? "text-white" : "text-white/80 hover:text-white"
+                    }`}
+                >
+                  {link.label}
+                  {link.label === "SOLUTIONS" && (
+                    <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
+                  )}
+                  {isActive && (
+                    <span className="absolute -bottom-2.5 left-0 w-full h-[3px] bg-white rounded-t-sm shadow-[0_-2px_4px_rgba(255,255,255,0.5)]"></span>
+                  )}
+                </Link>
 
               {/* Solutions Dropdown */}
               {link.label === "SOLUTIONS" && (
@@ -102,8 +106,9 @@ export default function Header() {
                   </div>
                 </div>
               )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </nav>
       </div>
 
@@ -111,17 +116,19 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 max-h-[80vh] overflow-y-auto">
           <nav className="flex flex-col py-4">
-            {navLinks.map((link) => (
-              <div key={link.label} className="border-b border-gray-50 last:border-0">
-                <div className="flex items-center justify-between px-6 py-3 hover:bg-gray-50 transition-colors">
-                  <Link
-                    href={link.href}
-                    className="text-sm font-bold text-gray-800 flex-grow"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                </div>
+            {navLinks.map((link) => {
+              const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+              return (
+                <div key={link.label} className="border-b border-gray-50 last:border-0">
+                  <div className={`flex items-center justify-between px-6 py-3 transition-colors ${isActive ? "bg-ira-primary/5 border-l-4 border-ira-primary" : "hover:bg-gray-50"}`}>
+                    <Link
+                      href={link.href}
+                      className={`text-sm font-bold flex-grow ${isActive ? "text-ira-primary" : "text-gray-800"}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </div>
                 {/* Mobile Solutions Dropdown Always Visible */}
                 {link.label === "SOLUTIONS" && (
                   <div className="bg-gray-50 flex flex-col py-2 border-t border-gray-100">
@@ -137,8 +144,9 @@ export default function Header() {
                     ))}
                   </div>
                 )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </nav>
         </div>
       )}
