@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { School, Recycle, Sun, HeartPulse, Dumbbell, Building2, ArrowRight, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import { School, Recycle, Sun, HeartPulse, Dumbbell, Building2, ArrowRight, CheckCircle2, Shield } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,7 +11,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { solutions } from "@/data/solutions";
 
 export const metadata: Metadata = {
-  title: "Solutions",
+  title: "Solutions | iRA Synergy",
   description: "End-to-end infrastructure and sustainability solutions — smart schools, waste management, renewable energy, public health, fitness, and smart city projects.",
 };
 
@@ -20,75 +21,116 @@ const iconMap: Record<string, React.ElementType> = {
 
 export default function SolutionsPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white">
       <Header />
       <main className="flex-grow pt-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Spacious Header */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center">
           <Breadcrumb items={[{ label: "Solutions" }]} />
-
           <ScrollReveal>
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
-                Our Solutions
-              </h1>
-              <p className="text-lg text-gray-500 max-w-2xl">
-                End-to-end infrastructure and sustainability solutions for government, institutions, and communities across India.
-              </p>
-            </div>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mt-6 mb-6 tracking-tight">
+              Our <span className="text-ira-primary">Solutions</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
+              End-to-end infrastructure and sustainability solutions engineered for modern government, institutions, and visionary communities across India.
+            </p>
           </ScrollReveal>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-            {solutions.map((solution, idx) => {
-              const Icon = iconMap[solution.icon] || Building2;
-              return (
-                <ScrollReveal key={solution.id} delay={idx * 100}>
-                  <Link href={`/solutions/${solution.slug}`} className="group block h-full">
-                    <div className="h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-premium card-hover">
-                      {/* Color bar */}
-                      <div className={`h-2 w-full ${solution.color}`} />
-                      <div className="p-8">
-                        <div className="flex items-start gap-5 mb-5">
-                          <div className={`w-16 h-16 rounded-2xl ${solution.color} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+        {/* Premium Alternating Full-Width Sections */}
+        <div className="flex flex-col">
+          {solutions.map((solution, index) => {
+            const Icon = iconMap[solution.icon] || Building2;
+            const isEven = index % 2 === 0;
+
+            return (
+              <section 
+                key={solution.id} 
+                className={`py-24 ${isEven ? 'bg-gray-50' : 'bg-white'} border-b border-gray-100 last:border-0`}
+              >
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <ScrollReveal>
+                    <div className={`flex flex-col lg:flex-row items-center gap-16 lg:gap-24 ${isEven ? '' : 'lg:flex-row-reverse'}`}>
+                      
+                      {/* Image / Visual Side */}
+                      <div className="w-full lg:w-5/12">
+                        <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl group border border-gray-100">
+                          <Image 
+                            src={solution.image} 
+                            alt={solution.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out"
+                          />
+                          <div className={`absolute inset-0 opacity-20 mix-blend-multiply ${solution.color}`}></div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                          
+                          {/* Floating Glass Icon */}
+                          <div className={`absolute top-6 left-6 w-16 h-16 rounded-2xl ${solution.color} backdrop-blur-md bg-opacity-90 flex items-center justify-center shadow-2xl border border-white/20`}>
                             <Icon size={32} className="text-white" strokeWidth={1.5} />
                           </div>
-                          <div>
-                            <h2 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-ira-primary transition-colors">
-                              {solution.title}
-                            </h2>
-                            <div className="flex gap-3">
-                              {solution.stats.slice(0, 2).map((stat, i) => (
-                                <span key={i} className="text-xs text-gray-400 font-medium">
-                                  {stat.value} {stat.label}
-                                </span>
-                              ))}
-                            </div>
+
+                          {/* Stats overlay inside image */}
+                          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-4">
+                            {solution.stats.slice(0, 2).map((stat, i) => (
+                              <div key={i} className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20">
+                                <div className="text-xl font-bold text-white">{stat.value}</div>
+                                <div className="text-xs text-white/80 font-medium uppercase tracking-wider">{stat.label}</div>
+                              </div>
+                            ))}
                           </div>
                         </div>
+                      </div>
 
-                        <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                          {solution.description}
+                      {/* Content Side */}
+                      <div className="w-full lg:w-7/12 flex flex-col justify-center">
+                        <div className="mb-4">
+                          <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${solution.color} text-white shadow-sm`}>
+                            {solution.shortTitle}
+                          </span>
+                        </div>
+                        
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight leading-tight">
+                          {solution.title}
+                        </h2>
+                        
+                        <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                          {solution.longDescription}
                         </p>
 
-                        <div className="grid grid-cols-2 gap-2 mb-6">
-                          {solution.features.slice(0, 4).map((feat, i) => (
-                            <div key={i} className="flex items-center gap-2 text-xs text-gray-600">
-                              <CheckCircle2 size={13} className="text-ira-accent flex-shrink-0" />
-                              <span className="line-clamp-1">{feat}</span>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-10">
+                          {solution.features.slice(0, 6).map((feat, i) => (
+                            <div key={i} className="flex items-start gap-3">
+                              <CheckCircle2 size={20} className="text-ira-accent mt-0.5 flex-shrink-0" />
+                              <span className="text-gray-700 font-medium">{feat}</span>
                             </div>
                           ))}
                         </div>
 
-                        <div className="flex items-center gap-2 text-ira-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                          Explore Solution
-                          <ArrowRight size={16} />
+                        <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-gray-100">
+                          <Link 
+                            href={`/solutions/${solution.slug}`}
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-ira-primary text-white rounded-xl font-bold hover:bg-ira-primary-dark transition-all hover:shadow-xl hover:-translate-y-1"
+                          >
+                            Explore Deep Dive
+                            <ArrowRight size={20} />
+                          </Link>
+                          
+                          <div className="flex items-center gap-3">
+                            <Shield size={24} className="text-gray-400" />
+                            <span className="text-sm text-gray-500 font-semibold tracking-wide">
+                              {solution.certifications.slice(0, 2).join(" • ")}
+                            </span>
+                          </div>
                         </div>
+
                       </div>
                     </div>
-                  </Link>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+                  </ScrollReveal>
+                </div>
+              </section>
+            );
+          })}
         </div>
 
         <CTABanner />

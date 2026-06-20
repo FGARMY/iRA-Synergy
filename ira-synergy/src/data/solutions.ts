@@ -36,7 +36,7 @@ export const solutions: Solution[] = [
       "ai-robotics-lab",
       "portable-library",
     ],
-    image: "/images/solutions/smart-school.jpg",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800",
     stats: [
       { label: "Schools Equipped", value: "50+" },
       { label: "Labs Installed", value: "200+" },
@@ -84,7 +84,7 @@ export const solutions: Solution[] = [
       "smart-dust-bin",
       "e-cart-for-garbage",
     ],
-    image: "/images/solutions/waste-management.jpg",
+    image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800",
     stats: [
       { label: "Waste Reduction", value: "40%" },
       { label: "Cities Served", value: "12+" },
@@ -126,7 +126,7 @@ export const solutions: Solution[] = [
       "gasifier",
       "bio-gas-plant",
     ],
-    image: "/images/solutions/renewable-energy.jpg",
+    image: "https://images.unsplash.com/photo-1509391366360-1200fa26bd96?q=80&w=800",
     stats: [
       { label: "kW Installed", value: "500+" },
       { label: "CO₂ Saved (tons/yr)", value: "200+" },
@@ -172,7 +172,7 @@ export const solutions: Solution[] = [
       "water-atm",
       "sanitary-napkins-incinerator-vending-machine",
     ],
-    image: "/images/solutions/public-health.jpg",
+    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=800",
     stats: [
       { label: "Units Deployed", value: "100+" },
       { label: "Daily Users", value: "10,000+" },
@@ -261,7 +261,7 @@ export const solutions: Solution[] = [
       "food-trolly",
       "portable-kitchen-cabinet",
     ],
-    image: "/images/solutions/smart-city.jpg",
+    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=800",
     stats: [
       { label: "Smart City Projects", value: "15+" },
       { label: "Smart Poles Installed", value: "200+" },

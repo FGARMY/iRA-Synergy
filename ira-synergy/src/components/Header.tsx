@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search, Phone, Menu, X } from "lucide-react";
+import { Search, Phone, Menu, X, ChevronDown } from "lucide-react";
+import { solutions } from "@/data/solutions";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -70,21 +71,40 @@ export default function Header() {
       <div className="hidden lg:flex justify-center items-center py-4 bg-ira-primary border-b border-white/10">
         <nav className="flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`text-sm font-bold transition-colors tracking-wide relative flex items-center gap-1 ${
-                link.label === "HOME" ? "text-white" : "text-white/80 hover:text-white"
-              }`}
-            >
-              {link.label}
+            <div key={link.label} className="relative group">
+              <Link
+                href={link.href}
+                className={`text-sm font-bold transition-colors tracking-wide flex items-center gap-1 ${
+                  link.label === "HOME" ? "text-white" : "text-white/80 hover:text-white"
+                }`}
+              >
+                {link.label}
+                {link.label === "SOLUTIONS" && (
+                  <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
+                )}
+                {link.label === "HOME" && (
+                  <span className="absolute -bottom-4 left-0 w-full h-[3px] bg-white rounded-t-sm shadow-[0_-2px_4px_rgba(255,255,255,0.5)]"></span>
+                )}
+              </Link>
+
+              {/* Solutions Dropdown */}
               {link.label === "SOLUTIONS" && (
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
+                <div className="absolute top-full left-0 mt-4 w-72 bg-white rounded-md shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 z-50">
+                  <div className="absolute -top-4 left-0 w-full h-4"></div> {/* Invisible bridge to prevent hover loss */}
+                  <div className="py-2">
+                    {solutions.map((solution) => (
+                      <Link 
+                        key={solution.id} 
+                        href={`/solutions/${solution.slug}`}
+                        className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-ira-primary transition-colors border-b border-gray-50 last:border-0"
+                      >
+                        {solution.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               )}
-              {link.label === "HOME" && (
-                <span className="absolute -bottom-4 left-0 w-full h-[3px] bg-white rounded-t-sm shadow-[0_-2px_4px_rgba(255,255,255,0.5)]"></span>
-              )}
-            </Link>
+            </div>
           ))}
         </nav>
       </div>
@@ -94,14 +114,32 @@ export default function Header() {
         <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 max-h-[80vh] overflow-y-auto">
           <nav className="flex flex-col py-4">
             {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="px-6 py-3 text-sm font-bold text-gray-800 hover:bg-gray-50 border-b border-gray-50"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
+              <div key={link.label} className="border-b border-gray-50 last:border-0">
+                <div className="flex items-center justify-between px-6 py-3 hover:bg-gray-50 transition-colors">
+                  <Link
+                    href={link.href}
+                    className="text-sm font-bold text-gray-800 flex-grow"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+                {/* Mobile Solutions Dropdown Always Visible */}
+                {link.label === "SOLUTIONS" && (
+                  <div className="bg-gray-50 flex flex-col py-2 border-t border-gray-100">
+                    {solutions.map((solution) => (
+                      <Link 
+                        key={solution.id}
+                        href={`/solutions/${solution.slug}`}
+                        className="pl-10 pr-6 py-2 text-sm font-medium text-gray-600 hover:text-ira-primary transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {solution.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
         </div>

@@ -73,7 +73,7 @@ export default function Solutions() {
             {solutions.map((solution, idx) => {
               return (
                 <ScrollReveal key={solution.id} delay={idx * 50} className="snap-start shrink-0 w-[240px] md:w-[260px]">
-                  <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-xl transition-all duration-300 group overflow-hidden">
+                  <Link href={`/solutions/${solution.slug}`} className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-xl transition-all duration-300 group overflow-hidden cursor-pointer block">
                     <div className="h-36 w-full relative overflow-hidden">
                       <Image 
                         src={imageMap[solution.id] || "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=600"} 
@@ -90,15 +90,12 @@ export default function Solutions() {
                       <p className="text-xs text-gray-500 mb-5 flex-grow leading-relaxed line-clamp-3">
                         {solution.description}
                       </p>
-                      <Link
-                        href={`/solutions/${solution.id}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-800 hover:text-ira-accent transition-colors mt-auto"
-                      >
+                      <div className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-800 group-hover:text-ira-accent transition-colors mt-auto">
                         Explore
                         <ArrowRight size={14} />
-                      </Link>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </ScrollReveal>
               );
             })}
