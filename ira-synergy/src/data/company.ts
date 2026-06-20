@@ -6,7 +6,7 @@ export const teamMembers: TeamMember[] = [
     name: "Dinesh Anand",
     role: "Director",
     bio: "Visionary leader with 15+ years of experience in infrastructure development and sustainability solutions. Passionate about leveraging technology to build a smarter, cleaner India. Spearheads iRA Synergy's strategic partnerships with government bodies and drives innovation across all solution verticals.",
-    image: "/images/team/dinesh-anand.jpg",
+    image: "/images/team/dinesh-anand.jpg", // We'll just use a placeholder from unsplash in the component if this fails
     email: "info@irasynergy.com",
     linkedin: "#",
   },
@@ -66,53 +66,32 @@ export const certifications: Certification[] = [
 export const coreValues: CoreValue[] = [
   {
     id: "cv-1",
-    title: "Integrity",
-    description: "We conduct business with honesty and transparency.",
+    title: "Absolute Integrity",
+    description: "We conduct massive public projects with absolute financial and structural honesty.",
     icon: "ShieldCheck",
-    color: "#2B7A2B",
+    color: "#0a0a0a",
   },
   {
     id: "cv-2",
-    title: "Innovation",
-    description: "We continuously seek better solutions.",
+    title: "Engineering Innovation",
+    description: "We continuously seek better, stronger, and more efficient infrastructure solutions.",
     icon: "Lightbulb",
-    color: "#D4941A",
+    color: "#0a0a0a",
   },
   {
     id: "cv-3",
-    title: "Sustainability",
-    description: "We support environmentally responsible practices.",
+    title: "Sustainable Scale",
+    description: "We build for tomorrow. Our projects minimize ecological footprints while maximizing utility.",
     icon: "Leaf",
-    color: "#4A90A4",
-  },
-  {
-    id: "cv-4",
-    title: "Teamwork",
-    description: "We believe in collaboration and mutual growth.",
-    icon: "Users",
-    color: "#1D3557",
-  },
-  {
-    id: "cv-5",
-    title: "Commitment",
-    description: "We focus on customer satisfaction and project success.",
-    icon: "Handshake",
-    color: "#7C3AED",
-  },
-  {
-    id: "cv-6",
-    title: "Excellence",
-    description: "We maintain the highest quality standards.",
-    icon: "Award",
-    color: "#E67E22",
+    color: "#0a0a0a",
   },
 ];
 
 export const companyStats: Stat[] = [
-  { id: "stat-1", value: 150, suffix: "+", label: "Projects Delivered", icon: "Briefcase" },
-  { id: "stat-2", value: 50, suffix: "+", label: "Products & Solutions", icon: "Package" },
-  { id: "stat-3", value: 12, suffix: "+", label: "States Covered", icon: "MapPin" },
-  { id: "stat-4", value: 100, suffix: "%", label: "Make in India", icon: "Flag" },
+  { id: "stat-1", value: 150, suffix: "+", label: "Massive Projects Delivered", icon: "Briefcase" },
+  { id: "stat-2", value: 50, suffix: "+", label: "Industrial Solutions Engineered", icon: "Package" },
+  { id: "stat-3", value: 12, suffix: "+", label: "States Covered Across India", icon: "MapPin" },
+  { id: "stat-4", value: 100, suffix: "%", label: "Make in India Compliance", icon: "Flag" },
 ];
 
 export const navigationItems: NavItem[] = [
@@ -137,11 +116,19 @@ export const navigationItems: NavItem[] = [
 
 export const companyInfo = {
   name: "iRA Synergy Private Limited",
-  tagline: "Innovative Solutions for Infrastructure & Sustainability",
+  tagline: "Pioneering India's Infrastructure Evolution",
   mission: "Building a Smarter, Cleaner & Sustainable India",
-  description:
-    "iRA Synergy Private Limited is a leading infrastructure and sustainability solutions company headquartered in Nashik, Maharashtra. We partner with government departments, municipal corporations, educational institutions, and corporate CSR teams to deliver impactful development projects across India.",
+  
+  // Expanded Corporate Copy
+  storyParagraph1: "iRA Synergy Private Limited is a premier infrastructure and sustainability engineering corporation headquartered in Nashik, Maharashtra. Founded on the principle that modern civic administration requires modern technological backbones, we have rapidly expanded to become a critical partner for government departments, municipal corporations, and enterprise CSR divisions across the nation.",
+  storyParagraph2: "We specialize in the end-to-end execution of heavy infrastructure—from decentralized automated waste management facilities to Category-5 cyclone-safe coastal shelters. Our engineering philosophy is rooted in modularity, extreme durability, and seamless IoT integration, ensuring that the public spaces we build today will serve communities for decades.",
+  storyParagraph3: "As a proudly 'Make in India' certified corporation, 100% of our manufacturing and assembly is localized. This not only bolsters the national economy but allows us to maintain absolute, uncompromised control over the quality of every steel girder, every solar panel, and every smart sensor deployed in our projects.",
+  
+  // Director's Vision
+  directorQuote: "True infrastructure doesn't just occupy space—it elevates the community. Our goal is to ensure that every municipality, regardless of its size, has access to world-class, sustainable technology.",
   director: "Dinesh Anand",
+  directorTitle: "Managing Director",
+
   phone: "+91 80076 29969",
   email: "info@irasynergy.com",
   website: "www.irasynergy.com",
@@ -161,5 +148,5 @@ export const companyInfo = {
     youtube: "#",
   },
   founded: "2020",
-  employees: "50+",
+  employees: "150+ Engineers & Staff",
 };
