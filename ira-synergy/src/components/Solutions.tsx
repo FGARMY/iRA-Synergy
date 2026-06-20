@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, Building2, Recycle, Zap, HeartPulse, Dumbbell, Globe, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ChevronLeft, ChevronRight, Building2, Recycle, Zap, HeartPulse, Dumbbell, Globe } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 import { solutions } from "@/data/solutions";
 
@@ -49,14 +50,16 @@ export default function Solutions() {
         <div className="relative group">
           {/* Scroll Buttons */}
           <button 
+            aria-label="Scroll left"
             onClick={() => scroll("left")}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-gray-500 hover:text-ira-primary focus:outline-none hidden md:flex transition-transform opacity-0 group-hover:opacity-100"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-gray-500 hover:text-ira-primary focus:outline-none focus:ring-2 focus:ring-ira-primary focus:ring-offset-2 hidden md:flex transition-transform opacity-0 group-hover:opacity-100"
           >
             <ChevronLeft size={24} />
           </button>
           <button 
+            aria-label="Scroll right"
             onClick={() => scroll("right")}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-gray-500 hover:text-ira-primary focus:outline-none hidden md:flex transition-transform opacity-0 group-hover:opacity-100"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-gray-500 hover:text-ira-primary focus:outline-none focus:ring-2 focus:ring-ira-primary focus:ring-offset-2 hidden md:flex transition-transform opacity-0 group-hover:opacity-100"
           >
             <ChevronRight size={24} />
           </button>
@@ -71,11 +74,13 @@ export default function Solutions() {
               return (
                 <ScrollReveal key={solution.id} delay={idx * 50} className="snap-start shrink-0 w-[240px] md:w-[260px]">
                   <div className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-xl transition-all duration-300 group overflow-hidden">
-                    <div className="h-36 w-full overflow-hidden">
-                      <img 
+                    <div className="h-36 w-full relative overflow-hidden">
+                      <Image 
                         src={imageMap[solution.id] || "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=600"} 
                         alt={solution.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        fill
+                        loading="lazy"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                     <div className="p-5 text-center flex flex-col items-center flex-grow">

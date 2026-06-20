@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search, Phone, Mail, FileText, Menu, X, Users, Globe, Camera, Video } from "lucide-react";
-import { companyInfo } from "@/data/company";
+import { Search, Phone, Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,7 +29,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed w-full z-40 bg-white shadow-md transition-all duration-300">
+    <header className={`fixed w-full z-40 bg-white transition-all duration-300 ${isScrolled ? "shadow-md" : ""}`}>
 
       {/* Middle Bar - Logo & CTA */}
       <div className="px-4 py-2 md:py-3 lg:px-8 border-b border-gray-100 flex justify-between items-center">
@@ -53,10 +52,12 @@ export default function Header() {
             REQUEST A CALL BACK
             <Phone size={14} />
           </Link>
-          <button className="text-gray-500 hover:text-ira-primary p-2 border border-gray-200 rounded transition-colors">
+          <button aria-label="Search" className="text-gray-500 hover:text-ira-primary p-2 border border-gray-200 rounded transition-colors">
             <Search size={18} />
           </button>
           <button
+            aria-label="Toggle mobile menu"
+            aria-expanded={mobileMenuOpen}
             className="lg:hidden text-gray-800 p-2 rounded transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >

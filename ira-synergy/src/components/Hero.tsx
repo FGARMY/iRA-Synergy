@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Leaf, ShieldCheck, Map, Settings } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 
@@ -37,11 +38,13 @@ export default function Hero() {
          
          {/* Carousel Images */}
          {heroImages.map((src, index) => (
-           <img 
+           <Image 
              key={src}
              src={src} 
-             alt="Smart City Infrastructure" 
-             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+             alt={`Smart City Infrastructure - Slide ${index + 1}`}
+             fill
+             priority={index === 0}
+             className={`object-cover transition-opacity duration-1000 ease-in-out ${
                index === currentImageIndex ? "opacity-100" : "opacity-0"
              }`}
            />

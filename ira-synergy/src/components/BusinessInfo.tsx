@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, ChevronRight, Landmark, Hospital, Building, HandHeart, GraduationCap, Factory, Lightbulb, ShieldAlert, Award, Wrench, Settings, Leaf, ShieldCheck, MapPin, Shield, Headset, Building2, CheckCircle } from "lucide-react";
+import Image from "next/image";
+import { ChevronRight, Leaf, ShieldCheck, MapPin, Headset, Building2, ArrowRight, CheckCircle, Landmark, Hospital, Building, HandHeart, GraduationCap, Factory, Lightbulb, ShieldAlert, Award, Wrench, Settings, Shield } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 import { projects } from "@/data/projects";
 
@@ -83,13 +84,15 @@ export default function BusinessInfo() {
               </div>
 
               <div className="flex-1 mt-2">
-                <div className="grid grid-cols-2 gap-3 sm:gap-4 h-[280px] sm:h-full min-h-[240px]">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4 h-[280px] sm:h-full min-h-[240px]">
                   {displayProjects.map((project, i) => (
                     <Link href="/projects" key={i} className="relative group overflow-hidden rounded-xl shadow-sm border border-gray-200/50 block w-full h-full">
-                      <img 
+                      <Image 
                         src={project.images && project.images.length > 0 ? project.images[0] : "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=400"}
                         alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        fill
+                        loading="lazy"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A3D24]/90 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
                       
@@ -179,7 +182,7 @@ export default function BusinessInfo() {
               </div>
               <div>
                 <h3 className="text-sm font-bold text-gray-900">Building Smarter. Cleaner. Stronger Communities.</h3>
-                <p className="text-xs text-gray-600 mt-1">Let's work together for a sustainable and developed India.</p>
+                <p className="text-xs text-gray-600 mt-1">Let&apos;s work together for a sustainable and developed India.</p>
               </div>
             </div>
             

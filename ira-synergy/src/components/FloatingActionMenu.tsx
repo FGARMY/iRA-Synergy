@@ -63,7 +63,7 @@ export default function FloatingActionMenu() {
                   <p className="text-[10px] text-white/80">Online & ready to help</p>
                 </div>
               </div>
-              <button onClick={() => setChatOpen(false)} className="text-white hover:bg-white/20 rounded-full p-1 transition-colors">
+              <button aria-label="Close AI Assistant" onClick={() => setChatOpen(false)} className="text-white hover:bg-white/20 rounded-full p-1 transition-colors">
                 <X size={20} />
               </button>
             </div>
@@ -74,7 +74,7 @@ export default function FloatingActionMenu() {
                   <Bot size={14} className="text-ira-primary" />
                 </div>
                 <div className="bg-white border border-gray-200 rounded-2xl rounded-tl-sm p-3 shadow-sm text-sm text-gray-700">
-                  Hi there! 👋 I'm the iRA Synergy AI Assistant. How can I help you explore our sustainable infrastructure solutions?
+                  Hi there! 👋 I&apos;m the iRA Synergy AI Assistant. How can I help you explore our sustainable infrastructure solutions?
                 </div>
               </div>
             </div>
@@ -86,8 +86,8 @@ export default function FloatingActionMenu() {
                 className="flex-1 border border-gray-200 bg-gray-50 rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-ira-primary focus:bg-white transition-colors"
                 disabled
               />
-              <button className="bg-ira-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-ira-primary-dark transition-colors flex-shrink-0 pointer-events-none opacity-50">
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+              <button aria-label="Send message" className="bg-ira-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-ira-primary-dark transition-colors flex-shrink-0 pointer-events-none opacity-50">
+                <svg aria-hidden="true" className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
               </button>
             </div>
           </div>
@@ -95,13 +95,15 @@ export default function FloatingActionMenu() {
 
         <button 
           onClick={() => setChatOpen(!chatOpen)}
+          aria-label={chatOpen ? "Close AI Assistant" : "Open AI Assistant"}
+          aria-expanded={chatOpen}
           className={`pointer-events-auto flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105 ${
             chatOpen 
               ? 'w-12 h-12 bg-gray-800 text-white rounded-full' 
               : 'w-16 h-16 bg-gradient-to-tr from-ira-primary-dark to-ira-primary text-white rounded-full'
           }`}
         >
-          {chatOpen ? <X size={24} /> : <Bot size={32} />}
+          {chatOpen ? <X size={24} aria-hidden="true" /> : <Bot size={32} aria-hidden="true" />}
         </button>
       </div>
     </>

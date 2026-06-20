@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, FileText, ChevronRight, Users, Globe, Camera, Video, MessageCircle, Download } from "lucide-react";
+import { MapPin, Phone, Mail, FileText, ChevronRight, Users, Globe, Camera, Video, MessageCircle } from "lucide-react";
 import { companyInfo } from "@/data/company";
 
 export default function Footer() {
@@ -41,10 +41,10 @@ export default function Footer() {
               iRA Synergy Private Limited offers innovative, eco-friendly and technology-driven solutions for infrastructure, environment, health & community development.
             </p>
             <div className="flex items-center gap-3">
-              <a href="#" className="w-8 h-8 rounded-full bg-[#3b5998] flex items-center justify-center hover:opacity-80 transition-opacity"><Users size={14} /></a>
-              <a href="#" className="w-8 h-8 rounded-full bg-[#0077b5] flex items-center justify-center hover:opacity-80 transition-opacity"><Globe size={14} /></a>
-              <a href="#" className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f09433] to-[#bc1888] flex items-center justify-center hover:opacity-80 transition-opacity"><Camera size={14} /></a>
-              <a href="#" className="w-8 h-8 rounded-full bg-[#ff0000] flex items-center justify-center hover:opacity-80 transition-opacity"><Video size={14} /></a>
+              <a href="#" aria-label="Facebook" className="w-8 h-8 rounded-full bg-[#3b5998] flex items-center justify-center hover:opacity-80 transition-opacity"><Users size={14} aria-hidden="true" /></a>
+              <a href="#" aria-label="LinkedIn" className="w-8 h-8 rounded-full bg-[#0077b5] flex items-center justify-center hover:opacity-80 transition-opacity"><Globe size={14} aria-hidden="true" /></a>
+              <a href="#" aria-label="Instagram" className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f09433] to-[#bc1888] flex items-center justify-center hover:opacity-80 transition-opacity"><Camera size={14} aria-hidden="true" /></a>
+              <a href="#" aria-label="YouTube" className="w-8 h-8 rounded-full bg-[#ff0000] flex items-center justify-center hover:opacity-80 transition-opacity"><Video size={14} aria-hidden="true" /></a>
             </div>
           </div>
 

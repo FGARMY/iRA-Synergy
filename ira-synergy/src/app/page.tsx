@@ -1,11 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import Solutions from "@/components/Solutions";
-import StatsBanner from "@/components/StatsBanner";
-import FeaturedProducts from "@/components/FeaturedProducts";
-import Gallery from "@/components/Gallery";
-import BusinessInfo from "@/components/BusinessInfo";
+import dynamic from "next/dynamic";
+
+const Solutions = dynamic(() => import("@/components/Solutions"));
+const StatsBanner = dynamic(() => import("@/components/StatsBanner"));
+const FeaturedProducts = dynamic(() => import("@/components/FeaturedProducts"));
+const Gallery = dynamic(() => import("@/components/Gallery"));
+const BusinessInfo = dynamic(() => import("@/components/BusinessInfo"));
 
 export default function Home() {
   return (
