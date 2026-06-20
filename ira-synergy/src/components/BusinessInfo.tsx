@@ -163,12 +163,24 @@ export default function BusinessInfo() {
                 <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-ira-primary rounded-full"></span>
               </h2>
             </div>
-            <div className="w-full flex justify-center mt-4">
-              <img 
-                src="/images/partner-logos-strip.jpg" 
-                alt="Government Initiatives and Partners" 
-                className="w-[110%] sm:w-full max-w-[1200px] h-auto object-contain mix-blend-multiply"
-              />
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-14 mt-6 opacity-80 hover:opacity-100 transition-opacity duration-300">
+              {[
+                { src: "/images/partners/smart-city.jpg", alt: "Smart City" },
+                { src: "/images/partners/swachh-bharat.jpg", alt: "Swachh Bharat" },
+                { src: "/images/partners/digital-india.jpg", alt: "Digital India" },
+                { src: "/images/partners/fit-india.jpg", alt: "Fit India" },
+                { src: "/images/partners/mnre.jpg", alt: "Ministry of New and Renewable Energy" },
+                { src: "/images/partners/logo2.jpg", alt: "Partner Logo" },
+                { src: "/images/partners/logo3.jpg", alt: "Partner Logo" },
+              ].map((logo, index) => (
+                <div key={index} className="relative h-14 sm:h-20 w-32 sm:w-40 hover:scale-105 transition-transform duration-300">
+                  <img 
+                    src={logo.src} 
+                    alt={logo.alt} 
+                    className="w-full h-full object-contain mix-blend-multiply"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </ScrollReveal>
