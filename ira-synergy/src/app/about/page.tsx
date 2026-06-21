@@ -122,74 +122,123 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Director's Vision */}
+        {/* Directors' Vision */}
         <section className="py-24 md:py-32 bg-gray-50 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden">
-              <div className="flex flex-col lg:flex-row">
-                
-                {/* Director Image */}
-                <div className="lg:w-2/5 relative h-[400px] lg:h-auto">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80" 
-                    alt="Director"
-                    fill
-                    className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-1000"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-8 left-8 text-white">
-                    <p className="text-3xl font-black mb-1">{companyInfo.director}</p>
-                    <p className="text-ira-primary font-bold tracking-widest uppercase text-sm">{companyInfo.directorTitle}</p>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            {companyInfo.directors?.map((director, index) => (
+              <div key={index} className="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden">
+                <div className={`flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+                  
+                  {/* Director Image */}
+                  <div className="lg:w-2/5 relative h-[400px] lg:h-[600px]">
+                    <Image 
+                      src={director.image} 
+                      alt={director.name}
+                      fill
+                      className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-1000"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-8 left-8 text-white">
+                      <p className="text-3xl font-black mb-1">{director.name}</p>
+                      <p className="text-ira-primary font-bold tracking-widest uppercase text-sm">{director.title}</p>
+                    </div>
                   </div>
-                </div>
 
-                {/* Quote Content */}
-                <div className="lg:w-3/5 p-12 md:p-20 flex flex-col justify-center">
-                  <ScrollReveal>
-                    <span className="text-9xl text-gray-200 leading-none block h-20 font-serif">"</span>
-                    <h3 className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8">
-                      {companyInfo.directorQuote}
-                    </h3>
-                    <div className="w-20 h-1 bg-ira-primary mb-8" />
-                    <p className="text-gray-500 font-medium">
-                      At iRA Synergy, we don't just supply equipment. We act as strategic engineering partners for India's largest civic and corporate entities, ensuring that every rupee invested yields a generation of value.
-                    </p>
-                  </ScrollReveal>
-                </div>
+                  {/* Quote Content */}
+                  <div className="lg:w-3/5 p-12 md:p-20 flex flex-col justify-center">
+                    <ScrollReveal>
+                      <span className="text-9xl text-gray-200 leading-none block h-20 font-serif">"</span>
+                      <h3 className="text-3xl md:text-3xl lg:text-4xl font-light text-gray-900 leading-tight mb-8">
+                        {director.quote}
+                      </h3>
+                      <div className="w-20 h-1 bg-ira-primary mb-8" />
+                      <p className="text-gray-500 font-medium">
+                        At iRA Synergy, we don't just supply equipment. We act as strategic engineering partners for India's largest civic and corporate entities, ensuring that every rupee invested yields a generation of value.
+                      </p>
+                    </ScrollReveal>
+                  </div>
 
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </section>
 
         {/* Trust & Compliance Grid */}
-        <section className="py-24 bg-white">
+        <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 border-b border-gray-100 pb-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-4">
               <div className="max-w-2xl">
                 <ScrollReveal>
-                  <span className="text-ira-primary font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Compliance</span>
-                  <h2 className="text-4xl font-black text-gray-900">Certified Reliability.</h2>
+                  <span className="text-ira-primary font-bold tracking-[0.3em] uppercase text-xs mb-2 block">Compliance</span>
+                  <h2 className="text-3xl font-black text-gray-900">Certified Reliability.</h2>
                 </ScrollReveal>
               </div>
               <div className="max-w-md">
                 <ScrollReveal delay={100}>
-                  <p className="text-gray-500">
+                  <p className="text-sm text-gray-500">
                     Our operations adhere to the strictest international and domestic quality standards, ensuring absolute compliance for government procurement.
                   </p>
                 </ScrollReveal>
               </div>
             </div>
             <ScrollReveal delay={200}>
-              <div className="w-full relative rounded-3xl overflow-hidden bg-white flex items-center justify-center py-8">
-                <Image 
-                  src="/images/certifications-collage.jpeg" 
-                  alt="iRA Synergy Certifications and Platforms" 
-                  width={1200}
-                  height={1200}
-                  className="w-full max-w-5xl h-auto object-contain"
-                />
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-3 sm:gap-4 items-center justify-items-center py-2">
+                {[
+                  "gmp-quality.png",
+                  "ICE.png",
+                  "images.jpg",
+                  "mh-logo.jpeg",
+                  "msme-zed.jpeg",
+                  "nabl-india-seeklogo.png",
+                  "newNS.png",
+                  "ohsas-iso-18001.png",
+                  "qa-certificate.jpeg",
+                  "08_client.png",
+                  "45001.jpeg",
+                  "1673846.jpg",
+                  "CVC.png",
+                  "gem-logo.png"
+                ].map((logo, index) => (
+                  <div key={index} className="w-full flex items-center justify-center bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow aspect-square relative overflow-hidden group">
+                    <Image 
+                      src={`/images/brands/${logo}`} 
+                      alt={`Compliance Certificate ${index + 1}`} 
+                      fill
+                      className="object-contain p-3 mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            {/* Platforms We Are Available On */}
+            <div className="mt-12 flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-gray-100 pb-4">
+              <div className="max-w-2xl">
+                <ScrollReveal>
+                  <span className="text-ira-primary font-bold tracking-[0.3em] uppercase text-xs mb-2 block">Availability</span>
+                  <h2 className="text-2xl md:text-3xl font-black text-gray-900">Platforms we are available on.</h2>
+                </ScrollReveal>
+              </div>
+            </div>
+            
+            <ScrollReveal delay={200}>
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-8 py-2">
+                {[
+                  "1 (1).jpeg",
+                  "1 (2).jpeg",
+                  "1 (3).jpeg",
+                ].map((logo, index) => (
+                  <div key={`platform-${index}`} className="w-32 sm:w-48 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow aspect-[4/3] relative overflow-hidden group">
+                    <Image 
+                      src={`/images/brands/${logo}`} 
+                      alt={`Available Platform ${index + 1}`} 
+                      fill
+                      className="object-contain p-3 mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                ))}
               </div>
             </ScrollReveal>
 

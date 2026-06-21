@@ -7,11 +7,11 @@ import { ArrowRight, Leaf, ShieldCheck, Map, Settings } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 
 const heroImages = [
-  "/images/hero/play_area.jpeg", // Smart City / Fitness
-  "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?q=80&w=2070&auto=format&fit=crop", // Clean Energy / Water
-  "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2070&auto=format&fit=crop", // Solar Panels
-  "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop", // Sustainable Architecture
-  "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format&fit=crop", // Waste Management / Recycling
+  "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop", // Engineers/Workers at industrial plant
+  "https://images.unsplash.com/photo-1533422902779-dac2bf22eb28?q=80&w=2070&auto=format&fit=crop", // Heavy industrial factory/machinery
+  "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop", // Real solar farm installation
+  "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?q=80&w=2070&auto=format&fit=crop", // City park/amenities
+  "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?q=80&w=2071&auto=format&fit=crop", // Modern street food cart setup
 ];
 
 export default function Hero() {

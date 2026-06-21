@@ -101,10 +101,21 @@ export const companyInfo = {
   storyParagraph2: "We specialize in the end-to-end execution of heavy infrastructure—from decentralized automated waste management facilities to Category-5 cyclone-safe coastal shelters. Our engineering philosophy is rooted in modularity, extreme durability, and seamless IoT integration, ensuring that the public spaces we build today will serve communities for decades.",
   storyParagraph3: "As a proudly 'Make in India' certified corporation, 100% of our manufacturing and assembly is localized. This not only bolsters the national economy but allows us to maintain absolute, uncompromised control over the quality of every steel girder, every solar panel, and every smart sensor deployed in our projects.",
   
-  // Director's Vision
-  directorQuote: "True infrastructure doesn't just occupy space—it elevates the community. Our goal is to ensure that every municipality, regardless of its size, has access to world-class, sustainable technology.",
-  director: "Dinesh Anand",
-  directorTitle: "Managing Director",
+  // Directors' Vision
+  directors: [
+    {
+      name: "Dinesh Anand",
+      title: "Managing Director",
+      quote: "True infrastructure doesn't just occupy space—it elevates the community. Our goal is to ensure that every municipality, regardless of its size, has access to world-class, sustainable technology.",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Keshav Yendait",
+      title: "Director",
+      quote: "Engineering innovation and sustainability are the cornerstones of modern development. We strive to create robust solutions that empower communities and protect the environment for future generations.",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80",
+    }
+  ],
 
   phone: "+91 80076 29969",
   email: "info@irasynergy.com",
