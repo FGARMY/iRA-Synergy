@@ -13,60 +13,31 @@ export const teamMembers: TeamMember[] = [
 ];
 
 export const certifications: Certification[] = [
-  {
-    id: "cert-1",
-    name: "ISO 9001:2015",
-    shortName: "ISO 9001",
-    description: "Quality Management System certification ensuring consistent quality in products and services.",
-    icon: "Shield",
-    logo: "/images/certifications/iso-9001.svg",
-    issuer: "International Organization for Standardization",
-  },
-  {
-    id: "cert-2",
-    name: "ISO 14001:2015",
-    shortName: "ISO 14001",
-    description: "Environmental Management System certification demonstrating commitment to environmental responsibility.",
-    icon: "Leaf",
-    logo: "/images/certifications/iso-14001.svg",
-    issuer: "International Organization for Standardization",
-  },
-  {
-    id: "cert-3",
-    name: "GST Registered",
-    shortName: "GST",
-    description: "Goods and Services Tax registration for compliant business operations across India.",
-    icon: "FileCheck",
-    logo: "/images/certifications/gst.svg",
-    issuer: "Government of India",
-  },
-  {
-    id: "cert-4",
-    name: "GeM Registered",
-    shortName: "GeM",
-    description: "Government e-Marketplace registration enabling direct procurement by government departments.",
-    icon: "Building2",
-    logo: "/images/certifications/gem.svg",
-    issuer: "Government of India",
-  },
-  {
-    id: "cert-5",
-    name: "MSME Registered",
-    shortName: "MSME",
-    description: "Micro, Small & Medium Enterprise registration under the MSME Development Act.",
-    icon: "Award",
-    logo: "/images/certifications/msme.svg",
-    issuer: "Ministry of MSME, Government of India",
-  },
-  {
-    id: "cert-6",
-    name: "Startup India Recognized",
-    shortName: "Startup India",
-    description: "DPIIT recognized startup promoting innovation and industrial development.",
-    icon: "Rocket",
-    logo: "/images/certifications/startup-india.svg",
-    issuer: "Department for Promotion of Industry and Internal Trade",
-  },
+  { id: "cert-1", name: "ISO 9001:2015", shortName: "ISO 9001", description: "Quality Management System", icon: "Shield", issuer: "ISO" },
+  { id: "cert-2", name: "OHSAS 18001:2007", shortName: "OHSAS 18001", description: "Occupational Health and Safety", icon: "ShieldCheck", issuer: "ISO" },
+  { id: "cert-3", name: "ISO 14001:2015", shortName: "ISO 14001", description: "Environmental Management", icon: "Leaf", issuer: "ISO" },
+  { id: "cert-4", name: "ISO 45001:2018", shortName: "ISO 45001", description: "Occupational Health & Safety", icon: "Shield", issuer: "ISO" },
+  { id: "cert-5", name: "Maharashtra Pollution Control Board", shortName: "MPCB", description: "Pollution Control Compliance", icon: "Leaf", issuer: "MPCB" },
+  { id: "cert-6", name: "CMMI Maturity Level 5", shortName: "CMMI L5", description: "Capability Maturity Model Integration", icon: "Award", issuer: "CMMI Institute" },
+  { id: "cert-7", name: "NABL", shortName: "NABL", description: "Testing and Calibration Laboratories", icon: "FileCheck", issuer: "NABL" },
+  { id: "cert-8", name: "CE Certificate", shortName: "CE", description: "Conformitè Europëenne", icon: "Award", issuer: "EU" },
+  { id: "cert-9", name: "NSIC", shortName: "NSIC", description: "National Small Industries Corporation", icon: "Building2", issuer: "Government of India" },
+  { id: "cert-10", name: "DIC", shortName: "DIC", description: "District Industries Centre", icon: "Building2", issuer: "Government of India" },
+  { id: "cert-11", name: "ZED Silver", shortName: "ZED Silver", description: "Zero Defect Zero Effect", icon: "Award", issuer: "MSME" },
+  { id: "cert-12", name: "MSME Registered", shortName: "MSME", description: "Micro, Small & Medium Enterprise", icon: "Award", issuer: "Government of India" },
+  { id: "cert-13", name: "GMP Certified", shortName: "GMP", description: "Good Manufacturing Practices", icon: "FileCheck", issuer: "WHO" },
+  { id: "cert-14", name: "Government of India", shortName: "Govt of India", description: "Government of India Recognized", icon: "Building2", issuer: "Government of India" },
+  { id: "cert-15", name: "GeM Registered", shortName: "GeM", description: "Government e-Marketplace", icon: "Building2", issuer: "Government of India" },
+  { id: "cert-16", name: "IEC", shortName: "IEC", description: "Import Export Code", icon: "FileCheck", issuer: "DGFT" },
+  { id: "cert-17", name: "Central Vigilance Commission", shortName: "CVC", description: "Integrity Pledge", icon: "ShieldCheck", issuer: "CVC" }
+];
+
+export const platforms = [
+  { id: "plat-1", name: "GeM", logo: "Building2" },
+  { id: "plat-2", name: "IndiaMART", logo: "Building2" },
+  { id: "plat-3", name: "Trade India", logo: "Building2" },
+  { id: "plat-4", name: "Google My Business", logo: "Building2" },
+  { id: "plat-5", name: "Amazon", logo: "Building2" },
 ];
 
 export const coreValues: CoreValue[] = [

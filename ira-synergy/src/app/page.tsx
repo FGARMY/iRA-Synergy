@@ -8,6 +8,7 @@ const StatsBanner = dynamic(() => import("@/components/StatsBanner"));
 const FeaturedProducts = dynamic(() => import("@/components/FeaturedProducts"));
 const Gallery = dynamic(() => import("@/components/Gallery"));
 const BusinessInfo = dynamic(() => import("@/components/BusinessInfo"));
+const TrustSection = dynamic(() => import("@/components/TrustSection"));
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         <Hero />
+        <TrustSection />
         <Solutions />
         <StatsBanner />
         <FeaturedProducts />

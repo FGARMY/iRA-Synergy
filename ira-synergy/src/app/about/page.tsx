@@ -7,7 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import CTABanner from "@/components/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CountUp from "@/components/ui/CountUp";
-import { companyInfo, certifications, coreValues, companyStats } from "@/data/company";
+import { companyInfo, certifications, coreValues, companyStats, platforms } from "@/data/company";
 
 export const metadata: Metadata = {
   title: "About | iRA Synergy - Heavy Infrastructure",
@@ -19,7 +19,7 @@ const valueIcons: Record<string, React.ElementType> = {
 };
 
 const certIcons: Record<string, React.ElementType> = {
-  Shield, Leaf, FileCheck, Building2, Rocket, Award
+  Shield, Leaf, FileCheck, Building2, Rocket, Award, ShieldCheck
 };
 
 const statIcons: Record<string, React.ElementType> = {
@@ -181,28 +181,17 @@ export default function AboutPage() {
                 </ScrollReveal>
               </div>
             </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-              {certifications.map((cert, idx) => {
-                const Icon = certIcons[cert.icon] || FileCheck;
-                return (
-                  <ScrollReveal key={cert.id} delay={idx * 50}>
-                    <div className="bg-white border border-gray-100 rounded-2xl p-6 text-center hover:shadow-xl hover:border-ira-primary/30 transition-all duration-300 h-full flex flex-col items-center justify-center group cursor-default">
-                      <div className="relative w-full h-16 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
-                        {cert.logo ? (
-                          <Image src={cert.logo} alt={cert.shortName} fill className="object-contain" />
-                        ) : (
-                          <div className="w-12 h-12 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 group-hover:text-ira-primary">
-                            <Icon size={20} />
-                          </div>
-                        )}
-                      </div>
-                      <h4 className="font-bold text-gray-900 text-sm mt-auto">{cert.shortName}</h4>
-                    </div>
-                  </ScrollReveal>
-                )
-              })}
-            </div>
+            <ScrollReveal delay={200}>
+              <div className="w-full relative rounded-3xl overflow-hidden bg-white flex items-center justify-center py-8">
+                <Image 
+                  src="/images/certifications-collage.jpeg" 
+                  alt="iRA Synergy Certifications and Platforms" 
+                  width={1200}
+                  height={1200}
+                  className="w-full max-w-5xl h-auto object-contain"
+                />
+              </div>
+            </ScrollReveal>
 
           </div>
         </section>
