@@ -107,7 +107,7 @@ export const companyInfo = {
       name: "Dinesh Anand",
       title: "Managing Director",
       quote: "True infrastructure doesn't just occupy space—it elevates the community. Our goal is to ensure that every municipality, regardless of its size, has access to world-class, sustainable technology.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80",
+      image: "/images/team/dinesh-anand.jpg",
     },
     {
       name: "Keshav Yendait",
