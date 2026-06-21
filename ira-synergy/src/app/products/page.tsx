@@ -92,16 +92,24 @@ export default function ProductsCatalog() {
                 <ScrollReveal key={product.id} delay={Math.min(idx * 50, 400)}>
                   <Link href={`/products/${product.slug}`} className="group block h-full">
                     <div className="relative h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-premium card-hover">
-                      <div className={`relative h-40 ${catColor} flex items-center justify-center overflow-hidden`}>
-                        <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-transparent" />
+                      <div className={`relative h-40 ${product.images && product.images.length > 0 ? "bg-white" : catColor} flex items-center justify-center overflow-hidden`}>
+                        <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent" />
                         <div className="absolute inset-0 pattern-grid opacity-20" />
-                        <CatIcon size={48} className="text-white/25 relative z-10" strokeWidth={1} />
+                        {product.images && product.images.length > 0 ? (
+                          <img 
+                            src={product.images[0]} 
+                            alt={product.name} 
+                            className="w-full h-full object-contain p-2 relative z-10"
+                          />
+                        ) : (
+                          <CatIcon size={48} className="text-white/25 relative z-10" strokeWidth={1} />
+                        )}
                         {product.badge && (
-                          <span className="absolute top-3 left-3 z-20 px-2.5 py-0.5 rounded-full text-xs font-bold bg-white text-gray-900 shadow-md">
+                          <span className="absolute top-3 left-3 z-20 px-2.5 py-0.5 rounded-full text-xs font-bold bg-ira-accent text-white shadow-md">
                             {product.badge}
                           </span>
                         )}
-                        <span className="absolute bottom-3 left-3 z-20 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-black/40 text-white backdrop-blur-sm">
+                        <span className="absolute bottom-3 left-3 z-20 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-black/50 text-white backdrop-blur-sm">
                           {product.category}
                         </span>
                       </div>

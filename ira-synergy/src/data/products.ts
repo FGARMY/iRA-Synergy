@@ -608,6 +608,45 @@ export const products: Product[] = [
     inStock: true,
     relatedProductSlugs: ["screening-machine", "pet-bottle-crusher"],
   },
+  {
+    id: "p-21-fatka",
+    slug: "plastic-dust-remover-fatka-machine",
+    name: "Plastic Dust Remover Machine (Fatka Machine)",
+    category: "Waste Management",
+    description:
+      "The Plastic Dust Remover Machine (Fatka Machine) is high-performance industrial equipment designed to separate and remove dust, dirt, and impurities from plastic waste. With a robust 10 HP motor and a processing capacity of 500-800 kg/hr, it ensures clean plastic output ready for recycling.\n\n**Detailed Review:** The PD-FATKA-2024 model stands out for its exceptional build quality and efficiency. Operating at 1440 RPM, it rigorously cleans plastic flakes while maintaining low maintenance costs due to its sturdy Mild Steel construction. It's an indispensable asset for large-scale recycling operations looking to upgrade their material purity and throughput. Users report high satisfaction with the consistent output and ruggedness of this machine.",
+    shortDescription: "Industrial machine for removing dust and impurities from plastic waste",
+    features: [
+      "High capacity dust removal (500-800 kg/hr)",
+      "Robust 10 HP (7.5 kW) motor",
+      "Fast rotation speed at 1440 RPM",
+      "Heavy-duty Mild Steel construction",
+      "Efficient separation of dirt from plastic flakes",
+      "Low maintenance and high durability",
+    ],
+    specs: [
+      { label: "Model", value: "PD-FATKA-2024" },
+      { label: "Machine Type", value: "Plastic Dust Remover (Fatka Machine)" },
+      { label: "Capacity", value: "500 - 800 kg/hr" },
+      { label: "Motor Power", value: "10 HP / 7.5 kW" },
+      { label: "Rotation Speed", value: "1440 RPM" },
+      { label: "Construction Material", value: "Mild Steel" },
+      { label: "Dimensions", value: "2100 x 800 x 1600 mm" },
+      { label: "Weight", value: "Approx. 350 kg" },
+    ],
+    certifications: ["ISO 9001:2015"],
+    images: [
+      "/images/products/fatka-machine/angle-4.jpg",
+      "/images/products/fatka-machine/angle-5.jpg",
+      "/images/products/fatka-machine/angle-3.jpg",
+      "/images/products/fatka-machine/angle-1.jpg",
+      "/images/products/fatka-machine/angle-2.jpg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "New",
+    relatedProductSlugs: ["pet-bottle-crusher", "shredding-machine"],
+  },
 
   // ===== PUBLIC HEALTH =====
   {

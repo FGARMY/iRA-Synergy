@@ -55,7 +55,7 @@ export default async function ProductDetailPage({
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            {/* Product Image */}
+            {/* Product Image Gallery */}
             <ScrollReveal variant="left">
               <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl aspect-square flex items-center justify-center relative overflow-hidden border border-gray-100">
                 <div className="absolute inset-0 pattern-grid opacity-30" />
@@ -64,11 +64,32 @@ export default async function ProductDetailPage({
                     {product.badge}
                   </span>
                 )}
-                <div className="text-center relative z-10">
-                  <ShoppingCart size={80} className="text-gray-300 mx-auto mb-4" strokeWidth={1} />
-                  <p className="text-sm text-gray-400">Product Image</p>
-                </div>
+                {product.images && product.images.length > 0 ? (
+                  <img 
+                    src={product.images[0]} 
+                    alt={product.name} 
+                    className="w-full h-full object-contain relative z-10 p-4"
+                  />
+                ) : (
+                  <div className="text-center relative z-10">
+                    <ShoppingCart size={80} className="text-gray-300 mx-auto mb-4" strokeWidth={1} />
+                    <p className="text-sm text-gray-400">Product Image</p>
+                  </div>
+                )}
               </div>
+              {product.images && product.images.length > 1 && (
+                <div className="flex gap-3 mt-4 overflow-x-auto pb-2 custom-scrollbar">
+                  {product.images.map((img, idx) => (
+                    <div key={idx} className="w-24 h-24 flex-shrink-0 bg-white rounded-xl border border-gray-100 overflow-hidden flex items-center justify-center">
+                      <img 
+                        src={img} 
+                        alt={`${product.name} angle ${idx + 1}`} 
+                        className="w-full h-full object-contain p-1" 
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </ScrollReveal>
 
             {/* Product Info */}
