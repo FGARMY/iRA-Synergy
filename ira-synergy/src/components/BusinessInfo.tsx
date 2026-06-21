@@ -20,10 +20,18 @@ const features = [
   { name: "Made in India", icon: Lightbulb },
   { name: "Installation Support", icon: Settings },
   { name: "Reliable Performance", icon: ShieldCheck },
-  { name: "Annual Maintenance", icon: Wrench }, 
+  { name: "Annual Maintenance", icon: Wrench },
   { name: "Quality Assured", icon: Award },
   { name: "Eco-Friendly Solutions", icon: ShieldCheck },
   { name: "AMC Support", icon: Settings },
+];
+
+const initiativeLogos = [
+  { url: "/images/smart-city-logo.jpg", className: "w-32 h-24 sm:w-48 sm:h-32" },
+  { url: "/images/swatch-bharat.png", className: "w-20 h-16 sm:w-32 sm:h-20" },
+  { url: "/images/digital-india-logo.png", className: "w-20 h-16 sm:w-32 sm:h-20" },
+  { url: "/images/Fit-India-logo.png", className: "w-20 h-16 sm:w-32 sm:h-20" },
+  { url: "/images/MakeinIndia-logo.png", className: "w-20 h-16 sm:w-32 sm:h-20" }
 ];
 
 export default function BusinessInfo() {
@@ -32,10 +40,10 @@ export default function BusinessInfo() {
   return (
     <section className="py-12 bg-[#fafafa]">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6">
-        
+
         {/* ROW 1: Three Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1.5fr] gap-6">
-          
+
           {/* Card 1: Industries We Serve */}
           <ScrollReveal>
             <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)] h-full">
@@ -87,7 +95,7 @@ export default function BusinessInfo() {
                 <div className="grid grid-cols-2 gap-2 sm:gap-4 h-[280px] sm:h-full min-h-[240px]">
                   {displayProjects.map((project, i) => (
                     <Link href="/projects" key={i} className="relative group overflow-hidden rounded-xl shadow-sm border border-gray-200/50 block w-full h-full">
-                      <Image 
+                      <Image
                         src={project.images && project.images.length > 0 ? project.images[0] : "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=400"}
                         alt={project.title}
                         fill
@@ -95,7 +103,7 @@ export default function BusinessInfo() {
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A3D24]/90 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      
+
                       <div className="absolute inset-0 p-3 sm:p-4 flex flex-col justify-end">
                         <h4 className="text-white text-xs sm:text-sm font-bold leading-tight line-clamp-2 drop-shadow-md group-hover:text-green-300 transition-colors">
                           {project.title.split('—')[0]}
@@ -117,12 +125,12 @@ export default function BusinessInfo() {
         <div className="hidden md:block">
           <ScrollReveal delay={100}>
             <div className="bg-[#f4fbf4] rounded-xl border border-[#e8f5e8] py-6 px-8 flex items-center justify-between gap-4 divide-x divide-gray-200/50 shadow-sm">
-              
+
               <div className="flex items-center gap-4 flex-1 pr-4">
                 <Leaf size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
                 <div>
                   <h3 className="text-sm font-bold text-gray-900 uppercase">SUSTAINABLE SOLUTIONS</h3>
-                  <p className="text-xs text-gray-600">Eco-friendly products for<br/>a better tomorrow</p>
+                  <p className="text-xs text-gray-600">Eco-friendly products for<br />a better tomorrow</p>
                 </div>
               </div>
 
@@ -130,7 +138,7 @@ export default function BusinessInfo() {
                 <ShieldCheck size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
                 <div>
                   <h3 className="text-sm font-bold text-gray-900 uppercase">QUALITY ASSURANCE</h3>
-                  <p className="text-xs text-gray-600">Tested. Trusted.<br/>Built to last.</p>
+                  <p className="text-xs text-gray-600">Tested. Trusted.<br />Built to last.</p>
                 </div>
               </div>
 
@@ -138,7 +146,7 @@ export default function BusinessInfo() {
                 <Headset size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
                 <div>
                   <h3 className="text-sm font-bold text-gray-900 uppercase">END-TO-END SUPPORT</h3>
-                  <p className="text-xs text-gray-600">From consultation to<br/>maintenance</p>
+                  <p className="text-xs text-gray-600">From consultation to<br />maintenance</p>
                 </div>
               </div>
 
@@ -146,7 +154,7 @@ export default function BusinessInfo() {
                 <CheckCircle size={32} strokeWidth={1.5} className="text-ira-primary flex-shrink-0" />
                 <div>
                   <h3 className="text-sm font-bold text-gray-900 uppercase">MAKE IN INDIA</h3>
-                  <p className="text-xs text-gray-600">Proudly designed &<br/>manufactured in India</p>
+                  <p className="text-xs text-gray-600">Proudly designed &<br />manufactured in India</p>
                 </div>
               </div>
 
@@ -163,12 +171,18 @@ export default function BusinessInfo() {
                 <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-ira-primary rounded-full"></span>
               </h2>
             </div>
-            <div className="w-full flex justify-center mt-4">
-              <img 
-                src="/images/partner-logos-strip.jpg" 
-                alt="Government Initiatives and Partners" 
-                className="w-[110%] sm:w-full max-w-[1200px] h-auto object-contain mix-blend-multiply"
-              />
+            <div className="w-full mt-8 mb-4">
+              <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16">
+                {initiativeLogos.map((logo, idx) => (
+                  <div key={idx} className={`flex items-center justify-center ${logo.className}`}>
+                    <img
+                      src={logo.url}
+                      alt={`Initiative ${idx}`}
+                      className="max-w-full max-h-full object-contain mix-blend-multiply opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </ScrollReveal>
@@ -185,7 +199,7 @@ export default function BusinessInfo() {
                 <p className="text-xs text-gray-600 mt-1">Let&apos;s work together for a sustainable and developed India.</p>
               </div>
             </div>
-            
+
             <Link href="/contact" className="bg-[#1a4a23] hover:bg-[#0f2e15] text-white px-6 py-2.5 rounded text-xs font-bold transition-colors whitespace-nowrap flex items-center gap-2">
               GET IN TOUCH
               <ArrowRight size={14} />
