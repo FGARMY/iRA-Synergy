@@ -22,6 +22,8 @@ import {
   Dumbbell,
   GraduationCap,
   Share2,
+  X,
+  Maximize2,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -77,6 +79,8 @@ export default function ProductDetailPage({
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [zoomStyle, setZoomStyle] = useState<React.CSSProperties>({});
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [quoteSubmitted, setQuoteSubmitted] = useState(false);
   const [quoteForm, setQuoteForm] = useState({
     name: "",
@@ -123,10 +127,27 @@ export default function ProductDetailPage({
     setTimeout(() => setQuoteSubmitted(false), 6000);
   }
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setZoomStyle({
+      transformOrigin: `${x}% ${y}%`,
+      transform: "scale(2.5)",
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setZoomStyle({
+      transformOrigin: "center center",
+      transform: "scale(1)",
+    });
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
-      <main className="flex-grow pt-28 pb-16">
+      <main className="flex-grow pt-36 lg:pt-48 pb-16">
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <Breadcrumb
@@ -155,12 +176,25 @@ export default function ProductDetailPage({
                     <Flag size={10} className="text-orange-500" />
                     <span className="text-[9px] font-bold text-gray-700 uppercase">Make in India</span>
                   </div>
-                  <div className="aspect-[4/3] flex items-center justify-center p-6">
+                  <div 
+                    className="aspect-[4/3] flex items-center justify-center p-6 overflow-hidden cursor-crosshair relative"
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={() => setIsFullscreen(true)}
+                  >
+                    <button 
+                      className="absolute bottom-4 right-4 z-20 bg-white/80 backdrop-blur p-2 rounded-full shadow-sm text-gray-700 hover:text-ira-primary hover:bg-white transition-all opacity-0 group-hover:opacity-100"
+                      onClick={(e) => { e.stopPropagation(); setIsFullscreen(true); }}
+                      aria-label="View fullscreen"
+                    >
+                      <Maximize2 size={16} />
+                    </button>
                     {product.images && product.images.length > 0 ? (
                       <img
                         src={product.images[activeImageIndex] || product.images[0]}
                         alt={`${product.name} - View ${activeImageIndex + 1}`}
-                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-200 ease-out"
+                        style={zoomStyle}
                       />
                     ) : (
                       <CatIcon size={80} className="text-gray-200" strokeWidth={1} />
@@ -506,6 +540,28 @@ export default function ProductDetailPage({
       </main>
       <Footer />
       <WhatsAppButton />
+
+      {/* Fullscreen Image Popup */}
+      {isFullscreen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm">
+          <button
+            onClick={() => setIsFullscreen(false)}
+            className="absolute top-6 right-6 text-white/70 hover:text-white p-2 bg-black/50 hover:bg-black/80 rounded-full transition-all"
+            aria-label="Close fullscreen"
+          >
+            <X size={24} />
+          </button>
+          
+          <div className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center p-4" onClick={() => setIsFullscreen(false)}>
+            <img
+              src={product.images[activeImageIndex] || product.images[0]}
+              alt={`${product.name} fullscreen`}
+              className="max-w-full max-h-full object-contain cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

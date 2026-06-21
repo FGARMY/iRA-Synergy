@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, MessageCircle, Send, Shield, Flag, Building2, Zap, Recycle, HeartPulse, Dumbbell, GraduationCap, CheckCircle2 } from "lucide-react";
 import { type Product } from "@/types";
 import { companyInfo } from "@/data/company";
@@ -24,6 +25,7 @@ const badgeStyles: Record<string, string> = {
 };
 
 export default function ProductCard({ product }: { product: Product }) {
+  const router = useRouter();
   const CatIcon = categoryIcons[product.category] || Building2;
   const topSpecs = product.specs.slice(0, 3);
 
@@ -32,7 +34,10 @@ export default function ProductCard({ product }: { product: Product }) {
   );
 
   return (
-    <div className="group relative h-full bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-ira-primary/30 transition-all duration-300 hover:shadow-premium flex flex-col">
+    <div 
+      onClick={() => router.push(`/products/${product.slug}`)}
+      className="group relative h-full bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-ira-primary/30 transition-all duration-300 hover:shadow-premium flex flex-col cursor-pointer"
+    >
       {/* Image Section */}
       <div className="relative h-52 bg-gray-50 overflow-hidden border-b border-gray-100">
         {product.images && product.images.length > 0 ? (
@@ -117,7 +122,7 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex gap-2">
+          <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
             <Link
               href={`/contact?product=${encodeURIComponent(product.name)}`}
               className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-ira-primary hover:bg-ira-primary-dark text-white text-xs font-bold rounded transition-colors"
