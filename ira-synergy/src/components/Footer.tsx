@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="mb-4 sm:mb-6 inline-block rounded-xl overflow-hidden shadow-lg bg-white p-2 sm:p-3 transition-transform hover:scale-105">
               <img 
-                src="/images/logo.jpg" 
+                src="/images/Only_Symbol.jpeg" 
                 alt="iRA Synergy Logo" 
                 className="h-16 sm:h-24 w-auto object-contain"
               />
