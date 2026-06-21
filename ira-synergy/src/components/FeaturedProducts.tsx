@@ -2,23 +2,15 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 import { getFeaturedProducts } from "@/data/products";
 
 export default function FeaturedProducts() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const featuredProducts = getFeaturedProducts();
-
-  const fallbackImages = [
-    "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=600&auto=format&fit=crop", // solar 
-    "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=600&auto=format&fit=crop", // waste bin
-    "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=600&auto=format&fit=crop", // engineering
-    "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=600&auto=format&fit=crop", // architecture/city
-    "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=600&auto=format&fit=crop", // clean energy
-    "https://images.unsplash.com/photo-1520190282873-afe1285c9af2?q=80&w=600&auto=format&fit=crop", // public tech
-  ];
-
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const { current } = scrollContainerRef;
@@ -69,15 +61,20 @@ export default function FeaturedProducts() {
           >
             {featuredProducts.map((product, idx) => (
               <ScrollReveal key={product.id} delay={idx * 100} className="snap-start shrink-0 w-[240px] md:w-[260px]">
-                <div className="bg-white rounded-lg border border-gray-100 shadow-sm h-full flex flex-col hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                <div 
+                  onClick={() => router.push(`/products/${product.slug}`)}
+                  className="bg-white rounded-lg border border-gray-100 shadow-sm h-full flex flex-col hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
+                >
                   {/* Product Image Area */}
-                  <div className="h-40 bg-gray-100 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-ira-primary/5 group-hover:bg-transparent transition-colors z-10" />
-                    <img 
-                      src={product.images[0].startsWith("/") ? fallbackImages[idx % fallbackImages.length] : product.images[0]} 
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                  <div className="h-40 bg-gray-50 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-ira-primary/5 group-hover:bg-transparent transition-colors z-10 pointer-events-none" />
+                    {product.images && product.images.length > 0 && (
+                      <img 
+                        src={product.images[0]} 
+                        alt={product.name}
+                        className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                      />
+                    )}
                   </div>
                   
                   {/* Content */}
@@ -95,13 +92,13 @@ export default function FeaturedProducts() {
                       ))}
                     </ul>
                     
-                    <Link 
-                      href={`/products/${product.slug}`}
+                    <div 
+                      onClick={(e) => { e.stopPropagation(); router.push(`/products/${product.slug}`); }}
                       className="w-full py-2 border border-gray-200 hover:border-ira-accent text-gray-700 hover:bg-ira-accent hover:text-white transition-all duration-300 rounded text-xs font-bold text-center flex items-center justify-center gap-1"
                     >
                       VIEW DETAILS
                       <ArrowRight size={14} />
-                    </Link>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
