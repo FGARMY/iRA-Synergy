@@ -83,14 +83,9 @@ export default function FeaturedProducts() {
                       {product.name}
                     </h3>
                     
-                    <ul className="space-y-2 mb-6 flex-grow">
-                      {product.features.slice(0, 4).map((feature, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 size={16} className="text-ira-accent mt-0.5 flex-shrink-0" />
-                          <span className="text-xs text-gray-600 leading-tight">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-sm text-gray-600 mb-6 flex-grow line-clamp-2 text-center">
+                      {product.shortDescription}
+                    </p>
                     
                     <div 
                       onClick={(e) => { e.stopPropagation(); router.push(`/products/${product.slug}`); }}
