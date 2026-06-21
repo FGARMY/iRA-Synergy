@@ -26,7 +26,7 @@ const partners = [
 ];
 
 const partnerLogos = [
-  "/images/clients/01_client.jpg",
+  "/images/clients/01_client.png",
   "/images/clients/02_client.png",
   "/images/clients/03_client.png",
   "/images/clients/04_client.png",
