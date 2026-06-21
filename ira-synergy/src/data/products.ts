@@ -35,6 +35,42 @@ export const products: Product[] = [
     inStock: true,
     badge: "Smart City",
     relatedProductSlugs: [],
+  },
+  {
+    id: "p-9",
+    slug: "food-trolly",
+    name: "Food Trolly",
+    category: "Waste Management",
+    description:
+      "Heavy-duty mobile food trolleys designed for municipal waste management, large-scale community kitchens, hospitals, and industrial canteens. Built with high-grade stainless steel, these trolleys ensure hygienic and efficient transportation of bulk food or food waste.",
+    shortDescription: "Heavy-duty stainless steel mobile food & waste trolleys",
+    features: [
+      "Food-grade SS 304 construction",
+      "Heavy-duty caster wheels with locking mechanism",
+      "Leak-proof seamless welding",
+      "Easy-grip ergonomic handles",
+      "High load-bearing capacity",
+      "Corrosion and rust resistant",
+    ],
+    specs: [
+      { label: "Material", value: "Stainless Steel 304" },
+      { label: "Capacity", value: "100L - 500L options" },
+      { label: "Wheels", value: "4x Heavy-Duty Swivel Casters" },
+      { label: "Design", value: "Seamless, Leak-Proof" },
+      { label: "Application", value: "Food Transport & Waste Management" },
+      { label: "Warranty", value: "1 Year" },
+    ],
+    certifications: ["ISO 9001:2015", "Make in India"],
+    images: [
+      "/images/products/food_trolley/ft_1.jpg",
+      "/images/products/food_trolley/ft_2.jpg",
+      "/images/products/food_trolley/ft_3.jpg",
+      "/images/products/food_trolley/ft_4.jpg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "New",
+    relatedProductSlugs: ["solar-smart-bench"],
   }
 ];
 
