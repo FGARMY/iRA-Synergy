@@ -99,8 +99,8 @@ export const products: Product[] = [
     ],
     certifications: [],
     images: [
+      "/images/products/composter/composter_2.png",
       "/images/products/composter/composter_1.png",
-      "/images/products/composter/composter_2.png"
     ],
     price: "On Request",
     inStock: true,
@@ -132,10 +132,10 @@ export const products: Product[] = [
     ],
     certifications: ["ISO 14001:2015", "CPCB Compliant", "Made in India"],
     images: [
-      "/images/products/incinerator/3_1.png",
       "/images/products/incinerator/3_2.png",
       "/images/products/incinerator/3_3.png",
-      "/images/products/incinerator/3_4.png"
+      "/images/products/incinerator/3_4.png",
+      "/images/products/incinerator/3_1.png"
     ],
     price: "On Request",
     inStock: true,
