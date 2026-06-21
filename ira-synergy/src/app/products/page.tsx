@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { ArrowRight, Search, Zap, Recycle, Building2, HeartPulse, Dumbbell, GraduationCap } from "lucide-react";
+import { Search, Building2, Zap, Recycle, HeartPulse, Dumbbell, GraduationCap, SlidersHorizontal, LayoutGrid, List } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import CategoryFilter from "@/components/ui/CategoryFilter";
+import ProductCard from "@/components/ProductCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { products, productCategories } from "@/data/products";
 
@@ -19,15 +18,6 @@ const categoryIcons: Record<string, React.ElementType> = {
   "Education": GraduationCap,
 };
 
-const categoryColors: Record<string, string> = {
-  "Smart City": "bg-cat-smartcity",
-  "Renewable Energy": "bg-cat-renewable",
-  "Waste Management": "bg-cat-waste",
-  "Public Health": "bg-cat-health",
-  "Fitness": "bg-cat-fitness",
-  "Education": "bg-cat-education",
-};
-
 export default function ProductsCatalog() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -37,111 +27,111 @@ export default function ProductsCatalog() {
     const matchesSearch =
       searchQuery === "" ||
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
+      p.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
+  // Count products per category
+  const categoryCounts: Record<string, number> = { All: products.length };
+  productCategories.forEach((cat) => {
+    categoryCounts[cat] = products.filter((p) => p.category === cat).length;
+  });
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
       <main className="flex-grow pt-28 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="mb-10">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
+        {/* Page Header */}
+        <div className="bg-ira-primary-dark relative overflow-hidden">
+          <div className="absolute inset-0 pattern-grid opacity-10" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">
               Products & Equipment
             </h1>
-            <p className="text-lg text-gray-500 max-w-2xl">
-              Browse our complete catalog of {products.length}+ products across {productCategories.length} categories.
+            <p className="text-white/70 max-w-2xl text-sm md:text-base">
+              Browse our complete catalog of {products.length}+ certified products across {productCategories.length} categories.
               All products are designed, manufactured, and assembled in India.
             </p>
-          </div>
 
-          {/* Search + Filters */}
-          <div className="flex flex-col gap-4 mb-10">
-            <div className="relative max-w-md">
+            {/* Search Bar */}
+            <div className="mt-6 relative max-w-lg">
               <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search products..."
+                placeholder="Search by product name, category, or keyword..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:border-ira-primary focus:ring-2 focus:ring-ira-primary/10 outline-none transition-all"
+                className="w-full pl-11 pr-4 py-3 rounded-lg border-0 bg-white text-sm focus:ring-2 focus:ring-ira-accent outline-none shadow-lg"
               />
             </div>
-            <CategoryFilter
-              categories={productCategories}
-              active={activeCategory}
-              onChange={setActiveCategory}
-            />
           </div>
+        </div>
 
-          {/* Results count */}
-          <p className="text-sm text-gray-400 mb-6">
-            Showing {filtered.length} product{filtered.length !== 1 ? "s" : ""}
-            {activeCategory !== "All" && ` in ${activeCategory}`}
-          </p>
-
-          {/* Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filtered.map((product, idx) => {
-              const CatIcon = categoryIcons[product.category] || Building2;
-              const catColor = categoryColors[product.category] || "bg-gray-600";
-
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+          {/* Category Filters */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-4 hide-scrollbar -mx-1 px-1">
+            <button
+              onClick={() => setActiveCategory("All")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all border ${
+                activeCategory === "All"
+                  ? "bg-ira-primary text-white border-ira-primary shadow-md"
+                  : "bg-white text-gray-600 border-gray-200 hover:border-ira-primary/30 hover:text-ira-primary"
+              }`}
+            >
+              <SlidersHorizontal size={14} />
+              All ({categoryCounts.All})
+            </button>
+            {productCategories.map((cat) => {
+              const Icon = categoryIcons[cat] || Building2;
               return (
-                <ScrollReveal key={product.id} delay={Math.min(idx * 50, 400)}>
-                  <Link href={`/products/${product.slug}`} className="group block h-full">
-                    <div className="relative h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-premium card-hover">
-                      <div className={`relative h-40 ${product.images && product.images.length > 0 ? "bg-white" : catColor} flex items-center justify-center overflow-hidden`}>
-                        <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent" />
-                        <div className="absolute inset-0 pattern-grid opacity-20" />
-                        {product.images && product.images.length > 0 ? (
-                          <img 
-                            src={product.images[0]} 
-                            alt={product.name} 
-                            className="w-full h-full object-contain p-2 relative z-10"
-                          />
-                        ) : (
-                          <CatIcon size={48} className="text-white/25 relative z-10" strokeWidth={1} />
-                        )}
-                        {product.badge && (
-                          <span className="absolute top-3 left-3 z-20 px-2.5 py-0.5 rounded-full text-xs font-bold bg-ira-accent text-white shadow-md">
-                            {product.badge}
-                          </span>
-                        )}
-                        <span className="absolute bottom-3 left-3 z-20 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-black/50 text-white backdrop-blur-sm">
-                          {product.category}
-                        </span>
-                      </div>
-                      <div className="p-4">
-                        <h3 className="text-sm font-bold text-gray-900 mb-1.5 group-hover:text-ira-primary transition-colors line-clamp-2 leading-snug">
-                          {product.name}
-                        </h3>
-                        <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 mb-3">
-                          {product.shortDescription}
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs text-gray-400">{product.certifications[0]}</span>
-                          <span className="flex items-center gap-1 text-ira-primary text-xs font-semibold">
-                            View <ArrowRight size={12} />
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </ScrollReveal>
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all border ${
+                    activeCategory === cat
+                      ? "bg-ira-primary text-white border-ira-primary shadow-md"
+                      : "bg-white text-gray-600 border-gray-200 hover:border-ira-primary/30 hover:text-ira-primary"
+                  }`}
+                >
+                  <Icon size={14} />
+                  {cat} ({categoryCounts[cat]})
+                </button>
               );
             })}
           </div>
 
+          {/* Results Info */}
+          <div className="flex items-center justify-between py-4 border-b border-gray-200 mb-6">
+            <p className="text-sm text-gray-500">
+              Showing <span className="font-bold text-gray-800">{filtered.length}</span> product{filtered.length !== 1 ? "s" : ""}
+              {activeCategory !== "All" && (
+                <span> in <span className="font-semibold text-ira-primary">{activeCategory}</span></span>
+              )}
+            </p>
+          </div>
+
+          {/* Product Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {filtered.map((product, idx) => (
+              <ScrollReveal key={product.id} delay={Math.min(idx * 40, 320)}>
+                <ProductCard product={product} />
+              </ScrollReveal>
+            ))}
+          </div>
+
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-400 text-lg">No products found matching your criteria.</p>
+              <div className="w-16 h-16 mx-auto rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <Search size={24} className="text-gray-300" />
+              </div>
+              <p className="text-gray-400 text-lg mb-2">No products found</p>
+              <p className="text-gray-400 text-sm mb-4">Try a different search term or category</p>
               <button
                 onClick={() => { setActiveCategory("All"); setSearchQuery(""); }}
-                className="mt-4 text-ira-primary font-semibold hover:underline"
+                className="text-ira-primary font-semibold hover:underline text-sm"
               >
-                Reset Filters
+                Reset All Filters
               </button>
             </div>
           )}
