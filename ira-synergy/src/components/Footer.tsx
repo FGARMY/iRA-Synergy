@@ -25,10 +25,10 @@ export default function Footer() {
   return (
     <footer className="bg-ira-primary-dark text-white pt-10 sm:pt-16 pb-16 md:pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 pb-8 sm:pb-12 border-b border-white/10">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-4 gap-y-8 sm:gap-8 lg:gap-12 pb-8 sm:pb-12 border-b border-white/10">
           
           {/* Column 1: Brand & Info */}
-          <div className="lg:col-span-1">
+          <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="mb-4 sm:mb-6 inline-block rounded-xl overflow-hidden shadow-lg bg-white p-2 sm:p-3 transition-transform hover:scale-105">
               <img 
                 src="/images/Only_Symbol.jpeg" 
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="lg:col-span-1">
+          <div className="col-span-1 lg:col-span-1">
             <h3 className="text-sm font-bold uppercase tracking-wider mb-4 sm:mb-6">QUICK LINKS</h3>
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
@@ -63,14 +63,31 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contact Us */}
-          <div className="lg:col-span-1">
+          {/* Column 3: Download Center (Moved to be beside Quick Links on Mobile) */}
+          <div className="col-span-1 lg:col-span-1">
+            <h3 className="text-sm font-bold uppercase tracking-wider mb-4 sm:mb-6">DOWNLOADS</h3>
+            <ul className="space-y-3 sm:space-y-4">
+              {downloads.map((item, i) => (
+                <li key={i}>
+                  <a href={item.file} className="flex flex-col sm:flex-row sm:items-center sm:justify-between group gap-1">
+                    <div className="flex items-center gap-2 text-[11px] sm:text-xs text-gray-300 group-hover:text-ira-accent transition-colors">
+                      <FileText size={14} className="text-ira-accent flex-shrink-0" />
+                      <span className="truncate leading-tight">{item.label}</span>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Contact Us */}
+          <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <h3 className="text-sm font-bold uppercase tracking-wider mb-4 sm:mb-6">CONTACT US</h3>
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-ira-accent flex-shrink-0 mt-0.5" />
                 <span className="text-[11px] sm:text-xs text-gray-300 leading-relaxed">
-                  Shop No. 4113, 4099 Roongta Shopping Hub, Near Hotel Sai Saya, Mumbai Agra Highway Road, Nashik, Maharashtra (India)
+                  Shop No. 4113, 4099 Roongta Shopping Hub, Near Hotel Sai Saya, Mumbai Agra Highway Road, Nashik, Maharashtra
                 </span>
               </li>
               <li className="flex flex-col gap-1.5 sm:gap-2">
@@ -91,10 +108,6 @@ export default function Footer() {
                   irasynergy2026@gmail.com
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <FileText size={16} className="text-ira-accent flex-shrink-0" />
-                <span className="text-[11px] sm:text-xs text-gray-300">GST No : 27AAICI9182Q1ZK</span>
-              </li>
             </ul>
             <a href={companyInfo.whatsapp} className="mt-4 sm:mt-6 w-full bg-[#25D366] hover:bg-[#128C7E] transition-colors text-white text-[11px] sm:text-xs font-bold py-2.5 rounded flex items-center justify-center gap-2">
               <MessageCircle size={16} />
@@ -102,30 +115,14 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Column 4: Download Center */}
-          <div className="lg:col-span-1">
-            <h3 className="text-sm font-bold uppercase tracking-wider mb-4 sm:mb-6">DOWNLOAD CENTER</h3>
-            <ul className="space-y-3 sm:space-y-4">
-              {downloads.map((item, i) => (
-                <li key={i}>
-                  <a href={item.file} className="flex items-center justify-between group">
-                    <div className="flex items-center gap-2 text-[11px] sm:text-xs text-gray-300 group-hover:text-ira-accent transition-colors">
-                      <FileText size={14} className="text-ira-accent flex-shrink-0" />
-                      <span className="truncate">{item.label}</span>
-                    </div>
-                    <span className="text-[9px] sm:text-[10px] text-gray-500 font-mono flex-shrink-0 ml-2">(PDF)</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Column 5: Enquiry Form */}
-          <div className="lg:col-span-1">
+          <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <h3 className="text-sm font-bold uppercase tracking-wider mb-4 sm:mb-6">ENQUIRY FORM</h3>
             <form className="space-y-2.5 sm:space-y-3">
-              <input type="text" placeholder="Your Name" className="w-full bg-white text-gray-900 text-[11px] sm:text-xs px-3 py-2 sm:py-2.5 rounded focus:outline-none focus:ring-2 focus:ring-ira-accent" />
-              <input type="tel" placeholder="Mobile Number" className="w-full bg-white text-gray-900 text-[11px] sm:text-xs px-3 py-2 sm:py-2.5 rounded focus:outline-none focus:ring-2 focus:ring-ira-accent" />
+              <div className="grid grid-cols-2 gap-2.5">
+                <input type="text" placeholder="Name" className="w-full bg-white text-gray-900 text-[11px] sm:text-xs px-3 py-2 sm:py-2.5 rounded focus:outline-none focus:ring-2 focus:ring-ira-accent" />
+                <input type="tel" placeholder="Mobile" className="w-full bg-white text-gray-900 text-[11px] sm:text-xs px-3 py-2 sm:py-2.5 rounded focus:outline-none focus:ring-2 focus:ring-ira-accent" />
+              </div>
               <input type="email" placeholder="Email Address" className="w-full bg-white text-gray-900 text-[11px] sm:text-xs px-3 py-2 sm:py-2.5 rounded focus:outline-none focus:ring-2 focus:ring-ira-accent" />
               <textarea placeholder="Your Message" rows={2} className="w-full bg-white text-gray-900 text-[11px] sm:text-xs px-3 py-2 sm:py-2.5 rounded focus:outline-none focus:ring-2 focus:ring-ira-accent resize-none"></textarea>
               <button type="button" className="w-full bg-ira-accent hover:bg-ira-accent-light transition-colors text-white text-[11px] sm:text-xs font-bold py-2 sm:py-2.5 rounded uppercase">
