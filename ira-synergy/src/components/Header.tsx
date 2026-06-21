@@ -38,11 +38,11 @@ export default function Header() {
       <div className="px-4 py-2 lg:px-8 border-b border-gray-100 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-4 group cursor-pointer">
           <div className="flex items-center gap-2">
-              <img
-                src="/images/navbar-logo.jpg"
-                alt="iRA Synergy Logo"
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain mix-blend-multiply transition-transform group-hover:scale-105"
-              />
+            <img
+              src="/images/navbar-logo-02.png"
+              alt="iRA Synergy Logo"
+              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto object-contain transition-transform group-hover:scale-105"
+            />
           </div>
           <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 ml-2">
             <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors">Innovative Solutions for</span>
@@ -90,23 +90,23 @@ export default function Header() {
                   )}
                 </Link>
 
-              {/* Solutions Dropdown */}
-              {link.label === "SOLUTIONS" && (
-                <div className="absolute top-full left-0 mt-2.5 w-72 bg-white rounded-md shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 z-50">
-                  <div className="absolute -top-4 left-0 w-full h-4"></div> {/* Invisible bridge to prevent hover loss */}
-                  <div className="py-2">
-                    {solutions.map((solution) => (
-                      <Link
-                        key={solution.id}
-                        href={`/solutions/${solution.slug}`}
-                        className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-ira-primary transition-colors border-b border-gray-50 last:border-0"
-                      >
-                        {solution.title}
-                      </Link>
-                    ))}
+                {/* Solutions Dropdown */}
+                {link.label === "SOLUTIONS" && (
+                  <div className="absolute top-full left-0 mt-2.5 w-72 bg-white rounded-md shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 z-50">
+                    <div className="absolute -top-4 left-0 w-full h-4"></div> {/* Invisible bridge to prevent hover loss */}
+                    <div className="py-2">
+                      {solutions.map((solution) => (
+                        <Link
+                          key={solution.id}
+                          href={`/solutions/${solution.slug}`}
+                          className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-ira-primary transition-colors border-b border-gray-50 last:border-0"
+                        >
+                          {solution.title}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
               </div>
             );
           })}
@@ -130,21 +130,21 @@ export default function Header() {
                       {link.label}
                     </Link>
                   </div>
-                {/* Mobile Solutions Dropdown Always Visible */}
-                {link.label === "SOLUTIONS" && (
-                  <div className="bg-gray-50 flex flex-col py-2 border-t border-gray-100">
-                    {solutions.map((solution) => (
-                      <Link
-                        key={solution.id}
-                        href={`/solutions/${solution.slug}`}
-                        className="pl-10 pr-6 py-2 text-sm font-medium text-gray-600 hover:text-ira-primary transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {solution.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                  {/* Mobile Solutions Dropdown Always Visible */}
+                  {link.label === "SOLUTIONS" && (
+                    <div className="bg-gray-50 flex flex-col py-2 border-t border-gray-100">
+                      {solutions.map((solution) => (
+                        <Link
+                          key={solution.id}
+                          href={`/solutions/${solution.slug}`}
+                          className="pl-10 pr-6 py-2 text-sm font-medium text-gray-600 hover:text-ira-primary transition-colors"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {solution.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               );
             })}
