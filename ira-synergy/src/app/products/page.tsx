@@ -41,7 +41,7 @@ export default function ProductsCatalog() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
-      <main className="flex-grow pt-36 lg:pt-48 pb-20">
+      <main className="flex-grow pt-20 lg:pt-44 pb-20">
         {/* Page Header */}
         <div className="bg-ira-primary-dark relative overflow-hidden">
           <div className="absolute inset-0 pattern-grid opacity-10" />

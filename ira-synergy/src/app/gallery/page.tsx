@@ -62,7 +62,7 @@ export default function GalleryPage() {
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
       
-      <main className="flex-grow pt-32 md:pt-40 pb-32">
+      <main className="flex-grow pt-20 lg:pt-44 pb-32">
         
         {/* Minimalist Light Hero Section - UNTOUCHED HEADLINE AS REQUESTED */}
         <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 mb-16">

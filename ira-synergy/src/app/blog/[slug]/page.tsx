@@ -28,7 +28,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
       
-      <main className="flex-grow pt-40 md:pt-48 pb-20">
+      <main className="flex-grow pt-20 lg:pt-44 pb-20">
         
         {/* Editorial Header */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-10">

@@ -47,7 +47,7 @@ export default function DownloadsPage() {
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
       
-      <main className="flex-grow pt-32 pb-24">
+      <main className="flex-grow pt-20 lg:pt-44 pb-24">
         
         {/* Minimalist Hero & Search Section */}
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">

@@ -57,7 +57,7 @@ export default async function SolutionDetailPage({
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
-      <main className="flex-grow pt-28">
+      <main className="flex-grow pt-20 lg:pt-44">
         
         {/* Custom Premium Hero with Dynamic Theme */}
         <div className={`relative overflow-hidden ${solution.color} text-white`}>

@@ -31,7 +31,7 @@ export default function AboutPage() {
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-20 lg:pt-44">
 
         {/* Cinematic Hero Section */}
         <section className="relative w-full h-[60vh] md:h-[80vh] min-h-[500px]">

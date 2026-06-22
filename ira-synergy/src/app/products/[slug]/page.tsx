@@ -147,7 +147,7 @@ export default function ProductDetailPage({
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
-      <main className="flex-grow pt-36 lg:pt-48 pb-16">
+      <main className="flex-grow pt-20 lg:pt-44 pb-16">
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <Breadcrumb

@@ -21,7 +21,7 @@ export default function BlogHubPage() {
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
       
-      <main className="flex-grow pt-40 md:pt-48 pb-24">
+      <main className="flex-grow pt-20 lg:pt-44 pb-24">
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <ScrollReveal>
