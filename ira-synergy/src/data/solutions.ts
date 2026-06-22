@@ -212,7 +212,7 @@ export const solutions: Solution[] = [
       "kids-fitness-station",
       "integrated-school-sports-development",
     ],
-    image: "/images/solutions/fitness-equipment.jpg",
+    image: "/images/hero/green-gym.png",
     stats: [
       { label: "Gyms Installed", value: "75+" },
       { label: "Equipment Units", value: "500+" },

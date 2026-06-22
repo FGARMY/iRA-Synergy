@@ -7,14 +7,6 @@ import { ArrowRight, ChevronLeft, ChevronRight, Building2, Recycle, Zap, HeartPu
 import ScrollReveal from "./ui/ScrollReveal";
 import { solutions } from "@/data/solutions";
 
-const imageMap: Record<string, string> = {
-  "sol-1": "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format&fit=crop", // Smart School
-  "sol-2": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=600&auto=format&fit=crop", // Waste Management
-  "sol-3": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=600&auto=format&fit=crop", // Renewable Energy
-  "sol-4": "https://images.unsplash.com/photo-1584820927498-cafe8c1a6602?q=80&w=600&auto=format&fit=crop", // Public Health
-  "sol-5": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop", // Fitness
-  "sol-6": "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=600&auto=format&fit=crop", // Smart City
-};
 
 export default function Solutions() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -76,7 +68,7 @@ export default function Solutions() {
                   <Link href={`/solutions/${solution.slug}`} className="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-xl transition-all duration-300 group overflow-hidden cursor-pointer block">
                     <div className="h-36 w-full relative overflow-hidden">
                       <Image 
-                        src={imageMap[solution.id] || "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=600"} 
+                        src={solution.image} 
                         alt={solution.title}
                         fill
                         loading="lazy"

@@ -11,6 +11,16 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { solutions, getSolutionBySlug, getAllSolutionSlugs } from "@/data/solutions";
 import { products } from "@/data/products";
 
+const indicatorColors: Record<string, string> = {
+  "bg-blue-900": "bg-blue-600",
+  "bg-green-700": "bg-green-600",
+  "bg-amber-600": "bg-amber-500",
+  "bg-rose-600": "bg-rose-500",
+  "bg-teal-600": "bg-teal-500",
+  "bg-indigo-700": "bg-indigo-600",
+};
+
+
 export async function generateStaticParams() {
   return getAllSolutionSlugs().map((slug) => ({ slug }));
 }
@@ -83,8 +93,8 @@ export default async function SolutionDetailPage({
             
             {/* Hero Image / Graphic */}
             <div className="flex-1 w-full max-w-lg hidden md:block">
-              <div className="relative aspect-square rounded-full bg-white/5 border border-white/10 p-8 shadow-2xl animate-spin-slow flex items-center justify-center">
-                 <div className="absolute inset-0 rounded-full border-4 border-dashed border-white/20"></div>
+              <div className="relative aspect-square rounded-full bg-white/5 border border-white/10 p-8 shadow-2xl flex items-center justify-center">
+                 <div className="absolute inset-0 rounded-full border-4 border-dashed border-white/20 animate-spin-slow"></div>
                  <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl">
                     <Image 
                       src={solution.image}
@@ -128,7 +138,7 @@ export default async function SolutionDetailPage({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Products</h2>
-              <div className={`w-24 h-1 ${solution.color.replace('bg-', 'bg-').replace('900', '600')} mx-auto rounded-full bg-ira-primary`}></div>
+              <div className={`w-24 h-1 ${indicatorColors[solution.color] || 'bg-ira-primary'} mx-auto rounded-full`}></div>
             </div>
 
             <div className="space-y-32">
