@@ -145,14 +145,14 @@ export default function AboutPage() {
                   </div>
 
                   {/* Quote Content */}
-                  <div className="lg:w-3/5 p-12 md:p-20 flex flex-col justify-center">
+                  <div className="lg:w-3/5 p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-center">
                     <ScrollReveal>
-                      <span className="text-9xl text-gray-200 leading-none block h-20 font-serif">"</span>
-                      <h3 className="text-3xl md:text-3xl lg:text-4xl font-light text-gray-900 leading-tight mb-8">
+                      <span className="text-7xl sm:text-9xl text-gray-200 leading-none block h-12 sm:h-20 font-serif">"</span>
+                      <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 leading-tight mb-6 sm:mb-8">
                         {director.quote}
                       </h3>
-                      <div className="w-20 h-1 bg-ira-primary mb-8" />
-                      <p className="text-gray-500 font-medium">
+                      <div className="w-16 sm:w-20 h-1 bg-ira-primary mb-6 sm:mb-8" />
+                      <p className="text-sm sm:text-base text-gray-500 font-medium">
                         At iRA Synergy, we don't just supply equipment. We act as strategic engineering partners for India's largest civic and corporate entities, ensuring that every rupee invested yields a generation of value.
                       </p>
                     </ScrollReveal>

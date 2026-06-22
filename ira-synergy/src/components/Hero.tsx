@@ -7,11 +7,12 @@ import { ArrowRight, Leaf, ShieldCheck, Map, Settings } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 
 const heroImages = [
-  "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop", // Engineers/Workers at industrial plant
-  "https://images.unsplash.com/photo-1533422902779-dac2bf22eb28?q=80&w=2070&auto=format&fit=crop", // Heavy industrial factory/machinery
-  "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop", // Real solar farm installation
-  "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?q=80&w=2070&auto=format&fit=crop", // City park/amenities
-  "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?q=80&w=2071&auto=format&fit=crop", // Modern street food cart setup
+  "/images/hero/smart-city-view.jpg",
+  "/images/hero/Hospital-view.png",
+  "/images/hero/solar-panel.jpg",
+  "/images/hero/solar-farm-installation.jpg",
+  "/images/hero/city-park-amenities.jpg",
+  "/images/hero/street-food-cart-setup.jpg",
 ];
 
 export default function Hero() {
