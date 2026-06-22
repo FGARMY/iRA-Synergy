@@ -10,8 +10,10 @@ import { projects } from "@/data/projects";
 import { products } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "Projects & Case Studies | iRA Synergy",
-  description: "See our real-world impact — case studies of infrastructure and sustainability projects across India with measurable results.",
+  title: "Projects & Case Studies — Real-World Impact",
+  description:
+    "Explore iRA Synergy's infrastructure and sustainability projects across India — case studies with measurable results for government departments, PSUs, and municipalities.",
+  alternates: { canonical: "https://irasynergy.com/projects" },
 };
 
 export default function ProjectsPage() {

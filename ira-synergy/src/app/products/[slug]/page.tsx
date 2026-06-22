@@ -192,7 +192,7 @@ export default function ProductDetailPage({
                     {product.images && product.images.length > 0 ? (
                       <img
                         src={product.images[activeImageIndex] || product.images[0]}
-                        alt={`${product.name} - View ${activeImageIndex + 1}`}
+                        alt={`${product.name} — ${product.category} Product View ${activeImageIndex + 1} | iRA Synergy`}
                         className="w-full h-full object-contain transition-transform duration-200 ease-out"
                         style={zoomStyle}
                       />
@@ -217,7 +217,7 @@ export default function ProductDetailPage({
                       >
                         <img
                           src={img}
-                          alt={`${product.name} thumbnail ${idx + 1}`}
+                          alt={`${product.name} — Angle ${idx + 1} | iRA Synergy`}
                           className="w-full h-full object-contain p-1"
                         />
                       </button>
@@ -555,7 +555,7 @@ export default function ProductDetailPage({
           <div className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center p-4" onClick={() => setIsFullscreen(false)}>
             <img
               src={product.images[activeImageIndex] || product.images[0]}
-              alt={`${product.name} fullscreen`}
+              alt={`${product.name} — ${product.category} Full Resolution | iRA Synergy`}
               className="max-w-full max-h-full object-contain cursor-default"
               onClick={(e) => e.stopPropagation()}
             />

@@ -11,8 +11,10 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { solutions } from "@/data/solutions";
 
 export const metadata: Metadata = {
-  title: "Solutions | iRA Synergy",
-  description: "End-to-end infrastructure and sustainability solutions — smart schools, waste management, renewable energy, public health, fitness, and smart city projects.",
+  title: "Solutions — Smart Infrastructure & Sustainability",
+  description:
+    "End-to-end infrastructure and sustainability solutions for government — smart schools, waste management, renewable energy, public health, fitness equipment, and smart city projects across India.",
+  alternates: { canonical: "https://irasynergy.com/solutions" },
 };
 
 const iconMap: Record<string, React.ElementType> = {

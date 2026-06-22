@@ -7,11 +7,11 @@ import { ArrowRight, Leaf, ShieldCheck, Map, Settings } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 
 const heroImages = [
-  "/images/hero/smart-city-view.jpg",
-  "/images/hero/Hospital-view.png",
-  "/images/hero/solar-panel.jpg",
-  "/images/hero/waste-management.png",
-  "/images/hero/green-gym.png",
+  { src: "/images/hero/smart-city-view.jpg", alt: "Smart City Infrastructure Solutions — IoT Integration | iRA Synergy" },
+  { src: "/images/hero/Hospital-view.png", alt: "Public Health & Hospital Infrastructure — GeM Registered | iRA Synergy" },
+  { src: "/images/hero/solar-panel.jpg", alt: "Solar Energy & Renewable Power Solutions for Government | iRA Synergy" },
+  { src: "/images/hero/waste-management.png", alt: "Waste Management Systems — CPCB Compliant Incinerators | iRA Synergy" },
+  { src: "/images/hero/green-gym.png", alt: "Outdoor Gym & Fitness Equipment for Parks — Make in India | iRA Synergy" },
 ];
 
 export default function Hero() {
@@ -37,11 +37,11 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
 
         {/* Carousel Images */}
-        {heroImages.map((src, index) => (
+        {heroImages.map((image, index) => (
           <Image
-            key={src}
-            src={src}
-            alt={`Smart City Infrastructure - Slide ${index + 1}`}
+            key={image.src}
+            src={image.src}
+            alt={image.alt}
             fill
             priority={index === 0}
             className={`object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? "opacity-100" : "opacity-0"
@@ -79,7 +79,7 @@ export default function Hero() {
 
       {/* Pagination Dots */}
       <div className="absolute bottom-12 sm:bottom-32 left-1/2 -translate-x-1/2 flex gap-2 z-30">
-        {heroImages.map((_, index) => (
+        {heroImages.map((image, index) => (
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}

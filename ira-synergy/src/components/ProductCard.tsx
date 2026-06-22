@@ -43,7 +43,7 @@ export default function ProductCard({ product }: { product: Product }) {
         {product.images && product.images.length > 0 ? (
           <img
             src={product.images[0]}
-            alt={product.name}
+            alt={`${product.name} — ${product.category} | iRA Synergy`}
             className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
           />
         ) : (

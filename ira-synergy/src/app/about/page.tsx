@@ -10,8 +10,10 @@ import CountUp from "@/components/ui/CountUp";
 import { companyInfo, certifications, coreValues, companyStats, platforms } from "@/data/company";
 
 export const metadata: Metadata = {
-  title: "About | iRA Synergy - Heavy Infrastructure",
-  description: "Learn about iRA Synergy Private Limited — our massive infrastructure projects, government partnerships, and corporate vision.",
+  title: "About Us — iRA Synergy",
+  description:
+    "Learn about iRA Synergy — our mission, team, and commitment to supplying quality infrastructure and sustainability products to government and institutional buyers across India.",
+  alternates: { canonical: "https://irasynergy.com/about" },
 };
 
 const valueIcons: Record<string, React.ElementType> = {

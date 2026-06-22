@@ -16,46 +16,70 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://irasynergy.com"),
   title: {
-    default: "iRA Synergy — Innovative Solutions for Infrastructure & Sustainability",
+    default:
+      "iRA Synergy | Infrastructure & Sustainability Products for Government",
     template: "%s | iRA Synergy",
   },
   description:
-    "iRA Synergy Private Limited is a leading infrastructure and sustainability solutions company. Smart city infrastructure, renewable energy, waste management, public health, fitness equipment — partnering with government and communities across India.",
+    "iRA Synergy supplies GeM-registered infrastructure and sustainability products to government departments, PSUs, and institutions across India. Get quotes, view specs, and connect on WhatsApp.",
   keywords: [
-    "infrastructure solutions India",
-    "smart city equipment",
-    "renewable energy solutions",
-    "waste management systems",
-    "public health infrastructure",
-    "open gym equipment",
-    "solar tree",
-    "smart pole",
+    "infrastructure products India",
+    "GeM registered supplier",
+    "government procurement products",
+    "sustainability products PSU",
+    "B2G products India",
     "iRA Synergy",
+    "smart city equipment",
+    "waste management systems",
+    "renewable energy solutions",
+    "open gym equipment",
     "Make in India",
-    "GeM registered",
-    "government supply",
+    "infrastructure supplier Nashik Maharashtra",
   ],
-  authors: [{ name: "iRA Synergy Private Limited" }],
-  creator: "iRA Synergy Private Limited",
-  metadataBase: new URL("https://www.irasynergy.com"),
+  authors: [{ name: "iRA Synergy", url: "https://irasynergy.com" }],
+  creator: "iRA Synergy",
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://www.irasynergy.com",
+    url: "https://irasynergy.com",
     siteName: "iRA Synergy",
-    title: "iRA Synergy — Innovative Solutions for Infrastructure & Sustainability",
+    title: "iRA Synergy | Infrastructure & Sustainability Products",
     description:
-      "Smart city, renewable energy, waste management, and public health infrastructure solutions. Partnering with government and communities for a sustainable India.",
+      "GeM-registered B2G/B2B supplier of infrastructure and sustainability products for government departments and institutions across India.",
+    images: [
+      {
+        url: "/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "iRA Synergy — Infrastructure & Sustainability Products",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "iRA Synergy — Infrastructure & Sustainability Solutions",
-    description: "Building a Smarter, Cleaner & Sustainable India",
+    title: "iRA Synergy | Infrastructure & Sustainability Products",
+    description:
+      "GeM-registered B2G supplier of infrastructure and sustainability products across India.",
+    images: ["/og-default.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://irasynergy.com",
+  },
+  verification: {
+    google: "iow0NW08oTBSIF3J502HEJ7oFWAGiWQSVWnTBzRFD_U",
   },
 };
 
@@ -78,15 +102,18 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "iRA Synergy Private Limited",
-              url: "https://www.irasynergy.com",
-              logo: "https://www.irasynergy.com/images/logo.jpg",
+              name: "iRA Synergy",
+              url: "https://irasynergy.com",
+              logo: "https://irasynergy.com/images/logo.jpg",
               description:
-                "Innovative Solutions for Infrastructure & Sustainability",
+                "GeM-registered B2G/B2B supplier of infrastructure and sustainability products for government departments, PSUs, municipalities, and institutions across India.",
               address: {
                 "@type": "PostalAddress",
+                streetAddress:
+                  "Shop No. 4113, 4099 Roongta Shopping Hub, Near Hotel Sai Saya, Mumbai Agra Highway Road",
                 addressLocality: "Nashik",
                 addressRegion: "Maharashtra",
+                postalCode: "422001",
                 addressCountry: "IN",
               },
               contactPoint: {
@@ -94,13 +121,16 @@ export default function RootLayout({
                 telephone: "+91-75880-15401",
                 contactType: "sales",
                 email: "info@irasynergy.com",
-                availableLanguage: ["English", "Hindi"],
+                areaServed: "IN",
+                availableLanguage: ["English", "Hindi", "Marathi"],
               },
-              sameAs: [],
+              sameAs: [
+                "https://www.linkedin.com/company/ira-synergy",
+              ],
               founder: {
                 "@type": "Person",
                 name: "Dinesh Anand",
-                jobTitle: "Director",
+                jobTitle: "Managing Director",
               },
             }),
           }}

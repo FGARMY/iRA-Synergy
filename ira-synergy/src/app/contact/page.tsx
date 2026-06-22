@@ -5,8 +5,10 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
-  description: "Get in touch with iRA Synergy for infrastructure and sustainability solutions. Request a consultation, get a quote, or discuss your project requirements.",
+  title: "Contact Us — Get a Quote or Enquire",
+  description:
+    "Reach iRA Synergy for product enquiries, GeM orders, bulk quotes, and WhatsApp support. We serve government departments, PSUs, and institutions across India.",
+  alternates: { canonical: "https://irasynergy.com/contact" },
 };
 
 export default function ContactPage() {
