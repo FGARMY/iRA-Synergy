@@ -30,12 +30,12 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
-      
+
       <main className="flex-grow pt-24">
-        
+
         {/* Cinematic Hero Section */}
         <section className="relative w-full h-[60vh] md:h-[80vh] min-h-[500px]">
-          <Image 
+          <Image
             src="https://images.unsplash.com/photo-1541888086925-0c13d4cc5410?auto=format&fit=crop&q=80"
             alt="Heavy Infrastructure Development"
             fill
@@ -43,7 +43,7 @@ export default function AboutPage() {
             priority
           />
           <div className="absolute inset-0 bg-black/60" />
-          
+
           <div className="absolute inset-0 flex items-center justify-center text-center">
             <div className="max-w-5xl px-4">
               <ScrollReveal>
@@ -51,7 +51,7 @@ export default function AboutPage() {
                   Corporate Profile
                 </span>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight mb-8">
-                  Pioneering India's <br/> Infrastructure Evolution.
+                  Pioneering India's <br /> Infrastructure Evolution.
                 </h1>
                 <p className="text-lg md:text-2xl text-gray-300 font-light max-w-3xl mx-auto">
                   {companyInfo.mission}
@@ -65,11 +65,11 @@ export default function AboutPage() {
         <section className="py-24 md:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
-              
+
               <div className="lg:w-1/3">
                 <ScrollReveal variant="left">
                   <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight sticky top-32">
-                    Who <br className="hidden lg:block"/> We Are.
+                    Who <br className="hidden lg:block" /> We Are.
                   </h2>
                 </ScrollReveal>
               </div>
@@ -128,11 +128,11 @@ export default function AboutPage() {
             {companyInfo.directors?.map((director, index) => (
               <div key={index} className="bg-white rounded-[3rem] shadow-xl border border-gray-100 overflow-hidden">
                 <div className={`flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
-                  
+
                   {/* Director Image */}
                   <div className="lg:w-2/5 relative h-[400px] lg:h-[600px]">
-                    <Image 
-                      src={director.image} 
+                    <Image
+                      src={director.image}
                       alt={director.name}
                       fill
                       className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-1000"
@@ -167,7 +167,7 @@ export default function AboutPage() {
         {/* Trust & Compliance Grid */}
         <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-gray-100 pb-4">
               <div className="max-w-2xl">
                 <ScrollReveal>
@@ -202,9 +202,9 @@ export default function AboutPage() {
                   "gem-logo.png"
                 ].map((logo, index) => (
                   <div key={index} className="w-full flex items-center justify-center bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow aspect-square relative overflow-hidden group">
-                    <Image 
-                      src={`/images/brands/${logo}`} 
-                      alt={`Compliance Certificate ${index + 1}`} 
+                    <Image
+                      src={`/images/brands/${logo}`}
+                      alt={`Compliance Certificate ${index + 1}`}
                       fill
                       className="object-contain p-3 mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
                     />
@@ -222,18 +222,18 @@ export default function AboutPage() {
                 </ScrollReveal>
               </div>
             </div>
-            
+
             <ScrollReveal delay={200}>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-8 py-2">
                 {[
-                  "1 (1).jpeg",
-                  "1 (2).jpeg",
-                  "1 (3).jpeg",
-                ].map((logo, index) => (
+                  { file: "amazon.svg", name: "Amazon" },
+                  { file: "indiamart.png", name: "IndiaMART" },
+                  { file: "tradeindia.png", name: "Trade India" },
+                ].map((platform, index) => (
                   <div key={`platform-${index}`} className="w-32 sm:w-48 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow aspect-[4/3] relative overflow-hidden group">
-                    <Image 
-                      src={`/images/brands/${logo}`} 
-                      alt={`Available Platform ${index + 1}`} 
+                    <Image
+                      src={`/images/brands/${platform.file}`}
+                      alt={platform.name}
                       fill
                       className="object-contain p-3 mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
                     />
