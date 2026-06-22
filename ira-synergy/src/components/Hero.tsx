@@ -10,9 +10,8 @@ const heroImages = [
   "/images/hero/smart-city-view.jpg",
   "/images/hero/Hospital-view.png",
   "/images/hero/solar-panel.jpg",
-  "/images/hero/solar-farm-installation.jpg",
-  "/images/hero/city-park-amenities.jpg",
-  "/images/hero/street-food-cart-setup.jpg",
+  "/images/hero/waste-management.png",
+  "/images/hero/green-gym.png",
 ];
 
 export default function Hero() {
