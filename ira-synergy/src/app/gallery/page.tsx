@@ -90,9 +90,9 @@ export default function GalleryPage() {
         <div className="max-w-[100rem] mx-auto px-2 sm:px-6 lg:px-8">
           {/* 
             Strict grid with auto-flow-dense to fill gaps perfectly.
-            Tight gaps (gap-2) to create that modern, seamless look.
+            Balanced row heights and gap spacing to create a premium, clean look.
           */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[250px] md:auto-rows-[350px] gap-2 grid-flow-dense">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 auto-rows-[140px] md:auto-rows-[190px] gap-3 grid-flow-dense">
             {items.map((item, idx) => (
               <ScrollReveal 
                 key={idx} 
