@@ -93,13 +93,13 @@ export default function Footer() {
               <li className="flex flex-col gap-1.5 sm:gap-2">
                 <div className="flex items-center gap-3">
                   <Phone size={16} className="text-ira-accent flex-shrink-0" />
-                  <span className="text-[11px] sm:text-xs text-gray-300">+91 8007629969</span>
+                  <span className="text-[11px] sm:text-xs text-gray-300">+91 75880 15401</span>
                 </div>
                 <div className="flex items-center gap-3 ml-7">
                   <span className="text-[11px] sm:text-xs text-gray-300">+91 88880 48480</span>
                 </div>
                 <div className="flex items-center gap-3 ml-7">
-                  <span className="text-[11px] sm:text-xs text-gray-300">+91 75880 15401</span>
+                  <span className="text-[11px] sm:text-xs text-gray-300">+91 80076 29969</span>
                 </div>
               </li>
               <li className="flex items-center gap-3">

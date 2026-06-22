@@ -91,7 +91,7 @@ export default function RootLayout({
               },
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+91-80076-29969",
+                telephone: "+91-75880-15401",
                 contactType: "sales",
                 email: "info@irasynergy.com",
                 availableLanguage: ["English", "Hindi"],
