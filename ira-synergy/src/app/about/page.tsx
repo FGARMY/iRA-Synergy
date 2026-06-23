@@ -35,31 +35,20 @@ export default function AboutPage() {
 
       <main className="flex-grow pt-20 lg:pt-44">
 
-        {/* Cinematic Hero Section */}
-        <section className="relative w-full h-[60vh] md:h-[80vh] min-h-[500px]">
-          <Image
-            src="/images/ab-bg.png"
-            alt="Heavy Infrastructure Development"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/60" />
-
-          <div className="absolute inset-0 flex items-center justify-center text-center">
-            <div className="max-w-5xl px-4">
-              <ScrollReveal>
-                <span className="text-ira-primary font-bold tracking-[0.4em] uppercase mb-6 block text-sm md:text-base">
-                  Corporate Profile
-                </span>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight mb-8">
-                  Pioneering India's <br /> Infrastructure Evolution.
-                </h1>
-                <p className="text-lg md:text-2xl text-gray-300 font-light max-w-3xl mx-auto">
-                  {companyInfo.mission}
-                </p>
-              </ScrollReveal>
-            </div>
+        {/* Compact Hero Section */}
+        <section className="w-full py-12 md:py-20 bg-gray-50 border-b border-gray-100">
+          <div className="max-w-5xl mx-auto px-4 text-center">
+            <ScrollReveal>
+              <span className="text-ira-primary font-bold tracking-[0.4em] uppercase mb-4 block text-sm md:text-base">
+                Corporate Profile
+              </span>
+              <h1 className="text-4xl md:text-6xl font-black text-gray-900 leading-[1.1] tracking-tight mb-6">
+                Pioneering India's <br /> Infrastructure Evolution.
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 font-light max-w-3xl mx-auto">
+                {companyInfo.mission}
+              </p>
+            </ScrollReveal>
           </div>
         </section>
 
