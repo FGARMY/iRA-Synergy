@@ -126,7 +126,7 @@ export const solutions: Solution[] = [
       "gasifier",
       "bio-gas-plant",
     ],
-    image: "https://images.unsplash.com/photo-1509391366360-1200fa26bd96?q=80&w=800",
+    image: "/images/hero/solar-panel.jpg",
     stats: [
       { label: "kW Installed", value: "500+" },
       { label: "CO₂ Saved (tons/yr)", value: "200+" },
