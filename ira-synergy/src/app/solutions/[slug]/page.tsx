@@ -58,12 +58,12 @@ export default async function SolutionDetailPage({
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
       <main className="flex-grow pt-20 lg:pt-44">
-        
+
         {/* Custom Premium Hero with Dynamic Theme */}
         <div className={`relative overflow-hidden ${solution.color} text-white`}>
           <div className="absolute inset-0 pattern-grid opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-transparent to-transparent" />
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-10 flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1">
               <Breadcrumb
@@ -79,7 +79,7 @@ export default async function SolutionDetailPage({
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-10 leading-relaxed">
                 {solution.longDescription}
               </p>
-              
+
               {/* Stats Row */}
               <div className="flex flex-wrap gap-4 sm:gap-8 mb-8">
                 {solution.stats.map((stat, i) => (
@@ -90,20 +90,20 @@ export default async function SolutionDetailPage({
                 ))}
               </div>
             </div>
-            
+
             {/* Hero Image / Graphic */}
             <div className="flex-1 w-full max-w-lg hidden md:block">
               <div className="relative aspect-square rounded-full bg-white/5 border border-white/10 p-8 shadow-2xl flex items-center justify-center">
-                 <div className="absolute inset-0 rounded-full border-4 border-dashed border-white/20 animate-spin-slow"></div>
-                 <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl">
-                    <Image 
-                      src={solution.image}
-                      alt={solution.title}
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                 </div>
+                <div className="absolute inset-0 rounded-full border-4 border-dashed border-white/20 animate-spin-slow"></div>
+                <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl">
+                  <Image
+                    src={solution.image}
+                    alt={solution.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -118,14 +118,14 @@ export default async function SolutionDetailPage({
                 Watch how our integrated {solution.shortTitle} solutions revolutionize the landscape, providing sustainable and innovative infrastructure.
               </p>
             </div>
-            
+
             <ScrollReveal>
               <div className="relative max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl bg-gray-900 aspect-video ring-4 ring-gray-50">
-                <iframe 
+                <iframe
                   className="absolute inset-0 w-full h-full"
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" // Using a placeholder video link
                   title={`${solution.title} Overview`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               </div>
@@ -151,16 +151,16 @@ export default async function SolutionDetailPage({
                       {/* Image Side */}
                       <div className="w-full lg:w-1/2">
                         <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl group">
-                          <Image 
-                            src={product.images[0]} 
-                            alt={product.name} 
+                          <Image
+                            src={product.images[0]}
+                            alt={product.name}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-700"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                       </div>
-                      
+
                       {/* Text Side */}
                       <div className="w-full lg:w-1/2 space-y-6">
                         <div className="inline-block px-4 py-1.5 rounded-full bg-ira-primary/10 text-ira-primary text-xs font-bold uppercase tracking-wider">
@@ -170,7 +170,7 @@ export default async function SolutionDetailPage({
                         <p className="text-lg text-gray-600 leading-relaxed">
                           {product.description}
                         </p>
-                        
+
                         <div className="pt-4">
                           <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Key Features</h4>
                           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -182,7 +182,7 @@ export default async function SolutionDetailPage({
                             ))}
                           </ul>
                         </div>
-                        
+
                         <div className="pt-6">
                           <Link href={`/products/${product.slug}`} className="inline-flex items-center gap-2 px-6 py-3 bg-ira-primary text-white rounded-lg font-semibold hover:bg-ira-primary-dark transition-colors shadow-md hover:shadow-lg">
                             View Full Details
