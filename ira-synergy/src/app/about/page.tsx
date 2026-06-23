@@ -38,7 +38,7 @@ export default function AboutPage() {
         {/* Cinematic Hero Section */}
         <section className="relative w-full h-[60vh] md:h-[80vh] min-h-[500px]">
           <Image
-            src="https://images.unsplash.com/photo-1541888086925-0c13d4cc5410?auto=format&fit=crop&q=80"
+            src="/images/ab-bg.png"
             alt="Heavy Infrastructure Development"
             fill
             className="object-cover"
