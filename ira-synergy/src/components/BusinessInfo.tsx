@@ -45,7 +45,7 @@ export default function BusinessInfo() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1.5fr] gap-6">
 
           {/* Card 1: Industries We Serve */}
-          <ScrollReveal>
+          <ScrollReveal className="hidden lg:block">
             <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)] h-full">
               <h2 className="text-sm font-bold text-gray-900 uppercase mb-6 flex items-center gap-4">
                 INDUSTRIES WE SERVE
@@ -62,7 +62,7 @@ export default function BusinessInfo() {
           </ScrollReveal>
 
           {/* Card 2: Why Choose Us */}
-          <ScrollReveal delay={100}>
+          <ScrollReveal delay={100} className="hidden lg:block">
             <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)] h-full">
               <h2 className="text-sm font-bold text-gray-900 uppercase mb-6 flex items-center gap-4">
                 WHY CHOOSE US

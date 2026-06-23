@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import GalleryGrid from "@/components/GalleryGrid";
 import { solutions } from "@/data/solutions";
 import { products } from "@/data/products";
 
@@ -86,52 +85,9 @@ export default function GalleryPage() {
           </ScrollReveal>
         </div>
 
-        {/* Ultra-Modern Bento Box Layout */}
+        {/* Masonry Layout with Category Filtering */}
         <div className="max-w-[100rem] mx-auto px-2 sm:px-6 lg:px-8">
-          {/* 
-            Strict grid with auto-flow-dense to fill gaps perfectly.
-            Balanced row heights and gap spacing to create a premium, clean look.
-          */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 auto-rows-[140px] md:auto-rows-[190px] gap-3 grid-flow-dense">
-            {items.map((item, idx) => (
-              <ScrollReveal 
-                key={idx} 
-                delay={(idx % 12) * 40} 
-                className={`${item.bentoSpan}`}
-              >
-                <div className="group relative w-full h-full rounded-2xl overflow-hidden bg-gray-100 cursor-pointer">
-                  
-                  {/* The Image */}
-                  <Image 
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                  />
-
-                  {/* High-end gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                  {/* Modern Corner Overlay Label */}
-                  <div className="absolute bottom-4 left-4 opacity-0 translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out z-10 pr-4">
-                    <span className="block text-[9px] text-white/80 font-black uppercase tracking-widest mb-1 drop-shadow-md">
-                      {item.category}
-                    </span>
-                    <h3 className="text-white text-base md:text-lg font-bold tracking-tight drop-shadow-lg leading-tight">
-                      {item.title}
-                    </h3>
-                  </div>
-
-                  {/* Top-Right Arrow Icon */}
-                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center opacity-0 -translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out z-10">
-                    <ArrowUpRight size={18} className="text-gray-900" />
-                  </div>
-
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <GalleryGrid items={items} />
         </div>
 
       </main>
