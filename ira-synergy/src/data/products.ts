@@ -135,7 +135,11 @@ export const products: Product[] = [
       "/images/products/incinerator/3_2.png",
       "/images/products/incinerator/3_3.png",
       "/images/products/incinerator/3_4.png",
-      "/images/products/incinerator/3_1.png"
+      "/images/products/incinerator/3_1.png",
+      "/images/products/bio-medical-waste-incinerator/1.jpeg",
+      "/images/products/bio-medical-waste-incinerator/2.jpeg",
+      "/images/products/bio-medical-waste-incinerator/3.jpeg",
+      "/images/products/bio-medical-waste-incinerator/4.jpeg"
     ],
     price: "On Request",
     inStock: true,
@@ -234,7 +238,11 @@ export const products: Product[] = [
       { label: "Capacity", value: "100 - 500 KG/HR" },
     ],
     certifications: ["CE Certified"],
-    images: ["/images/products/waste_machinery/6_3.png"],
+    images: [
+      "/images/products/waste_machinery/6_3.png",
+      "/images/products/plastic-grinder-machine/1.jpeg",
+      "/images/products/plastic-grinder-machine/2.jpeg"
+    ],
     price: "On Request",
     inStock: true,
     badge: "High Performance",
@@ -606,6 +614,427 @@ export const products: Product[] = [
     inStock: true,
     badge: "Community",
     relatedProductSlugs: ["container-kitchen", "container-food-stall"]
+  },
+  {
+    id: "p-26",
+    slug: "containerized-bio-gas-plant",
+    name: "Containerized Bio-Gas Plant",
+    category: "Renewable Energy",
+    description: "The Containerized Bio-Gas Plant provides a decentralized, plug-and-play solution for organic waste management and renewable energy generation. Built within standard shipping containers, it converts food and agricultural waste into clean biogas and nutrient-rich liquid fertilizer. It features automated feeding, gas scrubbing, and smart monitoring for efficient, odor-free operation.",
+    shortDescription: "Plug-and-play modular biogas plant in a shipping container",
+    features: [
+      "Modular Containerized Design",
+      "Automated Feeding & Mixing System",
+      "Integrated Biogas Scrubber & Storage",
+      "Smart Monitoring & Control Panel",
+      "High-Yield Methane Production",
+      "Odor-Free & Weatherproof Operation",
+      "Produces Nutrient-Rich Liquid Fertilizer"
+    ],
+    specs: [
+      { label: "Container Size", value: "20ft / 40ft Options" },
+      { label: "Waste Capacity", value: "500 Kg to 5 Tonnes/Day" },
+      { label: "Gas Output", value: "High-Calorific Biogas" },
+      { label: "Byproduct", value: "Liquid Organic Fertilizer" },
+      { label: "Automation", value: "PLC Based Control System" }
+    ],
+    certifications: ["MNRE Compliant", "Eco-Friendly"],
+    images: [
+      "/images/products/containerized-bio-gas-plant/1.jpeg",
+      "/images/products/containerized-bio-gas-plant/2.jpeg",
+      "/images/products/containerized-bio-gas-plant/3.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Renewable Energy",
+    relatedProductSlugs: ["organic-waste-composter"]
+  },
+  {
+    id: "p-27",
+    slug: "sanitary-pad-vending-machine",
+    name: "Sanitary Pad Vending Machine",
+    category: "Public Health",
+    description: "Our Smart Sanitary Pad Vending Machine ensures 24/7 access to menstrual hygiene products in schools, colleges, offices, and public restrooms. It features a robust metal body, coin or smart card operation, and an easy-to-load dispensing mechanism. Promoting women's health and dignity, it is a crucial addition to any modern facility.",
+    shortDescription: "Automated wall-mounted sanitary pad dispenser",
+    features: [
+      "Coin / Smart Card Operated Mechanism",
+      "High Capacity Storage",
+      "Wall-Mounted Compact Design",
+      "Sturdy Powder-Coated Metal Body",
+      "Easy Refill & Maintenance",
+      "Promotes Menstrual Hygiene"
+    ],
+    specs: [
+      { label: "Capacity", value: "30 / 50 / 100 Pads Options" },
+      { label: "Operation", value: "Mechanical Coin / Electronic" },
+      { label: "Mounting", value: "Wall Mounted" },
+      { label: "Material", value: "Mild Steel Powder Coated" }
+    ],
+    certifications: ["Swachh Bharat Approved", "Public Health Standard"],
+    images: [
+      "/images/products/sanitary-pad-vending-machine/1.jpeg",
+      "/images/products/sanitary-pad-vending-machine/2.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Public Health",
+    relatedProductSlugs: []
+  },
+  {
+    id: "p-28",
+    slug: "plastic-baling-machine",
+    name: "Plastic Baling Machine",
+    category: "Waste Management",
+    description: "The Plastic Baling Machine is an industrial hydraulic press designed to compress plastic waste, cardboard, and paper into dense, manageable bales. It significantly reduces waste volume, lowering transportation and storage costs. Featuring a heavy-duty hydraulic cylinder, safety lock mechanisms, and a robust steel frame, it's essential for recycling centers and large facilities.",
+    shortDescription: "Hydraulic press for compressing plastic and cardboard waste into dense bales",
+    features: [
+      "Heavy-Duty Hydraulic Compression",
+      "High Volume Reduction Ratio",
+      "Safe & Easy Operation with Instructions",
+      "Robust Steel Construction",
+      "Lockable Compression Door",
+      "Ideal for Plastic, Paper, and Cardboard"
+    ],
+    specs: [
+      { label: "Compression Force", value: "10 to 50 Tons" },
+      { label: "Bale Weight", value: "50 Kg to 200 Kg" },
+      { label: "Power Pack", value: "Separate Hydraulic Power Unit" },
+      { label: "Operation", value: "Semi-Automatic / Manual" }
+    ],
+    certifications: ["Industrial Grade", "CE Standard"],
+    images: [
+      "/images/products/plastic-baling-machine/1.jpeg",
+      "/images/products/plastic-baling-machine/2.jpeg",
+      "/images/products/plastic-baling-machine/3.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Industrial Grade",
+    relatedProductSlugs: ["plastic-grinder-machine", "plastic-shredder-machine"]
+  },
+  {
+    id: "p-29",
+    slug: "plastic-shredder-machine",
+    name: "Plastic Shredder Machine",
+    category: "Waste Management",
+    description: "Our Plastic Shredder Machine efficiently tears down bulky plastic waste into smaller pieces, preparing it for recycling or further processing. Equipped with high-torque twin shafts and hardened steel blades, it easily handles tough plastics, pipes, drums, and packaging materials. Engineered for low noise and high throughput, it is a powerhouse for modern recycling facilities.",
+    shortDescription: "High-torque twin-shaft shredder for bulky plastic waste",
+    features: [
+      "High-Torque Twin Shaft Design",
+      "Hardened Steel Shredding Blades",
+      "Heavy-Duty Geared Motor",
+      "Hopper for Easy Feeding",
+      "Low Noise & Vibration",
+      "High Throughput Capacity"
+    ],
+    specs: [
+      { label: "Type", value: "Twin Shaft Shredder" },
+      { label: "Blade Material", value: "Alloy Steel (Hardened)" },
+      { label: "Motor Power", value: "5 HP to 50 HP Options" },
+      { label: "Capacity", value: "100 Kg to 1000 Kg/Hr" }
+    ],
+    certifications: ["Industrial Grade"],
+    images: [
+      "/images/products/plastic-shredder-machine/1.jpeg",
+      "/images/products/plastic-shredder-machine/2.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "High Torque",
+    relatedProductSlugs: ["plastic-baling-machine", "plastic-grinder-machine"]
+  },
+  {
+    id: "p-30",
+    slug: "smoke-control-unit",
+    name: "Smoke Control & Wet Scrubber Unit",
+    category: "Waste Management",
+    description: "The Smoke Control & Wet Scrubber Unit is an essential emission control system designed to treat exhaust gases from incinerators and industrial processes. By passing smoke through a water spray chamber, it effectively removes particulate matter and neutralizes harmful gases before they are released into the atmosphere, ensuring compliance with strict environmental regulations.",
+    shortDescription: "Industrial wet scrubber for emission control and air purification",
+    features: [
+      "High-Efficiency Wet Scrubbing Technology",
+      "Removes Particulate Matter & Toxic Gases",
+      "Stainless Steel / Anti-Corrosive Interior",
+      "Water Recirculation Pump System",
+      "Ensures CPCB Emission Compliance",
+      "Easy Maintenance & Sludge Removal"
+    ],
+    specs: [
+      { label: "Type", value: "Wet Scrubber System" },
+      { label: "Application", value: "Incinerator Exhaust Treatment" },
+      { label: "Material", value: "SS 304 / Mild Steel with Epoxy Coating" },
+      { label: "Pump", value: "High-Pressure Spray Pump" }
+    ],
+    certifications: ["CPCB Compliant", "Pollution Control Standard"],
+    images: [
+      "/images/products/smoke-control-unit/1.jpeg",
+      "/images/products/smoke-control-unit/2.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Eco-Friendly",
+    relatedProductSlugs: ["solid-waste-incinerator", "bio-medical-waste-incinerator"]
+  },
+  {
+    id: "p-31",
+    slug: "pet-bottle-crusher",
+    name: "PET Bottle Crusher",
+    category: "Waste Management",
+    description: "The PET Bottle Crusher is a compact, high-speed machine designed specifically for volume reduction of plastic bottles. It quickly shreds PET bottles into flakes, facilitating efficient transport and recycling. Ideal for public spaces, events, recycling centers, and commercial facilities aiming to manage plastic bottle waste effectively.",
+    shortDescription: "High-speed crusher for reducing PET bottle volume",
+    features: [
+      "High-Speed Rotary Blades",
+      "Compact & Space-Saving Design",
+      "Safety Feed Hopper",
+      "Easy Access for Cleaning",
+      "Produces Uniform PET Flakes",
+      "Low Power Consumption"
+    ],
+    specs: [
+      { label: "Application", value: "PET Bottles & Small Plastics" },
+      { label: "Motor Power", value: "2 HP to 10 HP Options" },
+      { label: "Blade Type", value: "Rotary & Stationary Knives" },
+      { label: "Capacity", value: "50 Kg to 300 Kg/Hr" }
+    ],
+    certifications: [],
+    images: [
+      "/images/products/pet-bottle-crusher/1.jpeg",
+      "/images/products/pet-bottle-crusher/2.jpeg",
+      "/images/products/pet-bottle-crusher/3.jpeg",
+      "/images/products/pet-bottle-crusher/4.jpeg",
+      "/images/products/pet-bottle-crusher/5.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Recycling",
+    relatedProductSlugs: ["plastic-grinder-machine"]
+  },
+  {
+    id: "p-32",
+    slug: "smart-vend-cloth-bag-vending-machine",
+    name: "Smart Vend Cloth Bag Vending Machine",
+    category: "Smart City",
+    description: "The 'Smart Vend' Cloth Bag Vending Machine provides a sustainable alternative to single-use plastics by dispensing reusable cloth bags. Perfect for markets, shopping malls, and public transit stations, it encourages eco-friendly habits. It features a reliable dispensing mechanism, clear instructions, and bold branding that says 'SAY NO TO PLASTIC BAGS'.",
+    shortDescription: "Vending machine dispensing eco-friendly reusable cloth bags",
+    features: [
+      "Dispenses Reusable Cloth/Jute Bags",
+      "Mechanical Coin or Push-Button Operation",
+      "Multiple Bag Storage Racks",
+      "Clear Acrylic Display Windows",
+      "Sturdy Powder-Coated Enclosure",
+      "Promotes Eco-Friendly Practices"
+    ],
+    specs: [
+      { label: "Capacity", value: "50 - 200 Bags depending on thickness" },
+      { label: "Operation", value: "Mechanical / Electronic Options" },
+      { label: "Material", value: "Mild Steel" },
+      { label: "Design", value: "Compact & Floor-Standing" }
+    ],
+    certifications: ["Eco-Initiative Compliant"],
+    images: [
+      "/images/products/smart-vend-cloth-bag-vending-machine/1.jpeg",
+      "/images/products/smart-vend-cloth-bag-vending-machine/2.jpeg",
+      "/images/products/smart-vend-cloth-bag-vending-machine/3.jpeg",
+      "/images/products/smart-vend-cloth-bag-vending-machine/4.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Eco-Friendly",
+    relatedProductSlugs: ["sanitary-pad-vending-machine"]
+  },
+  {
+    id: "p-33",
+    slug: "smart-city-bus-shelter",
+    name: "Smart City Bus Shelter",
+    category: "Smart City",
+    description: "Our Smart City Bus Shelter redefines urban commuting with modern amenities and sustainable infrastructure. It features a solar-powered smart pole, integrated CCTV for safety, environmental sensors, and digital advertisement displays. Built with weather-resistant materials and offering comfortable seating, it serves as a smart hub for public transportation.",
+    shortDescription: "Modern transit shelter with solar power, CCTV, and digital displays",
+    features: [
+      "Solar-Powered Smart Pole Integration",
+      "Integrated CCTV & Security Sensors",
+      "Digital Advertising Panel",
+      "Comfortable Seating with Weather Protection",
+      "Modern Aesthetics & Corporate Branding",
+      "Built-in Smart Waste Bins"
+    ],
+    specs: [
+      { label: "Power Source", value: "Grid + Solar Backup Options" },
+      { label: "Structure", value: "Galvanized Steel & Toughened Glass" },
+      { label: "Displays", value: "Outdoor LED/LCD Screens" },
+      { label: "Lighting", value: "Automated LED Illumination" }
+    ],
+    certifications: ["Smart City Standard", "ISO Certified"],
+    images: [
+      "/images/products/smart-city-bus-shelter/1.jpeg",
+      "/images/products/smart-city-bus-shelter/2.jpeg",
+      "/images/products/smart-city-bus-shelter/3.jpeg",
+      "/images/products/smart-city-bus-shelter/4.jpeg",
+      "/images/products/smart-city-bus-shelter/5.jpeg",
+      "/images/products/smart-city-bus-shelter/6.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Smart Infrastructure",
+    relatedProductSlugs: ["solar-smart-bench"]
+  },
+  {
+    id: "p-34",
+    slug: "dead-animal-solid-waste-incinerator",
+    name: "Dead Animal & Solid Waste 2-in-1 Incinerator",
+    category: "Waste Management",
+    description: "The 'ECOBURN 2-in-1' is a high-efficiency dual-purpose incinerator designed for the safe disposal of both dead animals and solid municipal waste. It utilizes a 5-chamber design including primary and secondary combustion, heat exchange, scrubber, and an ID fan stack. Operating at extremely high temperatures, it ensures complete combustion with minimal emissions, making it ideal for municipalities, veterinary facilities, and large farms.",
+    shortDescription: "High-efficiency 5-chamber incinerator for safe disposal of dead animals and solid waste",
+    features: [
+      "Dual Purpose: Dead Animal & Solid Waste",
+      "5-Chamber Design for Complete Combustion",
+      "High Temperature (800°C - 1100°C)",
+      "Advanced Emission & Smoke Control (Scrubber)",
+      "Diesel or Gas Burner Options",
+      "PLC Based Automatic Operation",
+      "Heavy-Duty Steel Construction"
+    ],
+    specs: [
+      { label: "Capacity", value: "Up to 500 kg/batch" },
+      { label: "Temperature", value: "800°C - 1100°C" },
+      { label: "Fuel Type", value: "Diesel / Gas" },
+      { label: "Control System", value: "PLC Automatic" },
+      { label: "Emission Standard", value: "As per CPCB Norms" }
+    ],
+    certifications: ["CPCB Compliant", "Environmentally Responsible"],
+    images: [
+      "/images/products/dead-animal-solid-waste-incinerator/1.jpeg",
+      "/images/products/dead-animal-solid-waste-incinerator/2.jpeg",
+      "/images/products/dead-animal-solid-waste-incinerator/3.jpeg",
+      "/images/products/dead-animal-solid-waste-incinerator/4.jpeg",
+      "/images/products/dead-animal-solid-waste-incinerator/5.jpeg",
+      "/images/products/dead-animal-solid-waste-incinerator/6.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Dual-Purpose",
+    relatedProductSlugs: ["solid-waste-incinerator", "vertical-industrial-incinerator"]
+  },
+  {
+    id: "p-35",
+    slug: "solar-smart-air-purifier-outdoor-unit",
+    name: "Solar Smart Air Purifier Outdoor Unit",
+    category: "Public Health",
+    description: "The Solar Smart Air Purifier is an innovative outdoor unit designed to combat urban air pollution in public spaces, schools, and parks. Fully powered by integrated solar panels, it actively filters particulate matter and pollutants from the surrounding air. It features smart monitoring displays to show real-time air quality index (AQI) improvements.",
+    shortDescription: "Solar-powered outdoor air purifier with real-time AQI monitoring",
+    features: [
+      "100% Solar Powered Operation",
+      "High-Volume Outdoor Air Filtration",
+      "Real-Time Air Quality Monitoring Display",
+      "Weather-Resistant Enclosure",
+      "Low Maintenance Filter System",
+      "Ideal for Schools, Parks, and Plazas"
+    ],
+    specs: [
+      { label: "Power Source", value: "Integrated Solar Panel" },
+      { label: "Filtration", value: "Multi-stage HEPA / Pre-filters" },
+      { label: "Display", value: "Digital AQI / PM2.5 Monitor" },
+      { label: "Installation", value: "Freestanding Outdoor" }
+    ],
+    certifications: ["Eco-Friendly", "Smart City Standard"],
+    images: [
+      "/images/products/solar-smart-air-purifier-outdoor-unit/1.jpeg",
+      "/images/products/solar-smart-air-purifier-outdoor-unit/2.jpeg",
+      "/images/products/solar-smart-air-purifier-outdoor-unit/3.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Smart City",
+    relatedProductSlugs: ["fresh-air-purifier-indoor-unit"]
+  },
+  {
+    id: "p-36",
+    slug: "fresh-air-purifier-indoor-unit",
+    name: "Fresh Air Purifier Indoor Unit",
+    category: "Public Health",
+    description: "Designed for classrooms, offices, and indoor public spaces, the Fresh Air Purifier efficiently removes PM2.5, allergens, and airborne pathogens. With a sleek design and quiet operation, it ensures a healthier indoor environment for 'Healthy Minds, Brighter Futures'. It includes a digital display for real-time air quality tracking.",
+    shortDescription: "High-efficiency indoor air purifier for classrooms and offices",
+    features: [
+      "Advanced HEPA & Activated Carbon Filtration",
+      "Real-Time PM2.5 Digital Display",
+      "Quiet Operation for Learning Environments",
+      "Multiple Speed & Timer Settings",
+      "Sleek & Compact Design",
+      "Improves Focus & Well-being"
+    ],
+    specs: [
+      { label: "Filtration", value: "HEPA + Active Carbon" },
+      { label: "Coverage Area", value: "Suitable for Classrooms/Halls" },
+      { label: "Noise Level", value: "Ultra-Quiet (<40 dB on low)" },
+      { label: "Controls", value: "Touch Panel + Remote" }
+    ],
+    certifications: ["CE Certified", "Safe for Schools"],
+    images: [
+      "/images/products/fresh-air-purifier-indoor-unit/1.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Public Health",
+    relatedProductSlugs: ["solar-smart-air-purifier-outdoor-unit"]
+  },
+  {
+    id: "p-37",
+    slug: "smart-waste-bin",
+    name: "Smart Waste Bin",
+    category: "Smart City",
+    description: "The Smart Waste Bin brings IoT technology to urban waste management. Featuring segregated compartments for general and recyclable waste, it includes built-in sensors to monitor fill levels in real-time, optimizing collection routes. It is solar-powered and boasts a durable, aesthetically pleasing design suitable for modern cityscapes.",
+    shortDescription: "IoT-enabled segregated waste bin with real-time fill level monitoring",
+    features: [
+      "Segregated Compartments (General / Recycle)",
+      "IoT Sensors for Fill-Level Monitoring",
+      "Solar-Powered Sensor Operation",
+      "Durable Weather-Resistant Construction",
+      "Optimizes Waste Collection Logistics",
+      "Clear Visual Iconography for Public Use"
+    ],
+    specs: [
+      { label: "Compartments", value: "Dual / Triple Segregation" },
+      { label: "Technology", value: "Ultrasonic Fill Sensors" },
+      { label: "Power", value: "Solar Panel for IoT Module" },
+      { label: "Material", value: "Powder-Coated Steel / Composite" }
+    ],
+    certifications: ["Smart City Standard"],
+    images: [
+      "/images/products/smart-waste-bin/1.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Smart City",
+    relatedProductSlugs: ["smart-city-bus-shelter"]
+  },
+  {
+    id: "p-38",
+    slug: "biomass-gasifier-plant",
+    name: "Biomass Gasifier Plant",
+    category: "Renewable Energy",
+    description: "The Biomass Gasifier Plant by WASTEVENT Solutions converts agricultural residue, wood chips, and other biomass into clean producer gas (syngas). This advanced renewable energy system features a fuel storage and drying unit, a high-efficiency gasifier reactor, a producer gas cooler, and an automated control panel. It provides a sustainable alternative to fossil fuels for thermal applications or power generation.",
+    shortDescription: "Advanced plant converting biomass into clean energy",
+    features: [
+      "Converts Biomass to Clean Producer Gas",
+      "Integrated Fuel Storage & Dryer Unit",
+      "Advanced Gas Cooling & Scrubbing",
+      "Automated PLC Control Panel",
+      "Low Emission Renewable Energy",
+      "Reduces Fossil Fuel Dependency"
+    ],
+    specs: [
+      { label: "Fuel Type", value: "Wood Chips, Agri-Residue, Biomass" },
+      { label: "Output", value: "Producer Gas (Syngas)" },
+      { label: "Application", value: "Thermal Heating / Power Generation" },
+      { label: "Control", value: "Automated Control Panel" }
+    ],
+    certifications: ["Renewable Energy Standard", "Eco-Friendly"],
+    images: [
+      "/images/products/biomass-gasifier-plant/1.jpeg",
+      "/images/products/biomass-gasifier-plant/2.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Renewable Energy",
+    relatedProductSlugs: ["containerized-bio-gas-plant"]
   }
 ];
 
