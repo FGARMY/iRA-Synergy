@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, Building2, Zap, Recycle, HeartPulse, Dumbbell, GraduationCap, SlidersHorizontal, LayoutGrid, List } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ProductCard from "@/components/ProductCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { products, productCategories } from "@/data/products";
+import { products as staticProducts, productCategories } from "@/data/products";
+import type { Product } from "@/types";
 
 const categoryIcons: Record<string, React.ElementType> = {
   "Smart City": Building2,
@@ -21,6 +22,18 @@ const categoryIcons: Record<string, React.ElementType> = {
 export default function ProductsCatalog() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [products, setProducts] = useState<Product[]>(staticProducts);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("ira_admin_products");
+      if (stored) {
+        setProducts(JSON.parse(stored));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
 
   const filtered = products.filter((p) => {
     const matchesCategory = activeCategory === "All" || p.category === activeCategory;

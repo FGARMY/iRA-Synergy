@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { use } from "react";
@@ -75,7 +75,21 @@ export default function ProductDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
-  const product = getProductBySlug(slug);
+  
+  const [isMounted, setIsMounted] = useState(false);
+  const [allProducts, setAllProducts] = useState(products);
+
+  useEffect(() => {
+    setIsMounted(true);
+    try {
+      const stored = localStorage.getItem("ira_admin_products");
+      if (stored) setAllProducts(JSON.parse(stored));
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  const product = allProducts.find((p) => p.slug === slug);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -91,18 +105,19 @@ export default function ProductDetailPage({
     message: "",
   });
 
+  if (!isMounted) return <div className="min-h-screen bg-gray-50" />; // prevent hydration mismatch
   if (!product) notFound();
 
   const CatIcon = categoryIcons[product.category] || Building2;
 
   // Get related products from same category (excluding current)
-  const relatedProducts = getProductsByCategory(product.category)
-    .filter((p) => p.slug !== product.slug)
-    .slice(0, 4);
+  const relatedProducts = allProducts.filter(
+    (p) => p.category === product.category && p.slug !== product.slug
+  ).slice(0, 4);
 
   // Also get explicitly related products
   const explicitRelated = product.relatedProductSlugs
-    .map((s) => products.find((p) => p.slug === s))
+    .map((s) => allProducts.find((p) => p.slug === s))
     .filter(Boolean);
 
   // Merge and deduplicate
