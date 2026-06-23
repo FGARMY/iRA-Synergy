@@ -7,7 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import CTABanner from "@/components/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CountUp from "@/components/ui/CountUp";
-import { companyInfo, certifications, coreValues, companyStats, platforms } from "@/data/company";
+import { companyInfo, certifications, coreValues, companyStats, platforms, teamMembers } from "@/data/company";
 
 export const metadata: Metadata = {
   title: "About Us — iRA Synergy",
@@ -163,6 +163,37 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Leadership Team / Key Personnel */}
+        <section className="py-20 md:py-24 bg-white border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="text-center mb-16">
+                <span className="text-ira-primary font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Leadership</span>
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900">Key Personnel</h2>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {teamMembers.map((member, idx) => (
+                <ScrollReveal key={member.id} delay={idx * 100}>
+                  <div className="flex flex-col items-center text-center group cursor-default">
+                    <div className="relative w-32 h-32 md:w-40 md:h-40 mb-6 rounded-full overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300 border-4 border-gray-50 group-hover:border-ira-primary/20">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">{member.name}</h4>
+                    <p className="text-xs sm:text-sm font-bold text-ira-primary mb-2 uppercase tracking-wide">{member.role}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </section>
 

@@ -3,11 +3,38 @@ import { type TeamMember, type Certification, type CoreValue, type Stat, type Na
 export const teamMembers: TeamMember[] = [
   {
     id: "tm-1",
-    name: "Dinesh Anand",
-    role: "Director",
-    bio: "Visionary leader with 15+ years of experience in infrastructure development and sustainability solutions. Passionate about leveraging technology to build a smarter, cleaner India. Spearheads iRA Synergy's strategic partnerships with government bodies and drives innovation across all solution verticals.",
-    image: "/images/team/dinesh-anand.jpg", // We'll just use a placeholder from unsplash in the component if this fails
-    email: "info@irasynergy.com",
+    name: "Rohit Sharma",
+    role: "Operations Manager",
+    bio: "Ensures smooth project execution and daily operations.",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80",
+    email: "ops@irasynergy.com",
+    linkedin: "#",
+  },
+  {
+    id: "tm-2",
+    name: "Sneha Patil",
+    role: "Sales & Marketing Head",
+    bio: "Drives business growth and government partnerships.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80",
+    email: "sales@irasynergy.com",
+    linkedin: "#",
+  },
+  {
+    id: "tm-3",
+    name: "Rajesh Kumar",
+    role: "Engineering Lead",
+    bio: "Oversees technical design and smart city implementations.",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80",
+    email: "tech@irasynergy.com",
+    linkedin: "#",
+  },
+  {
+    id: "tm-4",
+    name: "Priya Deshmukh",
+    role: "HR Manager",
+    bio: "Builds a culture of innovation and employee growth.",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80",
+    email: "hr@irasynergy.com",
     linkedin: "#",
   },
 ];
