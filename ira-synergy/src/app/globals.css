@@ -605,6 +605,26 @@ body {
 }
 
 /* ============================================================
+   Copy Protection
+   ============================================================ */
+
+.copy-protected {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.copy-protected input, 
+.copy-protected textarea, 
+.copy-protected [contenteditable="true"] {
+  user-select: auto;
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+}
+
+/* ============================================================
    Focus Ring
    ============================================================ */
 
