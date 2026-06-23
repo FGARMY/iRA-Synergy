@@ -4,7 +4,7 @@ export const products: Product[] = [
   {
     id: "p-8",
     slug: "solar-smart-bench",
-    name: "Solar Smart Bench",
+    name: "Smart Solar Bench",
     category: "Smart City",
     description:
       "The Solar Smart Bench is a next-generation urban seating solution that brings connectivity and renewable energy to public spaces. Fully powered by integrated solar panels, it provides free Wi-Fi, wireless device charging, USB ports, and atmospheric sensors. Designed with durable, weather-resistant materials, it's perfect for parks, university campuses, smart city squares, and corporate campuses.",
@@ -75,7 +75,7 @@ export const products: Product[] = [
   {
     id: "p-10",
     slug: "organic-waste-composter",
-    name: "Organic Food Waste Composter Machine",
+    name: "Automatic Organic Food Waste Compost Machine",
     category: "Waste Management",
     description:
       "The Organic Food Waste Composter Machine by WASTEMENT provides a fully automatic, odour-free solution to convert organic food waste into nutritious compost. It features a smart PLC control system and high-efficiency composting process with 50KG to 500KG capacity per cycle. The internal process includes shredding, drying, and composting chambers for sustainable waste reduction.",
@@ -110,7 +110,7 @@ export const products: Product[] = [
   {
     id: "p-11",
     slug: "bio-medical-waste-incinerator",
-    name: "Bio Medical Waste Incinerator",
+    name: "Smokeless Bio Medical Waste Incinerator",
     category: "Waste Management",
     description:
       "The Bio Medical Waste Incinerator by WASTEMENT is engineered for the safe and compliant disposal of bio-medical hazards. Utilizing advanced combustion technology, it guarantees a complete burn with minimal emissions, reducing infection risks. Built with robust materials for durability and featuring intelligent safety interlocks, this CPCB and MOEF compliant machine offers a low-maintenance, eco-friendly solution for hospitals and clinics.",
@@ -149,7 +149,7 @@ export const products: Product[] = [
   {
     id: "p-12",
     slug: "solid-waste-incinerator",
-    name: "Solid Waste Incinerator",
+    name: "Solid Waste Incinerator With Smoke Control System",
     category: "Waste Management",
     description:
       "The Solid Waste Incinerator by WASTEMENT is a next-generation waste solution designed for high-temperature combustion and low emission. Featuring an integrated scrubber tank and cyclone separator, it ensures an environmentally friendly burn process. This heavy-duty system is highly efficient, durable, and cost-effective, offering a complete solution for safe solid waste disposal.",
@@ -218,7 +218,7 @@ export const products: Product[] = [
   {
     id: "p-14",
     slug: "plastic-grinder-machine",
-    name: "Plastic Grinder Machine",
+    name: "Plastic Waste Grinder Machine",
     category: "Waste Management",
     description:
       "The Plastic Grinder Machine by WASTEMENT is built for performance and designed for the future. Ideal for all types of plastic waste, this robust and heavy-duty machine delivers highly efficient grinding with its high-speed rotor system. It guarantees energy-efficient operation with low noise and vibration, making it a low maintenance, user-friendly waste solution for recycling plants.",
@@ -251,7 +251,7 @@ export const products: Product[] = [
   {
     id: "p-15",
     slug: "trommel-waste-sorting-plant",
-    name: "Trommel Waste Sorting Plant",
+    name: "Trommel Screening Machine With Feeding Conveyor",
     category: "Waste Management",
     description:
       "The Trommel Waste Sorting Plant by VAKRATUND MACHINES offers an industrial-scale automated waste segregation system. Featuring a massive rotating cylindrical screen (trommel) combined with heavy-duty conveyor belts, it efficiently separates municipal solid waste into distinct categories based on size and weight. Built for extreme durability and continuous operation, this plant is essential for modern municipal recycling facilities.",
@@ -652,9 +652,9 @@ export const products: Product[] = [
   {
     id: "p-27",
     slug: "sanitary-pad-vending-machine",
-    name: "Sanitary Pad Vending Machine",
+    name: "Sanitary Napkin Vending Machine",
     category: "Public Health",
-    description: "Our Smart Sanitary Pad Vending Machine ensures 24/7 access to menstrual hygiene products in schools, colleges, offices, and public restrooms. It features a robust metal body, coin or smart card operation, and an easy-to-load dispensing mechanism. Promoting women's health and dignity, it is a crucial addition to any modern facility.",
+    description: "Our Sanitary Napkin Vending Machine ensures 24/7 access to menstrual hygiene products in schools, colleges, offices, and public restrooms. It features a robust metal body, coin or smart card operation, and an easy-to-load dispensing mechanism. Promoting women's health and dignity, it is a crucial addition to any modern facility.",
     shortDescription: "Automated wall-mounted sanitary pad dispenser",
     features: [
       "Coin / Smart Card Operated Mechanism",
@@ -683,9 +683,9 @@ export const products: Product[] = [
   {
     id: "p-28",
     slug: "plastic-baling-machine",
-    name: "Plastic Baling Machine",
+    name: "Hydraulic Plastic Baling Machine",
     category: "Waste Management",
-    description: "The Plastic Baling Machine is an industrial hydraulic press designed to compress plastic waste, cardboard, and paper into dense, manageable bales. It significantly reduces waste volume, lowering transportation and storage costs. Featuring a heavy-duty hydraulic cylinder, safety lock mechanisms, and a robust steel frame, it's essential for recycling centers and large facilities.",
+    description: "The Hydraulic Plastic Baling Machine is an industrial hydraulic press designed to compress plastic waste, cardboard, and paper into dense, manageable bales. It significantly reduces waste volume, lowering transportation and storage costs. Featuring a heavy-duty hydraulic cylinder, safety lock mechanisms, and a robust steel frame, it's essential for recycling centers and large facilities.",
     shortDescription: "Hydraulic press for compressing plastic and cardboard waste into dense bales",
     features: [
       "Heavy-Duty Hydraulic Compression",
@@ -715,9 +715,9 @@ export const products: Product[] = [
   {
     id: "p-29",
     slug: "plastic-shredder-machine",
-    name: "Plastic Shredder Machine",
+    name: "Municipal Solid Waste Shredder Machine",
     category: "Waste Management",
-    description: "Our Plastic Shredder Machine efficiently tears down bulky plastic waste into smaller pieces, preparing it for recycling or further processing. Equipped with high-torque twin shafts and hardened steel blades, it easily handles tough plastics, pipes, drums, and packaging materials. Engineered for low noise and high throughput, it is a powerhouse for modern recycling facilities.",
+    description: "Our Municipal Solid Waste Shredder Machine efficiently tears down bulky plastic waste into smaller pieces, preparing it for recycling or further processing. Equipped with high-torque twin shafts and hardened steel blades, it easily handles tough plastics, pipes, drums, and packaging materials. Engineered for low noise and high throughput, it is a powerhouse for modern recycling facilities.",
     shortDescription: "High-torque twin-shaft shredder for bulky plastic waste",
     features: [
       "High-Torque Twin Shaft Design",
@@ -811,9 +811,9 @@ export const products: Product[] = [
   {
     id: "p-32",
     slug: "smart-vend-cloth-bag-vending-machine",
-    name: "Smart Vend Cloth Bag Vending Machine",
+    name: "Automatic Cloth Bag Vending Machine",
     category: "Smart City",
-    description: "The 'Smart Vend' Cloth Bag Vending Machine provides a sustainable alternative to single-use plastics by dispensing reusable cloth bags. Perfect for markets, shopping malls, and public transit stations, it encourages eco-friendly habits. It features a reliable dispensing mechanism, clear instructions, and bold branding that says 'SAY NO TO PLASTIC BAGS'.",
+    description: "The Automatic Cloth Bag Vending Machine provides a sustainable alternative to single-use plastics by dispensing reusable cloth bags. Perfect for markets, shopping malls, and public transit stations, it encourages eco-friendly habits. It features a reliable dispensing mechanism, clear instructions, and bold branding that says 'SAY NO TO PLASTIC BAGS'.",
     shortDescription: "Vending machine dispensing eco-friendly reusable cloth bags",
     features: [
       "Dispenses Reusable Cloth/Jute Bags",
@@ -844,9 +844,9 @@ export const products: Product[] = [
   {
     id: "p-33",
     slug: "smart-city-bus-shelter",
-    name: "Smart City Bus Shelter",
+    name: "Smart Solar Bus Stop",
     category: "Smart City",
-    description: "Our Smart City Bus Shelter redefines urban commuting with modern amenities and sustainable infrastructure. It features a solar-powered smart pole, integrated CCTV for safety, environmental sensors, and digital advertisement displays. Built with weather-resistant materials and offering comfortable seating, it serves as a smart hub for public transportation.",
+    description: "Our Smart Solar Bus Stop redefines urban commuting with modern amenities and sustainable infrastructure. It features a solar-powered smart pole, integrated CCTV for safety, environmental sensors, and digital advertisement displays. Built with weather-resistant materials and offering comfortable seating, it serves as a smart hub for public transportation.",
     shortDescription: "Modern transit shelter with solar power, CCTV, and digital displays",
     features: [
       "Solar-Powered Smart Pole Integration",
@@ -879,9 +879,9 @@ export const products: Product[] = [
   {
     id: "p-34",
     slug: "dead-animal-solid-waste-incinerator",
-    name: "Dead Animal & Solid Waste 2-in-1 Incinerator",
+    name: "Dual-Purpose (2-in-1) Dead Animal & Solid Waste Incinerator",
     category: "Waste Management",
-    description: "The 'ECOBURN 2-in-1' is a high-efficiency dual-purpose incinerator designed for the safe disposal of both dead animals and solid municipal waste. It utilizes a 5-chamber design including primary and secondary combustion, heat exchange, scrubber, and an ID fan stack. Operating at extremely high temperatures, it ensures complete combustion with minimal emissions, making it ideal for municipalities, veterinary facilities, and large farms.",
+    description: "The Dual-Purpose (2-in-1) Dead Animal & Solid Waste Incinerator is a high-efficiency incinerator designed for the safe disposal of both dead animals and solid municipal waste. It utilizes a 5-chamber design including primary and secondary combustion, heat exchange, scrubber, and an ID fan stack. Operating at extremely high temperatures, it ensures complete combustion with minimal emissions, making it ideal for municipalities, veterinary facilities, and large farms.",
     shortDescription: "High-efficiency 5-chamber incinerator for safe disposal of dead animals and solid waste",
     features: [
       "Dual Purpose: Dead Animal & Solid Waste",
@@ -916,9 +916,9 @@ export const products: Product[] = [
   {
     id: "p-35",
     slug: "solar-smart-air-purifier-outdoor-unit",
-    name: "Solar Smart Air Purifier Outdoor Unit",
+    name: "Solar Air Purifier",
     category: "Public Health",
-    description: "The Solar Smart Air Purifier is an innovative outdoor unit designed to combat urban air pollution in public spaces, schools, and parks. Fully powered by integrated solar panels, it actively filters particulate matter and pollutants from the surrounding air. It features smart monitoring displays to show real-time air quality index (AQI) improvements.",
+    description: "The Solar Air Purifier is an innovative outdoor unit designed to combat urban air pollution in public spaces, schools, and parks. Fully powered by integrated solar panels, it actively filters particulate matter and pollutants from the surrounding air. It features smart monitoring displays to show real-time air quality index (AQI) improvements.",
     shortDescription: "Solar-powered outdoor air purifier with real-time AQI monitoring",
     features: [
       "100% Solar Powered Operation",
@@ -1008,9 +1008,9 @@ export const products: Product[] = [
   {
     id: "p-38",
     slug: "biomass-gasifier-plant",
-    name: "Biomass Gasifier Plant",
+    name: "Gasifier (Waste to Energy Generation Plant)",
     category: "Renewable Energy",
-    description: "The Biomass Gasifier Plant by WASTEVENT Solutions converts agricultural residue, wood chips, and other biomass into clean producer gas (syngas). This advanced renewable energy system features a fuel storage and drying unit, a high-efficiency gasifier reactor, a producer gas cooler, and an automated control panel. It provides a sustainable alternative to fossil fuels for thermal applications or power generation.",
+    description: "The Gasifier (Waste to Energy Generation Plant) by WASTEMENT converts agricultural residue, wood chips, and other biomass into clean producer gas (syngas). This advanced renewable energy system features a fuel storage and drying unit, a high-efficiency gasifier reactor, a producer gas cooler, and an automated control panel. It provides a sustainable alternative to fossil fuels for thermal applications or power generation.",
     shortDescription: "Advanced plant converting biomass into clean energy",
     features: [
       "Converts Biomass to Clean Producer Gas",
