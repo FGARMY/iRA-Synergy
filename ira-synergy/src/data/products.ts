@@ -389,6 +389,223 @@ export const products: Product[] = [
     inStock: true,
     badge: "Public Health",
     relatedProductSlugs: ["e-toilet"]
+  },
+  {
+    id: "p-20",
+    slug: "container-kitchen",
+    name: "Container Kitchen",
+    category: "Smart City",
+    description: "The Container Kitchen is a fully-equipped, prefabricated commercial kitchen built inside a repurposed shipping container. Featuring industrial-grade stainless steel countertops, commercial gas burners, exhaust hoods, deep sinks, and ample prep space, it's a turnkey solution for catering businesses, event venues, disaster relief camps, and military field operations. The modular design allows rapid deployment — simply transport, connect utilities, and start cooking.",
+    shortDescription: "Prefabricated commercial kitchen in a shipping container",
+    features: [
+      "Full Commercial Kitchen Setup",
+      "Industrial-Grade SS Countertops & Equipment",
+      "Commercial Exhaust Hood & Ventilation",
+      "Multiple Gas Burner Stations",
+      "Deep Wash Sinks with Plumbing",
+      "LED Lighting & Electrical Wiring",
+      "Insulated Walls for Temperature Control",
+      "Rapid Deployment — Plug & Play"
+    ],
+    specs: [
+      { label: "Container Size", value: "20ft / 40ft Standard" },
+      { label: "Construction", value: "Corrugated Steel Shell + SS 304 Interior" },
+      { label: "Kitchen Equipment", value: "Burners, Ovens, Exhaust, Sinks, Prep Tables" },
+      { label: "Electrical", value: "Pre-wired with LED Lighting & Power Outlets" },
+      { label: "Ventilation", value: "Industrial Chimney Hood with Grease Filters" }
+    ],
+    certifications: ["FSSAI Ready", "Fire Safety Compliant", "ISO Certified"],
+    images: [
+      "/images/products/container_kitchen/1.jpeg",
+      "/images/products/container_kitchen/2.jpeg",
+      "/images/products/container_kitchen/3.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Modular",
+    relatedProductSlugs: ["container-food-stall", "portable-community-kitchen"]
+  },
+  {
+    id: "p-21",
+    slug: "container-food-stall",
+    name: "Container Food Stall",
+    category: "Smart City",
+    description: "The Container Food Stall is a vibrant, eye-catching, fully customizable food vending unit built from repurposed shipping containers. Branded with bold cultural artwork and signage (Maharashtra theme shown), these stalls feature large serving windows, interior shelving, display counters, and a compact yet functional kitchen setup. Ideal for street food businesses, government food distribution programs, cultural festivals, and smart city food zones.",
+    shortDescription: "Branded container-based food vending stall",
+    features: [
+      "Custom Branding & Cultural Artwork",
+      "Large Serving Window with Fold-Down Counter",
+      "Interior Shelving & Product Display",
+      "Built-in Kitchen/Prep Area",
+      "Weather-Resistant Exterior Coating",
+      "Multiple Window & Door Configurations",
+      "Roof Canopy / Awning Options",
+      "Lockable & Secure When Closed"
+    ],
+    specs: [
+      { label: "Container Size", value: "10ft / 20ft / 40ft Options" },
+      { label: "Exterior", value: "Powder-Coated Steel with Custom Graphics" },
+      { label: "Serving Window", value: "Hydraulic Lift-Up or Sliding" },
+      { label: "Interior", value: "Food-Grade Surfaces, LED Lighting" },
+      { label: "Mobility", value: "Forklift / Crane Transportable" }
+    ],
+    certifications: ["FSSAI Ready", "Smart City Approved", "Weather Resistant"],
+    images: [
+      "/images/products/container_food_stall/1.jpeg",
+      "/images/products/container_food_stall/2.jpeg",
+      "/images/products/container_food_stall/3.jpeg",
+      "/images/products/container_food_stall/4.jpeg",
+      "/images/products/container_food_stall/5.jpeg",
+      "/images/products/container_food_stall/6.jpeg",
+      "/images/products/container_food_stall/7.jpeg",
+      "/images/products/container_food_stall/8.jpeg",
+      "/images/products/container_food_stall/9.jpeg",
+      "/images/products/container_food_stall/10.jpeg",
+      "/images/products/container_food_stall/11.jpeg",
+      "/images/products/container_food_stall/12.jpeg",
+      "/images/products/container_food_stall/13.jpeg",
+      "/images/products/container_food_stall/14.jpeg",
+      "/images/products/container_food_stall/15.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Customizable",
+    relatedProductSlugs: ["container-kitchen", "portable-community-kitchen"]
+  },
+  {
+    id: "p-22",
+    slug: "portable-warehouse",
+    name: "Portable Warehouse",
+    category: "Smart City",
+    description: "The Portable Warehouse is a large-capacity, containerized storage solution with an arched corrugated metal roof for maximum headroom and weather protection. Built on a standard shipping container base, it provides secure, weatherproof storage for construction sites, agricultural produce, industrial equipment, and emergency supplies. The modular design allows quick setup without permanent foundations.",
+    shortDescription: "Containerized storage with arched roof for maximum capacity",
+    features: [
+      "Arched Roof for Extra Headroom",
+      "Heavy-Duty Corrugated Steel Construction",
+      "Large Double-Door Access",
+      "Weatherproof & Leak-Resistant",
+      "Ventilation Windows for Air Circulation",
+      "No Foundation Required — Sits on Level Ground",
+      "Stackable & Expandable Design",
+      "Anti-Corrosion Coated Exterior"
+    ],
+    specs: [
+      { label: "Base Size", value: "20ft / 40ft Container Base" },
+      { label: "Roof Type", value: "Arched Galvanized Steel" },
+      { label: "Height", value: "Extended — Up to 12ft Internal" },
+      { label: "Load Capacity", value: "Heavy-Duty Industrial Grade" },
+      { label: "Access", value: "Double Swing Doors + Side Entry" }
+    ],
+    certifications: ["IS Standard", "Weatherproof", "Industrial Grade"],
+    images: [
+      "/images/products/portable_warehouse/1.jpeg",
+      "/images/products/portable_warehouse/2.jpeg",
+      "/images/products/portable_warehouse/3.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Heavy Duty",
+    relatedProductSlugs: ["portable-site-office"]
+  },
+  {
+    id: "p-23",
+    slug: "portable-site-office",
+    name: "Portable Site Office",
+    category: "Smart City",
+    description: "The Portable Site Office is a fully-furnished, containerized office unit designed for construction sites, project management, and temporary field operations. Built from a modified shipping container, it features multiple windows for natural light, pre-installed electrical wiring, air conditioning provisions, and a professional interior finish. Ideal for engineers, supervisors, and project teams who need a functional workspace on remote sites.",
+    shortDescription: "Container-based portable office for site operations",
+    features: [
+      "Multiple Windows for Natural Lighting",
+      "Pre-Wired Electrical System with Outlets",
+      "Air Conditioning & Ventilation Provisions",
+      "Insulated Walls, Floor & Ceiling",
+      "Lockable Entry Door with Security",
+      "Notice Board & Signage Panel",
+      "Durable Powder-Coated Exterior",
+      "Fork Pockets for Easy Transport"
+    ],
+    specs: [
+      { label: "Container Size", value: "20ft / 40ft Options" },
+      { label: "Interior", value: "PVC/PUF Insulated Panels" },
+      { label: "Flooring", value: "Vinyl / Chequered Plate" },
+      { label: "Windows", value: "Sliding Aluminum with Grills" },
+      { label: "Electrical", value: "Pre-Wired with MCB Panel" }
+    ],
+    certifications: ["IS Standard", "Fire Safety", "Industrial Grade"],
+    images: [
+      "/images/products/portable_site_office/1.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Portable",
+    relatedProductSlugs: ["portable-warehouse", "portable-toilet-block"]
+  },
+  {
+    id: "p-24",
+    slug: "portable-toilet-block",
+    name: "Portable Toilet Block",
+    category: "Public Health",
+    description: "The Portable Toilet Block is a multi-compartment, containerized sanitation facility designed for high-traffic public areas, construction sites, events, and disaster relief camps. Featuring multiple individual toilet cubicles with lockable doors, proper plumbing, ventilation, and a pitched roof for rain protection, it provides a dignified and hygienic sanitation solution that can be deployed rapidly anywhere.",
+    shortDescription: "Multi-unit container-based sanitation facility",
+    features: [
+      "Multiple Individual Toilet Cubicles",
+      "Lockable Doors with Occupancy Indicators",
+      "Pitched Roof for Rain & Sun Protection",
+      "Internal Plumbing & Waste Management",
+      "Ventilation & Lighting in Each Cubicle",
+      "ADA-Compliant Options Available",
+      "Easy to Clean & Maintain",
+      "Rapid Deployment — No Construction Needed"
+    ],
+    specs: [
+      { label: "Configuration", value: "4 / 6 / 8 / 10 Cubicle Options" },
+      { label: "Construction", value: "Steel Frame with Insulated Panels" },
+      { label: "Plumbing", value: "Pre-Installed with External Connection" },
+      { label: "Roof", value: "Galvanized Pitched Roof" },
+      { label: "Flooring", value: "Anti-Skid, Waterproof Surface" }
+    ],
+    certifications: ["Swachh Bharat Approved", "Public Health Compliant", "ISO Certified"],
+    images: [
+      "/images/products/portable_toilet_block/1.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Public Health",
+    relatedProductSlugs: ["e-toilet", "portable-site-office"]
+  },
+  {
+    id: "p-25",
+    slug: "portable-community-kitchen",
+    name: "Portable Community Kitchen",
+    category: "Smart City",
+    description: "The Portable Community Kitchen is a culturally-decorated, container-based cooking facility designed for Anganwadis, mid-day meal programs, community feeding centers, and rural welfare schemes. Adorned with traditional Warli art and vibrant cultural motifs, it blends seamlessly into community settings while providing a fully-functional kitchen with stainless steel counters, gas burners, wash basins, and fire safety systems. Built for government schemes like PM POSHAN and ICDS.",
+    shortDescription: "Culturally-themed container kitchen for community programs",
+    features: [
+      "Traditional Cultural Artwork & Branding",
+      "Full Kitchen Setup — Burners, Sinks, Counters",
+      "Fire Safety System with Alarm",
+      "Ceiling Fan & Ventilation Windows",
+      "Security Grills on Windows",
+      "Insulated Roof for Heat Protection",
+      "Lockable Entry with Secure Access",
+      "Designed for PM POSHAN / ICDS Programs"
+    ],
+    specs: [
+      { label: "Container Size", value: "20ft Standard" },
+      { label: "Interior", value: "SS Countertops, Food-Grade Surfaces" },
+      { label: "Safety", value: "Fire Alarm, Extinguisher Mount" },
+      { label: "Ventilation", value: "Ceiling Fan + Window Grills" },
+      { label: "Exterior", value: "Cultural Art + Powder-Coated Steel" }
+    ],
+    certifications: ["FSSAI Ready", "PM POSHAN Compatible", "Fire Safety Compliant"],
+    images: [
+      "/images/products/portable_community_kitchen/1.jpeg",
+      "/images/products/portable_community_kitchen/2.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Community",
+    relatedProductSlugs: ["container-kitchen", "container-food-stall"]
   }
 ];
 
