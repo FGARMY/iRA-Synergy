@@ -219,17 +219,19 @@ export default function AboutPage() {
             <ScrollReveal delay={200}>
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-3 sm:gap-4 items-center justify-items-center py-2">
                 {[
+                  "08_client.png",
+                  "ISO_9001.png",
+                  "45001-2018.jpeg",
+                  "ISO-14001-15.jpg",
+                  "ohsas-iso-18001.png",
                   "gmp-quality.png",
                   "ICE.png",
                   "images.jpg",
                   "mh-logo.png",
-                  "msme-zed.jpeg",
+                  "zgold-logo.png",
                   "nabl-india-seeklogo.png",
                   "newNS.png",
-                  "ohsas-iso-18001.png",
                   "qa-certificate.jpeg",
-                  "08_client.png",
-                  "45001-2018.jpeg",
                   "1673846.jpg",
                   "CVC.png",
                   "gem-logo.png"
@@ -262,6 +264,7 @@ export default function AboutPage() {
                   { file: "amazon.svg", name: "Amazon" },
                   { file: "indiamart.png", name: "IndiaMART" },
                   { file: "tradeindia.png", name: "Trade India" },
+                  { file: "gem-logo.png", name: "GeM" },
                 ].map((platform, index) => (
                   <div key={`platform-${index}`} className="w-32 sm:w-48 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow aspect-[4/3] relative overflow-hidden group">
                     <Image

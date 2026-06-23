@@ -122,12 +122,12 @@ export const companyInfo = {
   name: "iRA Synergy Private Limited",
   tagline: "Pioneering India's Infrastructure Evolution",
   mission: "Building a Smarter, Cleaner & Sustainable India",
-  
+
   // Expanded Corporate Copy
   storyParagraph1: "iRA Synergy Private Limited is a premier infrastructure and sustainability engineering corporation headquartered in Nashik, Maharashtra. Founded on the principle that modern civic administration requires modern technological backbones, we have rapidly expanded to become a critical partner for government departments, municipal corporations, and enterprise CSR divisions across the nation.",
   storyParagraph2: "We specialize in the end-to-end execution of heavy infrastructure—from decentralized automated waste management facilities to Category-5 cyclone-safe coastal shelters. Our engineering philosophy is rooted in modularity, extreme durability, and seamless IoT integration, ensuring that the public spaces we build today will serve communities for decades.",
   storyParagraph3: "As a proudly 'Make in India' certified corporation, 100% of our manufacturing and assembly is localized. This not only bolsters the national economy but allows us to maintain absolute, uncompromised control over the quality of every steel girder, every solar panel, and every smart sensor deployed in our projects.",
-  
+
   // Directors' Vision
   directors: [
     {
@@ -140,7 +140,7 @@ export const companyInfo = {
       name: "Keshav Yendait",
       title: "Director",
       quote: "Engineering innovation and sustainability are the cornerstones of modern development. We strive to create robust solutions that empower communities and protect the environment for future generations.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80",
+      image: "/images/team/keshav.jpeg",
     }
   ],
 
