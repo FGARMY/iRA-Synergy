@@ -324,6 +324,71 @@ export const products: Product[] = [
     inStock: true,
     badge: "Bulk Capacity",
     relatedProductSlugs: ["vertical-industrial-incinerator"],
+  },
+  {
+    id: "p-18",
+    slug: "e-toilet",
+    name: "E-Toilet",
+    category: "Smart City",
+    description: "The EcoRestroom E-Toilet is a self-cleaning, eco-friendly public sanitation solution designed for smart cities. It features an automated access system, hygienic self-washing mechanisms, odor control technology, and minimal water consumption. This green infrastructure is essential for improving urban hygiene with dignity and sustainability.",
+    shortDescription: "Automated, self-cleaning eco-friendly public restroom",
+    features: [
+      "Fully Automated Self-Cleaning System",
+      "Eco-Friendly & Minimal Water Usage",
+      "Advanced Odor Control Technology",
+      "Touchless Hygienic Operation",
+      "Smart Access & Usage Monitoring",
+      "Durable, Vandal-Resistant Design"
+    ],
+    specs: [
+      { label: "Material", value: "High-Grade Stainless Steel & Composite" },
+      { label: "Water Usage", value: "Optimized Flush (1.5L - 2.5L)" },
+      { label: "Power", value: "Solar/Grid Compatible" },
+      { label: "Maintenance", value: "Automated Floor & Bowl Wash" }
+    ],
+    certifications: ["Swachh Bharat Approved", "Eco-Friendly", "Smart City Standard"],
+    images: [
+      "/images/products/e_toilet/1.jpeg",
+      "/images/products/e_toilet/2.jpeg",
+      "/images/products/e_toilet/3.jpeg",
+      "/images/products/e_toilet/4.jpeg",
+      "/images/products/e_toilet/5.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Smart City",
+    relatedProductSlugs: []
+  },
+  {
+    id: "p-19",
+    slug: "pure-water-atm",
+    name: "Pure Water ATM",
+    category: "Public Health",
+    description: "The Pure Water ATM provides 24/7 access to clean, safe, and mineral-enriched drinking water. Equipped with a 4-stage purification process including Reverse Osmosis (RO), UV Care, Ozonation, and a Mineral Booster, this automated dispensing unit ensures high-quality hydration for public spaces. It features a digital interface, automated dispensing, and sturdy weather-resistant construction.",
+    shortDescription: "Automated 4-stage purification water dispensing ATM",
+    features: [
+      "4-Stage Purification (RO + UV + Ozonation + Mineral Booster)",
+      "24/7 Automated Dispensing",
+      "Digital Interface & Payment System",
+      "Real-time Water Quality Monitoring",
+      "Hygienic Touchless Design",
+      "Weather & Vandal Resistant"
+    ],
+    specs: [
+      { label: "Purification", value: "RO, UV, Ozonation, Mineral Booster" },
+      { label: "Dispensing", value: "Automated Sensor/Button" },
+      { label: "Construction", value: "Premium Stainless Steel & Coated Panels" },
+      { label: "Capacity", value: "High Volume Commercial Output" }
+    ],
+    certifications: ["Safe Drinking Water", "ISO Certified"],
+    images: [
+      "/images/products/water_atm/1.jpeg",
+      "/images/products/water_atm/2.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Public Health",
+    relatedProductSlugs: ["e-toilet"]
   }
 ];
 

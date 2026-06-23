@@ -28,7 +28,14 @@ export default function ProductsCatalog() {
     try {
       const stored = localStorage.getItem("ira_admin_products");
       if (stored) {
-        setProducts(JSON.parse(stored));
+        const parsedStored = JSON.parse(stored);
+        const combined = [...staticProducts];
+        for (const item of parsedStored) {
+          const idx = combined.findIndex((p) => p.id === item.id);
+          if (idx >= 0) combined[idx] = item;
+          else combined.unshift(item); // Show new ones at top
+        }
+        setProducts(combined);
       }
     } catch (e) {
       console.error(e);
