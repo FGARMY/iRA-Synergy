@@ -35,18 +35,16 @@ export default function Header() {
     <header className={`fixed w-full z-40 bg-white transition-all duration-300 ${isScrolled ? "shadow-md" : ""}`}>
 
       {/* Middle Bar - Logo & CTA */}
-      <div className="px-4 py-2 lg:px-8 border-b border-gray-100 flex justify-between items-center">
+      <div className="px-4 py-0 lg:px-8 border-b border-gray-100 flex justify-between items-center bg-white relative z-50">
         <Link href="/" className="flex items-center gap-4 group cursor-pointer">
-          <div className="flex items-center gap-2">
-            <img
-              src="/images/navbar-logo-02.png"
-              alt="iRA Synergy Logo"
-              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto object-contain transition-transform group-hover:scale-105"
-            />
-          </div>
-          <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 ml-2">
-            <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors">Innovative Solutions for</span>
-            <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors">Infrastructure & Sustainability</span>
+          <img
+            src="/images/new-logo-2.png"
+            alt="iRA Synergy Logo"
+            className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain transition-transform group-hover:scale-105 -mt-2 md:-mt-4 lg:-mt-6 -mb-2 sm:-mb-4 md:-mb-6 lg:-mb-8 relative z-10"
+          />
+          <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 mt-2">
+            <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors leading-snug">Innovative Solutions for</span>
+            <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors leading-snug">Infrastructure & Sustainability</span>
           </div>
         </Link>
 

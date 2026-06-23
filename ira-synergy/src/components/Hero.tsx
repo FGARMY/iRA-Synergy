@@ -60,7 +60,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-xl font-medium leading-relaxed">
-              End-to-end solutions for Infrastructure, Environment & Community Wellbeing.
+              Building Sustainable Infrastructure, Healthier Environments, and Stronger Communities.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
