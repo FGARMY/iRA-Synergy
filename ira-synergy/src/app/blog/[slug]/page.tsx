@@ -5,17 +5,61 @@ import { ArrowLeft, Clock, User, ArrowRight, Layers } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
-import { blogs } from "@/data/blogs";
+import { blogs as staticBlogs, type BlogPost } from "@/data/blogs";
 import { solutions } from "@/data/solutions";
+import { supabase } from "@/lib/supabase";
+
+export const dynamicParams = true;
+export const revalidate = 0;
 
 export async function generateStaticParams() {
-  return blogs.map((blog) => ({
+  return staticBlogs.map((blog) => ({
     slug: blog.slug,
   }));
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const blog = blogs.find((b) => b.slug === params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+
+  // Try Supabase first, then fall back to static
+  let blog: BlogPost | undefined;
+
+  const isSupabaseConfigured =
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (isSupabaseConfigured) {
+    try {
+      const { data: dbBlog } = await supabase
+        .from("blogs")
+        .select("*")
+        .eq("slug", slug)
+        .single();
+
+      if (dbBlog) {
+        blog = {
+          id: dbBlog.id,
+          slug: dbBlog.slug,
+          title: dbBlog.title,
+          excerpt: dbBlog.excerpt || "",
+          content: dbBlog.content || "",
+          coverImage: dbBlog.cover_image || "",
+          author: dbBlog.author || "Admin",
+          date: dbBlog.date || "",
+          readTime: dbBlog.read_time || "",
+          category: dbBlog.category || "",
+          relatedSolutionSlug: dbBlog.related_solution_slug || "",
+        };
+      }
+    } catch (e) {
+      // Supabase fetch failed, will fall back to static
+    }
+  }
+
+  // Fall back to static data
+  if (!blog) {
+    blog = staticBlogs.find((b) => b.slug === slug);
+  }
 
   if (!blog) {
     notFound();
