@@ -9,6 +9,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ProductCard from "@/components/ProductCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { products as staticProducts, productCategories } from "@/data/products";
+import { supabase } from "@/lib/supabase";
 import type { Product } from "@/types";
 
 const categoryIcons: Record<string, React.ElementType> = {
@@ -35,21 +36,69 @@ export default function ProductsCatalog() {
   const [products, setProducts] = useState<Product[]>(staticProducts);
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("ira_admin_products");
-      if (stored) {
-        const parsedStored = JSON.parse(stored);
-        const combined = [...staticProducts];
-        for (const item of parsedStored) {
-          const idx = combined.findIndex((p) => p.id === item.id);
-          if (idx >= 0) combined[idx] = item;
-          else combined.unshift(item); // Show new ones at top
+    async function loadProducts() {
+      const isSupabaseConfigured =
+        process.env.NEXT_PUBLIC_SUPABASE_URL &&
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+      if (isSupabaseConfigured) {
+        try {
+          const { data: dbProducts, error } = await supabase
+            .from("products")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+          if (dbProducts && !error) {
+            const mapped = dbProducts.map((dbP: any) => ({
+              id: dbP.id,
+              slug: dbP.slug,
+              name: dbP.name,
+              category: dbP.category,
+              description: dbP.description,
+              shortDescription: dbP.short_description || "",
+              features: dbP.features || [],
+              specs: dbP.specs || [],
+              certifications: dbP.certifications || [],
+              images: dbP.images || [],
+              price: dbP.price || "On Request",
+              inStock: dbP.in_stock ?? true,
+              badge: dbP.badge || undefined,
+              relatedProductSlugs: dbP.related_product_slugs || [],
+            }));
+            // Merge with static products to prevent any missing item during migration
+            const combined = [...staticProducts];
+            for (const item of mapped) {
+              const idx = combined.findIndex((p) => p.id === item.id);
+              if (idx >= 0) combined[idx] = item;
+              else combined.unshift(item);
+            }
+            setProducts(combined);
+            return;
+          }
+        } catch (e) {
+          console.warn("Supabase fetch failed, falling back to localStorage", e);
         }
-        setProducts(combined);
       }
-    } catch (e) {
-      console.error(e);
+
+      // LocalStorage fallback
+      try {
+        const stored = localStorage.getItem("ira_admin_products");
+        if (stored) {
+          const parsedStored = JSON.parse(stored);
+          const combined = [...staticProducts];
+          for (const item of parsedStored) {
+            const idx = combined.findIndex((p) => p.id === item.id);
+            if (idx >= 0) combined[idx] = item;
+            else combined.unshift(item);
+          }
+          setProducts(combined);
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
+
+    loadProducts();
   }, []);
 
   const filtered = products.filter((p) => {

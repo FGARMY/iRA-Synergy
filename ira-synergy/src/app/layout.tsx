@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://irasynergy.com"),
   title: {
     default:
-      "iRA Synergy | Infrastructure & Sustainability Products for Government",
+      "iRA Synergy",
     template: "%s | iRA Synergy",
   },
   description:

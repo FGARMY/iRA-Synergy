@@ -10,6 +10,8 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { solutions, getSolutionBySlug, getAllSolutionSlugs } from "@/data/solutions";
 import { products } from "@/data/products";
+import { supabase } from "@/lib/supabase";
+import type { Product } from "@/types";
 
 const indicatorColors: Record<string, string> = {
   "bg-blue-900": "bg-blue-600",
@@ -50,9 +52,53 @@ export default async function SolutionDetailPage({
   if (!solution) notFound();
 
   // Find related products
-  const relatedProducts = solution.relatedProductSlugs
+  let relatedProducts = solution.relatedProductSlugs
     .map((ps) => products.find((p) => p.slug === ps))
     .filter(Boolean);
+
+  const isSupabaseConfigured =
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (isSupabaseConfigured) {
+    try {
+      const { data: dbProducts } = await supabase
+        .from("products")
+        .select("*")
+        .in("slug", solution.relatedProductSlugs);
+
+      if (dbProducts && dbProducts.length > 0) {
+        // Map dbProducts to match the order of relatedProductSlugs
+        relatedProducts = solution.relatedProductSlugs
+          .map((slug) => {
+            const dbP = dbProducts.find((p) => p.slug === slug);
+            if (dbP) {
+              const mappedP: Product = {
+                id: dbP.id,
+                slug: dbP.slug,
+                name: dbP.name,
+                category: dbP.category as any,
+                description: dbP.description,
+                shortDescription: dbP.short_description || "",
+                features: dbP.features || [],
+                specs: dbP.specs || [],
+                certifications: dbP.certifications || [],
+                images: dbP.images || [],
+                price: dbP.price || "On Request",
+                inStock: dbP.in_stock ?? true,
+                badge: dbP.badge || undefined,
+                relatedProductSlugs: dbP.related_product_slugs || [],
+              };
+              return mappedP;
+            }
+            return products.find((p) => p.slug === slug); // fallback to static product
+          })
+          .filter(Boolean) as Product[];
+      }
+    } catch (e) {
+      console.warn("Supabase fetch failed for solutions, falling back to static products", e);
+    }
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
