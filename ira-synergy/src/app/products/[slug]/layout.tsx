@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 import { getProductBySlug, getAllProductSlugs, products } from "@/data/products";
+import { supabase } from "@/lib/supabase";
+import type { Product } from "@/types";
+
+// Allow Next.js to render product pages for slugs NOT in generateStaticParams
+// (i.e., products added via the Admin panel at runtime).
+export const dynamicParams = true;
+
+// Force dynamic rendering so Supabase data is always fresh
+export const dynamic = "force-dynamic";
 
 // FAQ data per category (mirrored from page.tsx for JSON-LD)
 const categoryFAQs: Record<string, { q: string; a: string }[]> = {
@@ -27,8 +36,82 @@ const categoryFAQs: Record<string, { q: string; a: string }[]> = {
   ],
 };
 
+// Helper: look up a product by slug from static data OR Supabase
+async function findProductBySlug(slug: string): Promise<Product | undefined> {
+  // 1. Check static data first (instant, no network)
+  const staticProduct = getProductBySlug(slug);
+  if (staticProduct) return staticProduct;
+
+  // 2. Fall back to Supabase for admin-added products
+  const isSupabaseConfigured =
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (isSupabaseConfigured) {
+    try {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .eq("slug", slug)
+        .single();
+
+      if (data && !error) {
+        return {
+          id: data.id,
+          slug: data.slug,
+          name: data.name,
+          category: data.category,
+          description: data.description,
+          shortDescription: data.short_description || "",
+          features: data.features || [],
+          specs: data.specs || [],
+          certifications: data.certifications || [],
+          images: data.images || [],
+          price: data.price || "On Request",
+          inStock: data.in_stock ?? true,
+          badge: data.badge || undefined,
+          relatedProductSlugs: data.related_product_slugs || [],
+          brochureUrl: data.brochure_url || undefined,
+        };
+      }
+    } catch (e) {
+      console.warn("Supabase lookup failed for slug:", slug, e);
+    }
+  }
+
+  return undefined;
+}
+
 export async function generateStaticParams() {
-  return getAllProductSlugs().map((slug) => ({ slug }));
+  // Start with all static product slugs
+  const staticSlugs = getAllProductSlugs().map((slug) => ({ slug }));
+
+  // Also include slugs from Supabase so admin-added products get pre-rendered
+  const isSupabaseConfigured =
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (isSupabaseConfigured) {
+    try {
+      const { data: dbProducts } = await supabase
+        .from("products")
+        .select("slug");
+
+      if (dbProducts) {
+        const dbSlugs = dbProducts.map((p: any) => ({ slug: p.slug }));
+        // Merge & deduplicate
+        const allSlugs = new Map<string, { slug: string }>();
+        for (const s of [...staticSlugs, ...dbSlugs]) {
+          allSlugs.set(s.slug, s);
+        }
+        return Array.from(allSlugs.values());
+      }
+    } catch (e) {
+      console.warn("Could not fetch slugs from Supabase for static params:", e);
+    }
+  }
+
+  return staticSlugs;
 }
 
 export async function generateMetadata({
@@ -37,7 +120,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await findProductBySlug(slug);
 
   if (!product) {
     return { title: "Product Not Found" };
@@ -82,7 +165,6 @@ export default function ProductDetailLayout({
   children: React.ReactNode;
   params: Promise<{ slug: string }>;
 }) {
-  // We need to resolve params synchronously for the layout render
   // JSON-LD will be injected via a separate component
   return (
     <>
@@ -98,7 +180,7 @@ async function ProductJsonLd({
   paramsPromise: Promise<{ slug: string }>;
 }) {
   const { slug } = await paramsPromise;
-  const product = getProductBySlug(slug);
+  const product = await findProductBySlug(slug);
 
   if (!product) return null;
 
@@ -110,7 +192,7 @@ async function ProductJsonLd({
     name: product.name,
     description: product.description,
     image: product.images.map(
-      (img) => `https://irasynergy.com${img}`
+      (img) => img.startsWith("http") ? img : `https://irasynergy.com${img}`
     ),
     brand: {
       "@type": "Brand",
