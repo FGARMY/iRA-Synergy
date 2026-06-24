@@ -112,13 +112,7 @@ export default function ProductDetailPage({
               badge: dbP.badge || undefined,
               relatedProductSlugs: dbP.related_product_slugs || [],
             }));
-            const combined = [...products];
-            for (const item of mapped) {
-              const idx = combined.findIndex((p) => p.id === item.id);
-              if (idx >= 0) combined[idx] = item;
-              else combined.unshift(item);
-            }
-            setAllProducts(combined);
+            setAllProducts(mapped);
             return;
           }
         } catch (e) {
@@ -131,13 +125,7 @@ export default function ProductDetailPage({
         const stored = localStorage.getItem("ira_admin_products");
         if (stored) {
           const parsedStored = JSON.parse(stored);
-          const combined = [...products];
-          for (const item of parsedStored) {
-            const idx = combined.findIndex((p) => p.id === item.id);
-            if (idx >= 0) combined[idx] = item;
-            else combined.unshift(item);
-          }
-          setAllProducts(combined);
+          setAllProducts(parsedStored);
         }
       } catch (e) {
         console.error(e);
