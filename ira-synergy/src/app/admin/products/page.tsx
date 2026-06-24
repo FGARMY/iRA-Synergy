@@ -79,6 +79,19 @@ function ProductDetailModal({
                 <div><strong>Price:</strong> {product.price || "N/A"}</div>
                 <div><strong>Badge:</strong> {product.badge || "None"}</div>
                 <div><strong>Status:</strong> {product.inStock ? "In Stock" : "Out of Stock"}</div>
+                {product.brochureUrl && (
+                  <div>
+                    <strong>Brochure:</strong>{" "}
+                    <a
+                      href={product.brochureUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "#0F5C24", textDecoration: "underline", fontWeight: "bold" }}
+                    >
+                      Download/View PDF
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -163,6 +176,31 @@ function EditProductModal({
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Image Drag-and-Drop Reordering state & handlers
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+
+  const handleImageDragStart = (index: number) => {
+    setDraggedIndex(index);
+  };
+
+  const handleImageDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+  };
+
+  const handleImageDrop = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    if (draggedIndex === null || draggedIndex === index) return;
+    const reordered = [...images];
+    const [removed] = reordered.splice(draggedIndex, 1);
+    reordered.splice(index, 0, removed);
+    setImages(reordered);
+    setDraggedIndex(null);
+  };
+
+  // Brochure PDF state & ref
+  const [brochureUrl, setBrochureUrl] = useState(product?.brochureUrl || "");
+  const brochureFileInputRef = useRef<HTMLInputElement>(null);
+
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -209,6 +247,17 @@ function EditProductModal({
     if (fileInputRef.current) fileInputRef.current.value = "";
   }, [processFile]);
 
+  const handleBrochureFileSelect = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && file.type === "application/pdf") {
+      const dataUrl = await processFile(file);
+      setBrochureUrl(dataUrl);
+    } else if (file) {
+      alert("Please select a valid PDF file.");
+    }
+    if (brochureFileInputRef.current) brochureFileInputRef.current.value = "";
+  }, [processFile]);
+
   const removeImage = (index: number) => {
     setImages((prev) => prev.filter((_, i) => i !== index));
   };
@@ -221,6 +270,7 @@ function EditProductModal({
       slug,
       features: featuresText.split("\n").map(s => s.trim()).filter(Boolean),
       images,
+      brochureUrl: brochureUrl || undefined,
       certifications: certsText.split(",").map(s => s.trim()).filter(Boolean),
     });
   };
@@ -354,29 +404,130 @@ function EditProductModal({
             </div>
             
             {images.length > 0 && (
-              <div className="admin-detail-images" style={{ marginTop: "1rem" }}>
-                {images.map((img, i) => (
-                  <div key={i} className="admin-detail-image" style={{ position: "relative" }}>
-                    <img src={img} alt={`Preview ${i + 1}`} />
-                    <button
-                      type="button"
-                      onClick={(e) => { e.stopPropagation(); removeImage(i); }}
+              <>
+                <p style={{ fontSize: "11px", color: "#6B7280", marginTop: "8px", display: "flex", alignItems: "center", gap: "4px" }}>
+                  <span>💡</span> <strong>Drag images to rearrange their sequence/order.</strong> The first image will be the primary/cover thumbnail.
+                </p>
+                <div className="admin-detail-images" style={{ marginTop: "1rem", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))", gap: "12px" }}>
+                  {images.map((img, i) => (
+                    <div
+                      key={i}
+                      draggable
+                      onDragStart={() => handleImageDragStart(i)}
+                      onDragOver={(e) => handleImageDragOver(e, i)}
+                      onDrop={(e) => handleImageDrop(e, i)}
+                      className="admin-detail-image"
                       style={{
-                        position: "absolute",
-                        top: "4px",
-                        right: "4px",
-                        background: "rgba(220, 38, 38, 0.9)",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "4px",
-                        padding: "4px",
-                        cursor: "pointer"
+                        position: "relative",
+                        cursor: "grab",
+                        border: "2px dashed #d1d5db",
+                        borderRadius: "8px",
+                        padding: "6px",
+                        backgroundColor: "#f9fafb",
+                        transition: "all 0.2s",
+                        opacity: draggedIndex === i ? 0.4 : 1,
                       }}
+                      onDragEnd={() => setDraggedIndex(null)}
                     >
-                      <Icons.Trash />
-                    </button>
-                  </div>
-                ))}
+                      <img
+                        src={img}
+                        alt={`Preview ${i + 1}`}
+                        style={{
+                          width: "100%",
+                          height: "80px",
+                          objectFit: "contain",
+                          pointerEvents: "none"
+                        }}
+                      />
+                      <div
+                        style={{
+                          position: "absolute",
+                          bottom: "4px",
+                          left: "4px",
+                          backgroundColor: i === 0 ? "#0F5C24" : "rgba(17, 24, 39, 0.75)",
+                          color: "white",
+                          fontSize: "10px",
+                          fontWeight: "bold",
+                          padding: "2px 6px",
+                          borderRadius: "4px",
+                          pointerEvents: "none"
+                        }}
+                      >
+                        {i === 0 ? "Cover" : `#${i + 1}`}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); removeImage(i); }}
+                        style={{
+                          position: "absolute",
+                          top: "4px",
+                          right: "4px",
+                          background: "rgba(220, 38, 38, 0.9)",
+                          color: "white",
+                          border: "none",
+                          borderRadius: "4px",
+                          padding: "4px",
+                          cursor: "pointer"
+                        }}
+                        title="Delete image"
+                      >
+                        <Icons.Trash />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          <div className="admin-form-group">
+            <label>Brochure PDF (Optional)</label>
+            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <input
+                type="text"
+                value={brochureUrl}
+                onChange={(e) => setBrochureUrl(e.target.value)}
+                placeholder="/brochures/product-brochure.pdf or upload PDF"
+                style={{ flexGrow: 1 }}
+              />
+              <button
+                type="button"
+                className="admin-btn admin-btn--ghost"
+                onClick={() => brochureFileInputRef.current?.click()}
+                style={{ whiteSpace: "nowrap" }}
+              >
+                Upload PDF
+              </button>
+              <input
+                ref={brochureFileInputRef}
+                type="file"
+                accept="application/pdf"
+                onChange={handleBrochureFileSelect}
+                style={{ display: "none" }}
+              />
+            </div>
+            {brochureUrl && (
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "8px", padding: "8px", backgroundColor: "#f3f4f6", borderRadius: "6px", border: "1px solid #e5e7eb" }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span style={{ fontSize: "12px", color: "#374151", flexGrow: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }} title={brochureUrl}>
+                  {brochureUrl.startsWith("data:") ? "Attached PDF Brochure (Base64)" : brochureUrl}
+                </span>
+                <a
+                  href={brochureUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: "12px", color: "#0F5C24", textDecoration: "underline", fontWeight: "bold" }}
+                >
+                  View
+                </a>
+                <span style={{ color: "#d1d5db" }}>|</span>
+                <button
+                  type="button"
+                  onClick={() => setBrochureUrl("")}
+                  style={{ color: "#DC2626", background: "none", border: "none", cursor: "pointer", fontSize: "12px", fontWeight: "bold" }}
+                >
+                  Remove
+                </button>
               </div>
             )}
           </div>

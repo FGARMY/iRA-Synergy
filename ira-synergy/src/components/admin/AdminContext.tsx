@@ -86,6 +86,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     inStock: dbP.in_stock ?? true,
     badge: dbP.badge || undefined,
     relatedProductSlugs: dbP.related_product_slugs || [],
+    brochureUrl: dbP.brochure_url || undefined,
   });
 
   const mapProductToDb = (p: Product) => ({
@@ -103,6 +104,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     in_stock: p.inStock,
     badge: p.badge || null,
     related_product_slugs: p.relatedProductSlugs,
+    brochure_url: p.brochureUrl || null,
   });
 
   const mapProductUpdatesToDb = (updates: Partial<Product>) => {
@@ -120,6 +122,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     if (updates.inStock !== undefined) dbUpdates.in_stock = updates.inStock;
     if (updates.badge !== undefined) dbUpdates.badge = updates.badge || null;
     if (updates.relatedProductSlugs !== undefined) dbUpdates.related_product_slugs = updates.relatedProductSlugs;
+    if (updates.brochureUrl !== undefined) dbUpdates.brochure_url = updates.brochureUrl || null;
     return dbUpdates;
   };
 

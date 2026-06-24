@@ -45,6 +45,7 @@ export default function FeaturedProducts() {
               inStock: dbP.in_stock ?? true,
               badge: dbP.badge || undefined,
               relatedProductSlugs: dbP.related_product_slugs || [],
+              brochureUrl: dbP.brochure_url || undefined,
             }));
             setFeaturedProducts(mapped);
             return;

@@ -34,6 +34,7 @@ export interface Product {
   inStock: boolean;
   badge?: string; // "New", "Best Seller", "Eco-Certified"
   relatedProductSlugs: string[];
+  brochureUrl?: string;
 }
 
 export type ProductCategory =

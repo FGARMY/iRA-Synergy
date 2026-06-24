@@ -111,6 +111,7 @@ export default function ProductDetailPage({
               inStock: dbP.in_stock ?? true,
               badge: dbP.badge || undefined,
               relatedProductSlugs: dbP.related_product_slugs || [],
+              brochureUrl: dbP.brochure_url || undefined,
             }));
             setAllProducts(mapped);
             return;
@@ -367,6 +368,17 @@ export default function ProductDetailPage({
                     <Send size={16} />
                     Request a Quote
                   </a>
+                  {product.brochureUrl && (
+                    <a
+                      href={product.brochureUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-lg transition-colors shadow-md hover:shadow-lg"
+                    >
+                      <Download size={16} />
+                      Download Brochure
+                    </a>
+                  )}
                   <a
                     href={`tel:${companyInfo.phone}`}
                     className="inline-flex items-center gap-2 px-5 py-3 bg-white border-2 border-gray-200 hover:border-ira-primary text-gray-700 hover:text-ira-primary text-sm font-bold rounded-lg transition-all"
