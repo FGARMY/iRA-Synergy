@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import FloatingActionMenu from "@/components/FloatingActionMenu";
-import CopyProtection from "@/components/CopyProtection";
+import ScreenshotProtection from "@/components/ScreenshotProtection";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -138,7 +138,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)]">
-        <CopyProtection />
+        <ScreenshotProtection />
         <FloatingActionMenu />
         {children}
       </body>
