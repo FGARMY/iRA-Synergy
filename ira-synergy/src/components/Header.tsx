@@ -35,12 +35,12 @@ export default function Header() {
     <header className={`fixed w-full z-40 bg-white transition-all duration-300 ${isScrolled ? "shadow-md" : ""}`}>
 
       {/* Middle Bar - Logo & CTA */}
-      <div className="px-4 py-0 lg:px-8 border-b border-gray-100 flex justify-between items-center bg-white relative z-50">
+      <div className="px-4 py-3 lg:py-4 lg:px-8 border-b border-gray-100 flex justify-between items-center bg-white relative z-50">
         <Link href="/" className="flex items-center gap-4 group cursor-pointer">
           <img
             src="/images/new-logo-5.png"
             alt="iRA Synergy Logo"
-            className="h-14 sm:h-16 md:h-18 lg:h-22 w-auto object-contain transition-transform group-hover:scale-105 mt-0 mb-0 relative z-10"
+            className="h-10 sm:h-12 md:h-14 lg:h-18 w-auto object-contain transition-transform group-hover:scale-105 -mt-2 sm:-mt-3 md:-mt-6 lg:-mt-10 -mb-2 sm:-mb-4 md:-mb-8 lg:-mb-12 relative z-10"
           />
           <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 mt-2">
             <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors leading-snug">Innovative Solutions for</span>
