@@ -123,7 +123,7 @@ export default async function SolutionDetailPage({
                 <span className="text-white/80">{solution.title.split(" ").slice(-1)}</span>
               </h1>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-10 leading-relaxed">
-                {solution.longDescription}
+                {solution.description}
               </p>
 
               {/* Stats Row */}
@@ -155,18 +155,30 @@ export default async function SolutionDetailPage({
           </div>
         </div>
 
-        {/* Video Explanation Section */}
+        {/* Overview Section */}
         <section className="py-20 bg-white border-b border-gray-100">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <ScrollReveal>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Solution Overview</h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                {solution.longDescription}
+              </p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Video Explanation Section */}
+        <section className="py-20 bg-gray-50 border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Experience the Future</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Experience the Future</h2>
               <p className="text-gray-600 text-lg">
                 Watch how our integrated {solution.shortTitle} solutions revolutionize the landscape, providing sustainable and innovative infrastructure.
               </p>
             </div>
 
             <ScrollReveal>
-              <div className="relative max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl bg-gray-900 aspect-video ring-4 ring-gray-50">
+              <div className="relative max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl bg-gray-900 aspect-video ring-4 ring-white">
                 <iframe
                   className="absolute inset-0 w-full h-full"
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" // Using a placeholder video link
@@ -179,10 +191,74 @@ export default async function SolutionDetailPage({
           </div>
         </section>
 
-        {/* Solution Details: Features & Use Cases */}
+        {/* Core Products Grid Section (Compact) */}
         <section className="py-20 bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 uppercase tracking-wider">Core Products</h2>
+              <p className="text-gray-500 max-w-2xl mx-auto">
+                Discover the high-quality, certified products that power our {solution.shortTitle} installations.
+              </p>
+              <div className={`w-24 h-1 ${indicatorColors[solution.color] || 'bg-ira-primary'} mx-auto rounded-full mt-4`}></div>
+            </div>
+
+            {/* Changed to 2-3-4 cols for more compact layout */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+              {relatedProducts.map((product) => {
+                if (!product) return null;
+                return (
+                  <ScrollReveal key={product.id}>
+                    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-ira-primary/30 transition-all duration-300 flex flex-col h-full group">
+                      {/* Product Image - Smaller aspect ratio */}
+                      <div className="relative aspect-video bg-gray-50 overflow-hidden border-b border-gray-100 flex items-center justify-center p-2">
+                        <Image
+                          src={product.images[0]}
+                          alt={product.name}
+                          fill
+                          className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                        />
+                        {product.badge && (
+                          <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded text-[9px] font-bold bg-ira-accent text-white uppercase tracking-wider shadow-sm">
+                            {product.badge}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Product Content - Reduced padding and text sizes */}
+                      <div className="p-4 flex flex-col flex-grow">
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-ira-primary mb-1 block truncate">
+                          {product.category}
+                        </span>
+                        <h3 className="text-sm font-bold text-gray-900 group-hover:text-ira-primary transition-colors line-clamp-2 mb-2 min-h-[40px]">
+                          {product.name}
+                        </h3>
+                        
+                        {/* Hidden short description on mobile, 2 lines on desktop */}
+                        <p className="hidden sm:block text-[11px] text-gray-500 leading-relaxed line-clamp-2 mb-3 flex-grow">
+                          {product.shortDescription}
+                        </p>
+
+                        {/* View Details Link */}
+                        <Link
+                          href={`/products/${product.slug}`}
+                          className="mt-auto inline-flex items-center justify-center gap-1 w-full py-2 bg-gray-50 hover:bg-ira-primary text-gray-700 hover:text-white text-[11px] font-bold rounded-lg transition-colors border border-gray-200 hover:border-ira-primary"
+                        >
+                          View Details
+                          <ArrowRight size={12} />
+                        </Link>
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Solution Details: Features & Use Cases */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
               
               {/* Features Column */}
               <div className="lg:col-span-7">
@@ -191,15 +267,12 @@ export default async function SolutionDetailPage({
                     <CheckCircle2 className="text-ira-primary" size={24} />
                     Key Features & Technical Capabilities
                   </h3>
-                  <p className="text-gray-600 mb-8 text-sm sm:text-base leading-relaxed">
-                    Our {solution.shortTitle} setups are engineered to meet strict compliance standards while offering maximum efficiency and durability.
-                  </p>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
                     {solution.features.map((feature, i) => (
-                      <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100 hover:border-ira-primary/20 hover:bg-white transition-all duration-300">
-                        <CheckCircle2 size={18} className="text-ira-accent mt-0.5 flex-shrink-0" />
-                        <span className="text-sm font-semibold text-gray-700 leading-snug">{feature}</span>
+                      <div key={i} className="flex items-start gap-2 p-3 rounded-lg bg-white border border-gray-100 hover:border-ira-primary/20 transition-all shadow-sm">
+                        <CheckCircle2 size={16} className="text-ira-accent mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-gray-700 leading-snug">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -211,98 +284,22 @@ export default async function SolutionDetailPage({
                 <ScrollReveal variant="right">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                     <Building className="text-ira-primary" size={24} />
-                    Target Sectors & Applications
+                    Target Sectors
                   </h3>
-                  <p className="text-gray-600 mb-8 text-sm sm:text-base leading-relaxed">
-                    We partner with municipal bodies, government departments, and corporate partners to deploy solutions where they impact most.
-                  </p>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {solution.useCases.map((useCase, i) => (
-                      <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-ira-primary/5 text-ira-primary font-bold text-sm`}>
-                          0{i + 1}
+                      <div key={i} className="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                        <div className={`w-6 h-6 rounded flex items-center justify-center bg-ira-primary/10 text-ira-primary font-bold text-xs`}>
+                          {i + 1}
                         </div>
-                        <span className="text-sm font-bold text-gray-800">{useCase}</span>
+                        <span className="text-sm font-medium text-gray-800">{useCase}</span>
                       </div>
                     ))}
                   </div>
                 </ScrollReveal>
               </div>
 
-            </div>
-          </div>
-        </section>
-
-        {/* Core Products Grid Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 font-outfit uppercase tracking-wider">Core Products</h2>
-              <p className="text-gray-500 max-w-2xl mx-auto text-sm sm:text-base">
-                Discover the high-quality, certified products that power our {solution.shortTitle} installations.
-              </p>
-              <div className={`w-24 h-1 ${indicatorColors[solution.color] || 'bg-ira-primary'} mx-auto rounded-full mt-4`}></div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {relatedProducts.map((product) => {
-                if (!product) return null;
-                return (
-                  <ScrollReveal key={product.id}>
-                    <div className="bg-white rounded-2xl border border-gray-200/80 overflow-hidden hover:shadow-premium hover:border-ira-primary/20 transition-all duration-300 flex flex-col h-full group">
-                      {/* Product Image */}
-                      <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden border-b border-gray-100 flex items-center justify-center p-4">
-                        <Image
-                          src={product.images[0]}
-                          alt={product.name}
-                          fill
-                          className="object-contain p-4 group-hover:scale-102 transition-transform duration-500"
-                        />
-                        {product.badge && (
-                          <span className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-bold bg-ira-accent text-white uppercase tracking-wider shadow-sm">
-                            {product.badge}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Product Content */}
-                      <div className="p-6 flex flex-col flex-grow">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-ira-primary mb-2 block">
-                          {product.category}
-                        </span>
-                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-ira-primary transition-colors line-clamp-1 mb-2">
-                          {product.name}
-                        </h3>
-                        <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 mb-4 flex-grow">
-                          {product.shortDescription}
-                        </p>
-
-                        {/* Top Features */}
-                        <div className="mb-6 pt-4 border-t border-gray-100">
-                          <ul className="space-y-2">
-                            {product.features.slice(0, 3).map((feat, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                <CheckCircle2 size={14} className="text-ira-accent mt-0.5 flex-shrink-0" />
-                                <span className="text-[11px] text-gray-600 leading-tight">{feat}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* View Details Link */}
-                        <Link
-                          href={`/products/${product.slug}`}
-                          className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 bg-ira-primary hover:bg-ira-primary-dark text-white text-xs font-bold rounded-xl transition-colors shadow-sm"
-                        >
-                          View Product Details
-                          <ArrowRight size={14} />
-                        </Link>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
             </div>
           </div>
         </section>
