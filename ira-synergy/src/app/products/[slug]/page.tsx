@@ -32,6 +32,7 @@ import ProductCard from "@/components/ProductCard";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { products, getProductBySlug, getProductsByCategory } from "@/data/products";
+import { solutions } from "@/data/solutions";
 import { companyInfo } from "@/data/company";
 
 const categoryIcons: Record<string, React.ElementType> = {
@@ -118,6 +119,8 @@ export default function ProductDetailPage({
   if (!product) notFound();
 
   const CatIcon = categoryIcons[product.category] || Building2;
+
+  const parentSolutions = solutions.filter((s) => s.relatedProductSlugs.includes(product.slug));
 
   // Get related products from same category (excluding current)
   const relatedProducts = allProducts.filter(
@@ -269,9 +272,27 @@ export default function ProductDetailPage({
                 </div>
 
                 {/* Product Name */}
-                <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3 tracking-tight leading-tight">
+                <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 tracking-tight leading-tight">
                   {product.name}
                 </h1>
+
+                {/* Parent Solutions */}
+                {parentSolutions.length > 0 && (
+                  <div className="flex items-center gap-2 mb-4 flex-wrap">
+                    <span className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Solutions:</span>
+                    <div className="flex flex-wrap gap-2">
+                      {parentSolutions.map((sol) => (
+                        <Link
+                          key={sol.id}
+                          href={`/solutions/${sol.slug}`}
+                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-ira-primary/5 hover:bg-ira-primary/10 text-ira-primary border border-ira-primary/10 transition-colors"
+                        >
+                          {sol.shortTitle}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Description */}
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">

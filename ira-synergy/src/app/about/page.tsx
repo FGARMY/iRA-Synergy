@@ -213,6 +213,7 @@ export default function AboutPage() {
                   "45001-2018.jpeg",
                   "ISO-14001-15.jpg",
                   "ohsas-iso-18001.png",
+                  "tuv-1.png",
                   "gmp-quality.png",
                   "ICE.png",
                   "images.jpg",

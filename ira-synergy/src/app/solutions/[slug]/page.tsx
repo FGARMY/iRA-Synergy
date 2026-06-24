@@ -133,62 +133,125 @@ export default async function SolutionDetailPage({
           </div>
         </section>
 
-        {/* Deep Dive Zig-Zag Product Layout */}
-        <section className="py-24 bg-gray-50 overflow-hidden">
+        {/* Solution Details: Features & Use Cases */}
+        <section className="py-20 bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Products</h2>
-              <div className={`w-24 h-1 ${indicatorColors[solution.color] || 'bg-ira-primary'} mx-auto rounded-full`}></div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+              
+              {/* Features Column */}
+              <div className="lg:col-span-7">
+                <ScrollReveal variant="left">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                    <CheckCircle2 className="text-ira-primary" size={24} />
+                    Key Features & Technical Capabilities
+                  </h3>
+                  <p className="text-gray-600 mb-8 text-sm sm:text-base leading-relaxed">
+                    Our {solution.shortTitle} setups are engineered to meet strict compliance standards while offering maximum efficiency and durability.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                    {solution.features.map((feature, i) => (
+                      <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100 hover:border-ira-primary/20 hover:bg-white transition-all duration-300">
+                        <CheckCircle2 size={18} className="text-ira-accent mt-0.5 flex-shrink-0" />
+                        <span className="text-sm font-semibold text-gray-700 leading-snug">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </ScrollReveal>
+              </div>
+
+              {/* Use Cases Column */}
+              <div className="lg:col-span-5">
+                <ScrollReveal variant="right">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                    <Building className="text-ira-primary" size={24} />
+                    Target Sectors & Applications
+                  </h3>
+                  <p className="text-gray-600 mb-8 text-sm sm:text-base leading-relaxed">
+                    We partner with municipal bodies, government departments, and corporate partners to deploy solutions where they impact most.
+                  </p>
+
+                  <div className="space-y-4">
+                    {solution.useCases.map((useCase, i) => (
+                      <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-ira-primary/5 text-ira-primary font-bold text-sm`}>
+                          0{i + 1}
+                        </div>
+                        <span className="text-sm font-bold text-gray-800">{useCase}</span>
+                      </div>
+                    ))}
+                  </div>
+                </ScrollReveal>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Core Products Grid Section */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 font-outfit uppercase tracking-wider">Core Products</h2>
+              <p className="text-gray-500 max-w-2xl mx-auto text-sm sm:text-base">
+                Discover the high-quality, certified products that power our {solution.shortTitle} installations.
+              </p>
+              <div className={`w-24 h-1 ${indicatorColors[solution.color] || 'bg-ira-primary'} mx-auto rounded-full mt-4`}></div>
             </div>
 
-            <div className="space-y-32">
-              {relatedProducts.map((product, index) => {
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {relatedProducts.map((product) => {
                 if (!product) return null;
-                const isEven = index % 2 === 0;
                 return (
                   <ScrollReveal key={product.id}>
-                    <div className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${isEven ? '' : 'lg:flex-row-reverse'}`}>
-                      {/* Image Side */}
-                      <div className="w-full lg:w-1/2">
-                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl group">
-                          <Image
-                            src={product.images[0]}
-                            alt={product.name}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-700"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </div>
+                    <div className="bg-white rounded-2xl border border-gray-200/80 overflow-hidden hover:shadow-premium hover:border-ira-primary/20 transition-all duration-300 flex flex-col h-full group">
+                      {/* Product Image */}
+                      <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden border-b border-gray-100 flex items-center justify-center p-4">
+                        <Image
+                          src={product.images[0]}
+                          alt={product.name}
+                          fill
+                          className="object-contain p-4 group-hover:scale-102 transition-transform duration-500"
+                        />
+                        {product.badge && (
+                          <span className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-bold bg-ira-accent text-white uppercase tracking-wider shadow-sm">
+                            {product.badge}
+                          </span>
+                        )}
                       </div>
 
-                      {/* Text Side */}
-                      <div className="w-full lg:w-1/2 space-y-6">
-                        <div className="inline-block px-4 py-1.5 rounded-full bg-ira-primary/10 text-ira-primary text-xs font-bold uppercase tracking-wider">
-                          {product.badge || product.category}
-                        </div>
-                        <h3 className="text-3xl font-bold text-gray-900">{product.name}</h3>
-                        <p className="text-lg text-gray-600 leading-relaxed">
-                          {product.description}
+                      {/* Product Content */}
+                      <div className="p-6 flex flex-col flex-grow">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-ira-primary mb-2 block">
+                          {product.category}
+                        </span>
+                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-ira-primary transition-colors line-clamp-1 mb-2">
+                          {product.name}
+                        </h3>
+                        <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 mb-4 flex-grow">
+                          {product.shortDescription}
                         </p>
 
-                        <div className="pt-4">
-                          <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Key Features</h4>
-                          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            {product.features.slice(0, 4).map((feat, i) => (
+                        {/* Top Features */}
+                        <div className="mb-6 pt-4 border-t border-gray-100">
+                          <ul className="space-y-2">
+                            {product.features.slice(0, 3).map((feat, i) => (
                               <li key={i} className="flex items-start gap-2">
-                                <CheckCircle2 size={18} className="text-ira-accent mt-0.5 flex-shrink-0" />
-                                <span className="text-sm text-gray-700 leading-tight">{feat}</span>
+                                <CheckCircle2 size={14} className="text-ira-accent mt-0.5 flex-shrink-0" />
+                                <span className="text-[11px] text-gray-600 leading-tight">{feat}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        <div className="pt-6">
-                          <Link href={`/products/${product.slug}`} className="inline-flex items-center gap-2 px-6 py-3 bg-ira-primary text-white rounded-lg font-semibold hover:bg-ira-primary-dark transition-colors shadow-md hover:shadow-lg">
-                            View Full Details
-                            <ArrowRight size={18} />
-                          </Link>
-                        </div>
+                        {/* View Details Link */}
+                        <Link
+                          href={`/products/${product.slug}`}
+                          className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 bg-ira-primary hover:bg-ira-primary-dark text-white text-xs font-bold rounded-xl transition-colors shadow-sm"
+                        >
+                          View Product Details
+                          <ArrowRight size={14} />
+                        </Link>
                       </div>
                     </div>
                   </ScrollReveal>

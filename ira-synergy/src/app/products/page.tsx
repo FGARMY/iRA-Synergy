@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Search, Building2, Zap, Recycle, HeartPulse, Dumbbell, GraduationCap, SlidersHorizontal, LayoutGrid, List } from "lucide-react";
+import Link from "next/link";
+import { Search, Building2, Zap, Recycle, HeartPulse, Dumbbell, GraduationCap, SlidersHorizontal, LayoutGrid, List, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -17,6 +18,15 @@ const categoryIcons: Record<string, React.ElementType> = {
   "Public Health": HeartPulse,
   "Fitness": Dumbbell,
   "Education": GraduationCap,
+};
+
+const categorySolutionMap: Record<string, string> = {
+  "Smart City": "smart-city-csr-projects",
+  "Renewable Energy": "renewable-energy-solutions",
+  "Waste Management": "waste-management-systems",
+  "Public Health": "public-health-hygiene",
+  "Fitness": "fitness-play-equipment",
+  "Education": "smart-school-infrastructure",
 };
 
 export default function ProductsCatalog() {
@@ -130,6 +140,23 @@ export default function ProductsCatalog() {
               )}
             </p>
           </div>
+
+          {/* Related Solution Banner */}
+          {activeCategory !== "All" && categorySolutionMap[activeCategory] && (
+            <div className="mb-8 p-5 bg-ira-primary/5 rounded-2xl border border-ira-primary/10 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
+              <div>
+                <h4 className="text-sm sm:text-base font-bold text-gray-900">Looking for a complete installation?</h4>
+                <p className="text-xs sm:text-sm text-gray-500 mt-1">We offer turnkey planning, supply, setup, and maintenance for {activeCategory} projects.</p>
+              </div>
+              <Link
+                href={`/solutions/${categorySolutionMap[activeCategory]}`}
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-ira-primary hover:bg-ira-primary-dark text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 self-start md:self-auto"
+              >
+                Explore {activeCategory} Solutions
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          )}
 
           {/* Product Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
