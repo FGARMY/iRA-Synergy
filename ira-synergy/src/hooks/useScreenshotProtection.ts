@@ -25,21 +25,47 @@ export function useScreenshotProtection({
   blurOnHide = true,
   blockDevTools = true,
   blockRightClick = true,
+  userEmail,
 }: UseScreenshotProtectionProps = {}) {
   const [isBlocked, setIsBlocked] = useState(false);
   const [isDevToolsOpen, setIsDevToolsOpen] = useState(false);
   const blockTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lastLoggedRef = useRef<Record<string, number>>({});
+
+  // Client-side to server-side Audit Logging connector
+  const logEvent = useCallback((event: string, details?: any) => {
+    const now = Date.now();
+    const lastTime = lastLoggedRef.current[event] || 0;
+    
+    // Throttling: Only log the same event type once every 5 seconds to prevent spam
+    if (now - lastTime < 5000) return;
+    lastLoggedRef.current[event] = now;
+
+    fetch("/api/security-log", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event,
+        details,
+        timestamp: new Date().toISOString(),
+        userEmail: userEmail || "Anonymous",
+        userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "Unknown",
+      }),
+    }).catch((err) => console.error("[SECURITY] Audit logging failed:", err));
+  }, [userEmail]);
 
   // Instantly blanks out screen for a configured duration when a screenshot attempt is made
-  const triggerBlackout = useCallback(() => {
+  const triggerBlackout = useCallback((actionSource: string = "key_trigger") => {
     setIsBlocked(true);
+    logEvent("SCREENSHOT_ATTEMPT", { source: actionSource, action: "blackout_overlay_flashed" });
+    
     if (blockTimeoutRef.current) {
       clearTimeout(blockTimeoutRef.current);
     }
     blockTimeoutRef.current = setTimeout(() => {
       setIsBlocked(false);
     }, overlayDuration);
-  }, [overlayDuration]);
+  }, [overlayDuration, logEvent]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -64,7 +90,7 @@ export function useScreenshotProtection({
       // Print Screen detection key intercept
       if (e.key === "PrintScreen" || e.keyCode === 44) {
         e.preventDefault();
-        triggerBlackout();
+        triggerBlackout("PrintScreen_keydown");
       }
 
       const ctrlOrCmd = e.ctrlKey || e.metaKey;
@@ -75,23 +101,25 @@ export function useScreenshotProtection({
         // Ctrl+P (Print)
         if (key === "p") {
           e.preventDefault();
-          triggerBlackout();
+          triggerBlackout("Ctrl+P");
         }
 
         // Ctrl+S (Save Page)
         if (key === "s") {
           e.preventDefault();
-          triggerBlackout();
+          triggerBlackout("Ctrl+S");
         }
 
         // Ctrl+A (Select All - Layer 4 restriction)
         if (key === "a" && !isInputElement(e.target as HTMLElement)) {
           e.preventDefault();
+          logEvent("SELECT_ALL_BLOCKED");
         }
 
         // Ctrl+C (Copy - Layer 4 restriction)
         if (key === "c" && !isInputElement(e.target as HTMLElement)) {
           e.preventDefault();
+          logEvent("COPY_BLOCKED");
         }
       }
 
@@ -99,11 +127,13 @@ export function useScreenshotProtection({
       if (blockDevTools) {
         if (e.key === "F12" || e.keyCode === 123) {
           e.preventDefault();
+          logEvent("DEVTOOLS_SHORTCUT_BLOCKED", { key: "F12" });
         }
         if (ctrlOrCmd && e.shiftKey) {
           const key = e.key.toLowerCase();
           if (key === "i" || key === "j" || key === "c" || key === "k") {
             e.preventDefault();
+            logEvent("DEVTOOLS_SHORTCUT_BLOCKED", { key: `Ctrl+Shift+${key.toUpperCase()}` });
           }
         }
       }
@@ -111,7 +141,7 @@ export function useScreenshotProtection({
 
     const handleKeyUp = (e: KeyboardEvent) => {
       if (e.key === "PrintScreen" || e.keyCode === 44) {
-        triggerBlackout();
+        triggerBlackout("PrintScreen_keyup");
         // Clear clipboard immediately to block memory paste dumps
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText("Restricted Access").catch(() => {});
@@ -123,6 +153,7 @@ export function useScreenshotProtection({
     const handleCopy = (e: ClipboardEvent) => {
       if (!isInputElement(e.target as HTMLElement)) {
         e.preventDefault();
+        logEvent("COPY_EVENT_BLOCKED");
         if (e.clipboardData) {
           e.clipboardData.setData("text/plain", "Restricted Access");
         }
@@ -142,19 +173,23 @@ export function useScreenshotProtection({
       const body = document.body;
       if (document.visibilityState === "hidden") {
         body.classList.add("screenshot-blur");
+        logEvent("VISIBILITY_HIDDEN");
       } else {
         body.classList.remove("screenshot-blur");
+        logEvent("VISIBILITY_VISIBLE");
       }
     };
 
     const handleWindowBlur = () => {
       if (!blurOnHide) return;
       document.body.classList.add("screenshot-blur");
+      logEvent("TAB_BLURRED");
     };
 
     const handleWindowFocus = () => {
       if (!blurOnHide) return;
       document.body.classList.remove("screenshot-blur");
+      logEvent("TAB_FOCUSED");
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
@@ -167,12 +202,14 @@ export function useScreenshotProtection({
     const handleContextMenu = (e: MouseEvent) => {
       if (blockRightClick && !isInputElement(e.target as HTMLElement)) {
         e.preventDefault();
+        logEvent("RIGHT_CLICK_BLOCKED");
       }
     };
 
     const handleDragStart = (e: DragEvent) => {
       if (!isInputElement(e.target as HTMLElement)) {
         e.preventDefault();
+        logEvent("DRAG_START_BLOCKED");
       }
     };
 
@@ -190,17 +227,24 @@ export function useScreenshotProtection({
     // 4. DevTools Open Detection via size threshold delta
     // -------------------------------------------------------------
     let pollerId: number | null = null;
+    let wasDevToolsOpen = false;
     
     if (blockDevTools) {
       const detectDevTools = () => {
         const threshold = 160;
         const widthDelta = window.outerWidth - window.innerWidth > threshold;
         const heightDelta = window.outerHeight - window.innerHeight > threshold;
+        const isOpen = widthDelta || heightDelta;
 
-        if (widthDelta || heightDelta) {
+        if (isOpen) {
           setIsDevToolsOpen(true);
+          if (!wasDevToolsOpen) {
+            logEvent("DEVTOOLS_DETECTED", { type: widthDelta ? "side_dock" : "bottom_dock" });
+            wasDevToolsOpen = true;
+          }
         } else {
           setIsDevToolsOpen(false);
+          wasDevToolsOpen = false;
         }
       };
 
@@ -238,7 +282,7 @@ export function useScreenshotProtection({
       if (blockTimeoutRef.current) clearTimeout(blockTimeoutRef.current);
       document.body.classList.remove("screenshot-blur");
     };
-  }, [overlayDuration, blurOnHide, blockDevTools, blockRightClick, triggerBlackout]);
+  }, [overlayDuration, blurOnHide, blockDevTools, blockRightClick, triggerBlackout, logEvent]);
 
   return {
     isBlocked,
