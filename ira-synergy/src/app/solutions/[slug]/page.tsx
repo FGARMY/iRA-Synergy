@@ -22,6 +22,9 @@ const indicatorColors: Record<string, string> = {
   "bg-indigo-700": "bg-indigo-600",
 };
 
+export const revalidate = 0;
+export const dynamicParams = true;
+
 
 export async function generateStaticParams() {
   return getAllSolutionSlugs().map((slug) => ({ slug }));
