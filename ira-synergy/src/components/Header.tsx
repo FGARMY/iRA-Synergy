@@ -38,9 +38,9 @@ export default function Header() {
       <div className="px-4 py-0 lg:px-8 border-b border-gray-100 flex justify-between items-center bg-white relative z-50">
         <Link href="/" className="flex items-center gap-4 group cursor-pointer">
           <img
-            src="/images/new-logo-2.png"
+            src="/images/new-logo-5.png"
             alt="iRA Synergy Logo"
-            className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain transition-transform group-hover:scale-105 -mt-2 md:-mt-4 lg:-mt-6 -mb-2 sm:-mb-4 md:-mb-6 lg:-mb-8 relative z-10"
+            className="h-28 sm:h-32 md:h-36 lg:h-44 w-auto object-contain transition-transform group-hover:scale-105 -mt-4 md:-mt-6 lg:-mt-10 -mb-4 sm:-mb-6 md:-mb-8 lg:-mb-12 relative z-10"
           />
           <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 mt-2">
             <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors leading-snug">Innovative Solutions for</span>
