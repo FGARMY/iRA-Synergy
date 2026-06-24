@@ -107,7 +107,6 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
 
   const mapProductUpdatesToDb = (updates: Partial<Product>) => {
     const dbUpdates: any = {};
-    if (updates.id !== undefined) dbUpdates.id = updates.id;
     if (updates.slug !== undefined) dbUpdates.slug = updates.slug;
     if (updates.name !== undefined) dbUpdates.name = updates.name;
     if (updates.category !== undefined) dbUpdates.category = updates.category;
@@ -154,7 +153,6 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
 
   const mapBlogUpdatesToDb = (updates: Partial<BlogPost>) => {
     const dbUpdates: any = {};
-    if (updates.id !== undefined) dbUpdates.id = updates.id;
     if (updates.slug !== undefined) dbUpdates.slug = updates.slug;
     if (updates.title !== undefined) dbUpdates.title = updates.title;
     if (updates.excerpt !== undefined) dbUpdates.excerpt = updates.excerpt;
@@ -285,6 +283,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("products").insert([dbProduct]);
       if (error) {
         console.error("Error adding product to Supabase:", error);
+        alert("Error adding product: " + error.message);
         return;
       }
     }
@@ -301,6 +300,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("products").update(dbUpdates).eq("id", id);
       if (error) {
         console.error("Error updating product in Supabase:", error);
+        alert("Error updating product: " + error.message);
         return;
       }
     }
@@ -316,6 +316,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("products").delete().eq("id", id);
       if (error) {
         console.error("Error deleting product from Supabase:", error);
+        alert("Error deleting product: " + error.message);
         return;
       }
     }
