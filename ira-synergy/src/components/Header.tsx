@@ -40,7 +40,7 @@ export default function Header() {
           <img
             src="/images/new-logo-5.png"
             alt="iRA Synergy Logo"
-            className="h-28 sm:h-32 md:h-36 lg:h-44 w-auto object-contain transition-transform group-hover:scale-105 -mt-4 md:-mt-6 lg:-mt-10 -mb-4 sm:-mb-6 md:-mb-8 lg:-mb-12 relative z-10"
+            className="h-14 sm:h-16 md:h-18 lg:h-22 w-auto object-contain transition-transform group-hover:scale-105 mt-0 mb-0 relative z-10"
           />
           <div className="hidden md:flex flex-col justify-center border-l-2 border-gray-200 pl-4 mt-2">
             <span className="text-sm font-semibold text-gray-800 group-hover:text-ira-primary transition-colors leading-snug">Innovative Solutions for</span>
