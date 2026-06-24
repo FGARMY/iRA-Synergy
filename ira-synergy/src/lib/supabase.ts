@@ -14,5 +14,10 @@ const dummyKey = "placeholder-anon-key";
 
 export const supabase = createClient(
   supabaseUrl || dummyUrl,
-  supabaseAnonKey || dummyKey
+  supabaseAnonKey || dummyKey,
+  {
+    global: {
+      fetch: (url, options) => fetch(url, { ...options, cache: "no-store" }),
+    },
+  }
 );
