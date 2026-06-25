@@ -7,7 +7,7 @@ import { ArrowRight, Leaf, ShieldCheck, Map, Settings } from "lucide-react";
 import ScrollReveal from "./ui/ScrollReveal";
 import type { GalleryImage } from "@/components/admin/AdminContext";
 
-const fallbackImages = [
+export const fallbackImages = [
   { src: "/images/hero/smart-city-view.jpg", alt: "Smart City Infrastructure Solutions — IoT Integration | iRA Synergy" },
   { src: "/images/hero/Hospital-view.png", alt: "Public Health & Hospital Infrastructure — GeM Registered | iRA Synergy" },
   { src: "/images/hero/solar-panel.jpg", alt: "Solar Energy & Renewable Power Solutions for Government | iRA Synergy" },

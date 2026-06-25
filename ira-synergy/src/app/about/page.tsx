@@ -80,10 +80,10 @@ export default async function AboutPage() {
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
 
-      <main className="flex-grow pt-20 lg:pt-44">
+      <main className="flex-grow">
 
         {/* Compact Hero Section */}
-        <section className="relative w-full py-24 md:py-32 border-b border-gray-800 overflow-hidden">
+        <section className="relative w-full pt-32 pb-24 md:pt-48 md:pb-32 border-b border-gray-800 overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
