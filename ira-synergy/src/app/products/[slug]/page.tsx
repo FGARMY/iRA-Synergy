@@ -242,15 +242,7 @@ export default function ProductDetailPage({
               <ScrollReveal variant="left">
                 {/* Main Image */}
                 <div className="relative bg-white rounded-xl border border-gray-200 overflow-hidden mb-3 group">
-                  {product.badge && (
-                    <span className="absolute top-4 left-4 z-10 px-3 py-1 rounded text-xs font-bold bg-ira-accent text-white shadow-md uppercase tracking-wide">
-                      {product.badge}
-                    </span>
-                  )}
-                  <div className="absolute top-4 right-4 z-10 flex items-center gap-1 px-2 py-1 rounded bg-white/90 border border-gray-200 shadow-sm">
-                    <Flag size={10} className="text-orange-500" />
-                    <span className="text-[9px] font-bold text-gray-700 uppercase">Make in India</span>
-                  </div>
+
                   <div 
                     className="aspect-[4/3] flex items-center justify-center p-6 overflow-hidden cursor-crosshair relative"
                     onMouseMove={handleMouseMove}

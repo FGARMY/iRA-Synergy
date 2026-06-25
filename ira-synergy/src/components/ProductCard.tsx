@@ -52,30 +52,6 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
         )}
 
-        {/* Badges Row */}
-        <div className="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-wrap gap-1 sm:gap-1.5 z-10">
-          {product.badge && (
-            <span className={`px-1.5 sm:px-2 py-0.5 rounded text-[8px] sm:text-[10px] font-bold uppercase tracking-wide shadow-sm ${badgeStyles[product.badge] || "bg-ira-accent text-white"}`}>
-              {product.badge}
-            </span>
-          )}
-        </div>
-
-        {/* Made in India flag - hidden on mobile */}
-        <div className="absolute top-2 sm:top-3 right-2 sm:right-3 z-10 hidden sm:block">
-          <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-white/90 backdrop-blur-sm border border-gray-200 shadow-sm">
-            <Flag size={10} className="text-orange-500" />
-            <span className="text-[9px] font-bold text-gray-700 uppercase tracking-wide">Make in India</span>
-          </div>
-        </div>
-
-        {/* Category label at bottom of image */}
-        <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 z-10">
-          <span className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded text-[8px] sm:text-[10px] font-semibold bg-black/60 text-white backdrop-blur-sm">
-            <CatIcon size={8} className="sm:w-[10px] sm:h-[10px]" />
-            {product.category}
-          </span>
-        </div>
       </div>
 
       {/* Content */}
