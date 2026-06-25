@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { products as staticProducts } from "@/data/products";
 import { blogs as staticBlogs, type BlogPost } from "@/data/blogs";
 import type { Product } from "@/types";
+import toast from "react-hot-toast";
 
 // ============================================================
 // Gallery Image Type
@@ -286,9 +287,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("products").insert([dbProduct]);
       if (error) {
         console.error("Error adding product to Supabase:", error);
-        alert("Error adding product: " + error.message);
+        toast.error("Error adding product: " + error.message);
         return;
       }
+      toast.success("Product added successfully");
     }
     setAdminProducts((prev) => {
       const next = [product, ...prev];
@@ -303,9 +305,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("products").update(dbUpdates).eq("id", id);
       if (error) {
         console.error("Error updating product in Supabase:", error);
-        alert("Error updating product: " + error.message);
+        toast.error("Error updating product: " + error.message);
         return;
       }
+      toast.success("Product updated successfully");
     }
     setAdminProducts((prev) => {
       const next = prev.map((p) => (p.id === id ? { ...p, ...updates } : p));
@@ -319,9 +322,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("products").delete().eq("id", id);
       if (error) {
         console.error("Error deleting product from Supabase:", error);
-        alert("Error deleting product: " + error.message);
+        toast.error("Error deleting product: " + error.message);
         return;
       }
+      toast.success("Product deleted successfully");
     }
     setAdminProducts((prev) => {
       const next = prev.filter((p) => p.id !== id);
@@ -337,8 +341,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("blogs").insert([dbBlog]);
       if (error) {
         console.error("Error adding blog to Supabase:", error);
+        toast.error("Error adding blog: " + error.message);
         return;
       }
+      toast.success("Article added successfully");
     }
     setAdminBlogs((prev) => {
       const next = [blog, ...prev];
@@ -353,8 +359,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("blogs").update(dbUpdates).eq("id", id);
       if (error) {
         console.error("Error updating blog in Supabase:", error);
+        toast.error("Error updating blog: " + error.message);
         return;
       }
+      toast.success("Article updated successfully");
     }
     setAdminBlogs((prev) => {
       const next = prev.map((b) => (b.id === id ? { ...b, ...updates } : b));
@@ -368,8 +376,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("blogs").delete().eq("id", id);
       if (error) {
         console.error("Error deleting blog from Supabase:", error);
+        toast.error("Error deleting blog: " + error.message);
         return;
       }
+      toast.success("Article deleted successfully");
     }
     setAdminBlogs((prev) => {
       const next = prev.filter((b) => b.id !== id);
@@ -385,8 +395,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("gallery").insert([dbGallery]);
       if (error) {
         console.error("Error adding gallery image to Supabase:", error);
+        toast.error("Error adding image: " + error.message);
         return;
       }
+      toast.success("Image added successfully");
     }
     setGalleryImages((prev) => {
       const next = [image, ...prev];
@@ -400,8 +412,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.from("gallery").delete().eq("id", id);
       if (error) {
         console.error("Error deleting gallery image from Supabase:", error);
+        toast.error("Error deleting image: " + error.message);
         return;
       }
+      toast.success("Image deleted successfully");
     }
     setGalleryImages((prev) => {
       const next = prev.filter((img) => img.id !== id);
