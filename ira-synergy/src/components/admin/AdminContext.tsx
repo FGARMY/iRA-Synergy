@@ -39,6 +39,7 @@ interface AdminContextType {
 
   // Gallery CRUD
   addGalleryImage: (image: GalleryImage) => void;
+  updateGalleryImage: (id: string, updates: Partial<GalleryImage>) => void;
   deleteGalleryImage: (id: string) => void;
 
   // Loading state
@@ -187,6 +188,16 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     category: g.category,
     uploaded_at: g.uploadedAt,
   });
+
+  const mapGalleryUpdatesToDb = (updates: Partial<GalleryImage>) => {
+    const dbUpdates: any = {};
+    if (updates.src !== undefined) dbUpdates.src = updates.src;
+    if (updates.title !== undefined) dbUpdates.title = updates.title;
+    if (updates.caption !== undefined) dbUpdates.caption = updates.caption;
+    if (updates.category !== undefined) dbUpdates.category = updates.category;
+    if (updates.uploadedAt !== undefined) dbUpdates.uploaded_at = updates.uploadedAt;
+    return dbUpdates;
+  };
 
   // Initialize from Supabase or localStorage fallback
   useEffect(() => {
@@ -407,6 +418,24 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     });
   }, [persistGallery]);
 
+  const updateGalleryImage = useCallback(async (id: string, updates: Partial<GalleryImage>) => {
+    if (isSupabaseConfigured) {
+      const dbUpdates = mapGalleryUpdatesToDb(updates);
+      const { error } = await supabase.from("gallery").update(dbUpdates).eq("id", id);
+      if (error) {
+        console.error("Error updating gallery image in Supabase:", error);
+        toast.error("Error updating image: " + error.message);
+        return;
+      }
+      toast.success("Image updated successfully");
+    }
+    setGalleryImages((prev) => {
+      const next = prev.map((img) => (img.id === id ? { ...img, ...updates } : img));
+      if (!isSupabaseConfigured) persistGallery(next);
+      return next;
+    });
+  }, [persistGallery]);
+
   const deleteGalleryImage = useCallback(async (id: string) => {
     if (isSupabaseConfigured) {
       const { error } = await supabase.from("gallery").delete().eq("id", id);
@@ -437,6 +466,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
         updateBlog,
         deleteBlog,
         addGalleryImage,
+        updateGalleryImage,
         deleteGalleryImage,
         isLoaded,
       }}
