@@ -139,7 +139,8 @@ export default function ProductDetailPage({
     loadData();
   }, []);
 
-  const product = allProducts.find((p) => p.slug === slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const product = allProducts.find((p) => p.slug === decodedSlug);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);

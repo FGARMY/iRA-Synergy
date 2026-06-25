@@ -171,6 +171,7 @@ function EditProductModal({
   );
   const [featuresText, setFeaturesText] = useState(product?.features.join("\n") || "");
   const [certsText, setCertsText] = useState(product?.certifications.join(", ") || "");
+  const [specs, setSpecs] = useState<{label: string, value: string}[]>(product?.specs || []);
 
   const [images, setImages] = useState<string[]>(product?.images || []);
   const [dragActive, setDragActive] = useState(false);
@@ -269,6 +270,7 @@ function EditProductModal({
       ...form,
       slug,
       features: featuresText.split("\n").map(s => s.trim()).filter(Boolean),
+      specs: specs.filter(s => s.label.trim() !== "" || s.value.trim() !== ""),
       images,
       brochureUrl: brochureUrl || undefined,
       certifications: certsText.split(",").map(s => s.trim()).filter(Boolean),
@@ -374,6 +376,53 @@ function EditProductModal({
               onChange={(e) => setFeaturesText(e.target.value)}
               placeholder={"Feature 1\nFeature 2\nFeature 3"}
             />
+          </div>
+
+          <div className="admin-form-group">
+            <label>Technical Specifications</label>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {specs.map((spec, index) => (
+                <div key={index} style={{ display: 'flex', gap: '8px' }}>
+                  <input
+                    type="text"
+                    value={spec.label}
+                    onChange={(e) => {
+                      const newSpecs = [...specs];
+                      newSpecs[index].label = e.target.value;
+                      setSpecs(newSpecs);
+                    }}
+                    placeholder="e.g. Dimensions"
+                    style={{ flex: 1 }}
+                  />
+                  <input
+                    type="text"
+                    value={spec.value}
+                    onChange={(e) => {
+                      const newSpecs = [...specs];
+                      newSpecs[index].value = e.target.value;
+                      setSpecs(newSpecs);
+                    }}
+                    placeholder="e.g. 10x20 cm"
+                    style={{ flex: 1 }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setSpecs(specs.filter((_, i) => i !== index))}
+                    className="admin-icon-btn admin-icon-btn--delete"
+                  >
+                    <Icons.Trash />
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                className="admin-btn admin-btn--ghost"
+                onClick={() => setSpecs([...specs, { label: "", value: "" }])}
+                style={{ alignSelf: 'flex-start', marginTop: '8px' }}
+              >
+                <Icons.Plus /> Add Specification
+              </button>
+            </div>
           </div>
 
           <div className="admin-form-group">
