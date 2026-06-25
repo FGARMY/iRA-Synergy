@@ -196,7 +196,7 @@ export default function ProductsCatalog() {
           )}
 
           {/* Product Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4">
             {filtered.map((product, idx) => (
               <ScrollReveal key={product.id} delay={Math.min(idx * 40, 320)}>
                 <ProductCard product={product} />

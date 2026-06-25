@@ -39,12 +39,12 @@ export default function ProductCard({ product }: { product: Product }) {
       className="group relative h-full bg-white rounded-lg sm:rounded-xl overflow-hidden border border-gray-200 hover:border-ira-primary/30 transition-all duration-300 hover:shadow-premium flex flex-col cursor-pointer"
     >
       {/* Image Section */}
-      <div className="relative h-36 sm:h-52 bg-gray-50 overflow-hidden border-b border-gray-100">
+      <div className="relative h-28 sm:h-40 bg-gray-50 overflow-hidden border-b border-gray-100">
         {product.images && product.images.length > 0 ? (
           <img
             src={product.images[0]}
             alt={`${product.name} — ${product.category} | iRA Synergy`}
-            className="w-full h-full object-contain p-3 sm:p-4 transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-contain p-2 sm:p-3 transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
@@ -79,23 +79,23 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Content */}
-      <div className="p-2.5 sm:p-4 flex flex-col flex-grow">
+      <div className="p-2 sm:p-3 flex flex-col flex-grow">
         {/* Product Name */}
-        <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug mb-1 sm:mb-2 line-clamp-2 group-hover:text-ira-primary transition-colors">
+        <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug mb-1 sm:mb-1.5 line-clamp-2 group-hover:text-ira-primary transition-colors">
           {product.name}
         </h3>
 
         {/* Short description */}
-        <p className="text-[10px] sm:text-xs text-gray-500 leading-relaxed mb-1 sm:mb-3 line-clamp-1 sm:line-clamp-2">
+        <p className="text-[10px] sm:text-xs text-gray-500 leading-relaxed mb-1 sm:mb-2 line-clamp-1 sm:line-clamp-2">
           {product.shortDescription}
         </p>
 
         {/* Price */}
-        <div className="mt-auto pt-2 sm:pt-3 border-t border-gray-100">
-          <div className="flex items-center justify-between mb-2 sm:mb-3">
+        <div className="mt-auto pt-1.5 sm:pt-2 border-t border-gray-100">
+          <div className="flex items-center justify-between mb-1.5 sm:mb-2">
             <div>
-              <span className="text-[10px] sm:text-xs text-gray-400">Price</span>
-              <p className="text-xs sm:text-sm font-bold text-ira-primary-dark">{product.price || "On Request"}</p>
+              <span className="text-[9px] sm:text-[10px] text-gray-400">Price</span>
+              <p className="text-[11px] sm:text-xs font-bold text-ira-primary-dark">{product.price || "On Request"}</p>
             </div>
           </div>
 

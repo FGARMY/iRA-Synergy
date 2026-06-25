@@ -24,6 +24,7 @@ import {
   Share2,
   X,
   Maximize2,
+  SlidersHorizontal,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
