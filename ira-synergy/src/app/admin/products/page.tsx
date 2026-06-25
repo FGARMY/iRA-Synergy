@@ -360,12 +360,21 @@ function EditProductModal({
             </div>
             <div className="admin-form-group">
               <label>Badge</label>
-              <input
-                type="text"
+              <select
                 value={form.badge || ""}
                 onChange={(e) => setForm({ ...form, badge: e.target.value })}
-                placeholder="e.g., Smart City, Eco-Certified"
-              />
+              >
+                <option value="">None</option>
+                {productCategories.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+                <option disabled>──────────</option>
+                <option value="GeM Listed">GeM Listed</option>
+                <option value="Government Approved">Government Approved</option>
+                <option value="Best Seller">Best Seller</option>
+                <option value="New">New</option>
+                <option value="Eco-Certified">Eco-Certified</option>
+              </select>
             </div>
             <div className="admin-form-group">
               <label>Price</label>
