@@ -81,9 +81,9 @@ export default function ProductsClient({
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
-      <main className="flex-grow pt-20 lg:pt-44 pb-20">
+      <main className="flex-grow pb-20">
         {/* Page Header */}
-        <div className="bg-ira-primary-dark relative overflow-hidden">
+        <div className="bg-ira-primary-dark relative overflow-hidden pt-[100px] lg:pt-[130px]">
           <div className="absolute inset-0 pattern-grid opacity-10" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
             <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">
