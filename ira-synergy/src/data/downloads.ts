@@ -9,6 +9,8 @@ export interface DownloadFile {
   fileSize: string;
   url: string;
   lastUpdated: string;
+  previewImage?: string | null;
+  downloadName?: string;
 }
 
 export const downloads: DownloadFile[] = [

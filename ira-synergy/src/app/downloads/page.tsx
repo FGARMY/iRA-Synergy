@@ -1,34 +1,106 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, Download, FileText, FileSpreadsheet, File, FolderDown } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { downloads, DownloadCategory } from "@/data/downloads";
+import { downloads as staticDownloads } from "@/data/downloads";
+import { supabase } from "@/lib/supabase";
+import type { Product } from "@/types";
 
 export default function DownloadsPage() {
-  const [activeTab, setActiveTab] = useState<DownloadCategory | "All">("All");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [activeTab, setActiveTab] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const categories: (DownloadCategory | "All")[] = ["All", "Brochures", "Ready Quotations", "Technical Specs"];
+  useEffect(() => {
+    async function loadProducts() {
+      const isSupabaseConfigured =
+        process.env.NEXT_PUBLIC_SUPABASE_URL &&
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  const filteredDownloads = downloads.filter((item) => {
+      if (isSupabaseConfigured) {
+        try {
+          const { data: dbProducts, error } = await supabase
+            .from("products")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+          if (dbProducts && !error) {
+            const mapped = dbProducts.map((dbP: any) => ({
+              id: dbP.id,
+              slug: dbP.slug,
+              name: dbP.name,
+              category: dbP.category,
+              description: dbP.description,
+              shortDescription: dbP.short_description || "",
+              features: dbP.features || [],
+              specs: dbP.specs || [],
+              certifications: dbP.certifications || [],
+              images: dbP.images || [],
+              price: dbP.price || "On Request",
+              inStock: dbP.in_stock ?? true,
+              badge: dbP.badge || undefined,
+              relatedProductSlugs: dbP.related_product_slugs || [],
+              brochureUrl: dbP.brochure_url || undefined,
+            }));
+            setProducts(mapped);
+            return;
+          }
+        } catch (e) {
+          console.warn("Supabase fetch failed", e);
+        }
+      }
+
+      try {
+        const stored = localStorage.getItem("ira_admin_products");
+        if (stored) {
+          setProducts(JSON.parse(stored));
+        }
+      } catch (e) {}
+    }
+    loadProducts();
+  }, []);
+
+  // Map products with brochures into the download format
+  const dynamicBrochures = products
+    .filter(p => p.brochureUrl)
+    .map(p => ({
+      id: `prod-brochure-${p.id}`,
+      title: `${p.name} Brochure`,
+      description: p.shortDescription || p.description,
+      category: p.category, // e.g. "Waste Management"
+      fileType: "PDF",
+      fileSize: "PDF File",
+      url: p.brochureUrl as string,
+      lastUpdated: new Date().toISOString(),
+      previewImage: p.images?.[0] || null, // The preview!
+      downloadName: `${p.name.replace(/[^a-zA-Z0-9]/g, "_")}_Brochure.pdf`
+    }));
+
+  const allDownloads = [...staticDownloads, ...dynamicBrochures];
+
+  // Derive unique categories from all downloads
+  const uniqueCategories = Array.from(new Set(allDownloads.map(d => d.category)));
+  const categories = ["All", ...uniqueCategories];
+
+  const filteredDownloads = allDownloads.filter((item) => {
     const matchesTab = activeTab === "All" || item.category === activeTab;
     const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          item.description.toLowerCase().includes(searchQuery.toLowerCase());
+                          (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesTab && matchesSearch;
   });
 
-  // Group by category for the structured Drive layout
+  // Group by category for the structured layout
   const groupedDownloads = filteredDownloads.reduce((acc, doc) => {
     if (!acc[doc.category]) {
       acc[doc.category] = [];
     }
     acc[doc.category].push(doc);
     return acc;
-  }, {} as Record<string, typeof downloads>);
+  }, {} as Record<string, typeof allDownloads>);
 
   const getFileIcon = (type: string) => {
     switch (type) {
@@ -70,7 +142,7 @@ export default function DownloadsPage() {
               <input
                 type="text"
                 className="block w-full pl-14 pr-6 py-5 bg-white border border-gray-100 text-base focus:ring-0 focus:outline-none transition-all placeholder-gray-400"
-                placeholder="Search for documents, templates, or specs..."
+                placeholder="Search for documents, templates, or brochures..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -100,7 +172,7 @@ export default function DownloadsPage() {
           
           {Object.keys(groupedDownloads).length > 0 ? (
             <div className="space-y-20">
-              {Object.entries(groupedDownloads).map(([category, docs], idx) => (
+              {Object.entries(groupedDownloads).map(([category, docs]) => (
                 <div key={category}>
                   {/* Category Section Header */}
                   <div className="flex items-center gap-4 mb-8">
@@ -115,18 +187,22 @@ export default function DownloadsPage() {
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                     {docs.map((doc, docIdx) => (
                       <ScrollReveal key={doc.id} delay={(docIdx % 10) * 40}>
-                        <div className="bg-white rounded-3xl p-6 border border-gray-100 hover:border-ira-primary/30 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-300 group flex flex-col h-full cursor-pointer relative overflow-hidden">
+                        <div className="bg-white rounded-3xl p-6 border border-gray-100 hover:border-ira-primary/30 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-300 group flex flex-col h-full relative overflow-hidden">
                           
                           {/* File Type Badge */}
-                          <div className="absolute top-4 left-4">
-                            <span className="px-2 py-1 rounded text-[9px] font-black uppercase tracking-widest bg-gray-50 text-gray-500">
+                          <div className="absolute top-4 left-4 z-10">
+                            <span className="px-2 py-1 rounded text-[9px] font-black uppercase tracking-widest bg-gray-50/90 backdrop-blur text-gray-500 shadow-sm border border-gray-100">
                               {doc.fileType}
                             </span>
                           </div>
 
-                          {/* Huge Centered Icon */}
-                          <div className="w-24 h-24 mx-auto rounded-2xl bg-gray-50 flex items-center justify-center mb-6 mt-6 group-hover:scale-110 transition-transform duration-500">
-                            {getFileIcon(doc.fileType)}
+                          {/* Preview / Icon */}
+                          <div className="w-full h-32 mx-auto rounded-2xl bg-gray-50 flex items-center justify-center mb-6 mt-4 group-hover:scale-[1.02] transition-transform duration-500 overflow-hidden">
+                            {doc.previewImage ? (
+                              <img src={doc.previewImage} alt={doc.title} className="w-full h-full object-contain p-2" />
+                            ) : (
+                              getFileIcon(doc.fileType)
+                            )}
                           </div>
 
                           {/* File Details */}
@@ -134,15 +210,21 @@ export default function DownloadsPage() {
                             <h3 className="text-sm font-bold text-gray-900 mb-2 line-clamp-2 leading-snug">
                               {doc.title}
                             </h3>
-                            <p className="text-xs text-gray-400 mb-6 flex-grow">
-                              {doc.fileSize} • Updated {new Date(doc.lastUpdated).toLocaleDateString('en-US', { month: 'short', year: '2-digit' })}
+                            <p className="text-xs text-gray-400 mb-6 flex-grow line-clamp-2">
+                              {doc.description || doc.fileSize}
                             </p>
 
                             {/* Download Action */}
-                            <button className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-gray-50 text-gray-500 font-bold text-xs group-hover:bg-ira-primary group-hover:text-white transition-colors duration-300">
+                            <a 
+                              href={doc.url} 
+                              download={doc.downloadName} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-gray-50 text-gray-500 font-bold text-xs group-hover:bg-ira-primary group-hover:text-white transition-colors duration-300"
+                            >
                               <Download size={14} />
                               Download
-                            </button>
+                            </a>
                           </div>
 
                         </div>
