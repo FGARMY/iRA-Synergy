@@ -380,6 +380,7 @@ export default function ProductDetailPage({
                   {product.brochureUrl && (
                     <a
                       href={product.brochureUrl}
+                      download={`${product.name.replace(/[^a-zA-Z0-9]/g, "_")}_Brochure.pdf`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-lg transition-colors shadow-md hover:shadow-lg"
