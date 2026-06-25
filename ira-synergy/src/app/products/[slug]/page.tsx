@@ -342,10 +342,13 @@ export default function ProductDetailPage({
                   </div>
                 )}
 
-                {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                  {product.description}
-                </p>
+                {/* Short Description */}
+                {product.shortDescription && (
+                  <p className="text-gray-800 text-base font-semibold leading-relaxed mb-3">
+                    {product.shortDescription}
+                  </p>
+                )}
+
 
                 {/* Price & Stock */}
                 <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gray-200">
@@ -371,6 +374,14 @@ export default function ProductDetailPage({
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* Full Description */}
+                <div className="mb-6 pb-6 border-b border-gray-200">
+                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">About this Product</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {product.description}
+                  </p>
                 </div>
 
                 {/* Action Buttons */}
@@ -426,20 +437,16 @@ export default function ProductDetailPage({
 
           {/* Full Specifications Table */}
           <ScrollReveal>
-            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden mb-12 shadow-md hover:shadow-lg transition-all duration-300">
-              <div className="px-6 py-5 bg-gradient-to-r from-ira-primary-dark to-ira-primary text-white flex items-center gap-3">
-                <SlidersHorizontal size={22} className="text-emerald-100" />
-                <h2 className="text-lg font-bold tracking-wide">Technical Specifications</h2>
+            <div className="mb-12">
+              <div className="flex items-center gap-3 mb-6">
+                <SlidersHorizontal size={24} className="text-ira-primary" />
+                <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Technical Specifications</h2>
               </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-[1px] bg-gray-200">
+              <div className="divide-y divide-gray-200 border-t border-gray-200">
                 {product.specs.map((spec, i) => (
-                  <div key={i} className="flex bg-white hover:bg-gray-50 transition-colors group">
-                    <div className="w-2/5 px-5 py-4 bg-gray-50/80 border-r border-gray-100 group-hover:bg-emerald-50/50 transition-colors flex items-center">
-                      <span className="text-sm font-bold text-gray-600 leading-snug">{spec.label}</span>
-                    </div>
-                    <div className="w-3/5 px-5 py-4 flex items-center">
-                      <span className="text-sm text-gray-900 font-semibold leading-snug">{spec.value}</span>
-                    </div>
+                  <div key={i} className="py-4 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 hover:bg-gray-50/80 transition-colors px-2">
+                    <span className="sm:w-1/3 text-sm font-medium text-gray-500">{spec.label}</span>
+                    <span className="sm:w-2/3 text-sm text-gray-900 font-semibold">{spec.value}</span>
                   </div>
                 ))}
               </div>
