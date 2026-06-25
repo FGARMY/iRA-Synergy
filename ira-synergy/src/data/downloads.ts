@@ -1,4 +1,4 @@
-export type DownloadCategory = "Brochures" | "Ready Quotations" | "Technical Specs";
+export type DownloadCategory = "Ready Quotations" | string;
 
 export interface DownloadFile {
   id: string;
@@ -14,38 +14,6 @@ export interface DownloadFile {
 }
 
 export const downloads: DownloadFile[] = [
-  // Brochures
-  {
-    id: "dl-1",
-    title: "Smart City Infrastructure Solutions Brochure 2025",
-    description: "Complete overview of our smart poles, solar trees, and smart bus stops.",
-    category: "Brochures",
-    fileType: "PDF",
-    fileSize: "12.4 MB",
-    url: "#",
-    lastUpdated: "2025-01-15",
-  },
-  {
-    id: "dl-2",
-    title: "Waste Management Systems Catalog",
-    description: "Detailed catalog covering smart bins, composters, and incinerators.",
-    category: "Brochures",
-    fileType: "PDF",
-    fileSize: "8.2 MB",
-    url: "#",
-    lastUpdated: "2024-11-20",
-  },
-  {
-    id: "dl-3",
-    title: "Smart School Equipment Profile",
-    description: "Brochure for Atal Tinkering Labs, AI Robotics Labs, and Portable Libraries.",
-    category: "Brochures",
-    fileType: "PDF",
-    fileSize: "5.1 MB",
-    url: "#",
-    lastUpdated: "2025-02-10",
-  },
-
   // Ready Quotations / BoQ
   {
     id: "dl-4",
@@ -88,35 +56,4 @@ export const downloads: DownloadFile[] = [
     lastUpdated: "2025-01-10",
   },
 
-  // Technical Specs
-  {
-    id: "dl-8",
-    title: "Technical Datasheet: Cyclone Safe Zone Shelter",
-    description: "Structural engineering specs, wind load calculations, and material grades.",
-    category: "Technical Specs",
-    fileType: "PDF",
-    fileSize: "15.6 MB",
-    url: "#",
-    lastUpdated: "2024-12-05",
-  },
-  {
-    id: "dl-9",
-    title: "Installation Manual: Food Waste Composter (200kg)",
-    description: "Plumbing, electrical requirements, and civil foundation guide.",
-    category: "Technical Specs",
-    fileType: "PDF",
-    fileSize: "6.8 MB",
-    url: "#",
-    lastUpdated: "2025-01-22",
-  },
-  {
-    id: "dl-10",
-    title: "Compliance & BIS Certification Kit",
-    description: "Zip file containing all relevant BIS, ISO, and FSSAI certifications for our products.",
-    category: "Technical Specs",
-    fileType: "PDF",
-    fileSize: "22.1 MB",
-    url: "#",
-    lastUpdated: "2025-03-10",
-  },
 ];
