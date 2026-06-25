@@ -299,6 +299,14 @@ export default function ProductDetailPage({
                     ))}
                   </div>
                 )}
+                
+                {/* Full Description (Desktop Only) */}
+                <div className="hidden lg:block mt-8 pt-8 border-t border-gray-200">
+                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">About this Product</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+                    {product.description}
+                  </p>
+                </div>
               </ScrollReveal>
             </div>
 
@@ -363,27 +371,6 @@ export default function ProductDetailPage({
                   )}
                 </div>
 
-                {/* Key Features */}
-                <div className="mb-6">
-                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Key Features</h3>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {product.features.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle2 size={14} className="text-ira-accent mt-0.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-700 leading-snug">{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Full Description */}
-                <div className="mb-6 pb-6 border-b border-gray-200">
-                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">About this Product</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {product.description}
-                  </p>
-                </div>
-
                 {/* Action Buttons */}
                 <div className="flex flex-wrap gap-3 mb-6 pb-6 border-b border-gray-200">
                   <a href="#quote-form" className="inline-flex items-center gap-2 px-6 py-3 bg-ira-primary hover:bg-ira-primary-dark text-white text-sm font-bold rounded-lg transition-colors shadow-md hover:shadow-lg">
@@ -419,6 +406,29 @@ export default function ProductDetailPage({
                   </a>
                 </div>
 
+                {/* Key Features */}
+                <div className="mb-6">
+                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Key Features</h3>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {product.features.map((feat, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 size={14} className="text-ira-accent mt-0.5 flex-shrink-0" />
+                        <span className="text-xs text-gray-700 leading-snug">{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Full Description (Mobile Only) */}
+                <div className="mb-6 pb-6 border-b border-gray-200 lg:hidden">
+                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">About this Product</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+                    {product.description}
+                  </p>
+                </div>
+
+
+
                 {/* Quick Specs Preview */}
                 <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
                   <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Quick Specifications</h3>
@@ -442,11 +452,11 @@ export default function ProductDetailPage({
                 <SlidersHorizontal size={24} className="text-ira-primary" />
                 <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Technical Specifications</h2>
               </div>
-              <div className="divide-y divide-gray-200 border-t border-gray-200">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-0 border-t border-gray-200">
                 {product.specs.map((spec, i) => (
-                  <div key={i} className="py-4 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 hover:bg-gray-50/80 transition-colors px-2">
-                    <span className="sm:w-1/3 text-sm font-medium text-gray-500">{spec.label}</span>
-                    <span className="sm:w-2/3 text-sm text-gray-900 font-semibold">{spec.value}</span>
+                  <div key={i} className="py-2.5 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 border-b border-gray-100 hover:bg-gray-50/80 transition-colors px-2">
+                    <span className="sm:w-2/5 text-xs sm:text-sm font-medium text-gray-500">{spec.label}</span>
+                    <span className="sm:w-3/5 text-xs sm:text-sm text-gray-900 font-semibold">{spec.value}</span>
                   </div>
                 ))}
               </div>
