@@ -16,6 +16,7 @@ const heroImages = [
 
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [loadedIndexes, setLoadedIndexes] = useState<number[]>([0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,6 +25,17 @@ export default function Hero() {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    // Keep track of loaded images so we don't fetch all of them at once.
+    // We preload the current image and the next one in the sequence.
+    setLoadedIndexes((prev) => {
+      const next = new Set(prev);
+      next.add(currentImageIndex);
+      next.add((currentImageIndex + 1) % heroImages.length);
+      return Array.from(next);
+    });
+  }, [currentImageIndex]);
 
   return (
     <section className="relative min-h-[700px] lg:min-h-[800px] flex items-center pt-32 pb-32 lg:pt-40 lg:pb-32">
@@ -38,15 +50,17 @@ export default function Hero() {
 
         {/* Carousel Images */}
         {heroImages.map((image, index) => (
-          <Image
-            key={image.src}
-            src={image.src}
-            alt={image.alt}
-            fill
-            priority={index === 0}
-            className={`object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? "opacity-100" : "opacity-0"
-              }`}
-          />
+          loadedIndexes.includes(index) && (
+            <Image
+              key={image.src}
+              src={image.src}
+              alt={image.alt}
+              fill
+              priority={index === 0}
+              className={`object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? "opacity-100" : "opacity-0"
+                }`}
+            />
+          )
         ))}
       </div>
 

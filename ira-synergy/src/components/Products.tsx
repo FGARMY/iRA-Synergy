@@ -83,7 +83,7 @@ export default function Products() {
             const catColor = categoryColors[product.category] || "bg-gray-600";
 
             return (
-              <ScrollReveal key={product.id} delay={idx * 80}>
+              <ScrollReveal key={product.slug} delay={idx * 80}>
                 <Link
                   href={`/products/${product.slug}`}
                   className="group block h-full"

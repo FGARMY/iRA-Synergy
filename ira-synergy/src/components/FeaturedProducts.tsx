@@ -118,7 +118,7 @@ export default function FeaturedProducts() {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {featuredProducts.map((product, idx) => (
-              <ScrollReveal key={product.id} delay={idx * 100} className="snap-start shrink-0 w-[240px] md:w-[260px]">
+              <ScrollReveal key={product.slug} delay={idx * 100} className="snap-start shrink-0 w-[240px] md:w-[260px]">
                 <div 
                   onClick={() => router.push(`/products/${product.slug}`)}
                   className="bg-white rounded-lg border border-gray-100 shadow-sm h-full flex flex-col hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"

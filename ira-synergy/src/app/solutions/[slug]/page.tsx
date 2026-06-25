@@ -211,7 +211,7 @@ export default async function SolutionDetailPage({
               {relatedProducts.map((product) => {
                 if (!product) return null;
                 return (
-                  <ScrollReveal key={product.id}>
+                  <ScrollReveal key={product.slug}>
                     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-ira-primary/30 transition-all duration-300 flex flex-col h-full group">
                       {/* Product Image - Smaller aspect ratio */}
                       <div className="relative aspect-video bg-gray-50 overflow-hidden border-b border-gray-100 flex items-center justify-center p-2">
