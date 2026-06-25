@@ -172,6 +172,7 @@ function EditProductModal({
   const [featuresText, setFeaturesText] = useState(product?.features.join("\n") || "");
   const [certsText, setCertsText] = useState(product?.certifications.join(", ") || "");
   const [specs, setSpecs] = useState<{label: string, value: string}[]>(product?.specs || []);
+  const [bulkSpecsText, setBulkSpecsText] = useState("");
 
   const [images, setImages] = useState<string[]>(product?.images || []);
   const [dragActive, setDragActive] = useState(false);
@@ -196,6 +197,47 @@ function EditProductModal({
     reordered.splice(index, 0, removed);
     setImages(reordered);
     setDraggedIndex(null);
+  };
+
+  const handleParseBulkSpecs = () => {
+    if (!bulkSpecsText.trim()) return;
+    const lines = bulkSpecsText.split('\n');
+    const newSpecs: {label: string, value: string}[] = [];
+    
+    for (const line of lines) {
+      const cleanLine = line.trim();
+      if (!cleanLine || cleanLine.match(/^\|?-+\|-+\|?$/)) continue; // skip markdown divider
+      
+      let label = "";
+      let value = "";
+      
+      if (cleanLine.startsWith('|')) {
+        const parts = cleanLine.split('|').map(s => s.trim());
+        if (parts.length >= 3) {
+          label = parts[1];
+          value = parts[2];
+        }
+      } else if (cleanLine.includes('\t')) {
+        const parts = cleanLine.split('\t').map(s => s.trim());
+        label = parts[0];
+        value = parts.slice(1).join(' ');
+      } else if (cleanLine.includes(':')) {
+        const parts = cleanLine.split(':').map(s => s.trim());
+        label = parts[0];
+        value = parts.slice(1).join(':');
+      }
+
+      if (label && value && label.toLowerCase() !== "specification" && label.toLowerCase() !== "details") {
+        newSpecs.push({ label, value });
+      }
+    }
+    
+    if (newSpecs.length > 0) {
+      setSpecs([...specs, ...newSpecs]);
+      setBulkSpecsText("");
+    } else {
+      alert("Could not parse any specifications. Please try a different format like Markdown table, 'Label | Value', or 'Label: Value'");
+    }
   };
 
   // Brochure PDF state & ref
@@ -380,6 +422,29 @@ function EditProductModal({
 
           <div className="admin-form-group">
             <label>Technical Specifications</label>
+
+            {/* Bulk Paste Section */}
+            <div style={{ marginBottom: '16px', padding: '12px', backgroundColor: '#f9fafb', border: '1px dashed #d1d5db', borderRadius: '8px' }}>
+              <p style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>
+                <strong>Bulk Paste:</strong> Paste a Markdown table or tab-separated text (e.g. from Excel) directly below to auto-fill the table.
+              </p>
+              <textarea
+                rows={3}
+                value={bulkSpecsText}
+                onChange={(e) => setBulkSpecsText(e.target.value)}
+                placeholder="| Specification | Details |\n| Model | AWI-500 |"
+                style={{ marginBottom: '8px', fontFamily: 'monospace', fontSize: '12px' }}
+              />
+              <button
+                type="button"
+                className="admin-btn admin-btn--primary"
+                onClick={handleParseBulkSpecs}
+                style={{ padding: '6px 12px', fontSize: '12px' }}
+              >
+                Parse & Add to Table
+              </button>
+            </div>
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {specs.map((spec, index) => (
                 <div key={index} style={{ display: 'flex', gap: '8px' }}>
