@@ -425,16 +425,20 @@ export default function ProductDetailPage({
 
           {/* Full Specifications Table */}
           <ScrollReveal>
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden mb-12 shadow-sm">
-              <div className="px-6 py-4 bg-ira-primary-dark text-white flex items-center gap-3">
-                <Shield size={18} />
-                <h2 className="text-base font-bold">Technical Specifications</h2>
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden mb-12 shadow-md hover:shadow-lg transition-all duration-300">
+              <div className="px-6 py-5 bg-gradient-to-r from-ira-primary-dark to-ira-primary text-white flex items-center gap-3">
+                <SlidersHorizontal size={22} className="text-emerald-100" />
+                <h2 className="text-lg font-bold tracking-wide">Technical Specifications</h2>
               </div>
-              <div className="divide-y divide-gray-100">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-[1px] bg-gray-200">
                 {product.specs.map((spec, i) => (
-                  <div key={i} className={`flex items-center px-6 py-3.5 ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"} hover:bg-ira-primary/[0.02] transition-colors`}>
-                    <span className="w-2/5 text-sm font-semibold text-gray-500">{spec.label}</span>
-                    <span className="w-3/5 text-sm text-gray-900 font-medium">{spec.value}</span>
+                  <div key={i} className="flex bg-white hover:bg-gray-50 transition-colors group">
+                    <div className="w-2/5 px-5 py-4 bg-gray-50/80 border-r border-gray-100 group-hover:bg-emerald-50/50 transition-colors flex items-center">
+                      <span className="text-sm font-bold text-gray-600 leading-snug">{spec.label}</span>
+                    </div>
+                    <div className="w-3/5 px-5 py-4 flex items-center">
+                      <span className="text-sm text-gray-900 font-semibold leading-snug">{spec.value}</span>
+                    </div>
                   </div>
                 ))}
               </div>
