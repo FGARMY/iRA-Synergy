@@ -79,6 +79,7 @@ export default function ProductDetailPage({
   const { slug } = use(params);
   
   const [isMounted, setIsMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [allProducts, setAllProducts] = useState(products);
 
   useEffect(() => {
@@ -114,6 +115,7 @@ export default function ProductDetailPage({
               brochureUrl: dbP.brochure_url || undefined,
             }));
             setAllProducts(mapped);
+            setIsLoading(false);
             return;
           }
         } catch (e) {
@@ -131,6 +133,7 @@ export default function ProductDetailPage({
       } catch (e) {
         console.error(e);
       }
+      setIsLoading(false);
     }
 
     loadData();
@@ -152,7 +155,13 @@ export default function ProductDetailPage({
     message: "",
   });
 
-  if (!isMounted) return <div className="min-h-screen bg-gray-50" />; // prevent hydration mismatch
+  if (!isMounted || isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-ira-primary border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
   if (!product) notFound();
 
   const CatIcon = categoryIcons[product.category] || Building2;

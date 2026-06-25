@@ -36,16 +36,29 @@ export default function AboutPage() {
       <main className="flex-grow pt-20 lg:pt-44">
 
         {/* Compact Hero Section */}
-        <section className="w-full py-12 md:py-20 bg-gray-50 border-b border-gray-100">
-          <div className="max-w-5xl mx-auto px-4 text-center">
+        <section className="relative w-full py-24 md:py-32 border-b border-gray-800 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/team/about-image.jpeg"
+              alt="Corporate Profile"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+            {/* Dark overlay filter for text readability */}
+            <div className="absolute inset-0 bg-black/60" />
+          </div>
+
+          <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
             <ScrollReveal>
-              <span className="text-ira-primary font-bold tracking-[0.4em] uppercase mb-4 block text-sm md:text-base">
+              <span className="text-emerald-400 font-bold tracking-[0.4em] uppercase mb-4 block text-sm md:text-base drop-shadow-sm">
                 Corporate Profile
               </span>
-              <h1 className="text-4xl md:text-6xl font-black text-gray-900 leading-[1.1] tracking-tight mb-6">
+              <h1 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tight mb-6 drop-shadow-lg">
                 Pioneering India's <br /> Infrastructure Evolution.
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 font-light max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-200 font-light max-w-3xl mx-auto drop-shadow-md">
                 {companyInfo.mission}
               </p>
             </ScrollReveal>

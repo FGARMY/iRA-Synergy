@@ -1286,6 +1286,72 @@ export const products: Product[] = [
     inStock: true,
     badge: "Smart Recycling",
     relatedProductSlugs: ["pet-bottle-crusher", "smart-waste-bin"]
+  },
+  {
+    id: "p-45",
+    slug: "sanitary-pad-incinerator",
+    name: "Sanitary Pad Incinerator",
+    category: "Public Health",
+    description: "The iRA Synergy Sanitary Pad Incinerator provides a safe, hygienic, and eco-friendly way to dispose of used sanitary napkins. Engineered for schools, colleges, women's hostels, and public restrooms, it ensures complete combustion of waste into sterile ash with minimal smoke or odor, maintaining dignity and cleanliness.",
+    shortDescription: "Safe, hygienic, and eco-friendly sanitary napkin disposal incinerator for institutions",
+    features: [
+      "Smokeless and Odorless combustion technology",
+      "Auto Power Off functionality for energy saving",
+      "High-density ceramic insulation for exterior safety",
+      "Compact wall-mounted design",
+      "Ash collection tray for easy cleaning",
+      "Durable powder-coated mild steel body",
+    ],
+    specs: [
+      { label: "Burning Capacity", value: "Up to 50-100 Pads / Day" },
+      { label: "Operation", value: "Automatic / Manual" },
+      { label: "Power Supply", value: "220V AC, 50Hz" },
+      { label: "Material", value: "Mild Steel Powder Coated" },
+      { label: "Emission", value: "Low Smoke / Smokeless" },
+    ],
+    certifications: ["ISO Certified", "CE Certified"],
+    images: [
+      "/images/products/sanitary-pad-vending-machine/1.jpeg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Hygiene Standard",
+    relatedProductSlugs: ["sanitary-pad-vending-machine"]
+  },
+  {
+    id: "p-46",
+    slug: "fatka-machine",
+    name: "Fatka Machine (Dust & Waste Separator)",
+    category: "Waste Management",
+    description: "The iRA Synergy Fatka Machine is a heavy-duty mechanical separator designed for the efficient segregation of municipal solid waste and dry waste. It uses high-speed rotary agitation to separate dust, soil, and finer particles from plastics, paper, and other recyclable materials. This robust machine significantly improves the efficiency of waste sorting plants and MRF (Material Recovery Facilities).",
+    shortDescription: "Heavy-duty mechanical waste separator for dust and fine particle removal in MRF plants",
+    features: [
+      "High-speed rotary agitation for efficient separation",
+      "Removes dust, soil, and fine particles from mixed waste",
+      "Heavy-duty robust steel construction for continuous operation",
+      "Low maintenance and high durability",
+      "Improves sorting efficiency in Material Recovery Facilities",
+      "Customizable capacities based on plant requirements",
+    ],
+    specs: [
+      { label: "Capacity", value: "1 to 5 Tons / Hour" },
+      { label: "Motor Power", value: "5 HP to 15 HP" },
+      { label: "Material", value: "Heavy-Duty Mild Steel" },
+      { label: "Application", value: "Municipal Solid Waste (MSW), Dry Waste" },
+      { label: "Power Supply", value: "415V, 3-Phase, 50Hz" },
+    ],
+    certifications: ["ISO Certified", "Make in India"],
+    images: [
+      "/images/products/fatka-machine/angle-1.jpg",
+      "/images/products/fatka-machine/angle-2.jpg",
+      "/images/products/fatka-machine/angle-3.jpg",
+      "/images/products/fatka-machine/angle-4.jpg",
+      "/images/products/fatka-machine/angle-5.jpg"
+    ],
+    price: "On Request",
+    inStock: true,
+    badge: "Waste Separation",
+    relatedProductSlugs: ["trommel-waste-sorting-plant", "solid-waste-incinerator"]
   }
 ];
 

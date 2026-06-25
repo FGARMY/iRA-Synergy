@@ -86,6 +86,7 @@ export const solutions: Solution[] = [
       "animal-waste-incinerator",
       "msrtc-smart-bottle-crusher",
       "dead-animal-solid-waste-incinerator",
+      "fatka-machine",
     ],
     image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800",
     stats: [
@@ -174,6 +175,7 @@ export const solutions: Solution[] = [
       "fresh-air-purifier-indoor-unit",
       "pure-water-atm",
       "sanitary-pad-vending-machine",
+      "sanitary-pad-incinerator",
     ],
     image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=800",
     stats: [
