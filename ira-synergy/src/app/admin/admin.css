@@ -172,8 +172,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .admin-topbar {
+    padding: 0 1.5rem;
+  }
 }
 
 .admin-topbar-left {
@@ -252,7 +257,7 @@
 .admin-content {
   flex-grow: 1;
   overflow-y: auto;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 @media (min-width: 768px) {
   .admin-content {
@@ -417,9 +422,14 @@
 .admin-card {
   background-color: white;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   border: 1px solid #f3f4f6;
+}
+@media (min-width: 768px) {
+  .admin-card {
+    padding: 1.5rem;
+  }
 }
 
 .admin-card-header {
@@ -636,7 +646,12 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 250px;
+  max-width: 100px;
+}
+@media (min-width: 640px) {
+  .admin-table-product-id {
+    max-width: 250px;
+  }
 }
 
 .admin-table-price {
