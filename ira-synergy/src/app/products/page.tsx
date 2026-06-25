@@ -37,6 +37,8 @@ export default function ProductsCatalog() {
 
   useEffect(() => {
     async function loadProducts() {
+      let fetchedProducts = null;
+      
       const isSupabaseConfigured =
         process.env.NEXT_PUBLIC_SUPABASE_URL &&
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -49,7 +51,7 @@ export default function ProductsCatalog() {
             .order("created_at", { ascending: false });
 
           if (dbProducts && !error) {
-            const mapped = dbProducts.map((dbP: any) => ({
+            fetchedProducts = dbProducts.map((dbP: any) => ({
               id: dbP.id,
               slug: dbP.slug,
               name: dbP.name,
@@ -66,23 +68,32 @@ export default function ProductsCatalog() {
               relatedProductSlugs: dbP.related_product_slugs || [],
               brochureUrl: dbP.brochure_url || undefined,
             }));
-            setProducts(mapped);
-            return;
           }
         } catch (e) {
           console.warn("Supabase fetch failed, falling back to localStorage", e);
         }
       }
 
-      // LocalStorage fallback
-      try {
-        const stored = localStorage.getItem("ira_admin_products");
-        if (stored) {
-          const parsedStored = JSON.parse(stored);
-          setProducts(parsedStored);
+      // LocalStorage fallback if Supabase didn't provide data
+      if (!fetchedProducts) {
+        try {
+          const stored = localStorage.getItem("ira_admin_products");
+          if (stored) {
+            fetchedProducts = JSON.parse(stored);
+          }
+        } catch (e) {
+          console.error(e);
         }
-      } catch (e) {
-        console.error(e);
+      }
+
+      // Only update state if the new products are different from current ones
+      if (fetchedProducts) {
+        setProducts((currentProducts) => {
+          if (JSON.stringify(currentProducts) !== JSON.stringify(fetchedProducts)) {
+            return fetchedProducts;
+          }
+          return currentProducts; // Return existing state to prevent re-render
+        });
       }
     }
 
