@@ -9,7 +9,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ProductCard from "@/components/ProductCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { products as staticProducts, productCategories } from "@/data/products";
-import { supabase } from "@/lib/supabase";
+import { useProducts } from "@/components/ProductsProvider";
 import type { Product } from "@/types";
 
 const categoryIcons: Record<string, React.ElementType> = {
@@ -39,71 +39,7 @@ export default function ProductsClient({
 }) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [products, setProducts] = useState<Product[]>(initialProducts);
-
-  useEffect(() => {
-    // If we received data from SSR DB fetch, we are good.
-    if (isFromDb) return;
-
-    // Background sync: Fetch from Supabase silently to see if any NEW products 
-    // were added to the database that aren't in our static 34 products.
-    const syncWithDatabase = async () => {
-      try {
-        const { data: dbProducts, error } = await supabase
-          .from("products")
-          .select("*")
-          .order("created_at", { ascending: true });
-
-        if (dbProducts && !error && dbProducts.length > 0) {
-          const mappedProducts = dbProducts.map((dbP: any) => ({
-            id: dbP.id,
-            slug: dbP.slug,
-            name: dbP.name,
-            category: dbP.category,
-            description: dbP.description,
-            shortDescription: dbP.short_description || "",
-            features: dbP.features || [],
-            specs: dbP.specs || [],
-            certifications: dbP.certifications || [],
-            images: dbP.images || [],
-            price: dbP.price || "On Request",
-            inStock: dbP.in_stock ?? true,
-            badge: dbP.badge || undefined,
-            relatedProductSlugs: dbP.related_product_slugs || [],
-            brochureUrl: dbP.brochure_url || undefined,
-          }));
-          
-          setProducts((currentProducts) => {
-            // Only update if the database has different data (e.g. a new product was added)
-            if (JSON.stringify(currentProducts) !== JSON.stringify(mappedProducts)) {
-              return mappedProducts;
-            }
-            return currentProducts;
-          });
-        }
-      } catch (e) {
-        console.warn("Background Supabase sync failed", e);
-      }
-    };
-
-    syncWithDatabase();
-
-    // LocalStorage fallback for local testing without Supabase
-    try {
-      const stored = localStorage.getItem("ira_admin_products");
-      if (stored) {
-        const fetchedProducts = JSON.parse(stored);
-        setProducts((currentProducts) => {
-          if (JSON.stringify(currentProducts) !== JSON.stringify(fetchedProducts)) {
-            return fetchedProducts;
-          }
-          return currentProducts;
-        });
-      }
-    } catch (e) {
-      console.error("Error reading localStorage", e);
-    }
-  }, [isFromDb]);
+  const { products } = useProducts();
 
   const filtered = products.filter((p) => {
     const matchesCategory = activeCategory === "All" || p.category === activeCategory;
