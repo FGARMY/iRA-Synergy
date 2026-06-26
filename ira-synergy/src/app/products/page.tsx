@@ -46,7 +46,7 @@ export default async function ProductsPage() {
         
         const combined = [...staticProducts];
         for (const item of mapped) {
-          const idx = combined.findIndex((p) => p.id === item.id);
+          const idx = combined.findIndex((p) => p.slug === item.slug);
           if (idx >= 0) combined[idx] = item;
           else combined.unshift(item);
         }

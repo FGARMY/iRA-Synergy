@@ -50,7 +50,7 @@ export default async function BlogHubPage() {
 
         const combined = [...staticBlogs];
         for (const item of mapped) {
-          const idx = combined.findIndex((b) => b.id === item.id);
+          const idx = combined.findIndex((b) => b.slug === item.slug);
           if (idx >= 0) combined[idx] = item;
           else combined.unshift(item);
         }
