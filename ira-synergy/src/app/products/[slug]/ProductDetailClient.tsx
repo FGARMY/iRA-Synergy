@@ -88,12 +88,61 @@ export default function ProductDetailClient({
   
   const [isMounted, setIsMounted] = useState(false);
   const [allProducts, setAllProducts] = useState<Product[]>(initialProducts);
+  const [isSyncing, setIsSyncing] = useState(!isFromDb);
+
+  const decodedSlug = decodeURIComponent(slug);
 
   useEffect(() => {
     setIsMounted(true);
     
     // If data came from Supabase via SSR, no need to check localStorage
-    if (isFromDb) return;
+    if (isFromDb) {
+      setIsSyncing(false);
+      return;
+    }
+
+    const syncWithDatabase = async () => {
+      try {
+        const { data: dbProducts, error } = await supabase
+          .from("products")
+          .select("*")
+          .eq("slug", decodedSlug);
+
+        if (dbProducts && !error && dbProducts.length > 0) {
+          const mappedProducts = dbProducts.map((dbP: any) => ({
+            id: dbP.id,
+            slug: dbP.slug,
+            name: dbP.name,
+            category: dbP.category,
+            description: dbP.description,
+            shortDescription: dbP.short_description || "",
+            features: dbP.features || [],
+            specs: dbP.specs || [],
+            certifications: dbP.certifications || [],
+            images: dbP.images || [],
+            price: dbP.price || "On Request",
+            inStock: dbP.in_stock ?? true,
+            badge: dbP.badge || undefined,
+            relatedProductSlugs: dbP.related_product_slugs || [],
+            brochureUrl: dbP.brochure_url || undefined,
+          }));
+          
+          setAllProducts((current) => {
+            const existing = current.find(p => p.slug === decodedSlug);
+            if (!existing || JSON.stringify(existing) !== JSON.stringify(mappedProducts[0])) {
+              return [...current.filter(p => p.slug !== decodedSlug), mappedProducts[0]];
+            }
+            return current;
+          });
+        }
+      } catch (e) {
+        console.warn("Background Supabase sync failed", e);
+      } finally {
+        setIsSyncing(false);
+      }
+    };
+
+    syncWithDatabase();
 
     // LocalStorage fallback
     try {
@@ -110,9 +159,8 @@ export default function ProductDetailClient({
     } catch (e) {
       console.error(e);
     }
-  }, [isFromDb]);
+  }, [isFromDb, decodedSlug]);
 
-  const decodedSlug = decodeURIComponent(slug);
   const product = allProducts.find((p) => p.slug === decodedSlug);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -136,7 +184,17 @@ export default function ProductDetailClient({
       </div>
     );
   }
-  if (!product) notFound();
+  
+  if (!product) {
+    if (isSyncing) {
+      return (
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="w-12 h-12 border-4 border-ira-primary border-t-transparent rounded-full animate-spin" />
+        </div>
+      );
+    }
+    notFound();
+  }
 
   const CatIcon = categoryIcons[product.category] || Building2;
 

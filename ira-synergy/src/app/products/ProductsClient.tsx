@@ -42,8 +42,51 @@ export default function ProductsClient({
   const [products, setProducts] = useState<Product[]>(initialProducts);
 
   useEffect(() => {
-    // If data came from Supabase via SSR, we don't need to load from localStorage
+    // If we received data from SSR DB fetch, we are good.
     if (isFromDb) return;
+
+    // Background sync: Fetch from Supabase silently to see if any NEW products 
+    // were added to the database that aren't in our static 34 products.
+    const syncWithDatabase = async () => {
+      try {
+        const { data: dbProducts, error } = await supabase
+          .from("products")
+          .select("*")
+          .order("created_at", { ascending: true });
+
+        if (dbProducts && !error && dbProducts.length > 0) {
+          const mappedProducts = dbProducts.map((dbP: any) => ({
+            id: dbP.id,
+            slug: dbP.slug,
+            name: dbP.name,
+            category: dbP.category,
+            description: dbP.description,
+            shortDescription: dbP.short_description || "",
+            features: dbP.features || [],
+            specs: dbP.specs || [],
+            certifications: dbP.certifications || [],
+            images: dbP.images || [],
+            price: dbP.price || "On Request",
+            inStock: dbP.in_stock ?? true,
+            badge: dbP.badge || undefined,
+            relatedProductSlugs: dbP.related_product_slugs || [],
+            brochureUrl: dbP.brochure_url || undefined,
+          }));
+          
+          setProducts((currentProducts) => {
+            // Only update if the database has different data (e.g. a new product was added)
+            if (JSON.stringify(currentProducts) !== JSON.stringify(mappedProducts)) {
+              return mappedProducts;
+            }
+            return currentProducts;
+          });
+        }
+      } catch (e) {
+        console.warn("Background Supabase sync failed", e);
+      }
+    };
+
+    syncWithDatabase();
 
     // LocalStorage fallback for local testing without Supabase
     try {
