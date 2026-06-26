@@ -6,7 +6,7 @@ import type { Product } from "@/types";
 export const revalidate = 60; // Revalidate every minute
 
 export default async function ProductsPage() {
-  let initialProducts = staticProducts;
+  let initialProducts = staticProducts as Product[];
 
   const isSupabaseConfigured =
     process.env.NEXT_PUBLIC_SUPABASE_URL &&

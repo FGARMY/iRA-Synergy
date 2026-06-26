@@ -33,7 +33,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ProductCard from "@/components/ProductCard";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { products, getProductBySlug, getProductsByCategory } from "@/data/products";
+import { products } from "@/data/products";
 import { solutions } from "@/data/solutions";
 import { supabase } from "@/lib/supabase";
 import { companyInfo } from "@/data/company";
