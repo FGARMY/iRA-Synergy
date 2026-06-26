@@ -9,7 +9,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { blogs as staticBlogs } from "@/data/blogs";
 import { supabase } from "@/lib/supabase";
 
-export const revalidate = 0;
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Insights & Engineering Blog | iRA Synergy",

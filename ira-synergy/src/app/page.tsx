@@ -21,7 +21,7 @@ const Gallery = dynamic(() => import("@/components/Gallery"));
 const BusinessInfo = dynamic(() => import("@/components/BusinessInfo"));
 const TrustSection = dynamic(() => import("@/components/TrustSection"));
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 3600; // Revalidate every hour
 
 export default async function Home() {
   let heroImages: GalleryImage[] = [];

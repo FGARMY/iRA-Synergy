@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://irasynergy.com/solutions" },
 };
 
+export const dynamic = "force-static";
+
 const iconMap: Record<string, React.ElementType> = {
   School, Recycle, Sun, HeartPulse, Dumbbell, Building2,
 };
