@@ -45,49 +45,6 @@ export default function ProductsClient({
     // If data came from Supabase via SSR, we don't need to load from localStorage
     if (isFromDb) return;
 
-    // Fetch from Supabase on the client side to get the full list of products
-    // without blocking the initial fast SSR load.
-    const fetchFromSupabase = async () => {
-      try {
-        const { data: dbProducts, error } = await supabase
-          .from("products")
-          .select("*")
-          .order("created_at", { ascending: false });
-
-        if (dbProducts && !error && dbProducts.length > 0) {
-          const mappedProducts = dbProducts.map((dbP: any) => ({
-            id: dbP.id,
-            slug: dbP.slug,
-            name: dbP.name,
-            category: dbP.category,
-            description: dbP.description,
-            shortDescription: dbP.short_description || "",
-            features: dbP.features || [],
-            specs: dbP.specs || [],
-            certifications: dbP.certifications || [],
-            images: dbP.images || [],
-            price: dbP.price || "On Request",
-            inStock: dbP.in_stock ?? true,
-            badge: dbP.badge || undefined,
-            relatedProductSlugs: dbP.related_product_slugs || [],
-            brochureUrl: dbP.brochure_url || undefined,
-          }));
-          
-          setProducts((currentProducts) => {
-            // Replace with DB products to ensure we have all of them
-            if (JSON.stringify(currentProducts) !== JSON.stringify(mappedProducts)) {
-              return mappedProducts;
-            }
-            return currentProducts;
-          });
-        }
-      } catch (e) {
-        console.warn("Client-side Supabase fetch failed", e);
-      }
-    };
-
-    fetchFromSupabase();
-
     // LocalStorage fallback for local testing without Supabase
     try {
       const stored = localStorage.getItem("ira_admin_products");

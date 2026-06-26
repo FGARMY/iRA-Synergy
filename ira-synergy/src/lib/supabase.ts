@@ -18,16 +18,15 @@ export const supabase = createClient(
   {
     global: {
       fetch: (url, options) => {
-        // Enforce a strict timeout to ensure pages load instantly without hanging
-        // especially when Supabase is paused or slow to respond.
-        const timeoutMs = typeof window === "undefined" ? 150 : 10000;
+        // Generous timeout to allow Supabase to respond on the server,
+        // ensuring we fetch all database items rather than falling back to static lists.
+        const timeoutMs = 15000;
         const controller = new AbortController();
         const id = setTimeout(() => controller.abort(), timeoutMs);
         return fetch(url, { ...options, cache: "no-store", signal: controller.signal })
           .catch((err) => {
             if (err.name === 'AbortError') {
               console.warn(`Supabase fetch aborted due to ${timeoutMs}ms timeout.`);
-              // Return a mock response so the SDK doesn't completely crash, it just returns an error or empty data.
               return new Response(JSON.stringify({ message: "Request timed out", code: "504" }), {
                 status: 504,
                 headers: { 'Content-Type': 'application/json' }
