@@ -77,7 +77,7 @@ export default async function SolutionDetailPage({
         // Map dbProducts to match the order of relatedProductSlugs
         relatedProducts = solution.relatedProductSlugs
           .map((slug) => {
-            const dbP = dbProducts.find((p) => p.slug === slug);
+            const dbP = dbProducts.find((p: any) => p.slug === slug);
             if (dbP) {
               const mappedP: Product = {
                 id: dbP.id,

@@ -41,10 +41,10 @@ export const supabase = createClient(
  * Returns null if the query takes longer than `ms` milliseconds,
  * letting callers fall back to static data immediately.
  */
-export async function withTimeout<T>(
-  promise: PromiseLike<T>,
+export async function withTimeout(
+  promise: PromiseLike<any>,
   ms: number = FETCH_TIMEOUT_MS
-): Promise<T | null> {
+): Promise<any | null> {
   try {
     const result = await Promise.race([
       promise,
