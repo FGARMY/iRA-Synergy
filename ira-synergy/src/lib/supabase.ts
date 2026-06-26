@@ -42,7 +42,7 @@ export const supabase = createClient(
  * letting callers fall back to static data immediately.
  */
 export async function withTimeout<T>(
-  promise: Promise<T>,
+  promise: PromiseLike<T>,
   ms: number = FETCH_TIMEOUT_MS
 ): Promise<T | null> {
   try {
