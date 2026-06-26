@@ -12,9 +12,9 @@ if (!supabaseUrl || !supabaseAnonKey) {
 const dummyUrl = "https://placeholder-project-ref.supabase.co";
 const dummyKey = "placeholder-anon-key";
 
-// Use a custom fetch with a short timeout so that slow/unreachable Supabase
-// never blocks page rendering. Pages will fall back to static data instantly.
-const FETCH_TIMEOUT_MS = process.env.NODE_ENV === "development" ? 800 : 2000;
+// Use a custom fetch with a timeout so that slow/unreachable Supabase
+// never blocks page rendering infinitely.
+const FETCH_TIMEOUT_MS = 5000;
 
 function fetchWithTimeout(url: string | URL | Request, options?: RequestInit): Promise<Response> {
   const controller = new AbortController();
