@@ -1,8 +1,8 @@
-import { supabase } from "@/lib/supabase";
+import { supabase, withTimeout } from "@/lib/supabase";
 import { products as staticProducts } from "@/data/products";
 import ProductDetailClient from "./ProductDetailClient";
 
-export const revalidate = 60; // Revalidate every minute
+export const revalidate = 3600; // Revalidate every hour
 
 export default async function ProductDetailPage({
   params,
@@ -18,13 +18,18 @@ export default async function ProductDetailPage({
 
   if (isSupabaseConfigured) {
     try {
-      const { data: dbProducts, error } = await supabase
-        .from("products")
-        .select("*")
-        .order("created_at", { ascending: false });
+      const result = await withTimeout(
+        supabase
+          .from("products")
+          .select("*")
+          .order("created_at", { ascending: false })
+      );
+
+      const dbProducts = result?.data;
+      const error = result?.error;
 
       if (dbProducts && !error && dbProducts.length > 0) {
-        initialProducts = dbProducts.map((dbP: any) => ({
+        const mapped = dbProducts.map((dbP: any) => ({
           id: dbP.id,
           slug: dbP.slug,
           name: dbP.name,
@@ -41,6 +46,14 @@ export default async function ProductDetailPage({
           relatedProductSlugs: dbP.related_product_slugs || [],
           brochureUrl: dbP.brochure_url || undefined,
         }));
+        
+        const combined = [...staticProducts];
+        for (const item of mapped) {
+          const idx = combined.findIndex((p) => p.id === item.id);
+          if (idx >= 0) combined[idx] = item;
+          else combined.unshift(item);
+        }
+        initialProducts = combined;
         isFromDb = true;
       }
     } catch (e) {

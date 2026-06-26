@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
 import { getProductBySlug, getAllProductSlugs, products } from "@/data/products";
-import { supabase } from "@/lib/supabase";
+import { supabase, withTimeout } from "@/lib/supabase";
 import type { Product } from "@/types";
 
 // Allow Next.js to render product pages for slugs NOT in generateStaticParams
 // (i.e., products added via the Admin panel at runtime).
 export const dynamicParams = true;
-
-// Force dynamic rendering so Supabase data is always fresh
-export const dynamic = "force-dynamic";
 
 // FAQ data per category (mirrored from page.tsx for JSON-LD)
 const categoryFAQs: Record<string, { q: string; a: string }[]> = {
@@ -49,11 +46,16 @@ async function findProductBySlug(slug: string): Promise<Product | undefined> {
 
   if (isSupabaseConfigured) {
     try {
-      const { data, error } = await supabase
-        .from("products")
-        .select("*")
-        .eq("slug", slug)
-        .single();
+      const result = await withTimeout(
+        supabase
+          .from("products")
+          .select("*")
+          .eq("slug", slug)
+          .single()
+      );
+
+      const data = result?.data;
+      const error = result?.error;
 
       if (data && !error) {
         return {
@@ -93,9 +95,12 @@ export async function generateStaticParams() {
 
   if (isSupabaseConfigured) {
     try {
-      const { data: dbProducts } = await supabase
-        .from("products")
-        .select("slug");
+      const result = await withTimeout(
+        supabase
+          .from("products")
+          .select("slug")
+      );
+      const dbProducts = result?.data;
 
       if (dbProducts) {
         const dbSlugs = dbProducts.map((p: any) => ({ slug: p.slug }));

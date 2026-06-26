@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { blogs as staticBlogs } from "@/data/blogs";
-import { supabase } from "@/lib/supabase";
+import { supabase, withTimeout } from "@/lib/supabase";
 
 export const revalidate = 3600;
 
@@ -25,10 +25,13 @@ export default async function BlogHubPage() {
 
   if (isSupabaseConfigured) {
     try {
-      const { data: dbBlogs } = await supabase
-        .from("blogs")
-        .select("*")
-        .order("created_at", { ascending: false });
+      const result = await withTimeout(
+        supabase
+          .from("blogs")
+          .select("*")
+          .order("created_at", { ascending: false })
+      );
+      const dbBlogs = result?.data;
 
       if (dbBlogs && dbBlogs.length > 0) {
         const mapped = dbBlogs.map((dbB: any) => ({
