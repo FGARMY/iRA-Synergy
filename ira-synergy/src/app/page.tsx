@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import dynamic from "next/dynamic";
-import { supabase, withTimeout } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 import type { GalleryImage } from "@/components/admin/AdminContext";
 
 export const metadata: Metadata = {
@@ -21,19 +21,16 @@ const Gallery = dynamic(() => import("@/components/Gallery"));
 const BusinessInfo = dynamic(() => import("@/components/BusinessInfo"));
 const TrustSection = dynamic(() => import("@/components/TrustSection"));
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function Home() {
   let heroImages: GalleryImage[] = [];
   try {
-    const result = await withTimeout(
-      supabase
-        .from("gallery")
-        .select("*")
-        .eq("category", "Hero")
-        .order("uploaded_at", { ascending: false })
-    );
-    const data = result?.data;
+    const { data } = await supabase
+      .from("gallery")
+      .select("*")
+      .eq("category", "Hero")
+      .order("uploaded_at", { ascending: false });
     
     if (data && data.length > 0) {
       // Map to GalleryImage shape

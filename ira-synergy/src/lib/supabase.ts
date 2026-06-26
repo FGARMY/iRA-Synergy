@@ -12,46 +12,12 @@ if (!supabaseUrl || !supabaseAnonKey) {
 const dummyUrl = "https://placeholder-project-ref.supabase.co";
 const dummyKey = "placeholder-anon-key";
 
-// Use a custom fetch with a timeout so that slow/unreachable Supabase
-// never blocks page rendering infinitely.
-const FETCH_TIMEOUT_MS = 5000;
-
-function fetchWithTimeout(url: string | URL | Request, options?: RequestInit): Promise<Response> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-
-  return fetch(url, {
-    ...options,
-    signal: controller.signal,
-  }).finally(() => clearTimeout(timeout));
-}
-
 export const supabase = createClient(
   supabaseUrl || dummyUrl,
   supabaseAnonKey || dummyKey,
   {
     global: {
-      fetch: fetchWithTimeout,
+      fetch: (url, options) => fetch(url, { ...options, cache: "no-store" }),
     },
   }
 );
-
-/**
- * Helper to race a Supabase query against a timeout.
- * Returns null if the query takes longer than `ms` milliseconds,
- * letting callers fall back to static data immediately.
- */
-export async function withTimeout(
-  promise: PromiseLike<any>,
-  ms: number = FETCH_TIMEOUT_MS
-): Promise<any | null> {
-  try {
-    const result = await Promise.race([
-      promise,
-      new Promise<null>((resolve) => setTimeout(() => resolve(null), ms)),
-    ]);
-    return result;
-  } catch {
-    return null;
-  }
-}

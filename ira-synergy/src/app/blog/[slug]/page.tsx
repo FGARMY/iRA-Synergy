@@ -7,10 +7,10 @@ import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import { blogs as staticBlogs, type BlogPost } from "@/data/blogs";
 import { solutions } from "@/data/solutions";
-import { supabase, withTimeout } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 
 export const dynamicParams = true;
-export const revalidate = 3600;
+export const revalidate = 0;
 
 export async function generateStaticParams() {
   return staticBlogs.map((blog) => ({
@@ -30,14 +30,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   if (isSupabaseConfigured) {
     try {
-      const result = await withTimeout(
-        supabase
-          .from("blogs")
-          .select("*")
-          .eq("slug", slug)
-          .single()
-      );
-      const dbBlog = result?.data;
+      const { data: dbBlog } = await supabase
+        .from("blogs")
+        .select("*")
+        .eq("slug", slug)
+        .single();
 
       if (dbBlog) {
         blog = {

@@ -10,7 +10,7 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { solutions, getSolutionBySlug, getAllSolutionSlugs } from "@/data/solutions";
 import { products } from "@/data/products";
-import { supabase, withTimeout } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 import type { Product } from "@/types";
 
 const indicatorColors: Record<string, string> = {
@@ -22,7 +22,7 @@ const indicatorColors: Record<string, string> = {
   "bg-indigo-700": "bg-indigo-600",
 };
 
-export const revalidate = 3600;
+export const revalidate = 0;
 export const dynamicParams = true;
 
 
@@ -65,19 +65,16 @@ export default async function SolutionDetailPage({
 
   if (isSupabaseConfigured) {
     try {
-      const result = await withTimeout(
-        supabase
-          .from("products")
-          .select("*")
-          .in("slug", solution.relatedProductSlugs)
-      );
-      const dbProducts = result?.data;
+      const { data: dbProducts } = await supabase
+        .from("products")
+        .select("*")
+        .in("slug", solution.relatedProductSlugs);
 
       if (dbProducts && dbProducts.length > 0) {
         // Map dbProducts to match the order of relatedProductSlugs
         relatedProducts = solution.relatedProductSlugs
           .map((slug) => {
-            const dbP = dbProducts.find((p: any) => p.slug === slug);
+            const dbP = dbProducts.find((p) => p.slug === slug);
             if (dbP) {
               const mappedP: Product = {
                 id: dbP.id,

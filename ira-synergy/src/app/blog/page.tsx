@@ -7,9 +7,9 @@ import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { blogs as staticBlogs } from "@/data/blogs";
-import { supabase, withTimeout } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 
-export const revalidate = 3600;
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Insights & Engineering Blog | iRA Synergy",
@@ -25,13 +25,10 @@ export default async function BlogHubPage() {
 
   if (isSupabaseConfigured) {
     try {
-      const result = await withTimeout(
-        supabase
-          .from("blogs")
-          .select("*")
-          .order("created_at", { ascending: false })
-      );
-      const dbBlogs = result?.data;
+      const { data: dbBlogs } = await supabase
+        .from("blogs")
+        .select("*")
+        .order("created_at", { ascending: false });
 
       if (dbBlogs && dbBlogs.length > 0) {
         const mapped = dbBlogs.map((dbB: any) => ({
@@ -50,7 +47,7 @@ export default async function BlogHubPage() {
 
         const combined = [...staticBlogs];
         for (const item of mapped) {
-          const idx = combined.findIndex((b) => b.slug === item.slug);
+          const idx = combined.findIndex((b) => b.id === item.id);
           if (idx >= 0) combined[idx] = item;
           else combined.unshift(item);
         }
