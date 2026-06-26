@@ -178,13 +178,15 @@ export default function ProductDetailClient({
   });
 
   if (!isMounted && !isFromDb) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-ira-primary border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
-  
+    // Only show spinner if we don't have the product in initial data
+    if (!product) {
+      return (
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="w-12 h-12 border-4 border-ira-primary border-t-transparent rounded-full animate-spin" />
+        </div>
+      );
+    }
+  }  
   if (!product) {
     if (isSyncing) {
       return (

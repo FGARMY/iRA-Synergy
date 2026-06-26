@@ -84,6 +84,7 @@ export const metadata: Metadata = {
 };
 
 import { Toaster } from "react-hot-toast";
+import GlobalPreloader from "@/components/GlobalPreloader";
 
 export default function RootLayout({
   children,
@@ -140,6 +141,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)]">
         <Toaster position="top-center" toastOptions={{ duration: 4000, style: { background: '#333', color: '#fff' } }} />
+        <GlobalPreloader />
         <FloatingActionMenu />
         {children}
       </body>
