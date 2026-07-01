@@ -31,7 +31,8 @@ const initiativeLogos = [
   { url: "/images/swatch-bharat.png", className: "w-20 h-16 sm:w-32 sm:h-20" },
   { url: "/images/digital-india-logo.png", className: "w-20 h-16 sm:w-32 sm:h-20" },
   { url: "/images/Fit-India-logo.png", className: "w-20 h-16 sm:w-32 sm:h-20" },
-  { url: "/images/MakeinIndia-logo.png", className: "w-20 h-16 sm:w-32 sm:h-20" }
+  { url: "/images/MakeinIndia-logo.png", className: "w-20 h-16 sm:w-32 sm:h-20" },
+  { url: "/images/brands/08_client.png", className: "w-20 h-16 sm:w-32 sm:h-20" }
 ];
 
 export default function BusinessInfo() {
