@@ -128,18 +128,19 @@ export const companyInfo = {
   storyParagraph2: "We specialize in the end-to-end execution of heavy infrastructure—from decentralized automated waste management facilities to Category-5 cyclone-safe coastal shelters. Our engineering philosophy is rooted in modularity, extreme durability, and seamless IoT integration, ensuring that the public spaces we build today will serve communities for decades.",
   storyParagraph3: "As a proudly 'Make in India' certified corporation, 100% of our manufacturing and assembly is localized. This not only bolsters the national economy but allows us to maintain absolute, uncompromised control over the quality of every steel girder, every solar panel, and every smart sensor deployed in our projects.",
 
-  // Directors' Vision
   directors: [
     {
       name: "Dinesh Anand",
       title: "Managing Director",
       quote: "True infrastructure doesn't just occupy space—it elevates the community. Our goal is to ensure that every municipality, regardless of its size, has access to world-class, sustainable technology.",
+      statement: "At iRA Synergy, we deliver innovative engineering solutions that strengthen infrastructure, optimize performance, and create sustainable value for governments, industries, and communities across India.",
       image: "/images/team/dinesh.jpeg",
     },
     {
       name: "Keshav Yendait",
       title: "Director",
       quote: "Engineering innovation and sustainability are the cornerstones of modern development. We strive to create robust solutions that empower communities and protect the environment for future generations.",
+      statement: "At iRA Synergy, we don't just supply equipment. We act as strategic engineering partners for India's largest civic and corporate entities, ensuring that every rupee invested yields a generation of value.",
       image: "/images/team/keshav.jpeg",
     }
   ],

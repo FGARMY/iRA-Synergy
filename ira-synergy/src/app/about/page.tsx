@@ -204,7 +204,10 @@ export default async function AboutPage() {
                       </h3>
                       <div className="w-16 sm:w-20 h-1 bg-ira-primary mb-6 sm:mb-8" />
                       <p className="text-sm sm:text-base text-gray-500 font-medium">
-                        At iRA Synergy, we deliver innovative engineering solutions that strengthen infrastructure, optimize performance, and create sustainable value for governments, industries, and communities across India.
+                        {index === 0
+                          ? "At iRA Synergy, we deliver innovative engineering solutions that strengthen infrastructure, optimize performance, and create sustainable value for governments, industries, and communities across India."
+                          : "At iRA Synergy, we don't just supply equipment. We act as strategic engineering partners for India's largest civic and corporate entities, ensuring that every rupee invested yields a generation of value."
+                        }
                       </p>
                     </ScrollReveal>
                   </div>
