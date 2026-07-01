@@ -168,7 +168,7 @@ export default function BusinessInfo() {
           <div className="bg-white rounded-xl border border-gray-100 p-4 sm:p-8 shadow-[0_2px_10px_rgba(0,0,0,0.02)] overflow-hidden">
             <div className="text-center mb-6 sm:mb-8">
               <h2 className="text-sm font-bold text-gray-900 uppercase inline-block relative">
-                OUR PARTNERS & INITIATIVES
+                Trusted by Government & Industry Leaders
                 <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-ira-primary rounded-full"></span>
               </h2>
             </div>
