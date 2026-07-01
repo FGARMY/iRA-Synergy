@@ -173,7 +173,7 @@ export default function BusinessInfo() {
               </h2>
             </div>
             <div className="w-full mt-8 mb-4">
-              <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16">
+              <div className="flex flex-nowrap justify-start sm:justify-center items-center gap-6 sm:gap-12 overflow-x-auto hide-scrollbar w-full">
                 {initiativeLogos.map((logo, idx) => (
                   <div key={idx} className={`flex items-center justify-center ${logo.className}`}>
                     <img
