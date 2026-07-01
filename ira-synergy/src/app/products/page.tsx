@@ -9,41 +9,8 @@ export default async function ProductsPage() {
   let initialProducts = staticProducts as Product[];
   let isFromDb = false;
 
-  const isSupabaseConfigured =
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-  if (isSupabaseConfigured) {
-    try {
-      const { data, error } = await supabase
-        .from("products")
-        .select("*")
-        .order("created_at", { ascending: true });
-
-      if (data && !error && data.length > 0) {
-        initialProducts = data.map((dbP: any) => ({
-          id: dbP.id,
-          slug: dbP.slug,
-          name: dbP.name,
-          category: dbP.category,
-          description: dbP.description,
-          shortDescription: dbP.short_description || "",
-          features: dbP.features || [],
-          specs: dbP.specs || [],
-          certifications: dbP.certifications || [],
-          images: dbP.images || [],
-          price: dbP.price || "On Request",
-          inStock: dbP.in_stock ?? true,
-          badge: dbP.badge || undefined,
-          relatedProductSlugs: dbP.related_product_slugs || [],
-          brochureUrl: dbP.brochure_url || undefined,
-        }));
-        isFromDb = true;
-      }
-    } catch (e) {
-      console.error("Failed to fetch products from Supabase:", e);
-    }
-  }
-
+  // We bypass server-side fetching here because the database contains large base64 images,
+  // causing the pre-rendered page payload to exceed Vercel's 19.07MB limit (producing FALLBACK_BODY_TOO_LARGE).
+  // The client-side ProductsProvider will successfully fetch the live database products instead.
   return <ProductsClient initialProducts={initialProducts} isFromDb={isFromDb} />;
 }
