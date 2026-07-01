@@ -6,14 +6,12 @@ const SUPABASE_ANON_KEY = "sb_publishable_hrCGqsbG2FaIyrp4jvaH6A_K-3mx8Jx";
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 async function testQuery() {
-  const { data: products, error } = await supabase.from("products").select("*");
+  console.log("Fetching one full product...");
+  const { data, error } = await supabase.from("products").select("*").limit(1);
   if (error) {
-    console.error("Query Error:", error);
+    console.error("Query failed:", error);
   } else {
-    console.log("Total products in DB:", products.length);
-    products.forEach((p, idx) => {
-      console.log(`${idx + 1}. [ID: ${p.id}] Slug: ${p.slug} - Name: ${p.name}`);
-    });
+    console.log("Full database product keys & values:", JSON.stringify(data[0], null, 2));
   }
 }
 
