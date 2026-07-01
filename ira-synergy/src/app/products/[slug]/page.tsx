@@ -10,16 +10,56 @@ export default async function ProductDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  let initialProducts = staticProducts as Product[];
-  let isFromDb = false;
+  const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
 
-  // We bypass server-side fetching here to prevent oversized server-side payloads.
-  // The client-side ProductsProvider will query and display live details.
+  let initialProduct: Product | null = null;
+
+  const isSupabaseConfigured =
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (isSupabaseConfigured) {
+    try {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .eq("slug", decodedSlug)
+        .maybeSingle();
+
+      if (data && !error) {
+        initialProduct = {
+          id: data.id,
+          slug: data.slug,
+          name: data.name,
+          category: data.category,
+          description: data.description,
+          shortDescription: data.short_description || "",
+          features: data.features || [],
+          specs: data.specs || [],
+          certifications: data.certifications || [],
+          images: data.images || [],
+          price: data.price || "On Request",
+          inStock: data.in_stock ?? true,
+          badge: data.badge || undefined,
+          relatedProductSlugs: data.related_product_slugs || [],
+          brochureUrl: data.brochure_url || undefined,
+        };
+      }
+    } catch (e) {
+      console.error("Failed to fetch product detail from Supabase:", e);
+    }
+  }
+
+  // Fallback to static data if not found in db
+  if (!initialProduct) {
+    initialProduct = (staticProducts as Product[]).find(p => p.slug === decodedSlug) || null;
+  }
+
   return (
     <ProductDetailClient
       params={params}
-      initialProducts={initialProducts}
-      isFromDb={isFromDb}
+      initialProduct={initialProduct}
     />
   );
 }

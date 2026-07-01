@@ -78,17 +78,29 @@ import type { Product } from "@/types";
 
 export default function ProductDetailClient({
   params,
-  initialProducts,
-  isFromDb = false,
+  initialProduct,
 }: {
   params: Promise<{ slug: string }>;
-  initialProducts: Product[];
-  isFromDb?: boolean;
+  initialProduct: Product | null;
 }) {
   const { slug } = use(params);
   const decodedSlug = decodeURIComponent(slug);
   const { products: allProducts, isLoading } = useProducts();
-  const product = allProducts.find((p) => p.slug === decodedSlug);
+  
+  const summaryProduct = allProducts.find((p) => p.slug === decodedSlug);
+  const product = summaryProduct
+    ? {
+        ...initialProduct,
+        ...summaryProduct,
+        description: initialProduct?.description || summaryProduct.description || "",
+        features: initialProduct?.features || summaryProduct.features || [],
+        specs: initialProduct?.specs || summaryProduct.specs || [],
+        certifications: initialProduct?.certifications || summaryProduct.certifications || [],
+        relatedProductSlugs: initialProduct?.relatedProductSlugs || summaryProduct.relatedProductSlugs || [],
+        brochureUrl: initialProduct?.brochureUrl || summaryProduct.brochureUrl,
+        images: summaryProduct.images && summaryProduct.images.length > 0 ? summaryProduct.images : (initialProduct?.images || []),
+      }
+    : initialProduct;
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);

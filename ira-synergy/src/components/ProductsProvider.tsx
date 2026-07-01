@@ -24,7 +24,7 @@ export const ProductsProvider = ({ children }: { children: React.ReactNode }) =>
       try {
         const { data: dbProducts, error } = await supabase
           .from("products")
-          .select("*")
+          .select("id, slug, name, category, images, badge, short_description, price, in_stock")
           .order("created_at", { ascending: true });
 
         if (dbProducts && !error && dbProducts.length > 0) {
